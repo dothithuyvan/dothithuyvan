@@ -1170,7 +1170,7 @@ body{margin:0;color:var(--ink);font-family:var(--lex);-webkit-font-smoothing:ant
 .q-gh{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--mk-ink);margin-bottom:8px}
 .q-gh em{font-style:normal;font-size:11px;padding:0 7px;border-radius:999px;background:var(--mk-line);color:var(--mk-muted);font-weight:600}
 .q-gr{display:flex;gap:12px}
-.q-svc{width:268px;background:#fff;border:1px solid var(--mk-line);border-left:3px solid;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:9px}
+.q-svc{width:226px;background:#fff;border:1px solid var(--mk-line);border-left:3px solid;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:9px}
 .q-svc-t{display:flex;gap:10px}
 .q-svc-t i{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;flex:none}
 .q-svc-t div{display:flex;flex-direction:column;gap:2px;min-width:0}
@@ -1377,81 +1377,106 @@ body{margin:0;color:var(--ink);font-family:var(--lex);-webkit-font-smoothing:ant
 .q-job .ja{display:flex;gap:5px;align-self:flex-end}
 .q-job .ja span{width:24px;height:24px;border-radius:6px;display:grid;place-items:center}
 .q-job .ja .ok{background:#DCFCE7;color:#15803D}.q-job .ja .no{background:#FEE2E2;color:#B91C1C}
-/* Đề xuất */
-.q-rq{flex:1;min-height:0;overflow:hidden}
-.q-rq .rq{display:grid;grid-template-columns:18px minmax(0,1fr) 92px 220px 14px 104px 78px 16px 8px;align-items:center;gap:12px;height:66px;padding:0 20px;border-bottom:1px solid var(--mk-line-soft)}
-.q-rq .rq.od{box-shadow:inset 3px 0 0 #F59E0B}
-.q-rq .vn b{font-size:14.5px;font-weight:500}
-.q-rq .vn b code{margin-left:10px;font-size:11.5px;color:var(--mk-muted);font-weight:500}
-.q-rq .vn small span{margin-left:14px}
-.q-rq .mk-pill{height:24px;padding:0 10px;justify-self:start;font-size:12px}
-.q-rq .ap{display:flex;flex-direction:column;gap:3px}
-.q-rq .ap small,.q-rq .dt small{font-size:11px;color:var(--mk-muted)}
-.q-rq .dt{display:flex;flex-direction:column;font-size:12.5px;color:var(--mk-text)}
-.q-rl{width:290px;flex:none;border-right:1px solid var(--mk-line);overflow:hidden}
-.q-rl .h{height:50px;display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:1px solid var(--mk-line);font-size:12px;letter-spacing:.04em;color:var(--mk-muted)}
-.q-rl .h b{color:var(--mk-ink)}
-.q-rl .h em{font-style:normal;font-size:11px;padding:1px 7px;border-radius:999px;background:var(--mk-blue-soft);color:var(--mk-blue-ink);font-weight:600}
-.q-rl .it{display:flex;gap:10px;padding:11px 14px;border-bottom:1px solid var(--mk-line-soft)}
-.q-rl .it.on{background:#EEF4FE}.q-rl .it.on b{color:var(--mk-blue-ink)}
-.q-rl .it.od{box-shadow:inset 3px 0 0 #F59E0B}
-.q-rl .it div{min-width:0;display:flex;flex-direction:column;gap:3px}
-.q-rl .it b{font-size:13.5px;font-weight:500;color:var(--mk-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.q-rl .it small{font-size:12px;color:var(--mk-muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.q-rd{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 310px}
-.q-rd .main{padding:18px 26px;overflow:hidden}
-.q-rd h2{margin:0 0 14px;font-size:21px;color:var(--mk-ink);letter-spacing:-.01em}
-.q-rd .btn3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.q-rd .btn3 span{height:34px;border-radius:7px;display:grid;place-items:center;font-weight:600;font-size:13px}
-.q-rd .btn3 .a{background:#22A55B;color:#fff}.q-rd .btn3 .f{border:1px solid #93B4F5;color:var(--mk-blue-ink)}.q-rd .btn3 .r{background:#DC2626;color:#fff}
-.q-rd h4{margin:18px 0 6px;font-size:14.5px;color:var(--mk-ink)}
-.q-rd .kv{grid-template-columns:170px 1fr;padding:5px 0;font-size:13px}
-.q-rd .kv i{font-style:normal;color:var(--mk-muted)}
-.q-rd .kv code{font-size:12px}
-.q-rp{border-left:1px solid var(--mk-line);background:var(--mk-bg-soft);padding:6px 10px;overflow:hidden}
-.q-rp .dl{margin:0 6px 8px;background:#fff;border:1px solid #BFD3FF;border-radius:9px;padding:10px 12px;display:flex;flex-direction:column;gap:3px}
-.q-rp .dl small{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
-.q-rp .dl b{font-size:15px;color:var(--mk-ink)}
-.q-rp .dl div{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mk-blue-ink)}
-.q-rp .dl div span:last-child{color:var(--mk-muted)}
-.q-rp .st{display:flex;align-items:center;gap:10px;padding:8px 10px}
-.q-rp .st div{flex:1;display:flex;flex-direction:column}
-.q-rp .st b{font-size:13px;color:var(--mk-ink)}.q-rp .st b.now{color:var(--mk-blue-ink)}
-.q-rp .st small{font-size:11.5px;color:var(--mk-muted)}
-.q-rp .row2{padding:8px 10px;border-top:1px solid var(--mk-line);border-bottom:1px solid var(--mk-line);margin-top:6px;font-size:12.5px;display:flex}
-.q-rp .row2 svg:last-child{margin-left:auto}
-.q-rp .act{display:flex;gap:8px;padding:6px 10px;font-size:12px;line-height:1.5;color:var(--mk-muted)}
-.q-rp .act b{color:var(--mk-ink)}.q-rp .act svg{margin-top:2px}
-/* Kho */
-.q-inv{flex:1;min-height:0;overflow:hidden;padding:18px 22px;display:flex;flex-direction:column;gap:14px}
-.q-inv h2{margin:0 0 4px;font-size:21px;color:var(--mk-ink)}
-.q-inv .st{font-size:12.5px;color:var(--mk-muted)}
-.q-inv .kps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.q-inv .kp{padding:14px 16px;display:flex;flex-direction:column;gap:6px}
-.q-inv .kp small{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
-.q-inv .kp b{font-size:26px;color:var(--mk-ink);line-height:1}
-.q-inv .kp b em{font-style:normal;font-size:13px;font-weight:500;color:var(--mk-muted)}
-.q-inv .kp span{font-size:12px;color:var(--mk-muted)}
-.q-inv .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;flex:1;min-height:0}
-.q-inv .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.q-inv .ch b{font-size:14px;color:var(--mk-ink)}
-.q-inv .hl{display:grid;grid-template-columns:170px 1fr;gap:20px;margin-bottom:10px}
-.q-inv .score{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
-.q-inv .score b{font-size:28px;color:#15803D;line-height:1}.q-inv .score b em{font-style:normal;font-size:13px;font-weight:500;color:var(--mk-muted)}
-.q-inv .score i{height:3px;border-radius:2px;background:#16A34A;width:91%}
-.q-inv .score small{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#15803D}
-.q-inv .dist{display:flex;flex-direction:column;gap:9px;justify-content:center}
-.q-inv .dist small{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
-.q-inv .lg{display:flex;gap:16px;font-size:12.5px;flex-wrap:wrap}
-.q-inv .lg span{display:inline-flex;align-items:center;gap:6px}.q-inv .lg i{width:9px;height:9px;border-radius:2px}.q-inv .lg b{color:var(--mk-ink)}
-.pt.sm td{height:40px}.pt.sm th:first-child,.pt.sm td:first-child{padding-left:0}
-.q-inv .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.q-inv .tiles div{border-radius:9px;border:1px solid var(--mk-line-soft);padding:14px;display:flex;flex-direction:column;gap:6px;color:var(--mk-muted)}
-.q-inv .tiles b{font-size:24px;color:var(--mk-ink);line-height:1}.q-inv .tiles span{font-size:12.5px}
-.q-pk td{height:62px}
-.pki{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;flex:none}
-.q-pk .st{font-size:12.5px;font-weight:600}
-.b3{display:flex;gap:3px}.b3 i{width:16px;height:3px;border-radius:2px;background:var(--mk-line)}.b3 i.g{background:#16A34A}.b3 i.o{background:#D97706}
+/* BPM · Việc của tôi (Phân loại) */
+.q-sk{border-radius:7px;display:grid;place-items:center;flex:none}
+.q-sv{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--mk-text);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-sv i{width:8px;height:8px;border-radius:50%;flex:none}
+.q-due{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:6px;font-size:11.5px;font-weight:600;white-space:nowrap;justify-self:start;color:var(--mk-blue-ink);background:#EFF6FF}
+.q-due.late{color:#B91C1C;background:#FEF2F2;box-shadow:inset 0 0 0 1px #FCA5A5}
+.q-due.sm{height:20px;padding:0 7px;font-size:10.5px;margin-top:4px}
+.q-tri{flex:1;min-height:0;overflow:hidden;padding:14px 20px;display:flex;flex-direction:column;gap:12px;background:var(--mk-bg-soft)}
+.q-tri .bk{background:#fff;border:1px solid var(--mk-line);border-radius:10px;overflow:hidden;flex:none}
+.q-tri .bk.now{border-color:#FECACA}
+.q-tri .bh{display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;font-size:13px;color:var(--mk-muted)}
+.q-tri .bh b{color:var(--mk-ink)}
+.q-tri .bh em{font-style:normal;font-size:11px;font-weight:600;padding:0 7px;border-radius:999px;background:var(--mk-line-soft);color:var(--mk-muted)}
+.q-tri .bh small{font-size:12px}
+.q-tri .bk.now .bh{background:#FEF2F2;color:#B91C1C}.q-tri .bk.now .bh b{color:#B91C1C}.q-tri .bk.now .bh em{background:#FEE2E2;color:#B91C1C}
+.q-tri .jr{display:grid;grid-template-columns:28px minmax(0,1fr) 200px 130px 26px 150px;align-items:center;gap:14px;height:64px;padding:0 14px;border-top:1px solid var(--mk-line-soft)}
+.q-tri .bk.now .jr{box-shadow:inset 3px 0 0 #DC2626}
+.q-tri .t{display:flex;flex-direction:column;gap:5px;min-width:0}
+.q-tri .l1{display:flex;align-items:center;gap:10px;min-width:0}
+.q-tri .l1 b{font-size:14px;font-weight:600;color:var(--mk-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-tri .yt{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:999px;background:var(--mk-blue);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:none}
+.q-tri .l2{display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--mk-muted);white-space:nowrap}
+.q-tri .l2 code{font-size:11px;color:var(--mk-text)}
+.q-tri .l2 .tm{display:inline-flex;align-items:center;gap:4px}
+.q-tri .qa{display:flex;gap:6px;justify-content:flex-end}
+.q-tri .qa span{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;border:1px solid var(--mk-line);color:var(--mk-muted)}
+.q-tri .qa .ok{background:#DCFCE7;border-color:#BBF7D0;color:#15803D}.q-tri .qa .no{background:#FEE2E2;border-color:#FECACA;color:#B91C1C}
+/* BPM · bảng phiếu */
+.q-mwt td{height:58px}
+.q-mwt th:first-child,.q-mwt td:first-child{padding-left:16px}
+.q-mwt .vn b{font-size:13px}
+.q-mwt .vn small code{font-size:11px;color:var(--mk-text)}
+.q-mwt td>.mk-pill{height:22px;padding:0 8px;font-size:11px}
+.q-dl{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--mk-text)}
+.q-dl.late{color:#DC2626;font-weight:600}
+.q-mwt td:has(.q-due){line-height:1}
+.q-mwt td .q-due{display:flex;width:max-content}
+.q-svb{display:inline-block;border-left:3px solid;padding-left:8px;font-size:12.5px;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
+.q-modf{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#B45309;font-weight:600}
+.q-modf i{width:7px;height:7px;border-radius:50%;background:#F59E0B}
+/* BPM · chi tiết phiếu */
+.q-jd{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 350px}
+.q-jd .main{padding:16px 24px;overflow:hidden;display:flex;flex-direction:column;gap:11px}
+.q-jd h2{margin:0;font-size:22px;color:var(--mk-ink);letter-spacing:-.01em}
+.q-jd .mr{display:flex;align-items:center;gap:8px;min-height:26px}
+.q-jd .mr>small{width:46px;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.q-jd .mr .mk-pill{height:24px;padding:0 9px;font-size:11.5px}
+.q-jd .cd{font-size:12px;background:var(--mk-line-soft);padding:3px 7px;border-radius:5px;color:var(--mk-ink)}
+.q-jd .pl{width:24px;height:24px;border-radius:6px;border:1px dashed var(--mk-dim);display:grid;place-items:center;color:var(--mk-muted)}
+.q-jd .mr .rt{margin-left:auto;display:flex;align-items:center;gap:12px;color:var(--mk-muted)}
+.q-jd .due{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--mk-blue-ink)}
+.q-jd .ban{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9px;background:var(--mk-bg-soft);border:1px solid var(--mk-line);color:var(--mk-muted);font-size:12.5px}
+.q-jd .ban b{color:var(--mk-ink);margin-right:8px}
+.q-jd .sb{display:flex;align-items:stretch;gap:2px}
+.q-jd .sb .ar{width:26px;display:grid;place-items:center;color:var(--mk-muted);flex:none}
+.q-jd .sp{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;height:50px;padding:0 14px 0 20px;background:var(--mk-line-soft);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%,12px 50%)}
+.q-jd .sp b{font-size:12px;color:var(--mk-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-jd .sp small{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--mk-muted);white-space:nowrap}
+.q-jd .sp.dn{background:#DCFCE7}.q-jd .sp.dn small{color:#15803D}
+.q-jd .sp.on{background:#DBEAFE}.q-jd .sp.on b,.q-jd .sp.on small{color:var(--mk-blue-ink)}
+.q-jd .q-card{flex:none}
+.q-jd .ch{display:flex;align-items:center;height:42px;padding:0 14px;border-bottom:1px solid var(--mk-line-soft)}
+.q-jd .ch b{font-size:13.5px;color:var(--mk-ink)}
+.q-jd .ch .rt{margin-left:auto;display:flex;gap:8px;align-items:center}
+.q-jd .ai{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:6px;background:#EDE9FE;color:#6D28D9;font-size:11.5px;font-weight:600}
+.q-jd .cap2{padding:10px 14px 4px}
+.q-jd .fr{display:grid;grid-template-columns:28px 180px minmax(0,1fr) 14px;align-items:center;gap:8px;height:29px;padding:0 14px;font-size:12.5px;color:var(--mk-muted)}
+.q-jd .fr code{font-size:11px;color:var(--mk-dim)}
+.q-jd .fr b{font-weight:500;color:var(--mk-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-jd .fr .mk-pill{height:22px;padding:0 8px;font-size:11px}
+.q-jd .fr:last-child{margin-bottom:8px}
+.q-jd .ip{display:flex;align-items:center;margin:12px 14px 4px;height:38px;padding:0 12px;border:1px solid var(--mk-line);border-radius:8px;font-size:12.5px;color:var(--mk-dim)}
+.q-jd .ip span{margin-left:auto;display:inline-flex;align-items:center;gap:5px;color:var(--mk-muted)}
+.q-jd .po{display:flex;gap:10px;padding:9px 14px}
+.q-jd .po>div{flex:1;min-width:0}
+.q-jd .po .l1{display:flex;align-items:baseline;gap:6px;font-size:12.5px;color:var(--mk-muted)}
+.q-jd .po .l1 b{color:var(--mk-blue-ink)}.q-jd .po .l1 small{margin-left:auto;font-size:11px}
+.q-jd .po p{margin:3px 0 0;font-size:13px;color:var(--mk-ink)}
+.q-jd .rp{border-left:1px solid var(--mk-line);background:var(--mk-bg-soft);padding:12px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.q-jd .sx{background:#fff;border:1px solid var(--mk-line);border-radius:10px;padding:11px 14px;display:flex;flex-direction:column;gap:7px;flex:none}
+.q-jd .sh{display:flex;align-items:center;gap:8px;font-size:13px}
+.q-jd .sh b{color:var(--mk-ink)}
+.q-jd .sh em{font-style:normal;font-size:11px;font-weight:600;padding:0 7px;border-radius:999px;background:var(--mk-blue-soft);color:var(--mk-blue-ink)}
+.q-jd .sh .mk-pill{height:22px;padding:0 8px;font-size:11px;margin-left:auto}
+.q-jd .sh .rt{margin-left:auto}
+.q-jd .sm{display:flex;align-items:center;gap:4px;font-size:11.5px}
+.q-jd .ap{display:flex;align-items:center;gap:10px}
+.q-jd .ap>i{width:18px;height:18px;border-radius:50%;background:var(--mk-blue);color:#fff;font-size:10px;font-weight:700;font-style:normal;display:grid;place-items:center;flex:none}
+.q-jd .ap div{flex:1;display:flex;flex-direction:column}
+.q-jd .ap b{font-size:13px;color:var(--mk-blue-ink)}.q-jd .ap small{font-size:11.5px;color:var(--mk-muted)}
+.q-jd .tl{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--mk-muted)}
+.q-jd .tl b{color:var(--mk-ink)}
+.q-jd .tl .q-bar{height:6px;border-radius:3px}
+.q-jd .kv{display:grid;grid-template-columns:96px 1fr;gap:8px;font-size:12px;align-items:center}
+.q-jd .kv>span{color:var(--mk-muted)}
+.q-jd .kv>b{font-weight:500;color:var(--mk-ink);display:flex;align-items:center;gap:6px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-jd .kv .lk2{overflow:hidden;text-overflow:ellipsis;display:block}
+.q-jd .kv .mk-pill{height:20px;padding:0 7px;font-size:10.5px}
+.q-jd .hist{display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:9px;background:var(--mk-blue-soft);color:var(--mk-blue-ink);font-size:12.5px;font-weight:600;flex:none}
+.q-jd .hist svg:last-child{margin-left:auto}
 /* Payroll */
 .q-pc{flex:1;min-height:0;overflow:hidden;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
 .q-pc .gh{display:flex;align-items:center;gap:10px;height:44px;padding:0 16px;background:var(--mk-bg-soft);border-bottom:1px solid var(--mk-line)}
@@ -1568,9 +1593,10 @@ const BPMG = [
     ['Đối soát tiền thu hộ của shipper', 'Cuối ngày, theo từng tuyến', '#0891B2', 'banknote', 3, 22]]],
   ['K', 'Kho vận', [
     ['Nhập hàng nhà cung cấp', 'Kiểm đếm, hạn dùng, nhập kho', '#16A34A', 'package-plus', 5, 14],
-    ['Hủy hàng hết hạn – hư hỏng', 'Lập biên bản, duyệt, ghi giảm tồn', '#B91C1C', 'trash-2', 2, 5],
-    ['Kiểm kê định kỳ', 'Kho tổng và 3 cửa hàng', '#7C3AED', 'clipboard-check', 1, 3],
-    ['Điều chuyển kho – cửa hàng', 'Bổ sung hàng cho cửa hàng', '#0D9488', 'arrow-left-right', 6, 31]]],
+    ['Xuất kho giao hàng', 'Soạn hàng, xuất kho theo đơn', '#2563EB', 'truck', 7, 46],
+    ['Điều chuyển kho – cửa hàng', 'Bổ sung hàng cho cửa hàng', '#0D9488', 'arrow-left-right', 6, 31],
+    ['Hủy hàng hết hạn – hư hỏng', 'Lập biên bản, duyệt 3 cấp, ghi giảm tồn', '#B91C1C', 'trash-2', 2, 5],
+    ['Kiểm kê và điều chỉnh tồn', 'Kho tổng, kho mát và 3 cửa hàng', '#7C3AED', 'clipboard-check', 2, 18]]],
   ['M', 'Mua hàng', [
     ['Thu mua nguyên liệu', 'Đề xuất, so sánh giá, đặt hàng', '#4F46E5', 'shopping-cart', 4, 9]]],
   ['N', 'Nhân sự', [
@@ -1591,10 +1617,11 @@ const PSJ = [
 const PS_DONE = 15;
 BPMG[0][2][0][4] = PSJ.length; BPMG[0][2][0][5] = PS_DONE;
 const BPM_N = BPMG.reduce((a, g) => a + g[2].length, 0);
-function bpmSide(on) {
+// on: my = Việc của tôi · svc = Quy trình · ps = quy trình Xử lý phát sinh; gi, sn: nhóm đang mở, quy trình đang chọn
+function bpmSide(on, gi = on === 'ps' ? 0 : -1, sn = on === 'ps' ? BPMG[0][2][0][0] : '') {
   let g = '';
-  BPMG.forEach((x, i) => { const open = on === 'ps' && i === 0; g += GRP(x[0], x[1], open); if (open) g += x[2].map((s, j) => SRV(s[2], s[0], j === 0)).join(''); });
-  return side('layout-grid', 'BPM', R('list-checks', 'Việc của tôi', on === 'my') + R('layout-grid', 'Quy trình', on === 'svc') + SEC('QUY TRÌNH', 1) + g, R('chart-column', 'Báo cáo') + R('settings', 'Cài đặt'));
+  BPMG.forEach((x, i) => { const open = i === gi; g += GRP(x[0], x[1], open); if (open) g += x[2].map(s => SRV(s[2], s[0], s[0] === sn)).join(''); });
+  return side('layout-grid', 'BPM', R('list-checks', 'Việc của tôi', on === 'my') + R('layout-grid', 'Quy trình', on === 'svc' && gi < 0) + SEC('QUY TRÌNH', 1) + g, R('chart-column', 'Báo cáo') + R('settings', 'Cài đặt'));
 }
 // 1 · BPM › Quy trình › Danh sách — ảnh bpm/08
 function sBpmList() {
@@ -1839,12 +1866,15 @@ function sTickets() {
 }
 
 // --- BPM · quy trình "Xử lý phát sinh đơn hàng" ---
-function psHead(tab) {
+function svcHead(s, tab) {
   const tabs = [['square-kanban', 'Pipeline'], ['columns-3', 'Kanban'], ['table-2', 'Bảng'], ['workflow', 'Luồng'], ['link', 'Luồng liên kết'], ['chart-column', 'Báo cáo']];
-  return `<div class="hb"><span class="q-sic" style="background:#FEE2E2;color:#DC2626">${I('triangle-alert', 15)}</span><b style="font-size:15px">Xử lý phát sinh đơn hàng</b>${I('star', 14)}${I('info', 14)}${I('settings', 14)}${I('ellipsis', 14)}
+  return `<div class="hb"><span class="q-sic" style="background:${s[2]}1A;color:${s[2]}">${I(s[3], 15)}</span><b style="font-size:15px">${s[0]}</b>${I('star', 14)}${I('info', 14)}${I('settings', 14)}${I('ellipsis', 14)}
       <span class="rt">${tab === 'Luồng' ? `<span class="cb">${I('pencil', 13)}Sửa luồng</span>` : ''}<span class="bt">${I('plus', 14)}Phiếu mới</span></span></div>
     <div class="q-tabs">${tabs.map(t => `<span class="${t[1] === tab ? 'on' : ''}">${I(t[0], 13)}${t[1]}</span>`).join('')}<span>${I('plus', 13)}</span><span>${I('chevron-down', 13)}</span></div>`;
 }
+const psHead = (tab) => svcHead(BPMG[0][2][0], tab);
+// Thanh công cụ của một quy trình (ảnh bpm/09); mod = chế độ xem đã chỉnh cột
+const svcBar = (mod) => `<div class="tb2" style="height:46px"><span class="cb">${I('columns-3', 13)}Tuỳ chỉnh cột</span>${mod ? '' : `<span class="cb">${I('layout-grid', 13)}Trường trên thẻ</span>`}<span class="cb">${I('users', 13)}Tất cả phiếu xem được${I('chevron-down', 12)}</span><span class="cb">${I('list-filter', 13)}Bộ lọc</span><span class="cb">${I('arrow-up-down', 13)}Mới nhất trước${I('chevron-down', 12)}</span><span class="cb">${I('upload', 13)}Nhập${I('chevron-down', 12)}</span><span class="cb">${I('download', 13)}Xuất${I('chevron-down', 12)}</span><span class="rt">${mod ? `<span class="q-modf"><i></i>Đã chỉnh</span><span class="cb">Lưu chế độ xem</span>` : ''}<span class="cb srch">${I('search', 13)}Tìm phiếu theo tên hoặc mã</span></span></div>`;
 // 10 · BPM › Luồng (lưu đồ dọc chỉ đọc + lớp Lưu lượng) — ảnh bpm/12, 16, 17
 function sFlow() {
   const KC = { start: ['#2563EB', 'play', 'Bắt đầu'], manual: ['#DC2626', 'clipboard-list', 'Thủ công'], approval: ['#16A34A', 'circle-check', 'Phê duyệt'], decision: ['#F59E0B', 'git-branch', 'Rẽ nhánh'], notify: ['#7C3AED', 'bell', 'Thông báo'], end: ['#16A34A', 'flag', 'Kết thúc'] };
@@ -1889,101 +1919,125 @@ function sPipeline() {
   const tagc = { 'Thiếu hàng': 'blue', 'Hàng lỗi': 'amber', 'Giao trễ': 'violet', 'Sai giá': 'cyan', 'Chưa phân loại': 'grey' };
   const card = (j, ap) => `<div class="q-job ${j[5] ? 'late' : ''}"><div class="jh"><code>${j[0]}</code>${j[5] ? `<span>${j[5]}</span>` : ''}</div><div class="jb"><b>${j[1]}</b><span class="mk-pill ${tagc[j[6]]}">${j[6]}</span>
       <div class="jf">${av(j[3], 20)}<span>${nm(j[3]).split(' ').pop()}</span><span class="dl ${j[5] ? 'late' : ''}">${I('calendar', 11)}${j[4]}</span></div>${ap ? `<div class="ja"><span class="ok">${I('thumbs-up', 13)}</span><span class="no">${I('thumbs-down', 13)}</span></div>` : ''}</div></div>`;
-  return bpmSide('ps') + `<div class="m3">${psHead('Pipeline')}<div class="tb2" style="height:46px"><span class="cb">${I('columns-3', 13)}Tuỳ chỉnh cột</span><span class="cb">${I('layout-grid', 13)}Trường trên thẻ</span><span class="cb">${I('users', 13)}Tất cả phiếu xem được${I('chevron-down', 12)}</span><span class="cb">${I('list-filter', 13)}Bộ lọc</span><span class="cb">${I('arrow-up-down', 13)}Mới nhất trước${I('chevron-down', 12)}</span><span class="cb">${I('upload', 13)}Nhập${I('chevron-down', 12)}</span><span class="cb">${I('download', 13)}Xuất${I('chevron-down', 12)}</span><span class="rt"><span class="cb srch">${I('search', 13)}Tìm phiếu theo tên hoặc mã</span></span></div>
+  return bpmSide('ps') + `<div class="m3">${psHead('Pipeline')}${svcBar(0)}
     <div class="q-pipe">${COLS.map((c, i) => { const L = inCol(c[0]); return `<div class="pc ${d(i, 100, 50)}"><div class="ph">${I(c[2] === 'approval' ? 'circle-check' : 'clipboard-list', 14, 2, c[2] === 'approval' ? '#16A34A' : '#DC2626')}<b>${c[1]}</b>${c[0] === 'appr' ? '<small>2 bước</small>' : ''}<em>${L.length}</em></div>${L.length ? L.map(j => card(j, c[0] === 'appr')).join('') : '<div class="pe">Không có phiếu ở bước này</div>'}</div>`; }).join('')}</div></div>`;
 }
 
-// 12 · Requests › Trang chủ (dòng đôi) — ảnh requests/02
-// [tên, mã, dịch vụ, mô tả, trạng thái, người tạo, người duyệt, số đã duyệt, ngày, giờ]
-const RQ = [
-  ['Nhập bổ sung 40 thùng kem sữa 1 lít', 'NH-2610-0031', 'Đề nghị nhập hàng', 'Bù đơn DH-2610-0412 và tồn tối thiểu kho mát.', 'Đang chờ', 'ngan', ['tuan', 'bao'], 1, '08/10', '14:05'],
-  ['Hủy 14 hộp kem sữa hết hạn 05/10 – Kho mát', 'HH-2610-0012', 'Đề nghị hủy hàng', 'Phát hiện khi kiểm hạn dùng lô nhập 15/09.', 'Đang chờ', 'khoa', ['tuan', 'quan', 'bao'], 1, '08/10', '09:20'],
-  ['Mua 200 kg trân châu đen 3Q tháng 10', 'MH-2610-0044', 'Đề nghị mua hàng', '3 báo giá, chọn nhà cung cấp giá 38.500 đ/kg.', 'Đã duyệt', 'ngan', ['quan', 'bao'], 2, '07/10', '16:40'],
-  ['Hủy 6 chai siro đường đen rò nắp', 'HH-2610-0011', 'Đề nghị hủy hàng', 'Hàng trả về từ Cà phê Góc Phố, PS-2610-0058.', 'Quá hạn', 'khoa', ['tuan', 'quan', 'bao'], 0, '06/10', '15:10'],
-  ['Mua 30 thùng ly nhựa 500 ml in logo', 'MH-2610-0043', 'Đề nghị mua hàng', 'Hàng đặt riêng cho Trà sữa Mộc Miên.', 'Đang chờ', 'ngan', ['quan', 'bao'], 1, '06/10', '10:30'],
-  ['Điều chỉnh tồn bột mì số 13 sau kiểm kê', 'DC-2610-0007', 'Điều chỉnh tồn kho', 'Lệch 5 kg so với sổ, đã có biên bản.', 'Đã duyệt', 'tuan', ['quan'], 1, '05/10', '17:15'],
-  ['Thanh toán nhà cung cấp trà đợt 2 tháng 9', 'TT-2610-0018', 'Đề nghị thanh toán', 'Công nợ đến hạn 10/10, 86.400.000 đ.', 'Đang chờ', 'yen', ['bao', 'quan'], 1, '05/10', '11:00'],
-  ['Mua tủ mát 2 cánh cho Cửa hàng Thủ Đức', 'MH-2610-0042', 'Đề nghị mua hàng', 'Hạng mục mở cửa hàng, đã có trong ngân sách.', 'Từ chối', 'tam', ['quan', 'bao'], 0, '03/10', '09:45'],
-  ['Nhập 120 thùng sữa đặc đợt đầu tháng', 'NH-2610-0029', 'Đề nghị nhập hàng', 'Theo đơn đặt hàng PO-2609-0118.', 'Đã duyệt', 'ngan', ['tuan', 'bao'], 2, '02/10', '08:30'],
+// --- BPM · Kho vận, Mua hàng: phê duyệt và phiếu kho đều chạy trên quy trình ---
+// Mốc "bây giờ": 08/10/2026 · 14:15. Người xem: Trần Minh Quân (Trưởng phòng Vận hành).
+const svcOf = (n) => { for (const g of BPMG) for (const s of g[2]) if (s[0] === n) return s; };
+const S_NK = 'Nhập hàng nhà cung cấp', S_XK = 'Xuất kho giao hàng', S_CK = 'Điều chuyển kho – cửa hàng', S_HH = 'Hủy hàng hết hạn – hư hỏng', S_KK = 'Kiểm kê và điều chỉnh tồn', S_MH = 'Thu mua nguyên liệu';
+const KHO_G = BPMG.findIndex(g => g[1] === 'Kho vận');
+// [mã, tên, quy trình, bước, loại bước, người giữ, hạn, trễ, nhãn, người tạo, ngày tạo, thời gian chạy, thời gian ở bước, khối]
+// khối: now = đến lượt tôi, quá hạn · today = hạn hôm nay · week = hạn trong tuần · nt = quá hạn, chưa đến lượt tôi · '' = khác
+const JW = [
+  ['HH-2610-0011', 'Hủy 6 chai siro đường đen rò nắp', S_HH, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '07/10 · 16:10', 'Trễ 22 giờ', 'Hàng lỗi', 'khoa', '06/10', '1n 23g', '1n 2g', 'now'],
+  ['MH-2610-0043', 'Mua 30 thùng ly nhựa 500 ml in logo', S_MH, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '08/10 · 08:00', 'Trễ 6 giờ', 'Đặt riêng', 'ngan', '06/10', '2n 4g', '1n 6g', 'now'],
+  ['KK-2610-0009', 'Kiểm kê tháng 10 – Cửa hàng Gò Vấp', S_KK, 'Xác nhận chênh lệch', 'manual', 'quan', '08/10 · 11:00', 'Trễ 3 giờ', 'Lệch tồn', 'khoa', '06/10', '2n 6g', '1n 3g', 'now'],
+  ['NK-2610-0031', 'Nhập bổ sung 40 thùng kem sữa 1 lít', S_NK, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '08/10 · 17:00', '', 'Kho mát', 'ngan', '08/10', '3g 10p', '1g 15p', 'today'],
+  ['CK-2610-0028', 'Bổ sung hàng Cửa hàng Gò Vấp', S_CK, 'Duyệt số lượng điều chuyển', 'approval', 'quan', '08/10 · 18:00', '', 'Cửa hàng', 'khoa', '08/10', '2g 5p', '2g 5p', 'today'],
+  ['MH-2610-0046', 'Mua 80 kg bột kem béo tháng 10', S_MH, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '09/10 · 17:00', '', '', 'ngan', '08/10', '1g 30p', '1g 30p', 'week'],
+  ['XK-2610-0419', 'Xuất bù 2 thùng kem sữa – PS-2610-0057', S_XK, 'Duyệt xuất bù', 'approval', 'quan', '10/10 · 10:00', '', 'Giao bù', 'long', '08/10', '40p', '40p', 'week'],
+  ['HH-2610-0012', 'Hủy 14 hộp kem sữa hết hạn 05/10', S_HH, 'Kế toán trưởng duyệt', 'approval', 'bao', '08/10 · 20:05', '', 'Hết hạn', 'khoa', '08/10', '4g 55p', '2g 10p', ''],
+  ['MH-2610-0045', 'Mua 120 thùng sữa đặc đợt giữa tháng', S_MH, 'Kế toán trưởng duyệt', 'approval', 'bao', '08/10 · 12:00', 'Trễ 2 giờ', '', 'ngan', '07/10', '1n 3g', '6g 15p', 'nt'],
+  ['XK-2610-0412', 'Xuất kho đơn DH-2610-0412 – Trà sữa Mộc Miên', S_XK, 'Kết thúc', 'end', '', '', '', '', 'long', '07/10', '18g 40p', '', ''],
+  ['NK-2610-0030', 'Nhập trân châu đen 3Q – 200 kg', S_NK, 'Kết thúc', 'end', '', '', '', '', 'ngan', '07/10', '1n 2g', '', ''],
+  ['CK-2610-0027', 'Bổ sung hàng Cửa hàng Quận 10', S_CK, 'Kết thúc', 'end', '', '', '', 'Cửa hàng', 'khoa', '07/10', '5g 20p', '', ''],
+  ['KK-2610-0005', 'Kiểm kê tháng 10 – Kho tổng Bình Tân', S_KK, 'Kết thúc', 'end', '', '', '', 'Lệch tồn', 'khoa', '05/10', '1n 4g', '', ''],
 ];
-const RQ_TOTAL = 41;
-const rqc = { 'Đang chờ': 'pending', 'Đã duyệt': 'approved', 'Quá hạn': 'od', 'Từ chối': 'rejected' };
-function reqSide() {
-  return side('circle-check', 'Đề xuất', R('house', 'Trang chủ', 1) + R('inbox', 'Gửi đến tôi') + R('send', 'Tôi đã gửi') + SEC('QUAN TRỌNG') + R('bookmark', 'Đã lưu') + R('mail', 'Đề xuất trực tiếp') + R('file-text', 'Bản nháp', 0, 1) + R('layout-grid', 'Đề xuất trong ứng dụng') + R('settings', 'Đề xuất hệ thống')
-    + SEC('DỊCH VỤ PHÊ DUYỆT', 1) + GRP('K', 'Kho vận', 1) + SRV('#16A34A', 'Đề nghị nhập hàng') + SRV('#B91C1C', 'Đề nghị hủy hàng') + SRV('#7C3AED', 'Điều chỉnh tồn kho') + GRP('M', 'Mua hàng') + GRP('T', 'Tài chính'), R('layout-grid', 'Dịch vụ') + R('chart-column', 'Báo cáo') + R('settings', 'Cài đặt'));
+const MY_TURN = JW.filter(j => ['now', 'today', 'week'].includes(j[13])).length;
+const JTAG = { 'Hàng lỗi': 'amber', 'Đặt riêng': 'violet', 'Lệch tồn': 'critical', 'Kho mát': 'cyan', 'Cửa hàng': 'blue', 'Giao bù': 'green', 'Hết hạn': 'critical' };
+const STEPK = { approval: ['circle-check', '#16A34A', '#DCFCE7'], manual: ['clipboard-list', '#DC2626', '#FEE2E2'], end: ['flag', '#16A34A', '#DCFCE7'] };
+const stepIc = (k, s = 28) => `<i class="q-sk" style="width:${s}px;height:${s}px;background:${STEPK[k][2]};color:${STEPK[k][1]}">${I(STEPK[k][0], Math.round(s * .52))}</i>`;
+const svcDot = (n) => `<span class="q-sv"><i style="background:${svcOf(n)[2]}"></i>${n}</span>`;
+// Thanh tiêu đề "Việc của tôi" (ảnh bpm/01–04)
+function mwHead(view, tab) {
+  const tabs = ['Đến lượt tôi', 'Đang theo dõi', 'Tôi tạo', 'Tất cả'];
+  return `<div class="hb">${I('menu', 15)}<span class="lt">Phiếu</span><span class="cr">${I('chevron-right', 13)}</span><b>Việc của tôi</b><span class="lt">${MY_TURN} bước</span>
+      <span class="rt"><span class="cb srch" style="width:190px">${I('search', 13)}Tìm bước…</span><span class="cb" style="border-color:#93B4F5;color:var(--mk-blue-ink)">${I('users', 13)}Đang theo dõi${I('chevron-down', 12)}</span><span class="cb">${I('list-filter', 13)}Bộ lọc${view === 'Bảng' ? '<em>· 1</em>' : ''}</span><span class="cb">${I('arrow-up-down', 13)}Mới nhất trước${I('chevron-down', 12)}</span>
+      <span class="seg">${['Phân loại', 'Bảng'].map(v => `<span class="${v === view ? 'on' : ''}">${v}</span>`).join('')}</span><span class="bt">${I('plus', 14)}Phiếu mới</span></span></div>
+    <div class="q-tabs">${tabs.map(t => `<span class="${t === tab ? 'on' : ''}">${t}</span>`).join('')}<span>${I('plus', 13)}</span><span>${I('chevron-down', 13)}</span></div>`;
 }
-const apprs = (r) => r[6].map((k, i) => `<span class="avw ${i < r[7] ? 'ok' : ''}">${av(k, 22)}${i < r[7] ? `<i>${I('check', 8, 4)}</i>` : ''}</span>`).join('');
-function sRequests() {
-  return reqSide() + `<div class="m3"><div class="hb"><b style="font-size:15px">Đề xuất</b><span class="rt"><span class="cb srch" style="width:230px">${I('search', 13)}Tìm đề xuất</span><span class="bt">${I('plus', 14)}Đề xuất mới</span></span></div>
-    <div class="mk-pf-reqtabs" style="flex:none"><span class="on">TẤT CẢ ĐỀ XUẤT <em>${RQ_TOTAL}</em></span><span>ĐẾN LƯỢT TÔI</span><span>QUÁ HẠN</span><span>ĐANG CHỜ</span><span>ĐÃ DUYỆT</span><span>TỪ CHỐI</span><span>TRẢ LẠI</span><span class="q-tr"><span class="seg"><span>${I('list', 13)}</span><span class="on">${I('layout-grid', 13)}</span></span><span class="cb">Bộ lọc${I('chevron-right', 13)}</span></span></div>
-    <div class="q-rq">${RQ.map((r, i) => `<div class="rq ${r[4] === 'Quá hạn' ? 'od' : ''} ${d(i, 80, 35)}"><i class="q-cb ${r[4] === 'Đã duyệt' ? 'ck' : ''}">${r[4] === 'Đã duyệt' ? I('check', 11, 3) : ''}</i><div class="vn"><b>${r[0]}<code>${r[1]}</code></b><small>${r[2]}<span>${r[3]}</span></small></div>
-      <span class="mk-pill ${rqc[r[4]]}">${r[4]}</span><span class="who">${av(r[5], 26)}<span class="vn"><b style="font-weight:600">${nm(r[5])}</b><small>${P[r[5]][1]}</small></span></span>${I('chevron-right', 13, 2, '#9CA3AF')}
-      <span class="ap"><span class="appr">${apprs(r)}</span><small>${r[7]}/${r[6].length} đã duyệt</small></span><span class="dt">${r[8]}/2026<small>${r[9]}</small></span>${I('bookmark', 14, 2, '#9CA3AF')}<i class="dot" style="background:${['Quá hạn', 'Đang chờ'].includes(r[4]) ? '#F59E0B' : '#D1D5DB'}"></i></div>`).join('')}</div>
-    <div class="q-pager">Hiển thị 1–${RQ.length} trên ${RQ_TOTAL}<span class="rt"><span class="pgn on">1</span><span class="pgn">2</span><span class="pgn">3</span><span class="pgn">${I('chevron-right', 13)}</span></span></div></div>`;
+// 12 · BPM › Việc của tôi › Phân loại — ảnh bpm/01–03
+function sMyWork() {
+  const row = (j) => { const ap = j[4] === 'approval', mine = j[5] === 'quan'; return `<div class="jr">${stepIc(j[4])}<div class="t"><div class="l1"><b>${j[1]}</b>${mine ? `<span class="yt">${I('arrow-right', 11, 2.5)}Đến lượt bạn</span>` : ''}</div>
+      <div class="l2"><code>${j[0]}</code><span>${j[3]}</span><span class="tm">${I('clock', 11)}${j[12]}</span></div></div>${svcDot(j[2])}
+      ${j[7] ? `<span class="q-due late">${I('clock', 12)}${j[7]}</span>` : `<span class="q-due">${I('calendar', 12)}Hạn ${j[6]}</span>`}<span class="avw">${av(j[5], 26)}</span>
+      <span class="qa">${ap ? `<span class="ok">${I('thumbs-up', 14)}</span><span class="no">${I('thumbs-down', 14)}</span>` : `<span class="ok">${I('check', 14)}</span>`}<span>${I('send', 13)}</span><span>${I('arrow-up-right', 14)}</span><span>${I('ellipsis', 14)}</span></span></div>`; };
+  const B = [['now', 'Cần bạn xử lý ngay', 'Đến lượt bạn · quá hạn hoặc đang kẹt', 'zap'], ['nt', 'Quá hạn', 'Chưa đến lượt bạn', 'clock'], ['today', 'Đến hạn hôm nay', '', 'calendar'], ['week', 'Đến hạn trong tuần', '', 'calendar-clock']];
+  const open = { now: 1, today: 1, week: 1 };
+  return bpmSide('my') + `<div class="m3">${mwHead('Phân loại', 'Đến lượt tôi')}<div class="q-tri">${B.map((b, i) => { const L = JW.filter(j => j[13] === b[0]); return `<div class="bk ${b[0] === 'now' ? 'now' : ''} ${d(i, 100, 120)}"><div class="bh">${I(open[b[0]] ? 'chevron-down' : 'chevron-right', 14)}${I(b[3], 14)}<b>${b[1]}</b><em>${L.length}</em>${b[2] ? `<small>${b[2]}</small>` : ''}</div>${open[b[0]] ? L.map(row).join('') : ''}</div>`; }).join('')}</div></div>`;
 }
-// 13 · Requests › chi tiết đề xuất (3 cột) — ảnh requests/04
-function sReqDetail() {
-  const r = RQ[1], kv = (k, v) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`;
-  const list = `<div class="q-rl"><div class="h"><b>TẤT CẢ ĐỀ XUẤT</b><em>${RQ_TOTAL}</em>${I('chevron-down', 12)}<span class="rt">${I('search', 14)}${I('list-filter', 14)}</span></div>${RQ.slice(0, 7).map((x, i) => `<div class="it ${i === 1 ? 'on' : ''} ${x[4] === 'Quá hạn' ? 'od' : ''}"><i class="q-cb ${x[4] === 'Đã duyệt' ? 'ck' : ''}">${x[4] === 'Đã duyệt' ? I('check', 11, 3) : ''}</i><div><b>${x[0]}</b><small>${x[2]} · ${x[3]}</small></div></div>`).join('')}</div>`;
-  const steps = [['tuan', 'ok', 'Đã duyệt · 08/10/2026, 10:42'], ['quan', 'now', 'SLA 8h'], ['bao', '', 'SLA 8h']];
-  const panel = `<div class="q-rp"><div class="cap2">DUYỆT TUẦN TỰ · ${r[7]}/${r[6].length} ĐÃ DUYỆT</div><div class="dl"><small>HẠN CỦA BẠN</small><b>08/10/2026, 18:42</b><div><span>Còn 3 giờ 50 phút</span><span>SLA 8h</span></div></div>
-    ${steps.map(s => `<div class="st"><span class="avw ${s[1] === 'ok' ? 'ok' : ''}">${av(s[0], 30)}${s[1] === 'ok' ? `<i>${I('check', 9, 4)}</i>` : ''}</span><div><b class="${s[1] === 'now' ? 'now' : ''}">${nm(s[0])}</b><small>${P[s[0]][1]}</small><small>${s[2]}</small></div>${s[1] === 'now' ? I('clock', 14, 2, '#2563EB') : ''}</div>`).join('')}
-    <div class="lk2 row2">${I('clock', 13)}Tiến trình phê duyệt${I('chevron-right', 13)}</div><div class="cap2">NGƯỜI THEO DÕI · 1 <span class="rt"><span class="cb sm">${I('user-plus', 12)}Thêm</span><span class="cb sm">Theo dõi</span></span></div><div class="st">${av('ha', 26)}<div><b>${nm('ha')}</b></div></div>
-    <div class="cap2">HOẠT ĐỘNG CHÍNH</div><div class="act">${I('circle-check', 14, 2, '#16A34A')}<span><b>${nm('tuan')}</b> đã duyệt · 08/10, 10:42<br><i>Đã kiểm thực tế, đủ 14 hộp.</i></span></div><div class="act">${I('file-text', 14)}<span><b>${nm('khoa')}</b> tạo đề xuất · 08/10, 09:20</span></div></div>`;
-  return reqSide() + list + `<div class="m3"><div class="hb"><span class="q-ltr">K</span><span class="lt">Kho vận</span><span class="cr">/</span><span class="lt" style="color:var(--mk-ink);font-weight:600">${r[2]}</span><span class="cr">/</span><code style="color:#2563EB;font-weight:600">${r[1]}</code>
-      <span class="rt"><span class="mk-pill pending" style="height:26px">Đang chờ</span>${I('bookmark', 15)}${I('sparkles', 15)}${I('maximize', 15)}${I('ellipsis', 15)}${I('x', 15)}</span></div>
-    <div class="q-rd"><div class="main"><h2>${r[0]}</h2><div class="btn3"><span class="a">Phê duyệt</span><span class="f">Chuyển tiếp</span><span class="r">Từ chối</span></div>
-      <h4>Thông tin chính</h4>${kv('Tên', r[0])}${kv('Mã đề xuất', `<code>${r[1]}</code>`)}${kv('Dịch vụ đề xuất', `${r[2]} <i>(Tuần tự)</i>`)}${kv('Người tạo', `<span class="who">${av('khoa', 20)}${nm('khoa')} <i>(${P.khoa[1]})</i></span>`)}${kv('Tạo lúc', '08/10/2026, 09:20')}${kv('Cập nhật', '08/10/2026, 10:42')}${kv('Hạn', '09/10/2026, 09:20')}${kv('Mô tả', r[3])}
-      <h4>Trường tùy chỉnh</h4>${kv('Kho', 'Kho mát Bình Tân')}${kv('Lý do hủy', '<span class="mk-pill critical">Hết hạn sử dụng</span>')}${kv('Mặt hàng', 'Kem sữa 1 lít · KS-1L · lô 1509')}${kv('Số lượng', '14 hộp')}${kv('Giá trị hàng hủy', vn(14 * 96000))}${kv('Biên bản đính kèm', `<span class="lk2">${I('paperclip', 12)}bien-ban-huy-hang-0810.pdf</span>`)}
-      <h4>Chữ ký</h4><div class="mut">Chưa có yêu cầu ký.</div><span class="cb" style="margin-top:8px">${I('pencil', 13)}Yêu cầu ký</span></div>${panel}</div></div>`;
+// 13 · BPM › chi tiết phiếu (trang đầy đủ) — ảnh bpm/19–21
+// Bước của quy trình Hủy hàng: [tên, loại, người, hạn bước, xong lúc]
+const HH_ST = [['Bắt đầu', 'start', 'khoa', '', '09:20'], ['Kho lập biên bản hủy', 'manual', 'khoa', '2 giờ', '09:35'], ['Quản lý kho duyệt', 'approval', 'tuan', '4 giờ', '10:42'],
+  ['Trưởng phòng Vận hành duyệt', 'approval', 'quan', '4 giờ', '12:05'], ['Kế toán trưởng duyệt', 'approval', 'bao', '8 giờ', ''], ['Kho ghi giảm tồn', 'manual', 'khoa', '4 giờ', ''], ['Kết thúc', 'end', '', '', '']];
+function sJobDetail() {
+  const j = JW.find(x => x[0] === 'HH-2610-0012'), cur = HH_ST.findIndex(s => !s[4]), done = cur;
+  const chip = (c, t) => `<span class="mk-pill ${c}">${t}</span>`;
+  const F = [['Kho', chip('violet', 'Kho mát Bình Tân')], ['Lý do hủy', chip('critical', 'Hết hạn sử dụng')], ['Mặt hàng', 'Kem sữa 1 lít · KS-1L'], ['Lô hàng', 'Lô 1509 · HSD 05/10/2026'], ['Số lượng', '14 hộp'],
+    ['Giá trị hàng hủy (VND)', (14 * 96000).toLocaleString('vi-VN')], ['Biên bản đính kèm', `<span class="lk2">${I('paperclip', 12)}bien-ban-huy-hang-0810.pdf</span>`]];
+  const POST = [['quan', 'Trưởng phòng Vận hành duyệt', '12:05', 'Đồng ý hủy. Kho rà lại hạn dùng phần còn lại của lô 1509.']];
+  const sb = HH_ST.slice(2, 6).map((s, k) => { const i = k + 2, st = i < cur ? 'dn' : i === cur ? 'on' : ''; return `<div class="sp ${st}"><b>${i + 1}. ${s[0]}</b><small>${st === 'dn' ? `${I('check', 11, 3)}Xong ${s[4]} · hạn ${s[3]}` : st === 'on' ? `${I('clock', 11)}Hạn ${j[6].split(' · ')[1]} · ${s[3]}` : `Hạn ${s[3]}`}</small></div>`; }).join('');
+  const main = `<div class="main"><h2>${j[1]}</h2>
+      <div class="mr"><small>PHIẾU</small><span class="mk-pill blue"><i class="d"></i>Đang chạy</span><code class="cd">${j[0]}</code><span class="mut">#214</span></div>
+      <div class="mr"><small>BƯỚC</small><span class="mk-pill green">${I('circle-check', 12)}${HH_ST[cur][0]}</span><span class="mk-pill amber"><i class="d"></i>Chờ xử lý</span>${chip(JTAG[j[8]], j[8])}<span class="pl">${I('plus', 12)}</span>
+        <span class="rt"><span class="due">${I('clock', 13)}Hạn 08/10/2026 · 20:05</span>${I('ellipsis', 15)}</span></div>
+      <div class="ban">${I('info', 15)}<span><b>Không có việc cho bạn ở bước này</b>Đang chờ ${nm(HH_ST[cur][2])}</span></div>
+      <div class="sb"><span class="ar">${I('chevron-left', 14)}</span>${sb}<span class="ar">${I('chevron-right', 14)}</span></div>
+      <div class="q-card"><div class="ch"><b>Dữ liệu ở bước này</b><span class="rt"><span class="ai">${I('sparkles', 13)}Điền bằng AI</span><span class="cb sm">Ẩn trường trống</span></span></div><div class="cap2">${I('pencil', 11)} TRƯỜNG CỦA PHIẾU CẬP NHẬT Ở ĐÂY</div>
+        ${F.map((f, i) => `<div class="fr ${d(i, 200, 40)}"><code>${String(i + 1).padStart(2, '0')}</code><span>${f[0]}</span><b>${f[1]}</b>${I('pencil', 12)}</div>`).join('')}</div>
+      <div class="q-card"><div class="ch"><b>Trao đổi</b><span class="mut" style="margin-left:8px">${POST.length} bài</span></div><div class="ip">Trao đổi về phiếu này với đồng nghiệp…<span>${I('paperclip', 13)}Tải lên</span></div>
+        ${POST.map(p => `<div class="po">${av(p[0], 28)}<div><div class="l1"><b>${nm(p[0])}</b><span>Phê duyệt bước ${p[1]}.</span><small>${p[2]} · 08/10</small></div><p>${p[3]}</p></div></div>`).join('')}</div></div>`;
+  const kv = (k, v) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`;
+  const side2 = `<div class="rp"><div class="sx"><div class="sh"><b>Bước đang chạy</b><em>1</em><span class="mk-pill green">${HH_ST[cur][0]}</span></div></div>
+      <div class="sx"><div class="sh"><b>Người duyệt</b><span class="lk2 rt">Sửa người duyệt</span></div><div class="mut sm">${I('chevrons-up-down', 12)}Tuần tự</div><div class="ap"><i>1</i>${av(HH_ST[cur][2], 30)}<div><b>${nm(HH_ST[cur][2])}</b><small>${P[HH_ST[cur][2]][1]}</small></div>${I('clock', 14, 2, '#2563EB')}</div></div>
+      <div class="sx"><div class="sh"><b>Thời gian</b></div><div class="tl"><span>Bước này còn <b>5 giờ 50 phút</b></span><div class="q-bar"><i style="width:${130 / 480 * 100}%;background:#3B82F6"></i></div></div>
+        <div class="tl"><span>Cả phiếu đã chạy <b>${'4 giờ 55 phút'}</b></span><div class="q-bar"><i style="width:62%;background:#8B5CF6"></i></div></div></div>
+      <div class="sx"><div class="sh"><b>Thông tin phiếu</b></div><div class="kv"><span>Bước</span><b><span class="q-bar" style="width:110px;display:inline-flex"><i style="width:${done / HH_ST.length * 100}%;background:#4ADE80"></i><i style="width:${100 / HH_ST.length}%;background:#F59E0B"></i></span> ${done}/${HH_ST.length} xong</b></div>
+        ${kv('Quy trình', `<span class="lk2">${S_HH}</span>`)}${kv('Bước hiện tại', HH_ST[cur][0])}${kv('Mã phiếu', '#214')}${kv('Tạo bởi', nm(j[9]))}${kv('Nguồn', `<span class="mk-pill grey">${I('pencil', 11)}Thủ công</span>`)}${kv('Tạo lúc', '08/10/2026 · 09:20')}${kv('Cập nhật', '08/10/2026 · 12:05')}</div>
+      <div class="hist">${I('history', 14)}Chi tiết & lịch sử${I('chevron-right', 14)}</div></div>`;
+  return bpmSide('svc', KHO_G, S_HH) + `<div class="m3"><div class="hb"><span class="lt">Quy trình</span><span class="cr">${I('chevron-right', 13)}</span><span class="lt">${S_HH}</span><span class="cr">${I('chevron-right', 13)}</span><b>Chi tiết phiếu</b>
+      <span class="rt"><span class="cb" style="border-color:#FCA5A5;color:#B91C1C">Hủy phiếu</span><span class="cb" style="background:var(--mk-blue-soft);border-color:#BFD3FF;color:var(--mk-blue-ink)">Tạm dừng</span><span class="cb icon">${I('refresh-cw', 13)}</span></span></div><div class="q-jd">${main}${side2}</div></div>`;
+}
+// 14 · BPM › quy trình Kiểm kê › Bảng (cột tuỳ chỉnh) — ảnh bpm/11, 04
+// [mã, kho, bước, người giữ, hạn, trễ, tồn thực tế (đơn vị), số mặt hàng lệch, giá trị chênh lệch, ngày tạo]
+const KKJ = [
+  ['KK-2610-0009', 'Cửa hàng Gò Vấp', 'Xác nhận chênh lệch', 'quan', '08/10/2026', 'Trễ 3 giờ', 3150, 3, -412000, '06/10/2026'],
+  ['KK-2610-0006', 'Kho mát Bình Tân', 'Kế toán đối chiếu', 'yen', '09/10/2026', '', 3260, 2, -186000, '05/10/2026'],
+  ['KK-2610-0008', 'Cửa hàng Tân Bình', '', '', '', '', 3640, 0, 0, '05/10/2026'],
+  ['KK-2610-0007', 'Cửa hàng Quận 10', '', '', '', '', 4180, 0, 0, '05/10/2026'],
+  ['KK-2610-0005', 'Kho tổng Bình Tân', '', '', '', '', 18420, 1, -105000, '05/10/2026'],
+  ['KK-2609-0025', 'Cửa hàng Gò Vấp', '', '', '', '', 2980, 1, -64000, '05/09/2026'],
+  ['KK-2609-0024', 'Cửa hàng Tân Bình', '', '', '', '', 3510, 0, 0, '05/09/2026'],
+  ['KK-2609-0023', 'Cửa hàng Quận 10', '', '', '', '', 4020, 2, -96000, '05/09/2026'],
+  ['KK-2609-0022', 'Kho mát Bình Tân', '', '', '', '', 2940, 0, 0, '05/09/2026'],
+  ['KK-2609-0021', 'Kho tổng Bình Tân', '', '', '', '', 17860, 1, -42000, '05/09/2026'],
+];
+const dvn = (n) => n ? '−' + vn(-n) : '<span class="mut">—</span>';
+function sStockCount() {
+  const s = svcOf(S_KK);
+  return bpmSide('svc', KHO_G, S_KK) + `<div class="m3">${svcHead(s, 'Bảng')}${svcBar(1)}
+    <table class="pt q-mwt"><colgroup><col style="width:44px"><col style="width:276px"><col style="width:104px"><col style="width:120px"><col style="width:90px"><col style="width:150px"><col style="width:100px"><col style="width:110px"><col style="width:142px"><col></colgroup>
+    <tr><th>#</th><th>Phiếu · Bước</th><th>Trạng thái</th><th>Hạn</th><th>Người xử lý</th><th>Kho</th><th class="r">Tồn thực tế</th><th class="r">Mặt hàng lệch</th><th class="r">Giá trị chênh lệch</th><th>Ngày tạo</th></tr>
+    ${KKJ.map((k, i) => { const w = !!k[2]; return `<tr class="${d(i, 80, 35)}"><td class="mut">${i + 1}</td><td><div class="vn"><b>Kiểm kê tháng ${+k[0].slice(5, 7)} – ${k[1]}</b><small><code>${k[0]}</code> · ${w ? k[2] : 'Kết thúc'}</small></div></td>
+      <td>${w ? '<span class="mk-pill amber"><i class="d"></i>Chờ xử lý</span>' : `<span class="mk-pill green">${I('check', 11, 3)}Hoàn tất</span>`}</td>
+      <td>${w ? `<span class="q-dl ${k[5] ? 'late' : ''}">${I('calendar', 12)}${k[4]}</span>${k[5] ? `<span class="q-due late sm">${k[5]}</span>` : ''}` : '<span class="mut">—</span>'}</td><td>${w ? av(k[3], 24) : '<span class="mut">—</span>'}</td>
+      <td>${k[1]}</td><td class="r"><b>${k[6].toLocaleString('vi-VN')}</b></td><td class="r">${k[7] ? `<b style="color:#C2410C">${k[7]}</b>` : '<span class="mut">0</span>'}</td><td class="r">${dvn(k[8])}</td><td>${k[9]}</td></tr>`; }).join('')}</table></div>`;
+}
+// 15 · BPM › Việc của tôi › Bảng (lọc nhóm Kho vận) — ảnh bpm/04
+function sWorkTable() {
+  const L = JW.filter(j => BPMG[KHO_G][2].some(s => s[0] === j[2]));
+  return bpmSide('my') + `<div class="m3">${mwHead('Bảng', 'Tất cả')}
+    <table class="pt q-mwt"><colgroup><col style="width:44px"><col style="width:282px"><col style="width:104px"><col style="width:124px"><col style="width:90px"><col style="width:184px"><col style="width:96px"><col style="width:80px"><col style="width:106px"><col></colgroup>
+    <tr><th>#</th><th>Phiếu · Bước</th><th>Trạng thái</th><th>Hạn</th><th>Người xử lý</th><th>Quy trình</th><th>Nhãn</th><th>Người tạo</th><th>Ngày tạo</th><th>Thời gian chạy</th></tr>
+    ${L.map((j, i) => { const w = j[4] !== 'end'; return `<tr class="${d(i, 80, 35)}"><td class="mut">${i + 1}</td><td><div class="vn"><b>${j[1]}</b><small><code>${j[0]}</code> · ${j[3]}</small></div></td>
+      <td>${w ? '<span class="mk-pill amber"><i class="d"></i>Chờ xử lý</span>' : `<span class="mk-pill green">${I('check', 11, 3)}Hoàn tất</span>`}</td>
+      <td>${w ? `<span class="q-dl ${j[7] ? 'late' : ''}">${I('calendar', 12)}${j[6]}</span>${j[7] ? `<span class="q-due late sm">${j[7]}</span>` : ''}` : '<span class="mut">—</span>'}</td><td>${w ? av(j[5], 24) : '<span class="mut">—</span>'}</td>
+      <td><span class="q-svb" style="border-left-color:${svcOf(j[2])[2]}">${j[2]}</span></td><td>${j[8] ? `<span class="mk-pill ${JTAG[j[8]]}">${j[8]}</span>` : ''}</td>
+      <td>${av(j[9], 22)}</td><td>${j[10]}/2026</td><td>${j[11]}</td></tr>`; }).join('')}</table></div>`;
 }
 
-// --- Inventories ---
-// [kho, tồn thực tế (đơn vị)]
-const WH = [['Kho tổng Bình Tân', 18420], ['Kho mát Bình Tân', 3260], ['Cửa hàng Quận 10', 4180], ['Cửa hàng Tân Bình', 3640], ['Cửa hàng Gò Vấp', 3150]];
-const INV = { units: WH.reduce((a, w) => a + w[1], 0), held: 1450, incoming: 2400, perDay: 1360, value: 4.82, ok: 512, low: 23, out: 4, draft: [2, 3, 1, 0] };
-function invSide(on) {
-  return side('package', 'Inventories', R('layout-grid', 'Tổng quan', on === 'ov') + R('package', 'Tồn kho theo sản phẩm') + R('file-text', 'Phiếu kho', on === 'pk') + R('arrow-up-down', 'Biến động tồn kho') + SEC('KHO') + WH.map(w => R('warehouse', w[0])).join('') + SEC('NHẬT KÝ HỆ THỐNG') + R('scroll-text', 'Nhật ký phiếu kho'), R('sparkles', 'Hỏi copilot') + R('chart-column', 'Báo cáo') + R('settings', 'Cài đặt'));
-}
-const kN = (n) => (n / 1000).toLocaleString('vi-VN', { maximumFractionDigits: 1 }) + ' nghìn';
-// 14 · Inventories › Tổng quan — ảnh inventory/01
-function sInvOverview() {
-  const open = INV.draft.reduce((a, b) => a + b, 0), sku = INV.ok + INV.low + INV.out;
-  const kpi = (c, v, u, s) => `<div class="q-card kp"><small>${c}</small><b>${v}<em>${u}</em></b><span>${s}</span></div>`;
-  const tiles = [['Nhập kho nháp', '#F0FDF4', 'package-plus'], ['Chuyển kho nháp', '#EFF6FF', 'arrow-left-right'], ['Điều chỉnh nháp', '#FFFBEB', 'sliders-horizontal'], ['Xuất kho nháp', '#FEF2F2', 'truck']];
-  return invSide('ov') + `<div class="m3" style="background:var(--mk-bg-soft)"><div class="hb" style="background:#fff">${I('layout-grid', 16)}<b>Tổng quan</b><span class="lt">Số liệu toàn hệ thống</span><span class="rt"><span class="seg"><span>7 ngày</span><span class="on">30 ngày</span><span>90 ngày</span></span><span class="cb">${I('download', 13)}Xuất tệp</span><span class="cb">${I('refresh-cw', 13)}</span></span></div>
-    <div class="q-inv"><div class="${d(0)}"><h2>Chào buổi chiều, Quân</h2><div class="st"><i class="dot" style="background:#EA580C"></i>${open} vấn đề cần xử lý</div></div>
-      <div class="kps ${d(1)}">${kpi('GIÁ TRỊ TỒN KHO', '₫' + INV.value.toLocaleString('vi-VN'), ' tỷ', `${kN(INV.units)} đơn vị · ${WH.length} kho`)}${kpi('KHẢ DỤNG CHO ĐƠN MỚI', kN(INV.units - INV.held), ' đơn vị', `${INV.held.toLocaleString('vi-VN')} đã giữ · ${INV.incoming.toLocaleString('vi-VN')} sắp về`)}${kpi('SỐ NGÀY ĐỦ HÀNG', Math.round(INV.units / INV.perDay), ' ngày', `theo mức xuất ${INV.perDay.toLocaleString('vi-VN')} / ngày`)}${kpi('PHIẾU KHO ĐANG MỞ', open, '', `${INV.draft[0]} nhập · ${INV.draft[1]} chuyển · ${INV.draft[2]} điều chỉnh`)}</div>
-      <div class="two ${d(2)}"><div class="q-card pad"><div class="ch"><b>Sức khoẻ tồn kho</b><span class="lk2">Xem báo cáo tồn kho đầy đủ ${I('arrow-right', 12)}</span></div>
-          <div class="hl"><div class="score"><b>91<em>/100</em></b><i></i><small>ỔN ĐỊNH</small></div><div class="dist"><small>PHÂN BỔ TỒN KHO</small><div class="lg"><span><i style="background:#16A34A"></i>Khả dụng <b>${INV.ok}</b></span><span><i style="background:#D97706"></i>Sắp hết hàng <b>${INV.low}</b></span><span><i style="background:#DC2626"></i>Hết hàng <b>${INV.out}</b></span></div>
-            <div class="q-bar" style="height:7px"><i style="width:${INV.ok / sku * 100}%;background:#16A34A"></i><i style="width:${INV.low / sku * 100}%;background:#D97706"></i><i style="width:${INV.out / sku * 100}%;background:#DC2626"></i></div></div></div>
-          <table class="pt sm"><colgroup><col><col style="width:26%"><col style="width:22%"></colgroup><tr><th>Kho</th><th class="r">Tồn thực tế</th><th class="r">Trạng thái</th></tr>${WH.map(w => `<tr><td><b>${w[0]}</b></td><td class="r"><b>${w[1].toLocaleString('vi-VN')}</b> đơn vị</td><td class="r"><span class="mk-pill green">CÒN HÀNG</span></td></tr>`).join('')}</table>
-          <div class="cap2" style="margin-top:12px">${I('refresh-cw', 12)} CẦN ĐẶT HÀNG LẠI SỚM</div></div>
-        <div class="q-card pad"><div class="ch"><b>Cần xử lý</b></div><div class="tiles">${tiles.map((t, i) => `<div style="background:${t[1]}">${I(t[2], 15)}<b>${INV.draft[i]}</b><span>${t[0]}</span></div>`).join('')}</div></div></div></div></div>`;
-}
-// 15 · Inventories › Phiếu kho — ảnh inventory/04
-// [số phiếu, mô tả, loại, giai đoạn, bước xong/3, từ, đến, mặt hàng, ngày, người tạo, số tham chiếu]
-const PKH = [
-  ['RO-KM-202610-0031', 'Nhập bổ sung kem sữa 1 lít – nhà cung cấp', 'in', 'Chờ xử lý', 2, '—', 'Kho mát Bình Tân', 1, '08', 'ngan', 'NH-2610-0031'],
-  ['DO-KM-202610-0418', 'Giao bù đơn Trà sữa Mộc Miên', 'out', 'Nháp', 1, 'Kho mát Bình Tân', 'Khách hàng', 1, '08', 'long', 'PS-2610-0057'],
-  ['SA-KM-202610-0012', 'Hủy 14 hộp kem sữa hết hạn', 'adj', 'Chờ xử lý', 2, 'Kho mát Bình Tân', '', 1, '08', 'khoa', 'HH-2610-0012'],
-  ['DO-KT-202610-0412', 'Giao đơn Trà sữa Mộc Miên', 'out', 'Đã xuất kho', 3, 'Kho tổng Bình Tân', 'Khách hàng', 6, '08', 'long', 'DH-2610-0412'],
-  ['ST-KT-202610-0027', 'Bổ sung hàng Cửa hàng Quận 10', 'tr', 'Đã chuyển kho', 3, 'Kho tổng Bình Tân', 'Cửa hàng Quận 10', 24, '07', 'khoa', 'YC-CH10-0710'],
-  ['RO-KT-202610-0030', 'Nhập trân châu đen 3Q – 200 kg', 'in', 'Đã nhập kho', 3, '—', 'Kho tổng Bình Tân', 1, '07', 'khoa', 'MH-2610-0044'],
-  ['DO-KT-202610-0409', 'Giao đơn Cà phê Góc Phố', 'out', 'Đã xuất kho', 3, 'Kho tổng Bình Tân', 'Khách hàng', 9, '07', 'long', 'DH-2610-0406'],
-  ['SA-KT-202610-0011', 'Điều chỉnh bột mì số 13 sau kiểm kê', 'adj', 'Đã điều chỉnh', 3, 'Kho tổng Bình Tân', '', 1, '05', 'tuan', 'DC-2610-0007'],
-  ['ST-KT-202610-0026', 'Bổ sung hàng Cửa hàng Tân Bình', 'tr', 'Đã chuyển kho', 3, 'Kho tổng Bình Tân', 'Cửa hàng Tân Bình', 18, '05', 'khoa', 'YC-CHTB-0510'],
-  ['RO-KT-202610-0029', 'Nhập 120 thùng sữa đặc', 'in', 'Đã nhập kho', 3, '—', 'Kho tổng Bình Tân', 1, '02', 'khoa', 'NH-2610-0029'],
-];
-function sInvDocs() {
-  const ty = { in: ['#DCFCE7', '#15803D', 'package-plus'], out: ['#DBEAFE', '#1D4ED8', 'truck'], adj: ['#FFEDD5', '#C2410C', 'sliders-horizontal'], tr: ['#EDE9FE', '#6D28D9', 'arrow-left-right'] };
-  return invSide('pk') + `<div class="m3"><div class="hb">${I('file-text', 16)}<b>Phiếu kho</b><span class="cr">${I('chevron-right', 14)}</span><span class="q-pills"><span class="on">${I('layout-grid', 13)}Tất cả</span><span>${I('package-plus', 13)}Nhập kho</span><span>${I('arrow-left-right', 13)}Chuyển kho</span><span>${I('sliders-horizontal', 13)}Điều chỉnh</span><span>${I('truck', 13)}Xuất kho</span></span>
-      <span class="rt"><span class="lt">50+ phiếu</span><span class="cb srch" style="width:250px">${I('search', 13)}Tìm số phiếu / tên / số tham chiếu…</span><span class="cb">${I('list-filter', 13)}Bộ lọc</span></span></div>
-    <table class="pt q-pk"><colgroup><col style="width:26%"><col style="width:11%"><col style="width:22%"><col style="width:8%"><col style="width:11%"><col style="width:8%"><col style="width:14%"></colgroup><tr><th>Phiếu kho</th><th>Giai đoạn</th><th>Từ → Đến</th><th>Mặt hàng</th><th>Ngày chứng từ</th><th>Người tạo</th><th>Số tham chiếu</th></tr>
-    ${PKH.map((p, i) => { const t = ty[p[2]], done = p[4] === 3; return `<tr class="${d(i, 80, 35)}"><td><span class="who"><i class="pki" style="background:${t[0]};color:${t[1]}">${I(t[2], 15)}</i><span class="vn"><b>${p[0]}</b><small>${p[1]}</small></span></span></td>
-      <td><div class="vn"><span class="st" style="color:${done ? '#15803D' : '#B45309'}"><i class="dot" style="background:${done ? '#16A34A' : '#D97706'}"></i>${p[3]}</span><span class="b3">${[0, 1, 2].map(k => `<i class="${k < p[4] ? (done ? 'g' : 'o') : ''}"></i>`).join('')}</span></div></td>
-      <td>${p[5]}${p[6] ? ` <span style="color:var(--mk-dim)">→</span> ${p[5] === '—' ? `<span class="mk-pill grey">${I('warehouse', 11)}${p[6]}</span>` : p[6]}` : ''}</td><td><b>${p[7]}</b> mặt hàng</td><td>${p[8]} thg 10, 2026</td><td>${av(p[9], 22)}</td><td><span class="mk-pill grey">${I('file-text', 11)}${p[10]}</span></td></tr>`; }).join('')}</table></div>`;
-}
 // ===================== PHẦN 3 · NHÂN SỰ SỐ =====================
 // Kỳ công 01/09–30/09/2026 (01/09 = thứ Ba). 3 nhóm: Văn phòng · Kho – Giao nhận · Cửa hàng.
 const SCH = [['Văn phòng', '#2563EB'], ['Kho – Giao nhận', '#0F9488'], ['Cửa hàng', '#D97706']];
@@ -2159,10 +2213,10 @@ const SC = [
   { p: 1, app: 'success', nm: 'Success', path: '/success/tickets', t: 'Phản hồi, khiếu nại của khách', need: 'Phản hồi của khách chuyển đúng bộ phận xử lý.', how: 'Mỗi phản hồi là một ticket có ưu tiên, trạng thái, nhóm phụ trách.', main: sTickets },
   { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/services/xu-ly-phat-sinh-don-hang?view=workflow', t: 'Phát sinh đơn hàng: luồng rẽ nhánh', need: 'Một đơn hàng phát sinh rẽ nhiều trường hợp, nhiều bên xử lý.', how: 'Hệ thống tự chuyển phiếu theo loại phát sinh. Mỗi bước có hạn.', main: sFlow },
   { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/services/xu-ly-phat-sinh-don-hang?view=pipeline', t: 'Phát sinh đơn hàng: phiếu đang ở đâu', need: 'Biết phiếu nào đang nằm ở bộ phận nào, phiếu nào trễ.', how: 'Mỗi cột là một bước. Phiếu trễ hạn được đánh dấu.', main: sPipeline },
-  { p: 1, app: 'request', nm: 'Đề xuất', path: '/request/home', t: 'Phê duyệt mua hàng, nhập hàng, hủy hàng', need: 'Duyệt thu mua, nhập hàng, hủy hàng có lưu vết.', how: 'Mỗi loại đề xuất có luồng duyệt riêng và mã phiếu.', main: sRequests },
-  { p: 1, app: 'request', nm: 'Đề xuất', path: '/request/kho-van/de-nghi-huy-hang/HH-2610-0012', t: 'Đề xuất hủy hàng: hạn duyệt từng cấp', need: 'Mỗi cấp duyệt có thời hạn cụ thể.', how: 'Duyệt tuần tự, hạn tính theo từng người duyệt.', main: sReqDetail },
-  { p: 1, app: 'inventory', nm: 'Inventories', path: '/inventory/overview', t: 'Tồn kho', need: 'Nắm tồn kho của kho tổng và các cửa hàng.', how: 'Tồn theo kho, hàng sắp hết, phiếu đang chờ xử lý.', main: sInvOverview },
-  { p: 1, app: 'inventory', nm: 'Inventories', path: '/inventory/documents', t: 'Phiếu nhập, xuất, chuyển, điều chỉnh', need: 'Hoạt động kho được lưu trữ, truy lại được.', how: 'Mỗi phiếu có giai đoạn và số tham chiếu về đơn hàng, đề xuất.', main: sInvDocs },
+  { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/my-work?tab=my-turn&view=triage', t: 'Phê duyệt mua hàng, nhập hàng, hủy hàng', need: 'Duyệt thu mua, nhập hàng, hủy hàng có lưu vết.', how: 'Mỗi loại là một quy trình có bước duyệt. Việc đến lượt mình gom về một chỗ, duyệt ngay trên dòng.', main: sMyWork },
+  { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/jobs/HH-2610-0012', t: 'Hủy hàng: hạn duyệt từng cấp', need: 'Mỗi cấp duyệt có thời hạn cụ thể.', how: 'Mỗi cấp duyệt là một bước có hạn riêng. Phiếu đang chờ ai, còn bao lâu, nhìn là thấy.', main: sJobDetail },
+  { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/services/kiem-ke-va-dieu-chinh-ton?view=table', t: 'Tồn kho', need: 'Nắm tồn kho của kho tổng và các cửa hàng.', how: 'Mỗi kho một phiếu kiểm kê định kỳ. Tồn thực tế, chênh lệch là trường trên phiếu, xem chung một bảng.', main: sStockCount },
+  { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/my-work?tab=all&view=table', t: 'Phiếu nhập, xuất, chuyển, điều chỉnh', need: 'Hoạt động kho được lưu trữ, truy lại được.', how: 'Mỗi loại phiếu là một quy trình: có mã, bước, người giữ, lịch sử; ghi kèm mã đơn hàng liên quan.', main: sWorkTable },
   { p: 2, app: 'timesheet', nm: 'Chấm công', path: '/timesheets/schedules', t: 'Xếp ca cho 3 nhóm nhân sự', need: 'Ba nhóm nhân sự có cách làm việc khác nhau.', how: 'Ba lịch ca riêng: hành chính, ca kho, ca cửa hàng.', main: sSchedule },
   { p: 2, app: 'timesheet', nm: 'Chấm công', path: '/timesheets/timesheets/overview', t: 'Bảng công', need: 'Chấm công theo ca, tính cả đi muộn, tăng ca, nghỉ phép.', how: 'Mỗi ca một điểm công. Bất thường được đánh dấu.', main: sTimesheet },
   { p: 2, app: 'timesheet', nm: 'Chấm công', path: '/timesheets/timesheets/cycles', t: 'Chốt công theo từng nhóm', need: 'Mỗi nhóm một bảng công, chốt riêng.', how: 'Rà soát, duyệt và khoá công theo kỳ.', main: sCycles },
