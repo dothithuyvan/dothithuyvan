@@ -1170,7 +1170,7 @@ body{margin:0;color:var(--ink);font-family:var(--lex);-webkit-font-smoothing:ant
 .q-gh{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--mk-ink);margin-bottom:8px}
 .q-gh em{font-style:normal;font-size:11px;padding:0 7px;border-radius:999px;background:var(--mk-line);color:var(--mk-muted);font-weight:600}
 .q-gr{display:flex;gap:12px}
-.q-svc{width:226px;background:#fff;border:1px solid var(--mk-line);border-left:3px solid;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:9px}
+.q-svc{width:268px;background:#fff;border:1px solid var(--mk-line);border-left:3px solid;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:9px}
 .q-svc-t{display:flex;gap:10px}
 .q-svc-t i{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;flex:none}
 .q-svc-t div{display:flex;flex-direction:column;gap:2px;min-width:0}
@@ -1593,8 +1593,7 @@ const BPMG = [
     ['Nhập hàng nhà cung cấp', 'Kiểm đếm, hạn dùng, nhập kho', '#16A34A', 'package-plus', 5, 14],
     ['Xuất kho giao hàng', 'Soạn hàng, xuất kho theo đơn', '#2563EB', 'truck', 7, 46],
     ['Điều chuyển kho – cửa hàng', 'Bổ sung hàng cho cửa hàng', '#0D9488', 'arrow-left-right', 6, 31],
-    ['Hủy hàng hết hạn – hư hỏng', 'Lập biên bản, duyệt 3 cấp, ghi giảm tồn', '#B91C1C', 'trash-2', 2, 5],
-    ['Kiểm kê và điều chỉnh tồn', 'Kho tổng, kho mát và 3 cửa hàng', '#7C3AED', 'clipboard-check', 2, 18]]],
+    ['Hủy hàng hết hạn – hư hỏng', 'Lập biên bản, duyệt 3 cấp, ghi giảm tồn', '#B91C1C', 'trash-2', 2, 5]]],
   ['M', 'Mua hàng', [
     ['Thu mua nguyên liệu', 'Đề xuất, so sánh giá, đặt hàng', '#4F46E5', 'shopping-cart', 4, 9]]],
   ['N', 'Nhân sự', [
@@ -1924,14 +1923,13 @@ function sPipeline() {
 // --- BPM · Kho vận, Mua hàng: phê duyệt và phiếu kho đều chạy trên quy trình ---
 // Mốc "bây giờ": 08/10/2026 · 14:15. Người xem: Trần Minh Quân (Trưởng phòng Vận hành).
 const svcOf = (n) => { for (const g of BPMG) for (const s of g[2]) if (s[0] === n) return s; };
-const S_NK = 'Nhập hàng nhà cung cấp', S_XK = 'Xuất kho giao hàng', S_CK = 'Điều chuyển kho – cửa hàng', S_HH = 'Hủy hàng hết hạn – hư hỏng', S_KK = 'Kiểm kê và điều chỉnh tồn', S_MH = 'Thu mua nguyên liệu';
+const S_NK = 'Nhập hàng nhà cung cấp', S_XK = 'Xuất kho giao hàng', S_CK = 'Điều chuyển kho – cửa hàng', S_HH = 'Hủy hàng hết hạn – hư hỏng', S_MH = 'Thu mua nguyên liệu';
 const KHO_G = BPMG.findIndex(g => g[1] === 'Kho vận');
 // [mã, tên, quy trình, bước, loại bước, người giữ, hạn, trễ, nhãn, người tạo, ngày tạo, thời gian chạy, thời gian ở bước, khối]
 // khối: now = đến lượt tôi, quá hạn · today = hạn hôm nay · week = hạn trong tuần · nt = quá hạn, chưa đến lượt tôi · '' = khác
 const JW = [
   ['HH-2610-0011', 'Hủy 6 chai siro đường đen rò nắp', S_HH, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '07/10 · 16:10', 'Trễ 22 giờ', 'Hàng lỗi', 'khoa', '06/10', '1n 23g', '1n 2g', 'now'],
   ['MH-2610-0043', 'Mua 30 thùng ly nhựa 500 ml in logo', S_MH, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '08/10 · 08:00', 'Trễ 6 giờ', 'Đặt riêng', 'ngan', '06/10', '2n 4g', '1n 6g', 'now'],
-  ['KK-2610-0009', 'Kiểm kê tháng 10 – Cửa hàng Gò Vấp', S_KK, 'Xác nhận chênh lệch', 'manual', 'quan', '08/10 · 11:00', 'Trễ 3 giờ', 'Lệch tồn', 'khoa', '06/10', '2n 6g', '1n 3g', 'now'],
   ['NK-2610-0031', 'Nhập bổ sung 40 thùng kem sữa 1 lít', S_NK, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '08/10 · 17:00', '', 'Kho mát', 'ngan', '08/10', '3g 10p', '1g 15p', 'today'],
   ['CK-2610-0028', 'Bổ sung hàng Cửa hàng Gò Vấp', S_CK, 'Duyệt số lượng điều chuyển', 'approval', 'quan', '08/10 · 18:00', '', 'Cửa hàng', 'khoa', '08/10', '2g 5p', '2g 5p', 'today'],
   ['MH-2610-0046', 'Mua 80 kg bột kem béo tháng 10', S_MH, 'Trưởng phòng Vận hành duyệt', 'approval', 'quan', '09/10 · 17:00', '', '', 'ngan', '08/10', '1g 30p', '1g 30p', 'week'],
@@ -1941,10 +1939,9 @@ const JW = [
   ['XK-2610-0412', 'Xuất kho đơn DH-2610-0412 – Trà sữa Mộc Miên', S_XK, 'Kết thúc', 'end', '', '', '', '', 'long', '07/10', '18g 40p', '', ''],
   ['NK-2610-0030', 'Nhập trân châu đen 3Q – 200 kg', S_NK, 'Kết thúc', 'end', '', '', '', '', 'ngan', '07/10', '1n 2g', '', ''],
   ['CK-2610-0027', 'Bổ sung hàng Cửa hàng Quận 10', S_CK, 'Kết thúc', 'end', '', '', '', 'Cửa hàng', 'khoa', '07/10', '5g 20p', '', ''],
-  ['KK-2610-0005', 'Kiểm kê tháng 10 – Kho tổng Bình Tân', S_KK, 'Kết thúc', 'end', '', '', '', 'Lệch tồn', 'khoa', '05/10', '1n 4g', '', ''],
 ];
 const MY_TURN = JW.filter(j => ['now', 'today', 'week'].includes(j[13])).length;
-const JTAG = { 'Hàng lỗi': 'amber', 'Đặt riêng': 'violet', 'Lệch tồn': 'critical', 'Kho mát': 'cyan', 'Cửa hàng': 'blue', 'Giao bù': 'green', 'Hết hạn': 'critical' };
+const JTAG = { 'Hàng lỗi': 'amber', 'Đặt riêng': 'violet', 'Kho mát': 'cyan', 'Cửa hàng': 'blue', 'Giao bù': 'green', 'Hết hạn': 'critical' };
 const STEPK = { approval: ['circle-check', '#16A34A', '#DCFCE7'], manual: ['clipboard-list', '#DC2626', '#FEE2E2'], end: ['flag', '#16A34A', '#DCFCE7'] };
 const stepIc = (k, s = 28) => `<i class="q-sk" style="width:${s}px;height:${s}px;background:${STEPK[k][2]};color:${STEPK[k][1]}">${I(STEPK[k][0], Math.round(s * .52))}</i>`;
 const svcDot = (n) => `<span class="q-sv"><i style="background:${svcOf(n)[2]}"></i>${n}</span>`;
