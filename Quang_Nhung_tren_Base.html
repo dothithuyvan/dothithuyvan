@@ -1415,8 +1415,6 @@ body{margin:0;color:var(--ink);font-family:var(--lex);-webkit-font-smoothing:ant
 .q-mwt td:has(.q-due){line-height:1}
 .q-mwt td .q-due{display:flex;width:max-content}
 .q-svb{display:inline-block;border-left:3px solid;padding-left:8px;font-size:12.5px;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
-.q-modf{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#B45309;font-weight:600}
-.q-modf i{width:7px;height:7px;border-radius:50%;background:#F59E0B}
 /* BPM · chi tiết phiếu */
 .q-jd{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 350px}
 .q-jd .main{padding:16px 24px;overflow:hidden;display:flex;flex-direction:column;gap:11px}
@@ -1873,8 +1871,8 @@ function svcHead(s, tab) {
     <div class="q-tabs">${tabs.map(t => `<span class="${t[1] === tab ? 'on' : ''}">${I(t[0], 13)}${t[1]}</span>`).join('')}<span>${I('plus', 13)}</span><span>${I('chevron-down', 13)}</span></div>`;
 }
 const psHead = (tab) => svcHead(BPMG[0][2][0], tab);
-// Thanh công cụ của một quy trình (ảnh bpm/09); mod = chế độ xem đã chỉnh cột
-const svcBar = (mod) => `<div class="tb2" style="height:46px"><span class="cb">${I('columns-3', 13)}Tuỳ chỉnh cột</span>${mod ? '' : `<span class="cb">${I('layout-grid', 13)}Trường trên thẻ</span>`}<span class="cb">${I('users', 13)}Tất cả phiếu xem được${I('chevron-down', 12)}</span><span class="cb">${I('list-filter', 13)}Bộ lọc</span><span class="cb">${I('arrow-up-down', 13)}Mới nhất trước${I('chevron-down', 12)}</span><span class="cb">${I('upload', 13)}Nhập${I('chevron-down', 12)}</span><span class="cb">${I('download', 13)}Xuất${I('chevron-down', 12)}</span><span class="rt">${mod ? `<span class="q-modf"><i></i>Đã chỉnh</span><span class="cb">Lưu chế độ xem</span>` : ''}<span class="cb srch">${I('search', 13)}Tìm phiếu theo tên hoặc mã</span></span></div>`;
+// Thanh công cụ của một quy trình (ảnh bpm/09)
+const svcBar = () => `<div class="tb2" style="height:46px"><span class="cb">${I('columns-3', 13)}Tuỳ chỉnh cột</span><span class="cb">${I('layout-grid', 13)}Trường trên thẻ</span><span class="cb">${I('users', 13)}Tất cả phiếu xem được${I('chevron-down', 12)}</span><span class="cb">${I('list-filter', 13)}Bộ lọc</span><span class="cb">${I('arrow-up-down', 13)}Mới nhất trước${I('chevron-down', 12)}</span><span class="cb">${I('upload', 13)}Nhập${I('chevron-down', 12)}</span><span class="cb">${I('download', 13)}Xuất${I('chevron-down', 12)}</span><span class="rt"><span class="cb srch">${I('search', 13)}Tìm phiếu theo tên hoặc mã</span></span></div>`;
 // 10 · BPM › Luồng (lưu đồ dọc chỉ đọc + lớp Lưu lượng) — ảnh bpm/12, 16, 17
 function sFlow() {
   const KC = { start: ['#2563EB', 'play', 'Bắt đầu'], manual: ['#DC2626', 'clipboard-list', 'Thủ công'], approval: ['#16A34A', 'circle-check', 'Phê duyệt'], decision: ['#F59E0B', 'git-branch', 'Rẽ nhánh'], notify: ['#7C3AED', 'bell', 'Thông báo'], end: ['#16A34A', 'flag', 'Kết thúc'] };
@@ -1919,7 +1917,7 @@ function sPipeline() {
   const tagc = { 'Thiếu hàng': 'blue', 'Hàng lỗi': 'amber', 'Giao trễ': 'violet', 'Sai giá': 'cyan', 'Chưa phân loại': 'grey' };
   const card = (j, ap) => `<div class="q-job ${j[5] ? 'late' : ''}"><div class="jh"><code>${j[0]}</code>${j[5] ? `<span>${j[5]}</span>` : ''}</div><div class="jb"><b>${j[1]}</b><span class="mk-pill ${tagc[j[6]]}">${j[6]}</span>
       <div class="jf">${av(j[3], 20)}<span>${nm(j[3]).split(' ').pop()}</span><span class="dl ${j[5] ? 'late' : ''}">${I('calendar', 11)}${j[4]}</span></div>${ap ? `<div class="ja"><span class="ok">${I('thumbs-up', 13)}</span><span class="no">${I('thumbs-down', 13)}</span></div>` : ''}</div></div>`;
-  return bpmSide('ps') + `<div class="m3">${psHead('Pipeline')}${svcBar(0)}
+  return bpmSide('ps') + `<div class="m3">${psHead('Pipeline')}${svcBar()}
     <div class="q-pipe">${COLS.map((c, i) => { const L = inCol(c[0]); return `<div class="pc ${d(i, 100, 50)}"><div class="ph">${I(c[2] === 'approval' ? 'circle-check' : 'clipboard-list', 14, 2, c[2] === 'approval' ? '#16A34A' : '#DC2626')}<b>${c[1]}</b>${c[0] === 'appr' ? '<small>2 bước</small>' : ''}<em>${L.length}</em></div>${L.length ? L.map(j => card(j, c[0] === 'appr')).join('') : '<div class="pe">Không có phiếu ở bước này</div>'}</div>`; }).join('')}</div></div>`;
 }
 
@@ -2000,32 +1998,7 @@ function sJobDetail() {
   return bpmSide('svc', KHO_G, S_HH) + `<div class="m3"><div class="hb"><span class="lt">Quy trình</span><span class="cr">${I('chevron-right', 13)}</span><span class="lt">${S_HH}</span><span class="cr">${I('chevron-right', 13)}</span><b>Chi tiết phiếu</b>
       <span class="rt"><span class="cb" style="border-color:#FCA5A5;color:#B91C1C">Hủy phiếu</span><span class="cb" style="background:var(--mk-blue-soft);border-color:#BFD3FF;color:var(--mk-blue-ink)">Tạm dừng</span><span class="cb icon">${I('refresh-cw', 13)}</span></span></div><div class="q-jd">${main}${side2}</div></div>`;
 }
-// 14 · BPM › quy trình Kiểm kê › Bảng (cột tuỳ chỉnh) — ảnh bpm/11, 04
-// [mã, kho, bước, người giữ, hạn, trễ, tồn thực tế (đơn vị), số mặt hàng lệch, giá trị chênh lệch, ngày tạo]
-const KKJ = [
-  ['KK-2610-0009', 'Cửa hàng Gò Vấp', 'Xác nhận chênh lệch', 'quan', '08/10/2026', 'Trễ 3 giờ', 3150, 3, -412000, '06/10/2026'],
-  ['KK-2610-0006', 'Kho mát Bình Tân', 'Kế toán đối chiếu', 'yen', '09/10/2026', '', 3260, 2, -186000, '05/10/2026'],
-  ['KK-2610-0008', 'Cửa hàng Tân Bình', '', '', '', '', 3640, 0, 0, '05/10/2026'],
-  ['KK-2610-0007', 'Cửa hàng Quận 10', '', '', '', '', 4180, 0, 0, '05/10/2026'],
-  ['KK-2610-0005', 'Kho tổng Bình Tân', '', '', '', '', 18420, 1, -105000, '05/10/2026'],
-  ['KK-2609-0025', 'Cửa hàng Gò Vấp', '', '', '', '', 2980, 1, -64000, '05/09/2026'],
-  ['KK-2609-0024', 'Cửa hàng Tân Bình', '', '', '', '', 3510, 0, 0, '05/09/2026'],
-  ['KK-2609-0023', 'Cửa hàng Quận 10', '', '', '', '', 4020, 2, -96000, '05/09/2026'],
-  ['KK-2609-0022', 'Kho mát Bình Tân', '', '', '', '', 2940, 0, 0, '05/09/2026'],
-  ['KK-2609-0021', 'Kho tổng Bình Tân', '', '', '', '', 17860, 1, -42000, '05/09/2026'],
-];
-const dvn = (n) => n ? '−' + vn(-n) : '<span class="mut">—</span>';
-function sStockCount() {
-  const s = svcOf(S_KK);
-  return bpmSide('svc', KHO_G, S_KK) + `<div class="m3">${svcHead(s, 'Bảng')}${svcBar(1)}
-    <table class="pt q-mwt"><colgroup><col style="width:44px"><col style="width:276px"><col style="width:104px"><col style="width:120px"><col style="width:90px"><col style="width:150px"><col style="width:100px"><col style="width:110px"><col style="width:142px"><col></colgroup>
-    <tr><th>#</th><th>Phiếu · Bước</th><th>Trạng thái</th><th>Hạn</th><th>Người xử lý</th><th>Kho</th><th class="r">Tồn thực tế</th><th class="r">Mặt hàng lệch</th><th class="r">Giá trị chênh lệch</th><th>Ngày tạo</th></tr>
-    ${KKJ.map((k, i) => { const w = !!k[2]; return `<tr class="${d(i, 80, 35)}"><td class="mut">${i + 1}</td><td><div class="vn"><b>Kiểm kê tháng ${+k[0].slice(5, 7)} – ${k[1]}</b><small><code>${k[0]}</code> · ${w ? k[2] : 'Kết thúc'}</small></div></td>
-      <td>${w ? '<span class="mk-pill amber"><i class="d"></i>Chờ xử lý</span>' : `<span class="mk-pill green">${I('check', 11, 3)}Hoàn tất</span>`}</td>
-      <td>${w ? `<span class="q-dl ${k[5] ? 'late' : ''}">${I('calendar', 12)}${k[4]}</span>${k[5] ? `<span class="q-due late sm">${k[5]}</span>` : ''}` : '<span class="mut">—</span>'}</td><td>${w ? av(k[3], 24) : '<span class="mut">—</span>'}</td>
-      <td>${k[1]}</td><td class="r"><b>${k[6].toLocaleString('vi-VN')}</b></td><td class="r">${k[7] ? `<b style="color:#C2410C">${k[7]}</b>` : '<span class="mut">0</span>'}</td><td class="r">${dvn(k[8])}</td><td>${k[9]}</td></tr>`; }).join('')}</table></div>`;
-}
-// 15 · BPM › Việc của tôi › Bảng (lọc nhóm Kho vận) — ảnh bpm/04
+// 14 · BPM › Việc của tôi › Bảng (lọc nhóm Kho vận) — ảnh bpm/04
 function sWorkTable() {
   const L = JW.filter(j => BPMG[KHO_G][2].some(s => s[0] === j[2]));
   return bpmSide('my') + `<div class="m3">${mwHead('Bảng', 'Tất cả')}
@@ -2215,7 +2188,6 @@ const SC = [
   { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/services/xu-ly-phat-sinh-don-hang?view=pipeline', t: 'Phát sinh đơn hàng: phiếu đang ở đâu', need: 'Biết phiếu nào đang nằm ở bộ phận nào, phiếu nào trễ.', how: 'Mỗi cột là một bước. Phiếu trễ hạn được đánh dấu.', main: sPipeline },
   { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/my-work?tab=my-turn&view=triage', t: 'Phê duyệt mua hàng, nhập hàng, hủy hàng', need: 'Duyệt thu mua, nhập hàng, hủy hàng có lưu vết.', how: 'Mỗi loại là một quy trình có bước duyệt. Việc đến lượt mình gom về một chỗ, duyệt ngay trên dòng.', main: sMyWork },
   { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/jobs/HH-2610-0012', t: 'Hủy hàng: hạn duyệt từng cấp', need: 'Mỗi cấp duyệt có thời hạn cụ thể.', how: 'Mỗi cấp duyệt là một bước có hạn riêng. Phiếu đang chờ ai, còn bao lâu, nhìn là thấy.', main: sJobDetail },
-  { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/services/kiem-ke-va-dieu-chinh-ton?view=table', t: 'Tồn kho', need: 'Nắm tồn kho của kho tổng và các cửa hàng.', how: 'Mỗi kho một phiếu kiểm kê định kỳ. Tồn thực tế, chênh lệch là trường trên phiếu, xem chung một bảng.', main: sStockCount },
   { p: 1, app: 'bpm', nm: 'BPM', path: '/bpm/my-work?tab=all&view=table', t: 'Phiếu nhập, xuất, chuyển, điều chỉnh', need: 'Hoạt động kho được lưu trữ, truy lại được.', how: 'Mỗi loại phiếu là một quy trình: có mã, bước, người giữ, lịch sử; ghi kèm mã đơn hàng liên quan.', main: sWorkTable },
   { p: 2, app: 'timesheet', nm: 'Chấm công', path: '/timesheets/schedules', t: 'Xếp ca cho 3 nhóm nhân sự', need: 'Ba nhóm nhân sự có cách làm việc khác nhau.', how: 'Ba lịch ca riêng: hành chính, ca kho, ca cửa hàng.', main: sSchedule },
   { p: 2, app: 'timesheet', nm: 'Chấm công', path: '/timesheets/timesheets/overview', t: 'Bảng công', need: 'Chấm công theo ca, tính cả đi muộn, tăng ca, nghỉ phép.', how: 'Mỗi ca một điểm công. Bất thường được đánh dấu.', main: sTimesheet },
