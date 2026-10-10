@@ -1,0 +1,348 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kế hoạch Q4/2026 Vân Đỗ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: khung 1600x900 tự co, nền tối, panel viền mảnh; giữ font, màu và cách chuyển slide của bài cũ */
+:root{color-scheme:dark;--bg:#030A1F;--ink:#F4F8FF;--muted:#9DB3DA;--blue:#4F93FF;--blue2:#7FB4FF;--gold:#F5C451;--mint:#5EE0B5;--red:#F68D9F;--line:rgba(127,180,255,.23);--panel:rgba(127,180,255,.06);--sans:'Be Vietnam Pro','Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:22px/1.5 var(--sans);overflow:hidden}
+button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+#stage{width:1600px;height:900px;position:absolute;left:50%;top:50%;transform-origin:center;background:radial-gradient(800px 640px at 86% 30%,rgba(40,86,190,.3),transparent 70%),linear-gradient(160deg,#051433,#030A1F);overflow:hidden}
+.top{position:absolute;top:34px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:17px;z-index:3}
+.brand{font-weight:600;color:var(--ink);font-size:23px}
+.crumb{margin-left:22px;padding-left:22px;border-left:1px solid var(--line)}
+.top-right{font-family:var(--mono);font-size:14px;letter-spacing:2px}
+.slide{display:none;position:absolute;inset:0;padding:112px 80px 100px}
+.slide.on{display:block}
+.eyebrow{color:var(--blue2);font:500 16px var(--mono);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:600;letter-spacing:-.035em}
+h1{font-size:84px;line-height:1.12}
+h2{font-size:48px;line-height:1.2;margin-bottom:30px}
+h3{font-size:26px;line-height:1.3}
+.grad{background:linear-gradient(95deg,#fff,#D9E9FF 35%,#7FB4FF 70%,#4F93FF);background-clip:text;-webkit-background-clip:text;color:transparent}
+.grid{display:grid;gap:24px}
+.cols2{grid-template-columns:1fr 1fr}.cols3{grid-template-columns:repeat(3,1fr)}.cols5{grid-template-columns:repeat(5,1fr)}
+.panel{background:linear-gradient(160deg,rgba(127,180,255,.09),rgba(127,180,255,.02));border:1px solid var(--line);border-radius:18px;padding:26px}
+.panel h3{margin-bottom:12px}
+.panel p{color:var(--muted);font-size:21px}
+.big{font:600 72px/1.15 var(--mono);letter-spacing:-4px}
+.metric-label{margin-top:10px;font-size:21px;color:var(--muted)}
+.gold{color:var(--gold)}.mint{color:var(--mint)}.blue{color:var(--blue2)}.red{color:var(--red)}
+.num{font-family:var(--mono);white-space:nowrap}
+.callout{border-left:3px solid var(--blue);padding:16px 22px;background:var(--panel);font-size:22px;margin-top:24px}
+.list{margin:0;padding-left:24px}
+.list li{padding:5px 0;color:var(--muted);font-size:21px}
+.list strong{color:var(--ink);font-weight:500}
+table{width:100%;border-collapse:collapse;font-size:21px}
+th{text-align:left;color:var(--blue2);font-size:17px;font-weight:500;padding:13px 16px;border-bottom:1px solid var(--line)}
+td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:rgba(127,180,255,.035)}
+.total{background:rgba(79,147,255,.12)!important;font-weight:600}
+.right{text-align:right}
+.tight td{padding:10px 14px;font-size:19px}.tight th{padding:11px 14px}
+td.d{color:var(--muted)}
+.pill{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:30px;font-size:15px;color:var(--blue2);margin-left:8px;white-space:nowrap}
+.bar-row{display:grid;grid-template-columns:150px 1fr 150px;align-items:center;gap:18px;margin:26px 0;font-size:24px}
+.bar{height:26px;background:rgba(127,180,255,.1);border-radius:4px;overflow:hidden}
+.bar span{height:100%;display:block;background:linear-gradient(90deg,var(--blue),var(--blue2))}
+.agenda button{width:100%;display:flex;gap:24px;text-align:left;border:0;border-bottom:1px solid var(--line);padding:28px 0;background:transparent;font-size:32px}
+.agenda em{font:500 26px var(--mono);color:var(--blue2);font-style:normal}
+.cover{padding-top:330px}
+.vid b{display:block;font:600 30px var(--mono);color:var(--blue2)}
+.vid span{display:block;color:var(--muted);font-size:17px;margin-top:6px}
+.vid strong{display:block;font-weight:500;font-size:23px;margin-top:2px}
+.footer{position:absolute;bottom:22px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:4}
+.tabs{display:flex;gap:4px}
+.tabs button,.tools button{background:transparent;border:1px solid transparent;border-radius:24px;padding:6px 12px;font-size:14px;color:var(--muted)}
+.tabs button.active{background:var(--panel);border-color:var(--line);color:#fff}
+.tools{display:flex;align-items:center;gap:7px}
+.tools button{border-color:var(--line)}
+#counter{font:500 14px var(--mono);color:var(--muted);margin:0 8px}
+#progress{position:absolute;bottom:0;left:0;right:0;display:flex;height:5px;gap:4px}
+#progress button{flex:1;border:0;background:rgba(127,180,255,.14);padding:0}
+#progress button.done{background:var(--blue)}
+#notes{position:absolute;left:80px;right:80px;bottom:66px;background:#0B1B40;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:16px 22px;font-size:19px;color:var(--ink);z-index:5}
+
+.k-row{margin:30px 0 14px;font:500 15px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.fc{gap:16px}
+.fc .panel{padding:16px 20px}
+.fc b{display:block;font:600 15px var(--mono);color:var(--blue2);letter-spacing:1px}
+.fc .num{font-size:25px;font-weight:600;margin:4px 0 2px}
+.fc span{display:block;color:var(--muted);font-size:15.5px;line-height:1.35}
+.fc .tot{background:rgba(79,147,255,.12)}
+.fc .tot b{color:var(--gold)}
+.deal th{padding:11px 14px}
+.deal td{padding:14px 14px;font-size:19px}
+.deal td.c,.deal th.c{text-align:center;width:64px}
+.deal td:nth-child(2){width:250px}
+.deal td:nth-child(3){width:150px;color:var(--muted)}
+.deal td:last-child{width:190px}
+.deal b{font-weight:600}
+.act{margin:0;padding-left:20px}
+.act li{color:var(--muted);line-height:1.42}
+.act li+li{margin-top:7px}
+.act li::marker{color:var(--blue2)}
+.ev th{padding:10px 14px}
+.ev td{padding:10px 14px;font-size:17.5px;line-height:1.4}
+.ev td:nth-child(1){width:250px;font-weight:500}
+.ev td:nth-child(2){color:var(--muted)}
+.ev td:nth-child(3){width:150px;white-space:nowrap;color:var(--gold)}
+.ev td:nth-child(4){width:340px;color:var(--muted)}
+aside{display:none}
+@media print{@page{size:landscape;margin:0}html,body{height:auto;overflow:visible}#stage{position:static;transform:none!important;height:auto}.top,.footer,#progress,#notes{display:none!important}.slide{display:block!important;position:relative;width:1600px;height:900px;break-after:page;background:linear-gradient(160deg,#051433,#030A1F);-webkit-print-color-adjust:exact;print-color-adjust:exact}.grad{background:none;color:#9DC4FF}}
+</style>
+
+<main id="stage">
+<header class="top"><div><span class="brand">Base.vn</span><span class="crumb">Vân Đỗ 02 · Team The Foolish · Phòng BE.e</span></div><div class="top-right">Q4 / 2026<span id="chapter"></span></div></header>
+
+<section class="slide cover on" id="mo-dau" data-group="0" data-label="Mở đầu">
+  <h1>Bảo vệ kế hoạch <span class="grad">quý 4</span></h1>
+  <aside>Phím tắt: → hoặc Space sang slide, ← lùi, N ghi chú, F toàn màn hình.</aside>
+</section>
+
+<section class="slide" id="agenda" data-group="0" data-label="Agenda">
+  <div class="eyebrow">Nội dung</div>
+  <h2>Agenda</h2>
+  <div class="agenda">
+    <button data-go="ket-qua"><em>01</em>Nhìn lại quý 3</button>
+    <button data-go="muc-tieu"><em>02</em>Mục tiêu và Forecast</button>
+    <button data-go="crm"><em>03</em>Plan</button>
+  </div>
+  <aside>Ba phần: nhìn lại quý 3, mục tiêu và forecast, plan.</aside>
+</section>
+
+<section class="slide" id="ket-qua" data-group="1" data-label="Kết quả quý 3">
+  <div class="eyebrow">01 · Nhìn lại quý 3</div>
+  <h2>Kết quả quý 3</h2>
+  <div class="grid cols3">
+    <div class="panel"><div class="big mint">61,704</div><div class="metric-label">triệu doanh số · 2 deal</div></div>
+    <div class="panel"><div class="big blue">27</div><div class="metric-label">meeting new · 17 Hot leads, 10 CRM/POD</div></div>
+    <div class="panel"><div class="big">9</div><div class="metric-label">meeting follow up</div></div>
+  </div>
+  <div class="grid cols3" style="margin-top:24px">
+    <div class="panel"><h3 class="num">171</h3><p>Hot leads</p></div>
+    <div class="panel"><h3 class="num">80</h3><p>leads được điều chuyển lại (lead cũ)</p></div>
+    <div class="panel"><h3 class="num">252</h3><p>leads CRM/POD</p></div>
+  </div>
+  <aside>Doanh số 61.704.000 đồng từ 2 deal. 27 meeting new gồm 17 từ Hot leads và 10 từ CRM/POD, thêm 9 meeting follow up. Lead: 171 Hot leads, 80 lead cũ được điều chuyển lại, 252 lead CRM/POD.</aside>
+</section>
+
+<section class="slide" id="cr" data-group="1" data-label="Tỷ lệ chuyển đổi">
+  <div class="eyebrow">01 · Nhìn lại quý 3</div>
+  <h2>Tỷ lệ chuyển đổi theo nguồn</h2>
+  <table>
+    <thead><tr><th>Nguồn</th><th class="right">Leads</th><th class="right">Meeting</th><th class="right">Won</th><th class="right">CR1 · Leads → Meeting</th><th class="right">CR2 · Meeting → Won</th><th class="right">CR3 · Leads → Won</th></tr></thead>
+    <tbody>
+      <tr><td>Hot leads</td><td class="right num">171</td><td class="right num">17</td><td class="right num">2</td><td class="right num blue">9,94%</td><td class="right num blue">11,76%</td><td class="right num blue">1,17%</td></tr>
+      <tr><td>CRM/POD</td><td class="right num">252</td><td class="right num">10</td><td class="right num">0</td><td class="right num blue">3,97%</td><td class="right num red">0%</td><td class="right num red">0%</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">Tỷ lệ chuyển đổi thấp ở cả CR1 đến CR3. CRM có tín hiệu khi đã có meeting tiềm năng.</div>
+  <p style="color:var(--muted);font-size:17px;margin-top:18px">80 leads điều chuyển lại không cộng vào Hot leads.</p>
+  <aside>Hot leads: 17/171 = 9,94%; 2/17 = 11,76%; 2/171 = 1,17%. CRM/POD: 10/252 = 3,97%; chưa có deal won. Hai deal won đều từ Hot leads.</aside>
+</section>
+
+<section class="slide" id="tu-danh-gia" data-group="1" data-label="Tự đánh giá">
+  <div class="eyebrow">01 · Nhìn lại quý 3</div>
+  <h2>Cá nhân tự đánh giá</h2>
+  <div class="grid cols2">
+    <div class="panel"><h3>Số thật</h3><p>Đang thấp so với kỳ vọng. Mục tiêu tháng 9 là <span class="num gold">160M</span>, chỉ về <span class="num red">25,704M</span>.</p></div>
+    <div class="panel"><h3 class="mint">Điểm mạnh</h3><p>Học sản phẩm nhanh, thích ứng nhanh với các bài bán mới, nắm rõ giải pháp để trao đổi với khách hàng. Quý tới có khá nhiều cơ hội cần nắm bắt.</p></div>
+    <div class="panel"><h3 class="red">Nguyên nhân</h3><p>Các deal có cycle dài, đa số là deal follow dài. Chưa có deal nhỏ back up để chốt ngay trong tháng 9. Khi deal có sự cố không về kịp thì loay hoay.</p></div>
+    <div class="panel"><h3 class="gold">Cần hỗ trợ</h3><p>Cần các anh review để góp ý cho deal.</p></div>
+  </div>
+  <aside>Số thật thấp so với kỳ vọng: tháng 9 mục tiêu 160 triệu, về 25.704.000. Nguyên nhân: deal cycle dài, chưa có deal nhỏ back up. Cần các anh review để góp ý cho deal.</aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-group="2" data-label="Mục tiêu">
+  <div class="eyebrow">02 · Mục tiêu và Forecast</div>
+  <h2>Mục tiêu quý 4</h2>
+  <div class="grid" style="grid-template-columns:.8fr 1.2fr;align-items:center">
+    <div class="panel" style="text-align:center;padding:34px 26px"><div class="big grad" style="font-size:132px;letter-spacing:-8px">500</div><div class="metric-label">triệu đồng · mục tiêu doanh số</div></div>
+    <div>
+      <div class="bar-row"><span>Tháng 10</span><div class="bar"><span style="width:88.9%"></span></div><b class="num right">160 triệu</b></div>
+      <div class="bar-row"><span>Tháng 11</span><div class="bar"><span style="width:100%"></span></div><b class="num right">180 triệu</b></div>
+      <div class="bar-row"><span>Tháng 12</span><div class="bar"><span style="width:88.9%"></span></div><b class="num right">160 triệu</b></div>
+    </div>
+  </div>
+  <div class="k-row">Giá trị deal trong plan theo tháng dự kiến · đơn vị: đồng · giá trị deal, không phải mục tiêu</div>
+  <div class="grid cols5 fc">
+    <div class="panel"><b>T10</b><div class="num">142.404.000</div><span>Á Châu, Dương Nhật, Đặc Sản Kinh Đô, An Cơ</span></div>
+    <div class="panel"><b>T10–11</b><div class="num">184.000.000</div><span>Nam Trung Medical · tính một lần</span></div>
+    <div class="panel"><b>T11</b><div class="num">139.000.000</div><span>Bất Động Sản Sài Gòn</span></div>
+    <div class="panel"><b>T12</b><div class="num">698.970.000</div><span>Cocoon Việt Nam, GEM Center</span></div>
+    <div class="panel tot"><b>Tổng 8 deal</b><div class="num">1.164.374.000</div><span>Giá trị đã cung cấp, chưa nhân xác suất</span></div>
+  </div>
+  <aside>Mục tiêu doanh số quý 4 là 500 triệu. Phân bổ: tháng 10 là 160 triệu, tháng 11 là 180 triệu, tháng 12 là 160 triệu. Bên dưới là giá trị các deal trong plan theo tháng dự kiến, không phải mục tiêu: T10 142.404.000; Nam Trung Medical 184.000.000 dự kiến T10–11, tính một lần; T11 139.000.000; T12 698.970.000. Tổng 8 deal 1.164.374.000.</aside>
+</section>
+
+<section class="slide" id="plan-deal" data-group="2" data-label="Plan từng deal (1/3)">
+  <div class="eyebrow">02 · Mục tiêu và Forecast · Plan từng deal · 1/3</div>
+  <h2>Plan từng deal</h2>
+  <table class="deal">
+    <thead><tr><th class="c">STT</th><th>Deal</th><th>Tháng dự kiến</th><th>Action plan</th><th class="right">Giá trị (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr><td class="c num">1</td><td><b>Á Châu</b></td><td class="num">Tháng 10</td><td><ul class="act"><li>Lên hợp đồng HRM trước, thống nhất lịch ký và triển khai.</li><li>Tiếp tục follow phương án CRM để chốt trong quý IV.</li><li>Gửi email nurturing về bài toán CRM đã trao đổi, hỗ trợ PIC có thêm thông tin trình lãnh đạo.</li></ul></td><td class="right num"><b>27.060.000</b></td></tr>
+      <tr><td class="c num">2</td><td><b>Nam Trung Medical</b></td><td class="num">Tháng 10–11</td><td><ul class="act"><li>Làm rõ các điều kiện còn vướng để khách ra quyết định.</li><li>Thống nhất người phê duyệt, lịch duyệt phương án và ngày phản hồi.</li><li>Gửi email nurturing kèm kịch bản demo 2.0 phù hợp với vấn đề khách còn băn khoăn.</li></ul></td><td class="right num"><b>184.000.000</b></td></tr>
+      <tr><td class="c num">3</td><td><b>Dương Nhật</b></td><td class="num">Tháng 10</td><td><ul class="act"><li>Phối hợp anh Luân chốt lịch quyết định và ký hợp đồng.</li><li>Hoàn tất hợp đồng, xác nhận timeline triển khai với khách.</li><li>Gửi checklist dữ liệu và đầu mối cần chuẩn bị để khách yên tâm bắt đầu triển khai.</li></ul></td><td class="right num"><b>38.784.000</b></td></tr>
+    </tbody>
+  </table>
+  <aside>1. Á Châu (Tháng 10, 27.060.000 đồng): Lên hợp đồng HRM trước, thống nhất lịch ký và triển khai. Tiếp tục follow phương án CRM để chốt trong quý IV. Gửi email nurturing về bài toán CRM đã trao đổi, hỗ trợ PIC có thêm thông tin trình lãnh đạo. 2. Nam Trung Medical (Tháng 10–11, 184.000.000 đồng): Làm rõ các điều kiện còn vướng để khách ra quyết định. Thống nhất người phê duyệt, lịch duyệt phương án và ngày phản hồi. Gửi email nurturing kèm kịch bản demo 2.0 phù hợp với vấn đề khách còn băn khoăn. 3. Dương Nhật (Tháng 10, 38.784.000 đồng): Phối hợp anh Luân chốt lịch quyết định và ký hợp đồng. Hoàn tất hợp đồng, xác nhận timeline triển khai với khách. Gửi checklist dữ liệu và đầu mối cần chuẩn bị để khách yên tâm bắt đầu triển khai.</aside>
+</section>
+
+<section class="slide" id="plan-deal-2" data-group="2" data-label="Plan từng deal (2/3)">
+  <div class="eyebrow">02 · Mục tiêu và Forecast · Plan từng deal · 2/3</div>
+  <h2>Plan từng deal</h2>
+  <table class="deal">
+    <thead><tr><th class="c">STT</th><th>Deal</th><th>Tháng dự kiến</th><th>Action plan</th><th class="right">Giá trị (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr><td class="c num">4</td><td><b>Đặc Sản Kinh Đô</b></td><td class="num">Tháng 10</td><td><ul class="act"><li>Follow anh Vũ về phản hồi đối với phương án hợp tác.</li><li>Làm rõ nội dung còn vướng và thống nhất thời điểm chốt.</li><li>Xác nhận phần tích hợp IT khách có thể tự thực hiện và phần cần Base hỗ trợ để làm rõ tổng chi phí.</li></ul></td><td class="right num"><b>41.760.000</b></td></tr>
+      <tr><td class="c num">5</td><td><b>An Cơ</b></td><td class="num">Tháng 10</td><td><ul class="act"><li>Phối hợp chị Ngân chốt phương án 5 năm và lịch thanh toán.</li><li>Theo sát để hoàn tất ký hợp đồng trong tháng 10.</li><li>Xác nhận tiến độ chọn POS và thống nhất phần CRM có thể chuẩn bị song song.</li></ul></td><td class="right num"><b>34.800.000</b></td></tr>
+      <tr><td class="c num">6</td><td><b>Cocoon Việt Nam</b></td><td class="num">Tháng 12</td><td><ul class="act"><li>Hoàn tất khảo sát, chuẩn bị và chốt lịch showcase với HR, IT.</li><li>Thống nhất phạm vi giải pháp và lộ trình trình duyệt, hướng tới chốt tháng 12.</li><li>Nurturing bằng nội dung sát bài toán HR, kèm tài liệu tóm tắt giải pháp để PIC trình lãnh đạo.</li></ul></td><td class="right num"><b>238.170.000</b></td></tr>
+    </tbody>
+  </table>
+  <aside>4. Đặc Sản Kinh Đô (Tháng 10, 41.760.000 đồng): Follow anh Vũ về phản hồi đối với phương án hợp tác. Làm rõ nội dung còn vướng và thống nhất thời điểm chốt. Xác nhận phần tích hợp IT khách có thể tự thực hiện và phần cần Base hỗ trợ để làm rõ tổng chi phí. 5. An Cơ (Tháng 10, 34.800.000 đồng): Phối hợp chị Ngân chốt phương án 5 năm và lịch thanh toán. Theo sát để hoàn tất ký hợp đồng trong tháng 10. Xác nhận tiến độ chọn POS và thống nhất phần CRM có thể chuẩn bị song song. 6. Cocoon Việt Nam (Tháng 12, 238.170.000 đồng): Hoàn tất khảo sát, chuẩn bị và chốt lịch showcase với HR, IT. Thống nhất phạm vi giải pháp và lộ trình trình duyệt, hướng tới chốt tháng 12. Nurturing bằng nội dung sát bài toán HR, kèm tài liệu tóm tắt giải pháp để PIC trình lãnh đạo.</aside>
+</section>
+
+<section class="slide" id="plan-deal-3" data-group="2" data-label="Plan từng deal (3/3)">
+  <div class="eyebrow">02 · Mục tiêu và Forecast · Plan từng deal · 3/3</div>
+  <h2>Plan từng deal</h2>
+  <table class="deal">
+    <thead><tr><th class="c">STT</th><th>Deal</th><th>Tháng dự kiến</th><th>Action plan</th><th class="right">Giá trị (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr><td class="c num">7</td><td><b>Bất Động Sản Sài Gòn</b></td><td class="num">Tháng 11</td><td><ul class="act"><li>Làm rõ yêu cầu còn lại và chốt phạm vi giải pháp.</li><li>Gửi phương án chi phí, hẹn trao đổi để thống nhất phương án hợp tác.</li><li>Xác nhận người phê duyệt và tiêu chí lựa chọn để chuẩn bị đúng nội dung cho buổi chốt.</li></ul></td><td class="right num"><b>139.000.000</b></td></tr>
+      <tr><td class="c num">8</td><td><b>GEM Center</b></td><td class="num">Tháng 12</td><td><ul class="act"><li>Duy trì nuôi dưỡng bằng nội dung phù hợp với bài toán vận hành của khách.</li><li>Theo dõi lịch trình lãnh đạo và thời điểm tái khởi động trao đổi.</li><li>Hỗ trợ bổ sung slide và phương án đầu tư khi anh Đạt có phản hồi hoặc yêu cầu mới.</li></ul></td><td class="right num"><b>460.800.000</b></td></tr>
+      <tr class="total"><td></td><td colspan="3">Tổng giá trị 8 deal · Nam Trung Medical tính một lần cho T10–11</td><td class="right num">1.164.374.000</td></tr>
+    </tbody>
+  </table>
+  <aside>7. Bất Động Sản Sài Gòn (Tháng 11, 139.000.000 đồng): Làm rõ yêu cầu còn lại và chốt phạm vi giải pháp. Gửi phương án chi phí, hẹn trao đổi để thống nhất phương án hợp tác. Xác nhận người phê duyệt và tiêu chí lựa chọn để chuẩn bị đúng nội dung cho buổi chốt. 8. GEM Center (Tháng 12, 460.800.000 đồng): Duy trì nuôi dưỡng bằng nội dung phù hợp với bài toán vận hành của khách. Theo dõi lịch trình lãnh đạo và thời điểm tái khởi động trao đổi. Hỗ trợ bổ sung slide và phương án đầu tư khi anh Đạt có phản hồi hoặc yêu cầu mới. Tổng giá trị 8 deal 1.164.374.000 đồng, Nam Trung Medical tính một lần cho T10–11.</aside>
+</section>
+
+<section class="slide" id="crm" data-group="3" data-label="CRM là mũi nhọn">
+  <div class="eyebrow">03 · Plan</div>
+  <h2>CRM là mũi nhọn</h2>
+  <div class="grid" style="grid-template-columns:1.25fr .75fr">
+    <div class="panel"><ul class="list">
+      <li><strong>Lead CRM:</strong> mỗi tuần ngồi với anh Nghĩa lọc ưu tiên 10 account để book meeting luôn, hiệu quả hơn gọi mass leads. Đang có vài deal tiềm năng meeting và chuyển đổi 2.0: Huy Hoàng, Lê Trần, BĐS Highrise.</li>
+      <li><strong>Email nurturing:</strong> đã xong. Đã tìm hiểu đối thủ để biết mình mạnh yếu phần nào.</li>
+      <li><strong>Bài bán mới:</strong> đang test thêm nhiều bài, có bài của anh Ngọc. Test 3 case CRM, khách khá buy in. Đóng gói lại <span class="num gold">trước 15/10</span> để sharing cho team BE.e.</li>
+      <li><strong>Video truyền thông cho B2B:</strong> quay <span class="num gold">20/10</span>.</li>
+      <li><strong>Sự kiện chia sẻ về CRM và nhân sự AI hỗ trợ bán hàng:</strong> tạo điểm chạm với khách CRM tiềm năng, dự kiến tổ chức <span class="num gold">29/10</span>.</li>
+    </ul></div>
+    <div class="grid" style="align-content:start">
+      <div class="panel"><div class="big blue">4</div><div class="metric-label">meeting mỗi tuần từ nguồn CRM</div></div>
+      <div class="panel"><div class="big">300+</div><div class="metric-label">account</div></div>
+    </div>
+  </div>
+  <aside>Tiếp tục xử lý lead CRM: mỗi tuần lọc 10 account ưu tiên với anh Nghĩa để book meeting. Mục tiêu 1 tuần 4 meeting từ nguồn này, tính theo account thì có hơn 300 account. Bài bán mới đóng gói trước 15/10, video B2B quay 20/10. Bổ sung sự kiện chia sẻ về CRM và nhân sự AI hỗ trợ bán hàng, dự kiến 29/10, chi tiết ở hai slide tiếp theo.</aside>
+</section>
+
+<section class="slide" id="su-kien" data-group="3" data-label="Sự kiện CRM">
+  <div class="eyebrow">03 · Plan · CRM là mũi nhọn</div>
+  <h2 style="font-size:44px">Xây dựng sự kiện chia sẻ về CRM<br>và nhân sự AI hỗ trợ bán hàng</h2>
+  <div class="grid cols3">
+    <div class="panel"><h3 class="mint">Mục tiêu</h3><p>Tạo điểm chạm với khách hàng CRM tiềm năng, giới thiệu ứng dụng thực tế và chuyển khách quan tâm thành các buổi tư vấn riêng.</p></div>
+    <div class="panel"><h3 class="blue">Chủ đề đề xuất</h3><p style="color:var(--ink);font-weight:500">Nhân sự AI hỗ trợ bán hàng — Từ tiếp nhận lead đến chăm sóc khách hàng trên CRM</p></div>
+    <div class="panel"><h3 class="gold">Đối tượng đề xuất</h3><p>Quản lý kinh doanh, marketing và vận hành bán hàng; ưu tiên chọn một nhóm ngành phù hợp cho buổi đầu, như doanh nghiệp phân phối/B2B.</p></div>
+  </div>
+  <div class="grid cols3" style="margin-top:24px;gap:16px">
+    <div class="panel" style="padding:16px 22px"><p><b class="num gold">14/10</b> · Chốt chủ đề và khách mời mục tiêu</p></div>
+    <div class="panel" style="padding:16px 22px"><p><b class="num gold">29/10</b> · Tổ chức sự kiện</p></div>
+    <div class="panel" style="padding:16px 22px"><p><b class="num gold">30/10–03/11</b> · Follow-up sau sự kiện</p></div>
+  </div>
+  <div class="callout">Mốc thời gian là lịch dự kiến. Kế hoạch chi tiết ở slide tiếp theo.</div>
+  <aside>Hạng mục mới trong CRM là mũi nhọn: sự kiện chia sẻ về CRM và nhân sự AI hỗ trợ bán hàng. Mục tiêu tạo điểm chạm với khách CRM tiềm năng, giới thiệu ứng dụng thực tế và chuyển khách quan tâm thành buổi tư vấn riêng. Chủ đề: Nhân sự AI hỗ trợ bán hàng, từ tiếp nhận lead đến chăm sóc khách hàng trên CRM. Đối tượng: quản lý kinh doanh, marketing, vận hành bán hàng; buổi đầu ưu tiên doanh nghiệp phân phối/B2B.</aside>
+</section>
+
+<section class="slide" id="su-kien-plan" data-group="3" data-label="Kế hoạch sự kiện CRM">
+  <div class="eyebrow">03 · Plan · Sự kiện CRM · lịch dự kiến</div>
+  <h2 style="margin-bottom:22px">Kế hoạch sự kiện <span class="pill" style="font-size:17px;vertical-align:middle">Lịch dự kiến</span></h2>
+  <table class="ev">
+    <thead><tr><th>Hạng mục</th><th>Công việc chính</th><th>Thời hạn dự kiến</th><th>Đầu ra</th></tr></thead>
+    <tbody>
+      <tr><td>Chốt chủ đề và khách mời mục tiêu</td><td>Trao đổi với anh Luân, anh Ngọc để chọn chủ đề, nhóm ngành và bài toán cần giải quyết.</td><td class="num"><b>14/10</b></td><td>Một chủ đề và chân dung khách tham dự rõ ràng.</td></tr>
+      <tr><td>Xây dựng use case</td><td>Chuẩn bị 2–3 tình huống AI hỗ trợ tiếp nhận, phân loại và follow-up lead; xây dữ liệu mẫu, kiểm tra luồng demo thực tế.</td><td class="num"><b>18/10</b></td><td>Bộ use case và demo có thể trình bày.</td></tr>
+      <tr><td>Hoàn thiện nội dung chia sẻ</td><td>Review thông điệp, slide, demo và phân công người trình bày; chốt chương trình khoảng 45–60 phút.</td><td class="num"><b>20/10</b></td><td>Nội dung và chương trình hoàn chỉnh.</td></tr>
+      <tr><td>Tạo event và mở đăng ký</td><td>Tạo trang sự kiện/form đăng ký, nội dung mời và thông tin thời gian tham dự.</td><td class="num"><b>21/10</b></td><td>Event được mở đăng ký, có đường dẫn gửi khách.</td></tr>
+      <tr><td>Mời khách và xác nhận tham dự</td><td>Mời tệp CRM phù hợp, nhờ các anh chị giới thiệu khách; ghi nhận nhu cầu và gửi nhắc lịch.</td><td class="num"><b>22–28/10</b></td><td>Danh sách đăng ký, xác nhận tham dự và nhu cầu quan tâm.</td></tr>
+      <tr><td>Tổ chức sự kiện</td><td>Chia sẻ use case, demo và giải đáp; mời khách đăng ký buổi tư vấn riêng.</td><td class="num"><b>29/10</b></td><td>Sự kiện hoàn thành, có danh sách khách muốn trao đổi tiếp.</td></tr>
+      <tr><td>Follow-up sau sự kiện</td><td>Gửi tài liệu, liên hệ theo nhu cầu và book meeting với khách phù hợp.</td><td class="num"><b>30/10–03/11</b></td><td>Các lịch tư vấn và cơ hội mới được cập nhật CRM.</td></tr>
+    </tbody>
+  </table>
+  <aside>Lịch dự kiến: chốt chủ đề và khách mời 14/10; use case 18/10; hoàn thiện nội dung 20/10; tạo event và mở đăng ký 21/10; mời khách 22–28/10; tổ chức 29/10; follow-up 30/10–03/11.</aside>
+</section>
+
+<section class="slide" id="prospect" data-group="3" data-label="Prospect là GTM">
+  <div class="eyebrow">03 · Plan</div>
+  <h2>Prospect là GTM mở phễu</h2>
+  <div class="grid cols2">
+    <div class="panel"><h3>Kịch bản cho 5 ngành</h3><p>Mỹ phẩm, giáo dục, BĐS, thẩm mỹ, gia dụng. <span class="mint">Đã hoàn thành.</span></p></div>
+    <div class="panel"><h3>Dữ liệu demo</h3><p>Mới hoàn thành thẩm mỹ, đang test follow do có một vài thứ mới.</p></div>
+  </div>
+  <div class="grid cols5" style="margin-top:24px;gap:16px">
+    <div class="panel vid"><b>11/10</b><span>Video 01</span><strong>Mỹ phẩm</strong></div>
+    <div class="panel vid"><b>15/10</b><span>Video 02</span><strong>Giáo dục</strong></div>
+    <div class="panel vid"><b>19/10</b><span>Video 03</span><strong>BĐS</strong></div>
+    <div class="panel vid"><b>23/10</b><span>Video 04</span><strong>Thẩm mỹ</strong></div>
+    <div class="panel vid"><b>27/10</b><span>Video 05</span><strong>Gia dụng</strong></div>
+  </div>
+  <div class="callout">Thêm ngành thời trang vì các bên này chốt nhanh.</div>
+  <aside>Kịch bản 5 ngành đã xong. Dữ liệu demo mới xong thẩm mỹ. Lịch video: Mỹ phẩm 11/10, Giáo dục 15/10, BĐS 19/10, Thẩm mỹ 23/10, Gia dụng 27/10. Bổ sung ngành thời trang.</aside>
+</section>
+
+<section class="slide" id="nurturing" data-group="3" data-label="Nurturing deal hiện tại">
+  <div class="eyebrow">03 · Plan</div>
+  <h2>Nurturing các deal hiện tại</h2>
+  <div class="grid cols3" style="margin-top:170px">
+    <div class="panel"><h3 class="red">Hiện trạng</h3><p>Khá lâu rồi chưa còn hoạt động nurturing. Từ lúc meeting xong đến khi chờ khách phản hồi đang thiếu điểm chạm.</p></div>
+    <div class="panel"><h3 class="mint">Việc làm</h3><p>Thống nhất các deal về một framework nurturing. Mỗi tuần một email cho mỗi case.</p></div>
+    <div class="panel"><h3 class="gold">Áp dụng</h3><p>8 deal đang mở: Á Châu, Nam Trung Medical, Dương Nhật, Đặc Sản Kinh Đô, An Cơ, Cocoon Việt Nam, Bất Động Sản Sài Gòn, GEM Center.</p></div>
+  </div>
+  <aside>Việc làm deal hiện tại cần thêm điểm chạm từ lúc meeting xong đến khi chờ khách phản hồi. Thống nhất các deal về một framework nurturing, mỗi tuần một email cho mỗi case, vì khá lâu rồi chưa còn hoạt động nurturing.</aside>
+</section>
+
+
+<div id="notes" hidden></div>
+<footer class="footer">
+  <div class="tabs"><button data-group-tab="0" data-go="mo-dau">Mở đầu</button><button data-group-tab="1" data-go="ket-qua">01 Nhìn lại quý 3</button><button data-group-tab="2" data-go="muc-tieu">02 Mục tiêu và Forecast</button><button data-group-tab="3" data-go="crm">03 Plan</button></div>
+  <div class="tools"><button id="prev" aria-label="Lùi">←</button><span id="counter"></span><button id="next" aria-label="Tiếp">→</button><button id="bnotes">Ghi chú</button><button id="full" aria-label="Toàn màn hình">⛶</button></div>
+</footer>
+<div id="progress"></div>
+</main>
+
+<script>
+(function(){
+var slides=[].slice.call(document.querySelectorAll('.slide')),stage=document.getElementById('stage'),index=0;
+var $=function(i){return document.getElementById(i)};
+function fit(){stage.style.transform='translate(-50%,-50%) scale('+Math.min(innerWidth/1600,innerHeight/900)+')'}
+slides.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label',s.dataset.label);b.title=(i+1)+'. '+s.dataset.label;b.onclick=function(){go(i)};$('progress').appendChild(b)});
+function go(i){index=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach(function(s,n){s.classList.toggle('on',n===index)});
+  $('counter').textContent=('0'+(index+1)).slice(-2)+' / '+slides.length;
+  $('chapter').textContent=' · '+slides[index].dataset.label;
+  [].forEach.call(document.querySelectorAll('[data-group-tab]'),function(b){b.classList.toggle('active',b.dataset.groupTab===slides[index].dataset.group)});
+  [].forEach.call(document.querySelectorAll('#progress button'),function(b,n){b.classList.toggle('done',n<=index)});
+  $('prev').disabled=index===0;$('next').disabled=index===slides.length-1;
+  var a=slides[index].querySelector('aside');$('notes').textContent=a?a.textContent:'';}
+[].forEach.call(document.querySelectorAll('[data-go]'),function(b){b.onclick=function(){go(slides.map(function(s){return s.id}).indexOf(b.dataset.go))}});
+$('prev').onclick=function(){go(index-1)};$('next').onclick=function(){go(index+1)};
+function notes(){$('notes').hidden=!$('notes').hidden}
+function full(){try{if(document.fullscreenElement)document.exitFullscreen();else{var p=document.documentElement.requestFullscreen();if(p&&p.catch)p.catch(function(){})}}catch(e){}}
+$('bnotes').onclick=notes;$('full').onclick=full;
+addEventListener('keydown',function(e){var k=e.key;
+  if(e.target.tagName==='BUTTON'&&(k===' '||k==='Enter'))return;
+  if(k==='ArrowRight'||k==='PageDown'||k===' '){e.preventDefault();go(index+1)}
+  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();go(index-1)}
+  else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);
+  else if(k==='f'||k==='F')full();else if(k==='n'||k==='N')notes();else if(k==='Escape')$('notes').hidden=true;});
+var tx=null;addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(d)>50)go(index+(d<0?1:-1))},{passive:true});
+addEventListener('resize',fit);fit();go(0);
+})();
+</script>
+
+</body></html>
