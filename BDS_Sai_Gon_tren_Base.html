@@ -1759,7 +1759,7 @@ const BPM_N = BPMG.reduce((a, g) => a + g[2].length, 0);
 function bpmSide(on, svc) {
   let g = '';
   BPMG.forEach((x) => { const open = svc && x[2].some(s => s[6] === svc); g += GRP(x[0], x[1], open); if (open) g += x[2].map(s => SRV(s[2], s[0], s[6] === svc)).join(''); });
-  return side('layout-grid', 'BPM', R('list-checks', 'Việc của tôi', on === 'my') + R('layout-grid', 'Quy trình', on === 'svc') + SEC('QUY TRÌNH', 1) + g, R('chart-column', 'Báo cáo') + R('settings', 'Cài đặt'));
+  return side('layout-grid', 'BPM', R('list-checks', 'Việc của tôi', on === 'my') + R('layout-grid', 'Quy trình', on === 'svc') + SEC('QUY TRÌNH', 1) + g + SEC('PHÁP NHÂN') + PN.map(x => `<div class="row grp"><span class="ltr" style="background:${x[1]}1A;color:${x[1]}">${x[0][0]}</span><span>${x[0]}</span><span class="cv">${I('chevron-right', 13)}</span></div>`).join(''), R('chart-column', 'Báo cáo') + R('settings', 'Cài đặt'));
 }
 // 1 · BPM › Quy trình › Danh sách — ảnh bpm/08
 function sBpmList() {
@@ -1965,7 +1965,7 @@ const DOWS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
 const dowOct = (x) => (x + 3) % 7;   // 01/10/2026 là thứ Năm
 function taskFrame(main) {
   return rail([['list-checks', 'Công việc'], ['target', 'Kế hoạch'], ['star', 'Đánh giá'], ['building-2', 'Công ty']], 'Công việc', ['chart-column', 'users', 'settings'])
-    + sub('menu', 'Công việc', SR('house', 'Trang chủ', 1) + SR('briefcase', 'Việc của tôi') + SSEC('YÊU CẦU CÔNG VIỆC') + [['K', 'Phòng Kế toán'], ['N', 'Phòng Nhân sự'], ['M', 'Phòng Marketing'], ['C', 'Việc chung']].map(x => `<div class="row"><span class="q-ltr">${x[0]}</span><span>${x[1]}</span><span class="n">${I('chevron-right', 12)}</span></div>`).join(''))
+    + sub('menu', 'Công việc', SR('house', 'Trang chủ', 1) + SR('briefcase', 'Việc của tôi') + SSEC('YÊU CẦU CÔNG VIỆC') + [['K', 'Phòng Kế toán'], ['N', 'Phòng Nhân sự'], ['M', 'Phòng Marketing'], ['C', 'Việc chung']].map(x => `<div class="row"><span class="q-ltr">${x[0]}</span><span>${x[1]}</span><span class="n">${I('chevron-right', 12)}</span></div>`).join('') + SSEC('PHÁP NHÂN') + PN.map(x => `<div class="row"><span class="q-ltr" style="background:${x[1]}1A;color:${x[1]}">${x[0][0]}</span><span>${x[0]}</span><span class="n">${I('chevron-right', 12)}</span></div>`).join(''))
     + `<div class="m3">${main}</div>`;
 }
 function taskHead(view) {
