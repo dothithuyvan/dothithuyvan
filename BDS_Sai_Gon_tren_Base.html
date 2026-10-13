@@ -1168,6 +1168,8 @@ body{margin:0;color:var(--ink);font-family:var(--lex);-webkit-font-smoothing:ant
 /* BPM danh sách */
 .q-svcs{flex:1;min-height:0;overflow:hidden;padding:12px 20px;display:flex;flex-direction:column;gap:12px;background:var(--mk-bg-soft)}
 .q-gh{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--mk-ink);margin-bottom:8px}
+.q-gh .q-pn{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:700}
+.q-gh .q-acc{flex:0 0 auto;width:auto;margin-left:4px;display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--mk-muted);padding:1px 8px;border:1px solid var(--mk-line);border-radius:999px;background:#fff}
 .q-gh em{font-style:normal;font-size:11px;padding:0 7px;border-radius:999px;background:var(--mk-line);color:var(--mk-muted);font-weight:600}
 .q-gr{display:flex;gap:12px}
 .q-svc{width:268px;background:#fff;border:1px solid var(--mk-line);border-left:3px solid;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:9px}
@@ -1757,8 +1759,8 @@ const BPMG = [
 const SVC = Object.fromEntries(BPMG.flatMap(g => g[2].map(s => [s[6], s])));
 const BPM_N = BPMG.reduce((a, g) => a + g[2].length, 0);
 function bpmSide(on, svc) {
-  let g = '';
-  BPMG.forEach((x) => { const open = svc && x[2].some(s => s[6] === svc); g += GRP(x[0], x[1], open); if (open) g += x[2].map(s => SRV(s[2], s[0], s[6] === svc)).join(''); });
+  const all = BPMG.flatMap(x => x[2]);
+  const g = PN.map((x, i) => { const open = svc && i === 0; return GRP(x[0][0], x[0], open) + (open ? all.map(s => SRV(s[2], s[0], s[6] === svc)).join('') : ''); }).join('');
   return side('layout-grid', 'BPM', R('list-checks', 'Việc của tôi', on === 'my') + R('layout-grid', 'Quy trình', on === 'svc') + SEC('QUY TRÌNH', 1) + g, R('chart-column', 'Báo cáo') + R('settings', 'Cài đặt'));
 }
 // 1 · BPM › Quy trình › Danh sách — ảnh bpm/08
@@ -1766,9 +1768,9 @@ function sBpmList() {
   const card = (s) => { const t = s[4] + s[5]; return `<div class="q-svc" style="border-left-color:${s[2]}"><div class="q-svc-t"><i style="background:${s[2]}1A;color:${s[2]}">${I(s[3], 18)}</i><div><b>${s[0]}</b><span>${s[1]}</span></div></div>
       <div class="q-bar"><i style="width:${s[4] / t * 100}%;background:#3B82F6"></i><i style="width:${s[5] / t * 100}%;background:#4ADE80"></i></div>
       <div class="q-svc-f"><span><b style="color:#2563EB">${s[4]}</b> Đang chạy</span><span><b style="color:#16A34A">${s[5]}</b> Hoàn tất</span></div></div>`; };
-  return bpmSide('svc') + `<div class="m3"><div class="hb">${I('layout-grid', 16)}<b>Quy trình</b><span class="lt">${BPM_N} quy trình · ${BPMG.length} nhóm</span><span class="rt"><span class="cb srch">${I('search', 13)}Tìm quy trình…</span><span class="bt">${I('plus', 14)}Quy trình mới</span></span></div>
+  return bpmSide('svc') + `<div class="m3"><div class="hb">${I('layout-grid', 16)}<b>Quy trình</b><span class="lt">${BPM_N * PN.length} quy trình · ${PN.length} nhóm pháp nhân</span><span class="rt"><span class="cb srch">${I('search', 13)}Tìm quy trình…</span><span class="bt">${I('plus', 14)}Quy trình mới</span></span></div>
     <div class="q-tabs"><span>Luồng liên kết</span><span class="on">Danh sách</span><span>${I('chevron-down', 13)}</span></div>
-    <div class="q-svcs">${BPMG.map((g, i) => `<div class="${d(i)}"><div class="q-gh">${I('chevron-down', 13)}<b>${g[1]}</b><em>${g[2].length}</em></div><div class="q-gr">${g[2].map(card).join('')}</div></div>`).join('')}</div></div>`;
+    <div class="q-svcs">${PN.map((x, i) => `<div class="${d(i)}"><div class="q-gh">${I(i ? 'chevron-right' : 'chevron-down', 13)}<span class="q-pn" style="background:${x[1]}">${x[0][0]}</span><b>${x[0]}</b><em>${BPM_N}</em><span class="q-acc">${I('lock', 11)}Chỉ nhân sự ${x[0]}</span></div>${i ? '' : `<div class="q-gr">${BPMG.flatMap(g => g[2]).map(card).join('')}</div>`}</div>`).join('')}</div></div>`;
 }
 // đầu trang 1 quy trình (ảnh bpm/09, 12, 14)
 function svcHead(key, tab) {
@@ -1965,7 +1967,7 @@ const DOWS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
 const dowOct = (x) => (x + 3) % 7;   // 01/10/2026 là thứ Năm
 function taskFrame(main) {
   return rail([['list-checks', 'Công việc'], ['target', 'Kế hoạch'], ['star', 'Đánh giá'], ['building-2', 'Công ty']], 'Công việc', ['chart-column', 'users', 'settings'])
-    + sub('menu', 'Công việc', SR('house', 'Trang chủ', 1) + SR('briefcase', 'Việc của tôi') + SSEC('YÊU CẦU CÔNG VIỆC') + [['K', 'Phòng Kế toán'], ['N', 'Phòng Nhân sự'], ['M', 'Phòng Marketing'], ['C', 'Việc chung']].map(x => `<div class="row"><span class="q-ltr">${x[0]}</span><span>${x[1]}</span><span class="n">${I('chevron-right', 12)}</span></div>`).join(''))
+    + sub('menu', 'Công việc', SR('house', 'Trang chủ', 1) + SR('briefcase', 'Việc của tôi') + SSEC('YÊU CẦU CÔNG VIỆC') + PN.map((x, i) => `<div class="row"><span class="q-ltr" style="${i ? '' : 'background:#2563EB;color:#fff'}">${x[0][0]}</span><span style="${i ? '' : 'color:var(--mk-blue-ink);font-weight:600'}">${x[0]}</span><span class="n">${I(i ? 'chevron-right' : 'chevron-down', 12)}</span></div>` + (i ? '' : [['Việc phòng Kế toán', '#2563EB'], ['Việc phòng Nhân sự', '#16A34A'], ['Việc phòng Marketing', '#EA580C'], ['Việc chung', '#64748B']].map(c => `<div class="row" style="padding-left:32px"><i style="width:6px;height:6px;border-radius:50%;flex:none;background:${c[1]}"></i><span>${c[0]}</span></div>`).join(''))).join(''))
     + `<div class="m3">${main}</div>`;
 }
 function taskHead(view) {
