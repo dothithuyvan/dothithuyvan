@@ -1488,6 +1488,390 @@ body{margin:0;color:var(--ink);font-family:var(--lex);-webkit-font-smoothing:ant
 .ts .e,.ts .c{height:78px}
 .q-payh{gap:6px}.q-payh .cb{padding:0 8px;font-size:12px}
 
+
+
+
+
+/* ===== Phần 4–6 · BPM (b-), Project 2.0 (p-), Chat (c-) ===== */
+.b-hd{height:52px;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--mk-line);flex:none;white-space:nowrap;font-size:13px}
+.b-hd .t{font-size:15px;font-weight:700;color:var(--mk-ink)}
+.b-hd .mu{color:var(--mk-muted);font-size:12.5px}
+.b-hd svg{color:var(--mk-muted)}
+.b-hd .bt svg,.b-hd .rt .bt svg{color:#fff}
+.b-sic{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;flex:none}
+.b-tg{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:7px;font-size:12.5px;font-weight:600;color:var(--mk-text);border:1px solid var(--mk-line);background:#fff}
+.b-tg.on{border-color:#93C5FD;background:var(--mk-blue-soft);color:var(--mk-blue-ink)}
+/* My Work triage */
+.b-tri{flex:1;min-height:0;overflow:hidden;padding:12px 20px;background:var(--mk-bg-soft);display:flex;flex-direction:column;gap:12px}
+.b-blk{background:#fff;border:1px solid var(--mk-line);border-radius:10px;overflow:hidden}
+.b-blk.hot{border-color:#FECACA}
+.b-blk .bh{display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;font-size:13.5px;font-weight:700;color:var(--mk-ink)}
+.b-blk.hot .bh{background:#FEF2F2;color:#B91C1C}
+.b-blk .bh em{font-style:normal;font-size:11.5px;font-weight:700;padding:0 7px;border-radius:999px;background:#FEE2E2;color:#B91C1C}
+.b-blk .bh small{font-size:12px;font-weight:500;color:var(--mk-muted)}
+.b-jr{display:grid;grid-template-columns:26px minmax(0,1fr) 230px 132px 28px 120px;align-items:center;gap:12px;height:62px;padding:0 14px;border-top:1px solid var(--mk-line-soft)}
+.b-blk.hot .b-jr{box-shadow:inset 3px 0 0 #EF4444}
+.b-jr .ti{width:26px;height:26px;border-radius:7px;display:grid;place-items:center}
+.b-jr .ti.m{background:#FEE2E2;color:#DC2626}.b-jr .ti.a{background:#DCFCE7;color:#16A34A}.b-jr .ti.ai{background:#EDE9FE;color:#7C3AED}
+.b-jr .nm{display:flex;flex-direction:column;gap:3px;min-width:0}
+.b-jr .nm b{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--mk-ink);min-width:0}
+.b-jr .nm b span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.b-jr .nm small{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mk-muted);white-space:nowrap;overflow:hidden}
+.b-jr .nm small code{font-size:11px;color:var(--mk-text)}
+.b-yt{flex:none;display:inline-flex;align-items:center;gap:3px;height:19px;padding:0 7px;border-radius:999px;background:var(--mk-blue);color:#fff;font-size:10px;font-weight:700;letter-spacing:.03em}
+.b-jr .sv{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--mk-text);min-width:0}
+.b-jr .sv span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.b-od{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:6px;background:#FEF2F2;color:#DC2626;font-size:11.5px;font-weight:600;box-shadow:inset 0 0 0 1px #FECACA;white-space:nowrap;justify-self:start}
+.b-od.ok{background:#F0FDF4;color:#15803D;box-shadow:inset 0 0 0 1px #BBF7D0}
+.b-qa{display:flex;gap:6px;justify-content:flex-end;color:var(--mk-muted)}
+.b-qa i{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;border:1px solid var(--mk-line)}
+.b-qa i.y{background:#DCFCE7;color:#16A34A;border-color:#BBF7D0}.b-qa i.n{background:#FEE2E2;color:#DC2626;border-color:#FECACA}.b-qa i.s{background:#EFF6FF;color:#2563EB;border-color:#BFDBFE}
+/* Services list */
+.b-svl{flex:1;min-height:0;overflow:hidden;padding:14px 20px;display:flex;flex-direction:column;gap:12px}
+.b-gh{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--mk-ink)}
+.b-gh em{font-style:normal;font-size:11px;padding:0 7px;border-radius:999px;background:var(--mk-line-soft);color:var(--mk-muted)}
+.b-gr{display:flex;gap:12px}
+.b-sc{width:272px;background:#fff;border:1px solid var(--mk-line);border-left:3px solid;border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:9px}
+.b-sc .t{display:flex;gap:10px}
+.b-sc .t i{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;flex:none}
+.b-sc .t div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.b-sc .t b{font-size:13.5px;font-weight:700;color:var(--mk-ink);line-height:1.25}
+.b-sc .t span{font-size:11.5px;color:var(--mk-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-sc .f{display:flex;gap:16px;font-size:11.5px;color:var(--mk-muted)}
+.b-sc .f b{font-size:13px}
+/* Flow canvas */
+.b-cv{flex:1;min-height:0;position:relative;background:#FAFAFA;background-image:radial-gradient(#DDE1E7 1px,transparent 1px);background-size:18px 18px;overflow:hidden}
+.b-fc{position:absolute;left:0;top:0}
+.b-fc>svg{position:absolute;left:0;top:0;overflow:visible}
+.b-fc>svg path{fill:none;stroke:#9CA3AF;stroke-width:1.5}
+.b-fc>svg path.on{stroke:var(--mk-blue);stroke-width:2.2}
+.b-nd{position:absolute;width:206px;height:54px;background:#fff;border:1px solid var(--mk-line);border-top:3px solid;border-radius:9px;padding:6px 10px;box-shadow:0 4px 14px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:2px}
+.b-nd .t{display:flex;align-items:center;gap:6px;min-width:0}
+.b-nd .t b{font-size:12px;color:var(--mk-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-nd small{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--mk-muted);padding-left:20px;white-space:nowrap}
+.b-nd .bd{position:absolute;right:-7px;top:-9px;min-width:18px;height:18px;border-radius:9px;background:#6B7280;color:#fff;font-size:10px;font-weight:700;font-style:normal;display:grid;place-items:center;padding:0 4px}
+.b-nd .bd.r{background:#DC2626}
+.b-nd .pc{position:absolute;right:8px;top:6px;font-size:9.5px;font-weight:600;color:#6D28D9;background:#F5F3FF;border-radius:4px;padding:0 5px}
+.b-nd.sel{box-shadow:0 0 0 2px var(--mk-blue),0 8px 20px -8px rgba(37,99,235,.45)}
+.b-ch{position:absolute;transform:translateX(-50%);height:20px;padding:0 9px;border-radius:999px;border:1px dashed;background:#fff;font-size:10.5px;font-weight:600;display:inline-flex;align-items:center;gap:3px;white-space:nowrap;z-index:2}
+.b-ch.g{color:#15803D;border-color:#86EFAC;background:#F0FDF4}.b-ch.r{color:#B91C1C;border-color:#FCA5A5;background:#FEF2F2}.b-ch.b{color:#1D4ED8;border-color:#93C5FD;background:#EFF6FF}.b-ch.x{color:#4B5563;border-color:#CBD5E1;background:#F3F4F6;border-style:solid}.b-ch.v{color:#6D28D9;border-color:#C4B5FD;background:#F5F3FF}
+.b-trf{position:absolute;left:50%;transform:translateX(-50%);top:14px;z-index:3;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--mk-line);border-radius:9px;padding:6px 10px;font-size:12.5px;color:var(--mk-muted);box-shadow:0 4px 14px rgba(0,0,0,.06);white-space:nowrap}
+.b-trf b{color:var(--mk-ink)}
+.b-trf .seg span{height:24px;padding:0 9px}
+.b-zm{position:absolute;right:14px;bottom:14px;display:flex;flex-direction:column;gap:4px}
+.b-zm span{width:30px;height:30px;border-radius:7px;border:1px solid var(--mk-line);background:#fff;display:grid;place-items:center;color:var(--mk-muted)}
+/* Job detail */
+.b-jd{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;padding:14px 20px;background:var(--mk-bg-soft);overflow:hidden}
+.b-jd>div{display:flex;flex-direction:column;gap:12px;min-width:0}
+.b-cd{background:#fff;border:1px solid var(--mk-line);border-radius:10px;padding:12px 14px}
+.b-cd h4{margin:0 0 8px;display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--mk-ink)}
+.b-cd h4 .rt{font-weight:500;font-size:12px}
+.b-jh h2{margin:0 0 8px;font-size:21px;font-weight:700;color:var(--mk-ink);letter-spacing:-.01em}
+.b-jh .l{display:flex;align-items:center;gap:8px;font-size:12px;height:28px}
+.b-jh .l>span:first-child{width:44px;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.b-jh code{font-size:11.5px;background:var(--mk-line-soft);border-radius:5px;padding:2px 7px;color:var(--mk-ink)}
+.b-st{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;border:1px solid var(--mk-line);font-size:12px;font-weight:600;color:var(--mk-ink);background:#fff}
+.b-aw{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;background:#FEF3C7;color:#B45309;font-size:11.5px;font-weight:600}
+.b-nt{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9px;border:1px solid #BFDBFE;background:#EFF6FF;font-size:12.5px;color:#1E40AF}
+.b-nt b{color:#1E3A8A}
+.b-sb{display:flex;align-items:center;gap:4px}
+.b-sb>span{flex:1;min-width:0;height:44px;display:flex;align-items:center;gap:7px;padding:0 14px 0 18px;font-size:11.5px;color:var(--mk-muted);background:var(--mk-line-soft);clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%,10px 50%)}
+.b-sb>span:first-child{clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);border-radius:8px 0 0 8px}
+.b-sb>span b{display:block;font-size:12px;color:var(--mk-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-sb>span.ok{background:#DCFCE7}.b-sb>span.ok svg{color:#16A34A}
+.b-sb>span.cur{background:var(--mk-blue)}.b-sb>span.cur b,.b-sb>span.cur{color:#fff}
+.b-sb>span>div{min-width:0}
+.b-fl{display:grid;grid-template-columns:26px 190px minmax(0,1fr) 16px;align-items:center;gap:8px;min-height:32px;font-size:12.5px;border-top:1px solid var(--mk-line-soft)}
+.b-fl .n{font-size:11px;color:var(--mk-dim)}
+.b-fl>span:nth-child(2){color:var(--mk-text)}
+.b-fl b{font-weight:500;color:var(--mk-ink)}
+.b-fl svg{color:var(--mk-dim)}
+.b-fl.ai{background:#FAF5FF}
+.b-ai{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:7px;background:#EDE9FE;color:#6D28D9;font-size:12px;font-weight:600}
+.b-tl{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--mk-text);margin-bottom:8px}
+.b-tl .bar{height:5px;border-radius:3px;background:var(--mk-line-soft);overflow:hidden}
+.b-tl .bar i{display:block;height:100%}
+.b-tl .lb{display:flex;justify-content:space-between;font-size:11px;color:var(--mk-muted)}
+.b-kv{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--mk-line-soft)}
+.b-kv:last-child{border-bottom:0}
+.b-kv span{color:var(--mk-muted)}.b-kv b{color:var(--mk-ink);font-weight:500}
+.b-ps{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--mk-line-soft)}
+.b-ps div{flex:1;min-width:0;font-size:12.5px;line-height:1.45}
+.b-ps .h b{color:var(--mk-blue-ink)}.b-ps .h span{color:var(--mk-muted)}.b-ps .h small{display:block;font-size:11px;color:var(--mk-dim)}
+.b-ps p{margin-top:3px;color:var(--mk-text)}
+/* Flow editor */
+.b-ed{flex:1;min-height:0;display:flex}
+.b-pal{width:250px;flex:none;border-right:1px solid var(--mk-line);padding:10px;display:flex;flex-direction:column;gap:6px;overflow:hidden;background:#fff}
+.b-pal .h{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--mk-ink)}
+.b-pal .h em{font-style:normal;font-size:10.5px;font-weight:600;color:var(--mk-blue-ink);background:var(--mk-blue-soft);padding:1px 6px;border-radius:5px}
+.b-pal .s{display:flex;align-items:center;gap:8px;height:32px;border:1px solid var(--mk-line);border-radius:7px;padding:0 10px;color:var(--mk-dim);font-size:12.5px}
+.b-pal .ai{border:1px solid #F9A8D4;background:linear-gradient(135deg,#FDF2F8,#F5F3FF);border-radius:9px;padding:9px 10px;display:flex;gap:9px;align-items:center}
+.b-pal .ai i{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,#EC4899,#7C3AED);color:#fff;flex:none}
+.b-pal .ai small{display:block;font-size:9.5px;font-weight:700;letter-spacing:.06em;color:#BE185D}
+.b-pal .ai b{display:block;font-size:13px;color:var(--mk-ink)}
+.b-pal .ai span{display:block;font-size:11px;color:var(--mk-muted)}
+.b-pal .g{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--mk-text);padding:6px 2px 0}
+.b-pal .g i{width:5px;height:5px;border-radius:50%;background:#DC2626}
+.b-pal .it{display:flex;align-items:center;gap:9px;padding:4px 2px}
+.b-pal .it i{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;flex:none}
+.b-pal .it b{display:block;font-size:12.5px;color:var(--mk-ink)}
+.b-pal .it span{display:block;font-size:11px;color:var(--mk-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
+.b-pal .it em{font-style:normal;font-size:9.5px;font-weight:700;color:#7C3AED;background:#EDE9FE;border-radius:4px;padding:0 4px;margin-left:5px}
+.b-cfg{width:560px;flex:none;border-left:1px solid var(--mk-line);background:#fff;display:flex;flex-direction:column;box-shadow:-18px 0 36px -24px rgba(15,23,42,.25)}
+.b-cfg .h{display:flex;align-items:center;gap:10px;height:50px;padding:0 16px;border-bottom:1px solid var(--mk-line);font-size:15px;font-weight:700;color:var(--mk-ink)}
+.b-cfg .h .rt{color:var(--mk-muted)}
+.b-cfg .bd{flex:1;min-height:0;overflow:hidden;padding:12px 16px;display:flex;flex-direction:column;gap:10px;background:var(--mk-bg-soft)}
+.b-cfg .lb{font-size:11.5px;font-weight:600;color:var(--mk-text)}
+.b-cfg .in{height:34px;border:1px solid var(--mk-line);border-radius:7px;background:#fff;display:flex;align-items:center;gap:8px;padding:0 10px;font-size:12.5px;color:var(--mk-ink)}
+.b-cfg .in.ph{color:var(--mk-dim)}
+.b-cfg .in .rt{color:var(--mk-muted)}
+.b-cfg .fp{align-self:center;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--mk-line);background:#fff;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--mk-muted)}
+.b-cfg .bx{background:#fff;border:1px solid #C7D2FE;border-radius:9px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.b-cfg .bx.v{border-color:#DDD6FE;background:#FBFAFF}
+.b-cfg .bx .bh{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--mk-ink)}
+.b-cfg .bx .bh span{font-weight:500;letter-spacing:0;color:var(--mk-muted)}
+.b-cfg .cap{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.b-cfg .chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 8px;border-radius:6px;background:var(--mk-line-soft);font-size:12px;color:var(--mk-ink)}
+.b-cfg .chip em{font-style:normal;font-size:9.5px;font-weight:700;color:#15803D;background:#DCFCE7;border-radius:4px;padding:0 5px}
+.b-cfg .lk{font-size:12px;color:var(--mk-muted);display:flex;align-items:center;gap:6px}
+.b-cfg .or{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.b-cfg .or span{height:40px;border:1px solid var(--mk-line);border-radius:8px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--mk-text)}
+.b-cfg .or span.on{border-color:var(--mk-blue);color:var(--mk-blue-ink);background:#EFF6FF}
+.b-cfg .ac{display:flex;align-items:center;gap:8px;height:32px;border:1px solid var(--mk-line);border-radius:7px;padding:0 10px;font-size:12.5px;color:var(--mk-ink);background:#fff}
+.b-cfg .ac .rt{font-size:11px;color:#15803D;font-weight:600}
+.b-cfg .ft{display:flex;justify-content:flex-end;gap:8px;padding:10px 16px;border-top:1px solid var(--mk-line)}
+/* Reports */
+.b-rp{flex:1;min-height:0;overflow:hidden;padding:14px 20px;display:flex;flex-direction:column;gap:12px;background:var(--mk-bg-soft)}
+.b-k5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.b-k5>div{border-radius:10px;padding:12px 14px;border:1px solid var(--mk-line);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;height:92px}
+.b-k5>div.t{background:linear-gradient(135deg,#6366F1,#4F46E5);border:0;color:#fff;flex-direction:column;align-items:flex-start;justify-content:center}
+.b-k5 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.b-k5 .t small,.b-k5 .t span{color:rgba(255,255,255,.85)}
+.b-k5 b{display:block;font-size:26px;font-weight:700;line-height:1.1;color:var(--mk-ink)}
+.b-k5 .t b{color:#fff}
+.b-k5 span{font-size:11.5px;color:var(--mk-muted)}
+.b-k5 .t i{display:block;width:120px;height:4px;border-radius:2px;background:rgba(255,255,255,.3);margin-top:6px}
+.b-k5 .t i::after{content:"";display:block;width:40%;height:100%;background:#fff;border-radius:2px}
+.b-k5 .a{background:#EFF6FF}.b-k5 .d{background:#F0FDF4}.b-k5 .f{background:#FEF2F2}.b-k5 .c{background:#F9FAFB}
+.b-don{position:relative;width:46px;height:46px;flex:none}
+.b-don svg{transform:rotate(-90deg)}
+.b-don b{position:absolute;inset:0;display:grid;place-items:center;font-size:10.5px!important;font-weight:700}
+.b-2c{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.b-oc{display:flex;align-items:center;gap:10px;height:40px;font-size:13px;color:var(--mk-ink);border-bottom:1px solid var(--mk-line-soft)}
+.b-oc .bar{margin-left:auto;width:120px;height:5px;border-radius:3px;background:var(--mk-line-soft);overflow:hidden}
+.b-oc .bar i{display:block;height:100%}
+.b-oc b{width:24px;text-align:right}
+.b-lg{display:flex;flex-direction:column;gap:9px;font-size:12.5px;flex:1}
+.b-lg div{display:flex;align-items:center;gap:8px}
+.b-lg i{width:8px;height:8px;border-radius:50%}
+.b-lg b{margin-left:auto;width:30px;text-align:right}
+.b-lg span{width:36px;text-align:right;color:var(--mk-muted)}
+.b-stp td{height:38px}
+/* Project 2.0 */
+.p-ov{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 300px;overflow:hidden}
+.p-ovm{padding:14px 24px;overflow:hidden;border-right:1px solid var(--mk-line);display:flex;flex-direction:column}
+.p-ovm section{padding:11px 0;border-bottom:1px solid var(--mk-line-soft)}
+.p-ovm h4{margin:0 0 8px;display:flex;align-items:baseline;gap:10px;font-size:14px;font-weight:700;color:var(--mk-ink)}
+.p-ovm h4 small{font-size:12px;font-weight:500;color:var(--mk-muted)}
+.p-ovm h4 .ra{margin-left:auto;display:flex;gap:12px;font-size:12px;font-weight:500;color:var(--mk-muted)}
+.p-ovm p{font-size:12.5px;line-height:1.5;color:var(--mk-text)}
+.p-fin{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.p-fin div{border-radius:8px;background:var(--mk-bg-soft);padding:10px 12px;display:flex;flex-direction:column;gap:3px}
+.p-fin small{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.p-fin b{font-size:18px;color:var(--mk-ink)}
+.p-fin div.g{background:#F0FDF4}.p-fin div.g b{color:#15803D}
+.p-kb{flex:1;min-height:0;display:flex;gap:12px;padding:6px 16px 0;overflow:hidden}
+.p-kc{flex:1;min-width:0;border-radius:10px;padding:10px 8px;display:flex;flex-direction:column;gap:8px}
+.p-kc .h{display:flex;align-items:center;gap:7px;padding:2px 6px 4px;font-size:13px;font-weight:700;color:var(--mk-ink)}
+.p-kc .h i{width:7px;height:7px;border-radius:50%}
+.p-kc .h em{font-style:normal;font-size:12px;font-weight:500;color:var(--mk-muted)}
+.p-kc .h svg{margin-left:auto;color:var(--mk-muted)}
+.p-kc .ad{display:flex;align-items:center;gap:6px;padding:4px 6px;font-size:12.5px;color:var(--mk-muted)}
+.p-tc{background:#fff;border:1px solid var(--mk-line);border-radius:9px;padding:9px 11px;display:flex;flex-direction:column;gap:6px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.p-tc .t1{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mk-muted)}
+.p-tc .t1 code{font-size:10.5px;font-weight:600}
+.p-tc .t1 .pr{margin-left:auto;display:inline-flex;align-items:center;gap:3px;font-weight:600}
+.p-tc b{font-size:12.5px;font-weight:700;color:var(--mk-ink);line-height:1.35}
+.p-tc .l2{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mk-text)}
+.p-tc .l2 .mk-av{width:18px;height:18px;font-size:8px}
+.p-tc .l2 .d{margin-left:auto;display:inline-flex;align-items:center;gap:4px;color:var(--mk-muted)}
+.p-tc .l2 .d.late{color:var(--mk-red);font-weight:600}
+.p-tc.dn b{color:var(--mk-muted);text-decoration:line-through}
+.p-dr{position:absolute;top:0;right:0;bottom:0;width:820px;background:#fff;border-left:1px solid var(--mk-line);box-shadow:-24px 0 48px -24px rgba(15,23,42,.3);z-index:5;display:grid;grid-template-columns:minmax(0,1fr) 270px}
+.p-dr.sm{width:470px;display:flex;flex-direction:column}
+.p-veil{position:absolute;inset:0;background:rgba(15,23,42,.18);z-index:4}
+.p-dm{padding:14px 20px;overflow:hidden;display:flex;flex-direction:column;gap:8px;border-right:1px solid var(--mk-line)}
+.p-dm .hh{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mk-muted)}
+.p-dm .hh code{font-size:11.5px;font-weight:600;color:var(--mk-text)}
+.p-dm .hh .rt{gap:14px}
+.p-dm h2{margin:2px 0 4px;font-size:19px;font-weight:700;color:var(--mk-ink)}
+.p-dm .kv{display:grid;grid-template-columns:150px 1fr;font-size:12.5px;align-items:center;min-height:26px}
+.p-dm .kv span{display:inline-flex;align-items:center;gap:6px;color:var(--mk-muted)}
+.p-dm .kv b{font-weight:500;color:var(--mk-ink)}
+.p-dm .st{display:flex;align-items:center;gap:14px;padding:8px 0;border-top:1px solid var(--mk-line-soft);border-bottom:1px solid var(--mk-line-soft)}
+.p-sec{border-top:1px solid var(--mk-line-soft);padding:8px 0}
+.p-sec .h{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--mk-ink)}
+.p-sec .h .rt .cb{height:26px;font-size:11.5px}
+.p-sec .b{font-size:12.5px;color:var(--mk-text);line-height:1.5;margin-top:5px}
+.p-sec .e{font-size:12px;color:var(--mk-dim);font-style:italic;margin-top:4px}
+.p-sub{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:4px 0}
+.p-dp{padding:14px 14px;overflow:hidden;display:flex;flex-direction:column;gap:10px;background:#fff}
+.p-dp .cap{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.p-dp .tk{border:1px solid var(--mk-line);border-radius:9px;padding:9px;display:flex;flex-direction:column;gap:7px}
+.p-dp .tk .q{font-size:12px;color:var(--mk-dim)}
+.p-dp .tk .bb{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.p-dp .tk .bb span{height:28px;border:1px solid var(--mk-line);border-radius:6px;display:flex;align-items:center;justify-content:center;gap:5px;font-size:11.5px;color:var(--mk-text)}
+.p-dp .tk .go{height:30px;border-radius:6px;background:var(--mk-blue);color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px;font-weight:600}
+.p-dp .kv{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:3px 0}
+.p-dp .kv span{display:inline-flex;align-items:center;gap:6px;color:var(--mk-muted)}
+.p-dp .kv b{font-weight:500;color:var(--mk-ink);text-align:right}
+.p-dp .act{display:flex;gap:8px;font-size:11.5px;line-height:1.4;color:var(--mk-text)}
+.p-dp .act b{color:var(--mk-ink)}.p-dp .act small{display:block;color:var(--mk-dim)}
+.p-su{flex:1;min-height:0;overflow:hidden;padding:4px 18px}
+.p-rep{padding:14px 0;border-bottom:1px solid var(--mk-line);display:flex;flex-direction:column;gap:8px}
+.p-rep .tp{display:flex;align-items:center;font-size:12px;color:var(--mk-muted)}
+.p-rep .tp .d{margin-left:auto;display:inline-flex;align-items:center;gap:5px}
+.p-rep .pr{display:flex;align-items:center;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.p-rep .pr b{margin-left:auto;font-size:13px;letter-spacing:0}
+.p-rep .tb{height:5px;border-radius:3px;background:var(--mk-line-soft);overflow:hidden}
+.p-rep .tb i{display:block;height:100%;width:0;border-radius:3px;transition:width .9s cubic-bezier(.2,.8,.3,1) .35s}
+.p-rep p{font-size:12.5px;line-height:1.55;color:var(--mk-text)}
+.p-rep .snap{background:var(--mk-bg-soft);border:1px solid var(--mk-line-soft);border-radius:9px;padding:9px 12px;display:flex;flex-direction:column;gap:6px}
+.p-rep .snap .c{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.p-rep .snap .v{display:flex;gap:30px}
+.p-rep .snap .v div{display:flex;flex-direction:column;gap:1px}
+.p-rep .snap .v span{font-size:11px;color:var(--mk-muted)}
+.p-rep .snap .v b{font-size:16px;font-weight:700;color:var(--mk-ink)}
+.p-rep .snap .v small{font-size:10.5px;color:var(--mk-muted)}
+.p-rep .by{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mk-muted)}
+.p-rep .by .mk-av{width:18px;height:18px;font-size:8px}
+.p-pl{flex:1;min-height:0;overflow:hidden;padding:14px 20px;display:flex;flex-direction:column;gap:12px;background:var(--mk-bg-soft)}
+.p-gm{display:grid;grid-template-columns:minmax(0,1fr) 300px;background:#fff;border:1px solid var(--mk-line);border-radius:10px}
+.p-gm .l{padding:14px 18px;display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--mk-line)}
+.p-gm .l small{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.p-gm .l .v{display:flex;align-items:center;gap:10px}
+.p-gm .l .v b{font-size:38px;font-weight:600;color:#C2410C;letter-spacing:-.02em;line-height:1}
+.p-gm .l .bar{height:7px;border-radius:4px;background:var(--mk-line-soft);overflow:hidden;position:relative}
+.p-gm .l .bar i{display:block;height:100%;border-radius:4px;background:#F59E0B}
+.p-gm .l .bar u{position:absolute;top:-3px;bottom:-3px;width:2px;background:#15803D}
+.p-gm .l span{font-size:12px;color:var(--mk-muted)}
+.p-gm .r{padding:10px 18px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.p-gm .r div{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mk-muted)}
+.p-gm .r b{font-size:16px;color:var(--mk-ink)}
+.p-gm .r b.g{color:#15803D}
+.p-ch{background:#fff;border:1px solid var(--mk-line);border-radius:10px;padding:12px 18px}
+.p-ch h5{margin:0;font-size:13.5px;color:var(--mk-ink)}
+.p-ch small{font-size:11.5px;color:var(--mk-muted)}
+.p-ch .lgd{display:flex;gap:16px;font-size:11.5px;color:var(--mk-muted);margin-top:4px}
+.p-ch .lgd span{display:inline-flex;align-items:center;gap:5px}
+.p-ch .lgd i{width:12px;height:3px;border-radius:2px;display:inline-block}
+.p-lt{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--mk-line);border-radius:10px;overflow:hidden;font-size:12.5px}
+.p-lt th{text-align:left;font-size:10.5px;letter-spacing:.06em;font-weight:600;color:var(--mk-muted);height:34px;padding:0 16px;border-bottom:1px solid var(--mk-line)}
+.p-lt td{height:34px;padding:0 16px;border-bottom:1px solid var(--mk-line-soft);color:var(--mk-text)}
+.p-lt .r{text-align:right}
+.p-lt tr.g td{background:var(--mk-bg-soft);font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-blue-ink)}
+.p-lt tr.t td{font-weight:700;color:var(--mk-ink)}
+.p-lt tr.t td.g{color:#15803D}
+/* Chat */
+.c-sd{width:272px;flex:none;border-right:1px solid var(--mk-line);display:flex;flex-direction:column;background:#fff}
+.c-sd .h{height:50px;display:flex;align-items:center;gap:10px;padding:0 14px;font-size:15px;font-weight:700;color:var(--mk-ink);flex:none}
+.c-sd .h .rt{gap:12px;color:var(--mk-muted)}
+.c-sd .g{display:flex;align-items:center;gap:6px;padding:6px 14px;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.c-ch{display:flex;align-items:center;gap:10px;padding:7px 10px;margin:0 6px;border-radius:8px}
+.c-ch.on{background:var(--mk-blue-soft)}
+.c-ch.on b{color:var(--mk-blue-ink)}
+.c-ch .mk-av{width:32px;height:32px;font-size:11px}
+.c-ch div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.c-ch b{font-size:13px;color:var(--mk-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-ch small{font-size:11.5px;color:var(--mk-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-ch em{font-style:normal;font-size:11px;color:var(--mk-dim);align-self:flex-start;margin-top:2px}
+.c-ch .un{min-width:18px;height:18px;border-radius:9px;background:var(--mk-blue);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;padding:0 5px;align-self:center}
+.c-sd .ws{margin-top:auto;border-top:1px solid var(--mk-line-soft);padding:8px 12px;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--mk-ink)}
+.c-sd .ws svg{margin-left:auto;color:var(--mk-dim)}
+.c-tabs{height:50px;display:flex;align-items:stretch;gap:22px;padding:0 24px;border-bottom:1px solid var(--mk-line);font-size:13px;flex:none}
+.c-tabs span{display:inline-flex;align-items:center;color:var(--mk-text);position:relative}
+.c-tabs span.on{color:var(--mk-blue-ink);font-weight:600}
+.c-tabs span.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--mk-blue)}
+.c-tabs .rt{gap:14px;color:var(--mk-muted)}
+.c-home{flex:1;min-height:0;overflow:hidden;padding:26px 0;display:flex;justify-content:center}
+.c-home>div{width:900px;display:flex;flex-direction:column;gap:12px}
+.c-home h2{margin:0;font-size:28px;font-weight:700;color:var(--mk-ink);letter-spacing:-.01em}
+.c-home .sub{font-size:13.5px;color:var(--mk-muted);margin-top:-4px}
+.c-home .cap{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted);margin-top:10px}
+.c-qs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.c-qs div{border:1px solid var(--mk-line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.c-qs small{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mk-muted)}
+.c-qs b{font-size:24px;color:var(--mk-ink)}
+.c-qs b.bl{color:var(--mk-blue)}
+.c-rc{display:flex;align-items:center;gap:12px;border:1px solid var(--mk-line);border-radius:10px;padding:10px 14px}
+.c-rc .mk-av{width:30px;height:30px;font-size:10.5px}
+.c-rc div{flex:1;min-width:0}
+.c-rc b{font-size:13.5px;color:var(--mk-ink)}
+.c-rc b small{font-size:11px;font-weight:400;color:var(--mk-dim);margin-left:8px}
+.c-rc p{font-size:12px;color:var(--mk-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.c-rc .un{min-width:20px;height:20px;border-radius:10px;background:var(--mk-blue);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;padding:0 6px}
+.c-main{flex:1;min-width:0;display:flex;flex-direction:column}
+.c-hd{height:50px;display:flex;align-items:center;gap:10px;padding:0 18px;border-bottom:1px solid var(--mk-line);flex:none}
+.c-hd b{font-size:15px;color:var(--mk-ink)}
+.c-hd svg{color:var(--mk-muted)}
+.c-hd .rt{gap:16px}
+.c-body{flex:1;min-height:0;overflow:hidden;padding:12px 22px;display:flex;flex-direction:column;gap:9px}
+.c-day{align-self:center;font-size:11.5px;color:var(--mk-muted)}
+.c-sys{align-self:center;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mk-muted)}
+.c-m{display:flex;gap:9px;max-width:74%;align-items:flex-start}
+.c-m .mk-av{width:30px;height:30px;font-size:10.5px;margin-top:2px}
+.c-m .bb{background:#fff;border:1px solid var(--mk-line);border-radius:4px 14px 14px 14px;padding:8px 12px;font-size:13.5px;line-height:1.45;color:var(--mk-ink)}
+.c-m .nm{font-size:12px;font-weight:600;color:var(--mk-ink);margin-bottom:3px}
+.c-m .nm small{font-weight:400;color:var(--mk-dim);margin-left:6px}
+.c-m.me{align-self:flex-end;flex-direction:column;align-items:flex-end}
+.c-m.me .bb{background:#E3EDF9;border-color:#E3EDF9;border-radius:14px 14px 4px 14px}
+.c-m.me .tm{font-size:11px;color:var(--mk-dim)}
+.c-m .at{display:flex;align-items:center;gap:8px;margin-top:6px;border:1px solid var(--mk-line);border-radius:8px;padding:6px 10px;font-size:12px;background:var(--mk-bg-soft)}
+.c-m .at b{display:block;font-size:12px}
+.c-m .at small{color:var(--mk-muted)}
+.c-m .mn{color:var(--mk-blue-ink);font-weight:600}
+.c-cp{margin:0 18px 14px;border:1.5px solid #93B4F5;border-radius:10px;flex:none}
+.c-cp .tb{display:flex;gap:14px;padding:8px 14px 0;color:var(--mk-muted)}
+.c-cp .ip{padding:10px 14px;font-size:13px;color:var(--mk-dim)}
+.c-cp .ft{display:flex;align-items:center;gap:13px;padding:4px 14px 10px;color:var(--mk-muted);font-size:12px}
+.c-cp .ft .rt{gap:10px}
+.c-pn{width:320px;flex:none;border-left:1px solid var(--mk-line);display:flex;flex-direction:column;background:#fff}
+.c-pn .tb{height:50px;display:flex;align-items:center;justify-content:space-around;border-bottom:1px solid var(--mk-line);color:var(--mk-muted);flex:none}
+.c-pn .tb span.on{color:var(--mk-blue-ink)}
+.c-pn .bd{padding:12px 14px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.c-pn .pr{font-size:11.5px;color:var(--mk-muted)}
+.c-pn .top{display:flex;align-items:center;gap:10px;padding-bottom:10px}
+.c-pn .top .mk-av{width:40px;height:40px;font-size:14px}
+.c-pn .top b{display:block;font-size:14.5px;color:var(--mk-ink)}
+.c-pn .top small{font-size:11.5px;color:var(--mk-muted)}
+.c-pn .sh{display:flex;align-items:center;gap:8px;height:38px;border-top:1px solid var(--mk-line-soft);font-size:13px;font-weight:600;color:var(--mk-ink)}
+.c-pn .sh .rt{color:var(--mk-muted);font-weight:400;font-size:12px}
+.c-pn .ds{font-size:12px;color:var(--mk-text);line-height:1.45;padding-bottom:6px}
+.c-mb{display:flex;align-items:center;gap:9px;padding:4px 0}
+.c-mb .mk-av{width:30px;height:30px;font-size:10.5px}
+.c-mb div{min-width:0}
+.c-mb b{font-size:12.5px;color:var(--mk-ink)}
+.c-mb b em{font-style:normal;font-size:9.5px;font-weight:700;color:var(--mk-blue-ink);background:var(--mk-blue-soft);border-radius:4px;padding:1px 5px;margin-left:5px}
+.c-mb small{display:block;font-size:11px;color:var(--mk-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px}
+.c-vc{flex:1;min-height:0;position:relative;overflow:hidden;background:radial-gradient(900px 500px at 20% 110%,#7C3AED 0%,transparent 60%),radial-gradient(700px 500px at 90% -10%,#6366F1 0%,transparent 60%),linear-gradient(160deg,#2E1065,#3B0764 55%,#1E1B4B);color:#fff;display:flex;flex-direction:column;align-items:center;padding-top:60px}
+.c-vc .hi{font-size:16px;color:rgba(255,255,255,.8)}
+.c-vc .clk{font-size:72px;font-weight:300;letter-spacing:-.02em;line-height:1.1;margin-top:6px}
+.c-vc .dt{font-size:15px;color:rgba(255,255,255,.75)}
+.c-vc .tiles{display:grid;grid-template-columns:repeat(4,170px);gap:16px;margin-top:40px}
+.c-vc .tiles div{height:130px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:13.5px;font-weight:600}
+.c-vc .tiles i{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16)}
+.c-vc .tiles div:first-child i{background:#38BDF8;color:#0C4A6E}
+.c-vc .yc{width:712px;margin-top:30px;display:flex;flex-direction:column;gap:10px}
+.c-vc .yc .h{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600}
+.c-vc .yc .h span{font-weight:400;color:rgba(255,255,255,.7)}
+.c-vc .yc .r{display:flex;align-items:center;gap:12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:10px 14px;font-size:13px}
+.c-vc .yc .r b{display:block;font-size:13.5px}
+.c-vc .yc .r small{color:rgba(255,255,255,.7)}
+.c-vc .yc .r .bt{margin-left:auto;background:#38BDF8;color:#0C4A6E}
+.c-vc .nav{position:absolute;bottom:22px;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18)}
+.c-vc .nav span{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 16px;border-radius:999px;font-size:12.5px;color:rgba(255,255,255,.8)}
+.c-vc .nav span.on{background:#fff;color:#3B0764;font-weight:600}
+
 </style>
 <style>
 /* ===== Lớp riêng bộ mock Nano Entech (tiền tố n-) — chỉ là cách vẽ; cấu trúc theo ảnh thư viện ===== */
@@ -1731,7 +2115,7 @@ const wsMark = (cls = '') => NANO_MARK ? `<img class="n-ws ${cls}" src="${NANO_M
 function topbar(app, name) {
   return `<div class="mk-topbar"><div class="brand"><img src="${APP_LOGO[app]}" width="26" height="26" alt="">${name}</div>
     <div class="search">${I('search', 14)}Tìm kiếm…<kbd>Ctrl+K</kbd></div>
-    <div class="icons">${I('circle-question-mark', 17)}<span class="badge99">${I('bell', 17)}<b>4</b></span><span class="me" style="background:linear-gradient(135deg,${G[1]})">PT</span>${I('chevron-down', 15)}</div></div>`;
+    <div class="icons">${I('circle-question-mark', 17)}<span class="badge99">${I('bell', 17)}<b>4</b></span><span class="me" style="background:linear-gradient(135deg,${G[PK.indexOf(CUR_ME)]})">${ini2(P[CUR_ME][0])}</span>${I('chevron-down', 15)}</div></div>`;
 }
 function win(app, name, path, body) {
   return `<div class="mk-chrome"><i style="background:#FE5F58"></i><i style="background:#FCBC3F"></i><i style="background:#34C648"></i><div class="url"><b>${TENANT}</b>${path}</div></div>
@@ -2112,6 +2496,375 @@ function sDataset() {
       <tr><th></th>${th('type', 'Dòng báo giá')}${th('circle-dot', 'Dịch vụ')}${th('map-pin', 'Tỉnh')}${th('hash', 'Năm')}${th('type', 'Đơn vị')}${th('circle-dollar-sign', 'Đơn giá (₫)')}${th('building-2', 'Khách hàng')}${th('user', 'Người báo giá')}</tr>${rows}</table></div></div>`;
 }
 
+Object.assign(APP_LOGO,{bpm:'data:image/png;base64,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',chat:'data:image/png;base64,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'});
+ICONS.pause='<rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/>';
+
+
+
+
+/* ===================== PHẦN 4 · WORKFLOW 2.0 (BPM) ===================== */
+let CUR_ME = 'thao';
+const fmtV = (n) => Math.round(n).toLocaleString('vi-VN');
+// Nhóm quy trình: [chữ, tên, màu, nền, [[tên, mô tả, icon, đang chạy, xong]]]
+const BSV = [
+  ['C', 'Công trình', '#16A34A', '#DCFCE7', [['Đề nghị mua thiết bị công trình', 'Kỹ thuật đề nghị, AI so giá, duyệt theo giá trị', 'package', 6, 38], ['Nghiệm thu & bàn giao công trình', 'Biên bản lắp đặt, đo kiểm, bàn giao hồ sơ', 'clipboard-check', 3, 11], ['Báo sự cố hệ thống khách hàng', 'Tiếp nhận, cử kỹ thuật, đóng sự cố', 'triangle-alert', 4, 27]]],
+  ['H', 'Hồ sơ môi trường', '#7C3AED', '#EDE9FE', [['Lập hồ sơ giấy phép môi trường', 'Thu thập số liệu, soạn, rà soát, nộp Sở', 'file-text', 5, 9], ['Báo cáo công tác BVMT năm', 'Tổng hợp quan trắc, lập báo cáo, nộp trước 15/01', 'scroll-text', 8, 14]]],
+  ['T', 'Tài chính', '#2563EB', '#DBEAFE', [['Đề nghị thanh toán', 'Chứng từ, duyệt, uỷ nhiệm chi', 'wallet', 4, 52], ['Tạm ứng & hoàn ứng', 'Tạm ứng công tác, công trình', 'banknote', 2, 31]]],
+  ['V', 'Văn phòng', '#D97706', '#FEF3C7', [['Đề xuất mua sắm văn phòng', 'Văn phòng phẩm, thiết bị văn phòng', 'shopping-cart', 1, 18]]],
+];
+const SVC_NAME = BSV[0][4][0][0];
+function bpmSide(on) {
+  const grp = BSV.map((g, gi) => {
+    const open = gi === 0 && on === 'svc';
+    return `<div class="row grp ${open ? 'soft' : ''}"><span class="ltr" style="background:${open ? g[2] : g[3]};color:${open ? '#fff' : g[2]}">${g[0]}</span><span>${g[1]}</span><span class="cv">${I(open ? 'chevron-down' : 'chevron-right', 13)}</span></div>`
+      + (open ? g[4].map((s, i) => `<div class="row srv" style="${i === 0 ? 'color:var(--mk-blue-ink);font-weight:600' : ''}"><i class="dt" style="background:${g[2]}"></i><span>${s[0]}</span></div>`).join('') : '');
+  }).join('');
+  return `<div class="s1"><div class="ttl">${I('layout-grid', 17)}BPM</div>${R('list-checks', 'Việc của tôi', on === 'mw')}${R('layout-grid', 'Quy trình', on === 'list')}
+    <div class="sec">QUY TRÌNH ${I('search', 12)}</div>${grp}<div class="ft">${R('chart-column', 'Báo cáo')}${R('settings', 'Cài đặt')}${WS}</div></div>`;
+}
+// 4.1 · Quy trình › Danh sách — ảnh bpm/08
+function bSvcList() {
+  const nS = BSV.reduce((a, g) => a + g[4].length, 0);
+  const body = BSV.map((g, gi) => `<div class="${d(gi, 100, 70)}"><div class="b-gh">${I('chevron-down', 13)}${g[1]}<em>${g[4].length}</em></div><div class="b-gr" style="margin-top:8px">${g[4].map(s => {
+    const t = s[3] + s[4];
+    return `<div class="b-sc ${s[0] === SVC_NAME ? 'n-hl' : ''}" style="border-left-color:${g[2]}"><div class="t"><i style="background:${g[3]};color:${g[2]}">${I(s[2], 17)}</i><div><b>${s[0]}</b><span>${s[1]}</span></div></div>
+      <div class="q-bar"><i style="width:${s[3] / t * 100}%;background:#3B82F6"></i><i style="width:${s[4] / t * 100}%;background:#22C55E"></i></div><div class="f"><span><b style="color:#2563EB">${s[3]}</b> Đang chạy</span><span><b style="color:#16A34A">${s[4]}</b> Xong</span></div></div>`;
+  }).join('')}</div></div>`).join('');
+  return bpmSide('list') + `<div class="m3"><div class="b-hd">${I('layout-grid', 15)}<span class="t">Quy trình</span><span class="mu">${nS} quy trình · ${BSV.length} nhóm</span><span class="rt"><span class="cb srch">${I('search', 13)}Tìm quy trình…</span><span class="bt">${I('plus', 14)}Quy trình mới</span></span></div>
+    <div class="q-tabs"><span>Luồng liên kết</span><span class="on">Danh sách</span><span>${I('chevron-down', 13)}</span></div><div class="b-svl">${body}</div></div>`;
+}
+// Việc của tôi: [loại m/a/ai, tên, mã, bước, thời gian, quy trình, màu, quá hạn, người, hành động]
+const MW_NOW = [
+  ['a', 'Mua quạt hút & đầu dò bụi – Long Hồ Xanh', 'MTB-2026-0318', 'TP Kỹ thuật duyệt (≥100 tr)', '2d 4h', SVC_NAME, '#16A34A', 'Quá hạn 4h', 'hieu', 'ap'],
+  ['a', 'Mua bơm định lượng dự phòng – Hậu Giang Food', 'MTB-2026-0321', 'TP Kỹ thuật duyệt', '1d 3h', SVC_NAME, '#16A34A', 'Quá hạn 2h', 'tuan', 'ap'],
+  ['m', 'Rà soát hồ sơ GPMT – Thủy sản Cái Răng', 'GPMT-2026-0042', 'Trưởng phòng Kỹ thuật rà soát', '3d 1h', 'Lập hồ sơ giấy phép môi trường', '#7C3AED', 'Quá hạn 1d 2h', 'nhi', 'm'],
+  ['a', 'Nghiệm thu đợt 2 – Long Hồ Xanh khí thải', 'NTBG-2026-0015', 'Kỹ thuật xác nhận lắp đặt', '6d', 'Nghiệm thu & bàn giao công trình', '#16A34A', 'Quá hạn 2d', 'hieu', 'ap'],
+  ['m', 'Sự cố bơm bể điều hòa – KS Sông Hậu Riverside', 'SC-2026-0207', 'Phân công kỹ thuật', '5h', 'Báo sự cố hệ thống khách hàng', '#16A34A', 'Quá hạn 1h', 'phat', 'm'],
+];
+const MW_OD = [
+  ['m', 'Chọn nhà cung cấp máy thổi khí – May Phong Điền', 'MTB-2026-0322', 'Mua hàng chọn nhà cung cấp', '2d', SVC_NAME, '#16A34A', 'Quá hạn 1d', 'tuan'],
+  ['m', 'Báo cáo BVMT 2026 – BV ĐK Long Mỹ', 'BVMT-2026-0031', 'Tổng hợp số liệu quan trắc', '4d', 'Báo cáo công tác BVMT năm', '#7C3AED', 'Quá hạn 3d', 'nhi'],
+];
+function jr(r, i, mine) {
+  const ti = r[0] === 'a' ? `<span class="ti a">${I('check', 14, 2.4)}</span>` : `<span class="ti m">${I('clipboard-list', 14)}</span>`;
+  const qa = !mine ? `<i>${I('arrow-up-right', 13)}</i><i>${I('ellipsis', 13)}</i>` : r[9] === 'ap' ? `<i class="y">${I('thumbs-up', 13)}</i><i class="n">${I('thumbs-down', 13)}</i><i>${I('arrow-up-right', 13)}</i>` : `<i class="s">${I('send', 13)}</i><i>${I('check', 13)}</i><i>${I('arrow-up-right', 13)}</i>`;
+  return `<div class="b-jr ${r[2] === 'MTB-2026-0318' ? 'n-hl' : ''} ${d(i, 140, 50)}">${ti}<div class="nm"><b><span>${r[1]}</span>${mine ? `<span class="b-yt">${I('arrow-right', 10)}LƯỢT CỦA BẠN</span>` : ''}</b><small><code>${r[2]}</code>${r[3]} · ${I('clock', 11)}${r[4]}</small></div>
+    <div class="sv"><i class="dot" style="background:${r[6]}"></i><span>${r[5]}</span></div><span class="b-od">${I('clock', 11)}${r[7]}</span>${av(r[8], 24)}<div class="b-qa">${qa}</div></div>`;
+}
+// 4.2 · Việc của tôi (Phân loại) — ảnh bpm/01
+function bMyWork() {
+  return bpmSide('mw') + `<div class="m3"><div class="b-hd">${I('list', 15)}<span class="mu">Phiếu</span>${I('chevron-right', 13)}<span class="t">Việc của tôi</span><span class="mu">${MW_NOW.length + MW_OD.length} bước</span>
+      <span class="rt"><span class="cb srch">${I('search', 13)}Tìm bước…</span><span class="b-tg on">${I('users', 13)}Đang theo dõi${I('chevron-down', 12)}</span><span class="cb">${I('list-filter', 13)}Lọc</span><span class="cb">${I('arrow-up-down', 13)}Mới nhất${I('chevron-down', 12)}</span><span class="seg"><span class="on">${I('layout-grid', 13)}Phân loại</span><span>${I('table-2', 13)}Bảng</span></span><span class="bt">${I('plus', 14)}Phiếu mới</span></span></div>
+    <div class="q-tabs"><span class="on">Lượt của tôi</span><span>Đang theo dõi</span><span>Tôi tạo</span><span>Tất cả</span><span>${I('plus', 13)}</span></div>
+    <div class="b-tri"><div class="b-blk hot"><div class="bh">${I('zap', 15)}Cần xử lý ngay<em>${MW_NOW.length}</em><small>Lượt của bạn · quá hạn hoặc đang kẹt</small></div>${MW_NOW.map((r, i) => jr(r, i, 1)).join('')}</div>
+      <div class="b-blk"><div class="bh">${I('chevron-down', 13)}${I('clock', 14)}Quá hạn<em style="background:var(--mk-line-soft);color:var(--mk-muted)">${MW_OD.length}</em><small>Không phải lượt của bạn</small></div>${MW_OD.map((r, i) => jr(r, i + 5, 0)).join('')}</div>
+      <div class="b-blk"><div class="bh">${I('chevron-right', 13)}Đến hạn hôm nay<em style="background:var(--mk-line-soft);color:var(--mk-muted)">0</em></div></div>
+      <div class="b-blk"><div class="bh">${I('chevron-right', 13)}Đến hạn tuần này<em style="background:var(--mk-line-soft);color:var(--mk-muted)">3</em></div></div></div></div>`;
+}
+// Luồng quy trình: [tên, loại, thời hạn, số phiếu, x, y]
+const BT = { st: ['Bắt đầu', '#2563EB', 'play'], m: ['Thủ công', '#DC2626', 'clipboard-list'], ai: ['AI Agent', '#A855F7', 'sparkles'], dc: ['Rẽ nhánh', '#F59E0B', 'git-branch'], ap: ['Phê duyệt', '#16A34A', 'circle-check'], en: ['Kết thúc', '#16A34A', 'flag'] };
+const FN = {
+  st: ['Bắt đầu', 'st', '0h', 0, 330, 40],
+  n1: ['Kỹ thuật lập đề nghị', 'm', '4h', 1, 330, 132],
+  n2: ['So sánh báo giá nhà cung cấp', 'ai', '15m', 0, 330, 224],
+  n3: ['Mua hàng chọn nhà cung cấp', 'm', '1d', 2, 330, 316],
+  dc: ['Phân cấp duyệt theo giá trị', 'dc', '0h', 0, 330, 408],
+  a1: ['TP Kỹ thuật duyệt', 'ap', '1d', 1, 60, 512],
+  a2: ['TP Kỹ thuật duyệt (≥100 tr)', 'ap', '1d', 1, 470, 512],
+  a3: ['Kế toán trưởng duyệt', 'ap', '1d', 1, 760, 512],
+  n4: ['Kế toán đặt hàng, thanh toán', 'm', '2d', 0, 330, 612],
+  en: ['Kết thúc', 'en', '0h', 0, 760, 612],
+};
+const FLOW_ACTIVE = Object.values(FN).reduce((a, n) => a + n[3], 0);
+const PCOL = { n1: 'Lập đề nghị', n2: 'So giá', n3: 'So giá', a1: 'Chờ duyệt', a2: 'Chờ duyệt', a3: 'Chờ duyệt', n4: 'Thanh toán' };
+function flowCanvas(mode) {
+  const W = 206, H = 54, c = (k) => FN[k][4] + W / 2;
+  const V = (a, b, on) => { const x1 = c(a), y1 = FN[a][5] + H, x2 = c(b), y2 = FN[b][5], m = (y1 + y2) / 2; return `<path class="${on ? 'on' : ''}" d="M${x1} ${y1} C${x1} ${m},${x2} ${m},${x2} ${y2}"/>`; };
+  const Hz = (a, b) => { const y = FN[a][5] + H / 2; return `<path d="M${FN[a][4] + W} ${y} L${FN[b][4]} ${y}"/>`; };
+  const onP = ['st-n1', 'n1-n2', 'n2-n3', 'n3-dc', 'dc-a2'];
+  const ed = [['st', 'n1'], ['n1', 'n2'], ['n2', 'n3'], ['n3', 'dc'], ['dc', 'a1'], ['dc', 'a2'], ['a1', 'n4'], ['a3', 'n4']].map(([a, b]) => V(a, b, mode === 'trf' && onP.includes(a + '-' + b))).join('') + Hz('a2', 'a3') + Hz('n4', 'en');
+  const node = (k) => {
+    const n = FN[k], t = BT[n[1]], sel = (mode === 'ed' && k === 'a2');
+    const meta = mode === 'ed' ? (n[1] === 'ap' ? '1 người duyệt · ' : n[1] === 'm' ? '1 người thực hiện · ' : n[1] === 'dc' ? '2 nhánh · ' : '') : '';
+    return `<div class="b-nd ${sel ? 'sel' : ''} ${mode === 'trf' && k === 'a2' ? 'n-hl' : ''}" style="left:${n[4]}px;top:${n[5]}px;border-top-color:${t[1]}"><div class="t"><span style="color:${t[1]}">${I(t[2], 14)}</span><b>${n[0]}</b></div><small>${t[0]} · ${meta}${I('clock', 10)}${n[2]}</small>
+      ${mode === 'trf' && n[1] !== 'en' ? `<i class="bd ${n[3] ? 'r' : ''}">${n[3]}</i>` : ''}${mode === 'ed' && PCOL[k] ? `<span class="pc">● ${PCOL[k]}</span>` : ''}</div>`;
+  };
+  const ch = (x, y, cls, txt) => `<span class="b-ch ${cls}" style="left:${x}px;top:${y}px">${txt}</span>`;
+  const yb = (k) => FN[k][5] + H + 9;
+  const appr = (k) => ch(c(k) - 48, yb(k), 'g', `${I('thumbs-up', 10)}Phê duyệt`) + ch(c(k) + 48, yb(k), 'r', `${I('thumbs-down', 10)}Từ chối ${I('flag', 10)}`);
+  const chips = ch(c('st'), yb('st'), 'b', `${I('play', 10)}Bắt đầu`) + ch(c('n1'), yb('n1'), 'g', `${I('check', 10)}Đã lập`) + ch(c('n2'), yb('n2'), 'v', `${I('sparkles', 10)}Đã so sánh`) + ch(c('n3'), yb('n3'), 'g', `${I('check', 10)}Đã chọn NCC`)
+    + ch(c('dc') - 90, yb('dc') + 4, 'b', `${I('arrow-right', 10)}Dưới 100 tr`) + ch(c('dc') + 90, yb('dc') + 4, 'x', `${I('arrow-right', 10)}Từ 100 tr`) + appr('a1') + appr('a3') + ch(c('a2'), yb('a2'), 'r', `${I('thumbs-down', 10)}Từ chối ${I('flag', 10)}`)
+    + ch(FN.a2[4] + W + 42, FN.a2[5] + 8, 'g', `${I('thumbs-up', 10)}Duyệt`) + ch(c('n4') + 150, FN.n4[5] + 10, 'g', `${I('check', 10)}Đã chi`);
+  return `<div class="b-fc"><svg width="1000" height="700">${ed}</svg>${Object.keys(FN).map(node).join('')}${chips}</div>`;
+}
+const svcHead = (tab) => `<div class="b-hd"><span class="b-sic" style="background:#DCFCE7;color:#16A34A">${I('package', 15)}</span><span class="t">${SVC_NAME}</span>${I('star', 14)}${I('info', 14)}${I('settings', 14)}${I('ellipsis', 14)}<span class="rt">${tab === 'Luồng' ? `<span class="cb">${I('pencil', 13)}Sửa luồng</span>` : ''}<span class="bt">${I('plus', 14)}Phiếu mới</span></span></div>
+  <div class="q-tabs">${[['list', 'Theo bước'], ['columns-3', 'Kanban'], ['table-2', 'Bảng'], ['workflow', 'Luồng'], ['link', 'Luồng liên kết'], ['chart-column', 'Báo cáo']].map(t => `<span class="${t[1] === tab ? 'on' : ''}">${I(t[0], 13)}${t[1]}</span>`).join('')}<span>${I('plus', 13)}</span></div>`;
+// 4.3 · Quy trình › Luồng + lớp lưu lượng — ảnh bpm/12, 16
+function bFlow() {
+  return bpmSide('svc') + `<div class="m3">${svcHead('Luồng')}<div class="b-cv"><div class="b-trf">Lưu lượng ${I('info', 13)}<span><b>${FLOW_ACTIVE}</b> phiếu đang chạy</span><span class="seg"><span>Tắt</span><span class="on">7 ngày</span><span>30 ngày</span><span>90 ngày</span></span></div>
+    <div class="${d(0, 150)}" style="position:absolute;left:150px;top:62px;transform:scale(.86);transform-origin:0 0">${flowCanvas('trf')}</div><div class="b-zm">${['sliders-horizontal', 'search', 'zoom-in', 'zoom-out', 'maximize'].map(x => `<span>${I(x, 14)}</span>`).join('')}</div></div></div>`;
+}
+// Phiếu xuyên suốt
+const JOB = { name: 'Mua quạt hút & đầu dò bụi – Long Hồ Xanh', code: 'MTB-2026-0318', amt: 186400000 };
+// 4.4 · Chi tiết phiếu — ảnh bpm/18, 19, 21
+function bJob() {
+  const steps = [['Bắt đầu', '09:10 12/10', 'ok', 'play'], ['Kỹ thuật lập đề nghị', '10:02 12/10', 'ok', 'clipboard-list'], ['So sánh báo giá (AI)', '10:05 12/10', 'ok', 'sparkles'], ['Mua hàng chọn NCC', '16:40 13/10', 'ok', 'clipboard-list'], ['TP Kỹ thuật duyệt', 'Đang chờ', 'cur', 'circle-check']];
+  const F = [['Công trình', `<span class="mk-pill blue">DH-2026-0067</span> ${HD.name}`], ['Hạng mục', '<span class="mk-pill green">Thiết bị xử lý khí</span>'], ['Người đề nghị', `<span class="who">${av('hieu', 20)}${nm('hieu')}</span>`], ['Nhà cung cấp được chọn', 'Công ty TNHH Cơ điện Phú Hưng'], ['Số báo giá đã so sánh', '3'], ['Kết quả so sánh báo giá', 'Phú Hưng giá thấp nhất, giao 7 ngày, thấp hơn trung bình 3 báo giá 9%'], ['Số tiền (VND)', fmtV(JOB.amt)], ['Hình thức thanh toán', '<span class="mk-pill cyan">Chuyển khoản</span>'], ['Ngày cần hàng', '21/10/2026'], ['Lý do', 'Quạt ID-02 rung vượt ngưỡng khi chạy tải; đầu dò bụi phục vụ đo kiểm khí thải']];
+  return bpmSide('svc') + `<div class="m3"><div class="hb"><span class="lt">Quy trình</span><span class="cr">${I('chevron-right', 13)}</span><span class="lt">${SVC_NAME}</span><span class="cr">${I('chevron-right', 13)}</span><b>Chi tiết phiếu</b><span class="rt"><span class="cb" style="color:#DC2626;border-color:#FECACA">${I('ban', 13)}Huỷ</span><span class="cb" style="color:#2563EB;background:#EFF6FF;border-color:#BFDBFE">${I('pause', 13)}Đóng băng</span>${I('refresh-cw', 15)}</span></div>
+    <div class="b-jh ${d(0)}" style="padding:12px 20px;border-bottom:1px solid var(--mk-line);flex:none"><h2>${JOB.name}</h2>
+      <div class="l"><span>PHIẾU</span><span class="mk-pill blue">● Đang chạy</span><code>${JOB.code}</code><span class="mut">#318</span></div>
+      <div class="l"><span>BƯỚC</span><span class="b-st">${I('circle-check', 13, 2, '#16A34A')}TP Kỹ thuật duyệt (≥100 tr)</span><span class="b-aw">● Chờ xử lý</span><span class="mk-pill red" style="background:#FEE2E2">Công trình</span><span class="rt" style="color:#DC2626;font-weight:600;gap:6px">${I('clock', 13)}Hạn 14/10/2026 · 09:10 ${I('ellipsis', 14, 2, 'var(--mk-muted)')}</span></div></div>
+    <div class="b-jd"><div>
+      <div class="b-nt ${d(1)}">${I('info', 16)}<span>Bạn không cần làm gì ở bước này · Đang chờ <b>${nm('hanh')}</b></span></div>
+      <div class="b-sb ${d(2)}">${steps.map((s, i) => `<span class="${s[2]}">${I(s[2] === 'ok' ? 'circle-check' : s[3], 15)}<div><b>${i + 1}. ${s[0]}</b>${s[1]}</div></span>`).join('')}</div>
+      <div class="b-cd ${d(3)}"><h4>Dữ liệu ở bước này<span class="rt"><span class="b-ai">${I('sparkles', 12)}Điền bằng AI</span><span class="cb sm">Ẩn trường trống</span></span></h4><div class="cap2" style="padding:2px 0 6px">${I('pencil', 11)} TRƯỜNG PHIẾU CẬP NHẬT Ở ĐÂY</div>
+        ${F.map((f, i) => `<div class="b-fl ${i === 5 ? 'ai' : ''}"><span class="n">${String(i + 1).padStart(2, '0')}.</span><span>${f[0]}</span><b>${f[1]}</b>${I('pencil', 12)}</div>`).join('')}</div></div>
+    <div><div class="b-cd ${d(2)}"><div class="b-kv"><span>Bước đang chạy · 1</span><b class="b-st">TP Kỹ thuật duyệt (≥100 tr)</b></div></div>
+      <div class="b-cd ${d(3)}"><h4>Người duyệt<span class="rt lk2">Sửa người duyệt</span></h4><div class="mut" style="font-size:12px;margin-bottom:6px">» Tuần tự</div><div style="display:flex;align-items:center;gap:10px"><span class="mk-pill blue" style="border-radius:50%;width:20px;padding:0;justify-content:center">1</span>${av('hanh', 30)}<div class="vn"><b style="color:var(--mk-blue-ink)">${nm('hanh')}</b><small>${P.hanh[1]}</small></div><span style="margin-left:auto;color:var(--mk-muted)">${I('clock', 14)}</span></div></div>
+      <div class="b-cd ${d(4)}"><h4>${I('clock', 14)}Dòng thời gian</h4><div class="b-tl"><div class="lb"><b style="color:var(--mk-ink)">Bước này</b><span style="color:#DC2626">quá hạn 4h</span></div><div class="bar"><i data-w="100%" style="width:0;background:linear-gradient(90deg,#3B82F6,#EF4444)"></i></div><div class="lb"><span>Bắt đầu 13/10 · 16:40</span><span>Hạn 14/10 · 09:10</span></div></div>
+        <div class="b-tl"><div class="lb"><b style="color:var(--mk-ink)">Cả phiếu</b><span>đang chạy 2d 4h</span></div><div class="bar"><i data-w="100%" style="width:0;background:#8B5CF6"></i></div><div class="lb"><span>Bắt đầu 12/10 · 09:10</span></div></div></div>
+      <div class="b-cd ${d(5)}"><h4>${I('info', 14)}Thông tin phiếu</h4><div class="b-kv"><span>Các bước</span><b>5/8 xong</b></div><div class="q-bar" style="margin:2px 0 6px"><i style="width:62.5%;background:#22C55E"></i><i style="width:12.5%;background:#F59E0B"></i></div>
+        <div class="b-kv"><span>Quy trình</span><b class="lk2">${SVC_NAME}</b></div><div class="b-kv"><span>Mã phiếu</span><b>#318</b></div><div class="b-kv"><span>Tạo bởi</span><b>${nm('hieu')}</b></div><div class="b-kv"><span>Nguồn</span><b><span class="mk-pill grey">${I('pencil', 10)}Thủ công</span></b></div><div class="b-kv"><span>Tạo lúc</span><b>12/10/2026 · 09:10</b></div></div></div></div></div>`;
+}
+// 4.5 · Sửa luồng — ảnh bpm/27, 28 (toàn màn, không topbar)
+function winBare(app, name, path, body) {
+  return `<div class="mk-chrome"><i style="background:#FE5F58"></i><i style="background:#FCBC3F"></i><i style="background:#34C648"></i><div class="url"><b>${TENANT}</b>${path}</div></div><div class="mk-pf pj3" style="flex:1;min-height:0;display:flex;flex-direction:column">${body}</div>`;
+}
+function bEditor() {
+  const it = (ic, bg, c, n, s, tag) => `<div class="it"><i style="background:${bg};color:${c}">${I(ic, 14)}</i><div><b>${n}${tag ? `<em>${tag}</em>` : ''}</b><span>${s}</span></div></div>`;
+  const pal = `<div class="b-pal"><div class="h">Bước <em>bấm hoặc kéo</em><span class="rt">${I('chevron-left', 14)}</span></div><div class="s">${I('search', 13)}Tìm…</div>
+    <div class="ai ${d(1)}"><i>${I('sparkles', 15)}</i><div><small>DÙNG AI</small><b>AI Agent</b><span>Phân tích, tạo nội dung, ra quyết định bằng AI</span></div></div>
+    <div class="g"><i></i>Bước của người ${I('chevron-down', 12)}</div>${it('clipboard-list', '#FEE2E2', '#DC2626', 'Bước tuỳ chỉnh', 'Giao một việc thủ công')}${it('circle-check', '#DCFCE7', '#16A34A', 'Phê duyệt', 'Thu thập duyệt hoặc từ chối')}
+    <div class="g"><i style="background:#F59E0B"></i>Tự động ${I('chevron-down', 12)}</div>${it('globe', '#FFEDD5', '#EA580C', 'HTTP Request', 'Gọi API bên ngoài')}${it('bell', '#EDE9FE', '#7C3AED', 'Thông báo', 'Gửi thông báo trong app')}${it('mail', '#DBEAFE', '#2563EB', 'Email', 'Gửi email', 'BETA')}${it('file-text', '#E0F2FE', '#0369A1', 'Biểu mẫu công khai', 'Thu thông tin từ bên ngoài', 'BETA')}
+    <div class="g"><i style="background:#0891B2"></i>Ứng dụng kết nối ${I('chevron-down', 12)}</div>${it('pencil', '#CCFBF1', '#0F766E', 'Ký số', 'Gửi tài liệu để ký')}${it('search', '#DCFCE7', '#15803D', 'Tìm bản ghi', 'Tra một bản ghi ở app khác')}${it('database', '#DCFCE7', '#15803D', 'Ghi vào dataset', 'Tạo hoặc cập nhật bản ghi')}
+    <div class="g"><i style="background:#64748B"></i>Điều khiển luồng ${I('chevron-right', 12)}</div></div>`;
+  const cfg = `<div class="b-cfg ${d(2, 250)}"><div class="h">${I('circle-check', 16, 2, '#16A34A')}TP Kỹ thuật duyệt (≥100 tr)<span class="rt" style="gap:12px">${I('pencil', 14)}${I('x', 15)}</span></div><div class="bd">
+      <div class="lb">Cột pipeline</div><div class="in">Chờ duyệt</div><span class="fp">${I('download', 11)}TỪ BƯỚC TRƯỚC</span>
+      <div class="bx"><div class="bh">${I('chevron-down', 12)}${I('log-in', 12)}KHI VÀO BƯỚC <span>· Người duyệt</span></div>
+        <div class="cap">NGƯỜI THỰC HIỆN</div><div class="lb">Quy tắc giao</div><div class="in">Tự giao theo danh sách<span class="rt">${I('chevron-down', 13)}</span></div>
+        <div class="lb">Người duyệt <span style="color:#DC2626">*</span></div><div><span class="chip">${av('hanh', 18)}${nm('hanh')} · ${P.hanh[1]}<em>NGƯỜI DÙNG</em>${I('x', 11)}</span></div>
+        <div class="in ph">Thêm người hoặc vai trò…<span class="rt">${I('chevron-down', 13)}</span></div><div class="lk">${I('users', 12)}Chọn người từ biến…</div><div class="lk">${I('plus', 12)}quản lý / cấp dưới của một người…</div>
+        <div class="cap">THỨ TỰ</div><div class="or"><span class="on">${I('arrow-right', 14)}Tuần tự</span><span>${I('git-branch', 14)}Song song</span></div>
+        <div class="in" style="height:auto;padding:8px 10px;flex-direction:column;align-items:flex-start;gap:1px">Áp dụng khi vào bước<span class="mut" style="font-size:11.5px">Người theo dõi, hạn, việc cần làm, thẻ</span></div></div>
+      <div class="bx v"><div class="bh">${I('chevron-right', 12)}${I('sparkles', 12, 2, '#7C3AED')}AI TƯ VẤN</div></div>
+      <div class="bx"><div class="bh">${I('chevron-down', 12)}${I('user-check', 12)}NGƯỜI DUYỆT QUYẾT ĐỊNH</div><div class="cap">HÀNH ĐỘNG</div>
+        <div class="ac">${I('thumbs-up', 13, 2, '#16A34A')}Phê duyệt<span class="rt" style="margin-left:auto">☑ Đang bật ${I('lock', 11)}</span></div><div class="ac">${I('thumbs-down', 13, 2, '#DC2626')}Từ chối<span class="rt" style="margin-left:auto">☑ Đang bật ${I('lock', 11)}</span></div><div class="lk">${I('plus', 12)}Thêm hành động</div>
+        <div class="cap">HOÀN TẤT KHI</div><div class="in">Tất cả phải đồng ý<span class="rt">${I('chevron-down', 13)}</span></div></div></div>
+    <div class="ft"><span class="cb">Huỷ</span><span class="bt">Lưu</span></div></div>`;
+  return `<div class="b-hd" style="padding:0 14px">${I('arrow-left', 16, 2, 'var(--mk-text)')}<span class="t">${SVC_NAME}</span>${I('history', 15)}${I('table-2', 15)}${I('panel-left', 15)}${I('settings', 15)}<span class="rt"><span class="b-ai">${I('sparkles', 13)}Dựng bằng AI</span><span class="bt">${I('plus', 14)}Phiếu mới</span></span></div>
+    <div class="b-ed">${pal}<div class="b-cv"><div class="${d(0, 150)}" style="position:absolute;left:-10px;top:20px;transform:scale(.66);transform-origin:0 0">${flowCanvas('ed')}</div><div class="b-zm">${['sliders-horizontal', 'search', 'zoom-in', 'zoom-out', 'maximize'].map(x => `<span>${I(x, 14)}</span>`).join('')}</div></div>${cfg}</div>`;
+}
+// 4.6 · Báo cáo của quy trình — ảnh bpm/14
+const RPT = { a: 6, d: 16, f: 2, c: 0 }; RPT.t = RPT.a + RPT.d + RPT.f + RPT.c;
+const pct = (n) => Math.round(n / RPT.t * 100);
+function donut(size, sw, parts, label) {
+  const r = (size - sw) / 2, C = 2 * Math.PI * r; let off = 0;
+  const arcs = parts.map(p => { const len = p[0] / RPT.t * C; const s = `<circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${p[1]}" stroke-width="${sw}" stroke-dasharray="${Math.max(len - 2, 0)} ${C}" stroke-dashoffset="${-off}"/>`; off += len; return s; }).join('');
+  return `<svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="#F3F4F6" stroke-width="${sw}"/>${arcs}</svg>${label || ''}`;
+}
+function bReport() {
+  const kp = (cls, cap, n, sub, col) => `<div class="${cls}"><div><small>${cap}</small><b>${n}</b><span>${sub}</span></div><div class="b-don">${donut(46, 5, [[n, col]])}<b>${pct(n)}%</b></div></div>`;
+  const tr = [3, 5, 4, 7, 5], mx = 8, W = 1100, Hh = 110;
+  const pts = tr.map((v, i) => [40 + i * (W - 80) / (tr.length - 1), 10 + (1 - v / mx) * Hh]);
+  const wk = ['T38', 'T39', 'T40', 'T41', 'T42'];
+  return bpmSide('svc') + `<div class="m3">${svcHead('Báo cáo')}<div class="b-rp">
+    <div style="display:flex;align-items:center"><b style="font-size:15px;color:var(--mk-ink)">Tổng quan</b><span class="rt"><span class="seg"><span>Hôm nay</span><span>7 ngày</span><span class="on">30 ngày</span><span>Khoảng khác ${I('chevron-down', 12)}</span></span></span></div>
+    <div class="b-k5 ${d(0)}"><div class="t"><small>TỔNG</small><b>${RPT.t}</b><span>thời gian TB 1d 9h</span><i></i></div>${kp('a', 'ĐANG CHẠY', RPT.a, 'Đang xử lý', '#3B82F6')}${kp('d', 'XONG', RPT.d, 'Hoàn tất', '#22C55E')}${kp('f', 'THẤT BẠI', RPT.f, 'Bị từ chối', '#F87171')}${kp('c', 'ĐÃ HUỶ', RPT.c, 'Đã huỷ', '#9CA3AF')}</div>
+    <div class="b-2c ${d(1)}"><div class="b-cd"><h4>Kết quả<span class="rt mut">Trạng thái kết thúc</span></h4><div class="b-oc">${I('circle-check', 15, 2, '#16A34A')}Hoàn tất<span class="bar"><i style="width:${RPT.d / (RPT.d + RPT.f) * 100}%;background:#22C55E"></i></span><b>${RPT.d}</b></div><div class="b-oc" style="border:0">${I('circle-x', 15, 2, '#DC2626')}Từ chối mua<span class="bar"><i style="width:${RPT.f / (RPT.d + RPT.f) * 100}%;background:#EF4444"></i></span><b>${RPT.f}</b></div></div>
+      <div class="b-cd"><h4>Theo trạng thái<span class="rt mut">Tỷ trọng</span></h4><div style="display:flex;align-items:center;gap:30px"><div class="b-don" style="width:120px;height:120px">${donut(120, 16, [[RPT.a, '#3B82F6'], [RPT.d, '#22C55E'], [RPT.f, '#F87171'], [RPT.c, '#9CA3AF']])}<b style="font-size:24px!important;flex-direction:column;display:flex;align-items:center;justify-content:center;color:var(--mk-ink)">${RPT.t}<small style="font-size:10px;color:var(--mk-muted);font-weight:600">TỔNG</small></b></div>
+        <div class="b-lg">${[['Đang chạy', RPT.a, '#3B82F6'], ['Xong', RPT.d, '#22C55E'], ['Thất bại', RPT.f, '#F87171'], ['Đã huỷ', RPT.c, '#9CA3AF']].map(x => `<div><i style="background:${x[2]}"></i>${x[0]}<b>${x[1]}</b><span>${pct(x[1])}%</span></div>`).join('')}</div></div></div></div>
+    <div class="b-cd ${d(2)}"><h4>${I('activity', 14)}Xu hướng<span class="rt mut">Phiếu tạo mới mỗi tuần</span></h4><svg width="${W}" height="${Hh + 34}">${[0, 4, 8].map(v => `<line x1="40" x2="${W - 40}" y1="${10 + (1 - v / mx) * Hh}" y2="${10 + (1 - v / mx) * Hh}" stroke="#F3F4F6"/><text x="22" y="${14 + (1 - v / mx) * Hh}" font-size="10" fill="#9CA3AF">${v}</text>`).join('')}
+      <polyline fill="none" stroke="#6366F1" stroke-width="2" points="${pts.map(p => p.join(',')).join(' ')}"/>${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#6366F1"/><text x="${p[0]}" y="${Hh + 30}" font-size="10.5" fill="#6B7280" text-anchor="middle">${wk[i]}</text>`).join('')}</svg></div></div></div>`;
+}
+
+/* ===================== PHẦN 5 · PROJECT 2.0 ===================== */
+function pjSide(on) {
+  return `<div class="s1"><div class="ttl">${I('orbit', 17)}Dự án</div>${R('house', 'Trang chủ')}${R('list-checks', 'Công việc của tôi')}${R('folder-kanban', 'Dự án', on === 'list')}${R('network', 'Sơ đồ tổ chức')}
+    <div class="sec">DỊCH VỤ DỰ ÁN ${I('search', 12)}</div><div class="row grp"><span class="ltr" style="background:#DCFCE7;color:#15803D">C</span><span>Công trình</span><span class="cv">${I('chevron-down', 13)}</span></div>
+    <div class="row srv ${on === 'pj' ? 'on' : ''}"><i class="dt"></i><span>Thi công xử lý môi trường</span></div><div class="row srv"><i class="dt" style="background:#0891B2"></i><span>Vận hành bảo trì</span></div>
+    <div class="row grp"><span class="ltr" style="background:#DBEAFE;color:#1D4ED8">H</span><span>Hồ sơ môi trường</span><span class="cv">${I('chevron-down', 13)}</span></div><div class="row srv"><i class="dt" style="background:#7C3AED"></i><span>Lập hồ sơ pháp lý</span></div>
+    <div class="ft">${R('users', 'Khối lượng công việc')}${R('settings', 'Cài đặt')}${WS}</div></div>`;
+}
+function pjNav(on) {
+  const rr = (ic, n) => `<div class="row ${n === on ? 'on' : ''}">${I(ic, 15)}<span>${n}</span></div>`;
+  return `<div class="s2"><div class="hd">${I('menu', 16)}<span>Long Hồ Xanh – Khí thải…</span><span class="cv">${I('chevron-down', 14)}</span></div><div class="bd">
+    ${rr('layout-grid', 'Tổng quan')}${rr('file-text', 'Lộ trình')}${rr('folder', 'Tài liệu')}${rr('chart-column', 'Khối lượng công việc')}${rr('circle-dollar-sign', 'Chi phí')}${rr('trending-up', 'Khoản thu')}${rr('chart-pie', 'LÃI LỖ')}${rr('inbox', 'Backlog')}
+    <div class="sec">BẢNG ${I('plus', 13)}</div>${rr('columns-3', 'Công việc')}${rr('triangle-alert', 'Vấn đề')}<div class="sep"></div>
+    ${rr('activity', 'Cập nhật trạng thái')}${rr('scroll-text', 'Nhật ký hoạt động')}${rr('repeat', 'Lặp lại')}${rr('zap', 'Tự động hoá')}${rr('settings', 'Cài đặt')}</div></div>`;
+}
+const PJHB = (tail) => `<div class="hb"><span class="lt">Thi công xử lý môi trường</span><span class="cr">${I('chevron-right', 14)}</span>${tail ? `<span class="lt">${HD.name}</span><span class="bm">${I('bookmark', 14)}</span><span class="cr">${I('chevron-right', 14)}</span><b>${tail}</b>` : `<b>${HD.name}</b><span class="bm">${I('bookmark', 14)}</span><code>LHX-KT</code><span class="stp">Đang thực hiện ${I('chevron-down', 12)}</span>`}`;
+// Danh sách dự án: [tên, mã, %, trạng thái, ưu tiên, khoản thu, chi phí, người sở hữu, hạn]
+const PJL = [
+  [HD.name, 'LHX-KT', 55, 'Đang thực hiện', 'Cao', 1240000000, 812000000, 'hieu', '30/11/2026'],
+  ['Hậu Giang Food – Vận hành bảo trì HTXLNT 2026', 'HGF-VH', 75, 'Đang thực hiện', 'Trung bình', 186000000, 121400000, 'phat', '31/12/2026'],
+  ['Giày da Tân Phú Thạnh – Vận hành HTXLNT', 'GTPT-VH', 80, 'Đang thực hiện', 'Trung bình', 252000000, 168900000, 'phat', '31/12/2026'],
+  ['Thủy sản Cái Răng – Hồ sơ giấy phép môi trường', 'TSCR-GP', 40, 'Đang thực hiện', 'Cao', 145000000, 52300000, 'nhi', '15/12/2026'],
+  ['KCN Bình Minh – Hồ sơ dự thầu trạm XLNT', 'KCNBM-DT', 60, 'Đang thực hiện', 'Cao', 0, 34500000, 'thao', '05/11/2026'],
+  ['May Phong Điền – Quan trắc định kỳ quý 4', 'MPD-QT', 33, 'Đang thực hiện', 'Trung bình', 20400000, 8100000, 'nhi', '20/12/2026'],
+  ['KS Sông Hậu Riverside – Khảo sát hiện trạng HTXLNT', 'SHR-KS', 0, 'Mở', 'Trung bình', 0, 0, 'khang', '30/10/2026'],
+  ['BV ĐK Long Mỹ – Báo cáo công tác BVMT 2026', 'BVLM-BC', 0, 'Mở', 'Trung bình', 22000000, 0, 'nhi', '15/01/2027'],
+];
+const ringC = (p) => p === 0 ? '#9CA3AF' : p < 35 ? '#DC2626' : p < 60 ? '#F59E0B' : '#16A34A';
+const ring = (p, s = 34) => { const r = (s - 6) / 2, C = 2 * Math.PI * r; return `<span class="ring" style="width:${s}px;height:${s}px"><svg width="${s}" height="${s}"><circle cx="${s / 2}" cy="${s / 2}" r="${r}" fill="none" stroke="#E5E7EB" stroke-width="3"/><circle class="pg" cx="${s / 2}" cy="${s / 2}" r="${r}" fill="none" stroke="${ringC(p)}" stroke-width="3" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - p / 100)}"/></svg><b style="color:${ringC(p)}">${p}</b></span>`; };
+// 5.1 · Dự án › Danh sách — ảnh project/03
+function pList() {
+  const nC = 6, nH = 2;
+  const s2 = `<div class="s2"><div class="hd"><span>Dự án</span></div><div class="bd"><div class="row on">${I('folder-kanban', 15)}Dự án của tôi<span class="n">${PJL.length}</span></div><div class="row">${I('user-check', 15)}Do tôi quản lý<span class="n">5</span></div><div class="row">${I('eye', 15)}Đang theo dõi<span class="n">2</span></div><div class="row">${I('archive', 15)}Đã lưu trữ</div>
+    <div class="sec">DỊCH VỤ</div><div class="row cap">${I('asterisk', 13)}TẤT CẢ MÔ HÌNH<span class="n">${PJL.length}</span></div><div class="row cap">${I('chevron-right', 12)}CÔNG TRÌNH<span class="n">${nC}</span></div><div class="row cap">${I('chevron-right', 12)}HỒ SƠ MÔI TRƯỜNG<span class="n">${nH}</span></div></div></div>`;
+  const PRC = { 'Cao': '#C2410C', 'Trung bình': '#1D4ED8' };
+  const rows = PJL.map((p, i) => { const net = p[5] - p[6]; return `<tr class="${i === 0 ? 'hl' : ''} ${d(i, 140, 45)}"><td><div class="pn">${ring(p[2])}<div><b>${p[0]}</b><small><code>${p[1]}</code>${I('calendar', 11)}${p[8]}</small></div></div></td>
+    <td><span class="sp1 ${p[3] === 'Mở' ? 'open' : 'run'}">${p[3]}</span></td><td><span class="pri" style="color:${PRC[p[4]]}">${I('flag', 13, 2, PRC[p[4]])}${p[4]}</span></td><td class="r">${fmtB(p[5])}</td><td class="r">${fmtB(p[6])}</td><td class="r" style="font-weight:600;color:${net < 0 ? '#DC2626' : net > 0 ? '#15803D' : 'var(--mk-muted)'}">${net < 0 ? '−' : ''}${fmtB(Math.abs(net))}</td><td>${av(p[7], 22)}</td><td>${p[8]}</td></tr>`; }).join('');
+  return pjSide('list') + s2 + `<div class="m3"><div class="lh">Dự án của tôi <span class="cn">${PJL.length} <em>/ ${PJL.length}</em></span></div>
+    <div class="lt2"><span class="cb">Không nhóm ${I('chevron-down', 12)}</span><span class="rt"><span class="cb srch">${I('search', 13)}Tìm dự án…</span><span class="cb">Lọc ${I('chevron-right', 12)}</span><span class="seg"><span class="on">${I('list', 13)}Danh sách</span><span>${I('table-2', 13)}Bảng biểu</span><span>${I('columns-3', 13)}Bảng</span></span></span></div>
+    <table class="pt"><colgroup><col style="width:25%"><col style="width:10%"><col style="width:9%"><col style="width:12%"><col style="width:11.5%"><col style="width:11.5%"><col style="width:6%"><col style="width:9%"></colgroup>
+      <tr><th>DỰ ÁN</th><th>TRẠNG THÁI</th><th>MỨC ƯU TIÊN</th><th class="r">KHOẢN THU</th><th class="r">CHI PHÍ</th><th class="r">RÒNG</th><th>SỞ HỮU</th><th>HẠN CHÓT</th></tr>${rows}</table></div>`;
+}
+// Công việc của dự án: [mã, tên, bước, người, hạn, ưu tiên]
+const TK = [
+  ['001', 'Khảo sát hiện trạng lò hơi, ống khói', 'done', 'tuan', '10/08', 'Cao'], ['002', 'Thiết kế kỹ thuật hệ thống xử lý khí', 'done', 'tuan', '22/08', 'Cao'], ['003', 'Duyệt bản vẽ với khách hàng', 'done', 'hieu', '28/08', 'Trung bình'],
+  ['004', 'Đặt thiết bị chính: cyclone, tháp hấp thụ', 'done', 'tuan', '05/09', 'Cao'], ['005', 'Thi công móng, khung đỡ thiết bị', 'done', 'hieu', '15/09', 'Trung bình'], ['006', 'Lắp cyclone và tháp hấp thụ', 'done', 'hieu', '26/09', 'Cao'],
+  ['007', 'Lắp quạt hút ID-01', 'done', 'phat', '29/09', 'Trung bình'], ['008', 'Đấu nối ống khói, đường ống', 'done', 'hieu', '02/10', 'Trung bình'], ['009', 'Lắp tủ điện điều khiển', 'done', 'phat', '05/10', 'Trung bình'],
+  ['010', 'Biên bản lắp đặt thiết bị', 'done', 'hieu', '08/10', 'Cao'], ['011', 'Chạy thử không tải', 'done', 'phat', '10/10', 'Trung bình'],
+  ['012', 'Chạy thử có tải, hiệu chỉnh thông số', 'run', 'phat', '25/10', 'Cao'], ['013', 'Thay quạt hút ID-02 rung vượt ngưỡng', 'run', 'hieu', '21/10', 'Cao'], ['014', 'Lắp đầu dò bụi cho đo kiểm', 'run', 'phat', '13/10', 'Cao'],
+  ['015', 'Khách cấp nhiên liệu chạy tải liên tục 72 giờ', 'wait', 'hieu', '28/10', 'Trung bình'],
+  ['016', 'Kế hoạch đo kiểm khí thải', 'appr', 'nhi', '30/10', 'Trung bình'], ['017', 'Đề nghị thanh toán đợt 2', 'appr', 'my', '25/10', 'Cao'],
+  ['018', 'Đào tạo vận hành cho nhà máy', 'todo', 'phat', '18/11', 'Trung bình'], ['019', 'Lập hồ sơ hoàn công', 'todo', 'tuan', '25/11', 'Trung bình'], ['020', 'Nghiệm thu, thanh lý hợp đồng', 'todo', 'hieu', '30/11', 'Cao'],
+];
+const TODAY = 14, TMON = 10;
+const late = (t) => { const [dd, mm] = t[4].split('/').map(Number); return t[2] !== 'done' && (mm < TMON || (mm === TMON && dd < TODAY)); };
+const TK_DONE = TK.filter(t => t[2] === 'done').length, TK_LATE = TK.filter(late).length, TK_PCT = Math.round(TK_DONE / TK.length * 100);
+// 5.2 · Dự án › Tổng quan — ảnh project/05 + basevn-tech/06
+function pOverview() {
+  const st = [[TK.length, 'Tổng', ''], [TK_DONE, 'Hoàn thành', '#16A34A'], [TK.length - TK_DONE, 'Hoạt động', '#2563EB'], [TK_LATE, 'Quá hạn', '#DC2626']];
+  const ms = [['Ký hợp đồng · thu đợt 1', '12/08/2026', 'd'], ['Lắp đặt xong thiết bị', '08/10/2026', 'd'], ['Thu đợt 2', '25/10/2026', 'a'], ['Đo kiểm khí thải', '05/11/2026', 'o'], ['Nghiệm thu · thu đợt 3', '30/11/2026', 'o']];
+  const ck = [['Lắp đặt xong toàn bộ thiết bị', 'hieu', '08/10/2026', 1], ['Khí thải đạt quy chuẩn, có kết quả đo kiểm', 'nhi', '05/11/2026', 0], ['Bàn giao hồ sơ hoàn công, đào tạo vận hành', 'tuan', '25/11/2026', 0]];
+  const net = HD.value - 812000000;
+  return pjSide('pj') + pjNav('Tổng quan') + `<div class="m3">${PJHB()}</div><div class="ovw">
+    <div class="ovm">
+      <section class="${d(1)}"><h4>Mức hoàn thành công việc<small>${TK_PCT}% · ${TK_DONE}/${TK.length} hoàn thành</small></h4><div class="pgb"><i data-w="${TK_PCT}%" style="background:#16A34A"></i><i data-w="${100 - TK_PCT}%" style="background:#3B82F6"></i></div>
+        <div class="st4">${st.map(s => `<div><b>${s[0]}</b><span>${s[2] ? `<i class="dot" style="background:${s[2]}"></i>` : ''}${s[1]}</span></div>`).join('')}</div></section>
+      <section class="${d(2)}"><h4>Tài chính</h4><div class="p-fin"><div><small>KHOẢN THU</small><b>${fmtB(HD.value)}</b></div><div><small>CHI PHÍ</small><b>${fmtB(812000000)}</b></div><div class="g"><small>RÒNG</small><b>${fmtB(net)}</b></div></div></section>
+      <section class="${d(3)}"><h4>Kết quả mong đợi<small>Định nghĩa hoàn thành · ${ck.filter(c => c[3]).length}/${ck.length} xong</small><span class="ra"><span class="lk">${I('plus', 12)}Thêm kết quả</span></span></h4>${ck.map(c => `<div class="ck ${c[3] ? 'd' : ''}"><span class="b">${c[3] ? I('check', 11, 3) : ''}</span><div><b>${c[0]}</b><span>${nm(c[1])} · ${c[2]}</span></div></div>`).join('')}</section>
+      <section class="${d(4)}" style="border:0"><h4>Cột mốc<span class="ra"><span style="display:flex;align-items:center;gap:4px">${I('plus', 12)}Thêm cột mốc</span><i></i><span class="lk">Xem tất cả</span></span></h4>${ms.map(m => `<div class="ms"><span class="ic ${m[2]}">${m[2] === 'd' ? I('check', 13, 2.6) : m[2] === 'a' ? I('circle-dot', 13) : I('circle', 13)}</span><b>${m[0]}</b><span class="dt">${I('calendar', 12)}${m[1]}</span></div>`).join('')}</section></div>
+    <div class="ovr"><div class="top ${d(1)}"><span class="chk risk"><i class="dd"></i>Có rủi ro</span><span class="rt"><span class="cb">Cập nhật trạng thái</span></span></div>
+      <div class="sc2 ${d(2)}"><b class="t">Có rủi ro · hoàn thành ${TK_PCT}%</b><div class="l">Tóm tắt</div><p>Đầu dò bụi về trễ 5 ngày, đo kiểm khí thải có thể lùi sang 08/11. Đợt 2 vẫn thu 25/10 theo biên bản lắp đặt.</p><div class="by">${av('hieu', 26)}<div><b>${nm('hieu')}</b><span>14/10/2026</span></div></div></div>
+      <div class="dts ${d(3)}"><div><span>NGÀY BẮT ĐẦU</span><b>05/08/2026</b></div><div><span>HẠN HOÀN THÀNH</span><b>30/11/2026</b></div></div>
+      <div class="rh ${d(4)}">VAI TRÒ DỰ ÁN <em>3</em><span class="ra">${I('chevron-right', 13)}</span></div>
+      <div class="${d(4)}" style="display:flex;flex-direction:column;gap:7px"><div class="rh">CẬP NHẬT TIẾN ĐỘ TRƯỚC ĐÓ</div><div class="ec"><span class="chk ok" style="height:22px"><i class="dd"></i>Đúng tiến độ</span><b>50%</b><small>07/10/2026</small></div><div class="ec"><span class="chk ok" style="height:22px"><i class="dd"></i>Đúng tiến độ</span><b>40%</b><small>30/09/2026</small></div></div>
+      <div class="${d(5)}" style="display:flex;flex-direction:column;gap:9px"><div class="rh">HOẠT ĐỘNG GẦN ĐÂY</div>
+        <div class="ac">${av('hieu')}<div><b>${nm('hieu')}</b> cập nhật trạng thái <b>Có rủi ro</b></div><small>2g trước</small></div><div class="ac">${av('phat')}<div><b>${nm('phat')}</b> chuyển <b>Chạy thử không tải</b> sang Hoàn thành</div><small>4 ngày</small></div><div class="ac">${av('my')}<div><b>${nm('my')}</b> ghi khoản thu <b>Đợt 2</b> là Đã yêu cầu</div><small>4 ngày</small></div></div></div></div></div>`;
+}
+const STEPS5 = [['todo', 'Chưa bắt đầu', '#9CA3AF', '#F3F4F6'], ['run', 'Đang thực hiện', '#2563EB', '#EFF6FF'], ['wait', 'Chờ phối hợp', '#F59E0B', '#FFFBEB'], ['appr', 'Chờ phê duyệt', '#06B6D4', '#ECFEFF'], ['done', 'Hoàn thành', '#16A34A', '#F0FDF4']];
+const PRC2 = { 'Cao': '#C2410C', 'Trung bình': '#1D4ED8' };
+const tcard = (t, i, hl) => `<div class="p-tc ${t[2] === 'done' ? 'dn' : ''} ${hl ? 'n-hl' : ''} ${d(i, 160, 35)}"><div class="t1"><code>TASK-${t[0]}</code><span class="pr" style="color:${PRC2[t[5]]}">${I('flag', 11, 2, PRC2[t[5]])}${t[5]}</span></div><b>${t[1]}</b><div class="l2">${av(t[3])}${nm(t[3]).split(' ').pop()}<span class="d ${late(t) ? 'late' : ''}">${I('calendar', 11)}${t[4]}/2026</span></div></div>`;
+const tasksBar = (view) => `<div class="th"><span class="nm">${I('columns-3', 15)}Công việc</span>${[['table-2', 'Bảng biểu'], ['list', 'Danh sách'], ['columns-3', 'Bảng'], ['activity', 'Dòng thời gian'], ['calendar', 'Lịch']].map(v => `<span class="vt ${v[1] === view ? 'on' : ''}">${I(v[0], 14)}${v[1]}</span>`).join('')}<span class="vt">${I('plus', 14)}</span><span class="rt">${I('ellipsis', 16)}</span></div>
+  <div class="tb2"><span class="cb">${view === 'Bảng' ? 'Bước' : 'Nhóm'} ${I('chevron-down', 12)}</span><span class="rt"><span class="cb">${I('sliders-horizontal', 13)}Tuỳ chỉnh chế độ xem</span><span class="cb srch">${I('search', 13)}Tìm công việc…</span><span class="cb">${I('list-filter', 13)}Lọc</span><span class="bt">${I('plus', 14)}Thêm công việc<span class="sp">${I('chevron-down', 12)}</span></span></span></div>`;
+// 5.3 · Bảng công việc theo Bước — ảnh project/11 + basevn-tech/14
+function boardInner(hl) {
+  return `<div class="p-kb">${STEPS5.map((s, si) => { const L = TK.filter(t => t[2] === s[0]); const show = s[0] === 'done' ? L.slice(-4).reverse() : L; return `<div class="p-kc" style="background:${s[3]}"><div class="h"><i style="background:${s[2]}"></i>${s[1]}<em>${L.length}</em>${I('plus', 14)}</div>${show.map((t, i) => tcard(t, si * 3 + i, hl && t[0] === hl)).join('')}<div class="ad">${I('plus', 13)}Thêm công việc</div></div>`; }).join('')}</div>`;
+}
+function pBoard() { return pjSide('pj') + pjNav('Công việc') + `<div class="m3">${tasksBar('Bảng')}${boardInner('014')}</div>`; }
+// 5.4 · Chi tiết công việc (ngăn trượt) — ảnh project/13
+function pTask() {
+  const t = TK.find(x => x[0] === '013');
+  const dr = `<div class="p-dr ${d(0, 80)}"><div class="p-dm"><div class="hh">${I('zap', 14, 2, '#F59E0B')}<code>LHX-KT-TASK-${t[0]}</code><span class="rt"><span style="display:flex;align-items:center;gap:4px;white-space:nowrap">${I('arrow-up-right', 13)}Xem đầy đủ</span>${I('ellipsis', 15)}${I('x', 15)}</span></div>
+      <h2>${t[1]}</h2><div class="kv"><span>${I('calendar', 13)}Lịch trình</span><b>12/10/2026 → 21/10/2026</b></div><div class="kv"><span>${I('user', 13)}Người tạo</span><b class="who">${av('hanh', 18)}${nm('hanh')}</b></div><div class="kv"><span>${I('zap', 13)}Khối lượng công việc</span><b>6h</b></div>
+      <div class="st"><span class="sp1 run">◉ Đang thực hiện ${I('chevron-down', 11)}</span><span class="who">${av('hieu', 26)}<span class="vn"><b>${nm('hieu')}</b><small>${P.hieu[1]}</small></span></span></div>
+      <div class="p-sec"><div class="h">${I('chevron-down', 13)}Mô tả</div><div class="b">Quạt hút ID-02 rung vượt ngưỡng khi chạy có tải. Thay quạt mới, cân bằng động trước khi đo kiểm. Đề nghị mua <b>${JOB.code}</b> đang chờ TP Kỹ thuật duyệt.</div></div>
+      <div class="p-sec"><div class="h">${I('chevron-down', 13)}Tệp<span class="rt"><span class="cb">${I('paperclip', 12)}Đính kèm tệp</span></span></div><div class="p-sub">${I('file-text', 14, 2, '#DC2626')}Do-rung-quat-ID02-1310.pdf <span class="mut">· 1,2 MB</span></div></div>
+      <div class="p-sec"><div class="h">${I('chevron-down', 13)}Công việc con <span class="mut">1/2</span><span class="rt"><span class="cb">${I('plus', 12)}Thêm công việc con</span></span></div><div class="p-sub">${I('circle-check', 14, 2, '#16A34A')}<s class="mut">Tháo quạt ID-02, kiểm tra ổ trục</s></div><div class="p-sub">${I('circle', 14, 2, '#9CA3AF')}Lắp quạt mới, cân bằng động</div></div>
+      <div class="p-sec"><div class="h">${I('chevron-down', 13)}Phụ thuộc<span class="rt"><span class="cb">${I('plus', 12)}Thêm phụ thuộc</span></span></div><div class="p-sub">${I('link', 13)}Bị chặn bởi <b>TASK-014</b> · Lắp đầu dò bụi cho đo kiểm</div></div>
+      <div class="p-sec"><div class="h">${I('chevron-right', 13)}Theo dõi</div></div><div class="p-sec"><div class="h">${I('chevron-down', 13)}Sản phẩm bàn giao<span class="rt"><span class="cb">${I('plus', 12)}Thêm sản phẩm bàn giao</span></span></div><div class="e">Chưa có sản phẩm bàn giao.</div></div>
+      <div class="p-sec"><div class="h">${I('chevron-down', 13)}Bình luận</div><div class="p-sub" style="align-items:flex-start">${av('phat', 22)}<div><b>${nm('phat')}</b> <span class="mut">· 2g trước</span><div class="b">Đã đo lại sau khi siết bulông, rung vẫn 9,8 mm/s. Phải thay quạt.</div></div></div></div></div>
+    <div class="p-dp"><div class="tk"><span class="q">Bạn đang làm việc gì?</span><div class="bb"><span>${I('clock', 12)}Thêm thời gian</span><span>${I('plus', 12)}Thêm vào phiên</span></div><span class="go">${I('play', 12)}Bắt đầu</span></div>
+      <div class="cap">CHI TIẾT</div><div class="kv"><span>${I('columns-3', 12)}Bước</span><b>Đang thực hiện</b></div><div class="kv"><span>${I('flag', 12)}Mức ưu tiên</span><b style="color:#C2410C">Cao</b></div><div class="kv"><span>${I('flag', 12)}Cột mốc</span><b>Đo kiểm khí thải</b></div>
+      <div class="cap">NGƯỜI DÙNG</div><div class="kv"><span>${I('user', 12)}DRI (người sở hữu)</span><b>${nm('hanh')}</b></div><div class="kv"><span>${I('eye', 12)}Người theo dõi</span><b style="display:flex;gap:3px">${av('phat', 20)}${av('tuan', 20)}</b></div>
+      <div class="cap">NGÀY THÁNG</div><div class="kv"><span>Đã tạo</span><b>12/10/2026, 09:30</b></div><div class="kv"><span>Đã cập nhật</span><b>14/10/2026, 11:20</b></div>
+      <div class="cap">HOẠT ĐỘNG</div><div class="act">${av('phat', 20)}<div><b>${nm('phat')}</b> đính kèm tệp đo rung<small>2g trước</small></div></div><div class="act">${av('hieu', 20)}<div><b>${nm('hieu')}</b> chuyển sang Đang thực hiện<small>2 ngày</small></div></div><div class="act">${av('hanh', 20)}<div><b>${nm('hanh')}</b> tạo công việc<small>2 ngày</small></div></div></div></div>`;
+  return pjSide('pj') + pjNav('Công việc') + `<div class="m3" style="position:relative">${tasksBar('Bảng')}${boardInner('013')}<div class="p-veil"></div>${dr}</div>`;
+}
+// 5.5 · Cập nhật tiến độ (ngăn trượt) — ảnh project/10
+function pStatus() {
+  const RP = [['risk', 'Có rủi ro', '14/10/2026', TK_PCT, '#F59E0B', 'Đầu dò bụi về trễ 5 ngày. Đo kiểm khí thải có thể lùi sang 08/11. Quạt ID-02 rung vượt ngưỡng, đang chờ duyệt mua thay. Đợt 2 vẫn thu 25/10.', TK_DONE, TK_LATE, 'hieu'],
+    ['ok', 'Đúng tiến độ', '07/10/2026', 50, '#16A34A', 'Lắp xong toàn bộ thiết bị, ký biên bản lắp đặt 08/10. Bắt đầu chạy thử không tải.', 10, 0, 'hieu'],
+    ['ok', 'Đúng tiến độ', '30/09/2026', 40, '#16A34A', 'Hoàn tất lắp cyclone, tháp hấp thụ, quạt ID-01.', 8, 0, 'hieu']];
+  const tbl = `<table class="pt" style="font-size:12.5px"><colgroup><col style="width:44px"><col><col style="width:110px"><col style="width:130px"></colgroup><tr><th></th><th>TÊN</th><th>MÃ</th><th>TRẠNG THÁI</th></tr>${TK.slice(10, 20).map(t => `<tr><td><span class="q-cb"></span></td><td><span style="display:inline-flex;align-items:center;gap:8px">${t[2] === 'done' ? I('circle-check', 14, 2, '#16A34A') : I('circle-dot', 14, 2, '#2563EB')}${t[1]}</span></td><td><code>TASK-${t[0]}</code></td><td><span class="sp1 ${t[2] === 'done' ? 'done' : 'run'}">${t[2] === 'done' ? 'Hoàn thành' : 'Hoạt động'}</span></td></tr>`).join('')}</table>`;
+  const dr = `<div class="p-dr sm ${d(0, 80)}"><div class="hb">${I('activity', 15, 2, 'var(--mk-blue)')}<b>Cập nhật tiến độ</b><span class="mut">${RP.length} báo cáo · mới nhất hôm nay</span><span class="rt">${I('x', 15)}</span></div><div class="p-su">${RP.map((r, i) => `<div class="p-rep ${d(i + 1, 180, 120)}"><div class="tp"><span class="chk ${r[0]}" style="height:22px"><i class="dd"></i>${r[1]}</span><span class="d">${I('clock', 12)}${r[2]}</span></div>
+      <div class="pr">TIẾN ĐỘ<b style="color:${r[4]}">${r[3]}%</b></div><div class="tb"><i data-w="${r[3]}%" style="background:${r[4]}"></i></div><p>${r[5]}</p>
+      <div class="snap"><span class="c">TẠI THỜI ĐIỂM BÁO CÁO NÀY</span><div class="v"><div><span>Mức hoàn thành</span><b>${Math.round(r[6] / TK.length * 100)}%</b><small>${r[6]}/${TK.length} công việc</small></div><div><span>Quá hạn</span><b style="${r[7] ? 'color:#DC2626' : ''}">${r[7]}</b></div></div></div><div class="by">${av(r[8])}${nm(r[8])} · ${r[2]}</div></div>`).join('')}</div></div>`;
+  return pjSide('pj') + pjNav('Cập nhật trạng thái') + `<div class="m3" style="position:relative">${tasksBar('Bảng biểu')}<div style="flex:1;min-height:0;overflow:hidden">${tbl}</div>${dr}</div>`;
+}
+// 5.6 · Lãi lỗ — ảnh project/basevn-tech/07, 11
+const PL = { rev: [['Hợp đồng ' + HD.code, 3, HD.value, HD_PAID]], cost: [['Thiết bị & vật tư', 6, 690000000, 612000000], ['Nhân công thi công', 3, 84000000, 61500000], ['Vận chuyển & đo kiểm', 2, 38000000, 9600000]] };
+PL.R = PL.rev.reduce((a, x) => a + x[2], 0); PL.C = PL.cost.reduce((a, x) => a + x[2], 0); PL.G = PL.R - PL.C; PL.M = PL.G / PL.R * 100;
+function pPnL() {
+  const mon = [['Th8', PL.R, 520000000], ['Th9', PL.R, 748000000], ['Th10', PL.R, PL.C]];
+  const W = 1000, Hc = 150, mx = PL.R * 1.1, X = (i) => 160 + i * 300, Y = (v) => 14 + (1 - v / mx) * Hc;
+  const bars = mon.map((m, i) => { const mg = (m[1] - m[2]) / m[1] * 100, h = mg / 100 * Hc; return `<rect x="${X(i) - 30}" y="${14 + Hc - h}" width="60" height="${h}" rx="4" fill="#E9A24B"/><text x="${X(i)}" y="${14 + Hc + 18}" text-anchor="middle" font-size="12" font-weight="600" fill="#111827">${m[0]}</text><text x="${X(i)}" y="${14 + Hc + 33}" text-anchor="middle" font-size="11.5" fill="#C2410C">${mg.toLocaleString('vi-VN', { maximumFractionDigits: 1 })}%</text>`; }).join('');
+  const line = (k, c) => `<polyline fill="none" stroke="${c}" stroke-width="2" points="${mon.map((m, i) => X(i) + ',' + Y(m[k])).join(' ')}"/>` + mon.map((m, i) => `<circle cx="${X(i)}" cy="${Y(m[k])}" r="3.5" fill="${c}"/>`).join('');
+  const pc = (v) => Math.round(v / PL.C * 100) + '%';
+  return pjSide('pj') + pjNav('LÃI LỖ') + `<div class="m3">${PJHB('Lãi lỗ')}</div><div class="p-pl">
+    <div class="p-gm ${d(0)}"><div class="l"><small>BIÊN LỢI NHUẬN GỘP</small><div class="v"><b>${PL.M.toLocaleString('vi-VN', { maximumFractionDigits: 1 })}%</b><span class="chk risk" style="height:22px">Cần theo dõi</span></div><span>Mục tiêu 35%.</span><div class="bar"><i data-w="${PL.M}%" style="width:0"></i><u style="left:35%"></u></div></div>
+      <div class="r"><div>Doanh thu<b>${fmtB(PL.R)}</b></div><div>Lợi nhuận gộp<b class="g">${fmtB(PL.G)}</b></div><div>Chi phí trực tiếp<b>${fmtB(PL.C)}</b></div></div></div>
+    <div class="p-ch ${d(1)}"><h5>Khoản thu, chi phí & biên lợi nhuận</h5><small>Cột = biên lợi nhuận gộp % · đường = khoản thu & chi phí · theo tháng</small><svg width="${W}" height="${Hc + 52}">${bars}${line(1, '#2563EB')}${line(2, '#9CA3AF')}</svg>
+      <div class="lgd"><span><i style="background:#E9A24B"></i>Biên lợi nhuận</span><span><i style="background:#2563EB"></i>Khoản thu</span><span><i style="background:#9CA3AF"></i>Chi phí</span></div></div>
+    <table class="p-lt ${d(2)}"><colgroup><col><col style="width:110px"><col style="width:170px"><col style="width:170px"><col style="width:100px"></colgroup><tr><th>KHOẢN MỤC</th><th></th><th class="r">ĐÃ CAM KẾT</th><th class="r">ĐÃ GHI NHẬN</th><th class="r">TỶ TRỌNG</th></tr>
+      <tr class="g"><td>DOANH THU</td><td></td><td class="r">${fmtB(PL.R)}</td><td></td><td></td></tr>${PL.rev.map(r => `<tr><td>${r[0]}</td><td class="mut">${r[1]} dòng</td><td class="r">${fmtB(r[2])}</td><td class="r">${fmtB(r[3])}</td><td class="r">100%</td></tr>`).join('')}
+      <tr class="g"><td>CHI PHÍ TRỰC TIẾP</td><td></td><td class="r">${fmtB(PL.C)}</td><td></td><td></td></tr>${PL.cost.map(r => `<tr><td>${r[0]}</td><td class="mut">${r[1]} dòng</td><td class="r">${fmtB(r[2])}</td><td class="r">${fmtB(r[3])}</td><td class="r">${pc(r[2])}</td></tr>`).join('')}
+      <tr class="t"><td>Lợi nhuận gộp</td><td></td><td class="r g">${fmtB(PL.G)}</td><td></td><td class="r g">${PL.M.toLocaleString('vi-VN', { maximumFractionDigits: 1 })}%</td></tr></table></div></div>`;
+}
+
+/* ===================== PHẦN 6 · BASE CHAT ===================== */
+const CH = [
+  ['TC', 'Toàn công ty', 'Bạn: Lịch khám sức khỏe định kỳ thứ Bảy 24/10…', 'Hôm qua', 6, '#EA580C'],
+  ['LH', 'Công trình Long Hồ Xanh – Khí thải', 'Diễm My: Hồ sơ đề nghị thanh toán đợt 2 em gửi khách rồi ạ.', '11:05', 0, '#0D9488'],
+  ['KD', 'Kinh doanh Cần Thơ', 'Minh Khang: Anh Trung hẹn thuyết minh MBBR thứ Sáu.', '10:52', 2, '#DC2626'],
+  ['KT', 'Phòng Kỹ thuật', 'Thu Hạnh: Tuần này ưu tiên vận hành thử Long Hồ Xanh.', '09:31', 3, '#2563EB'],
+  ['HS', 'Hồ sơ môi trường', 'Yến Nhi: Sở đã nhận hồ sơ GPMT Thủy sản Cái Răng.', 'Hôm qua', 0, '#7C3AED'],
+  ['TN', 'Thu tiền & công nợ', 'Bạn: Cập nhật thực thu tuần 41 trong Commerce.', 'Thứ Hai', 0, '#16A34A'],
+];
+const chAv = (c, s) => `<span class="mk-av" style="background:${c[5]}${s ? `;width:${s}px;height:${s}px;font-size:${Math.round(s * .36)}px` : ''}">${c[0]}</span>`;
+function chatSide(on) {
+  return `<div class="c-sd"><div class="h">${I('menu', 16)}Trò chuyện<span class="rt">${I('search', 15)}${I('settings', 15)}${I('pencil', 15)}</span></div><div class="g">${I('chevron-down', 11)}KÊNH</div>
+    ${CH.map((c, i) => `<div class="c-ch ${i === on ? 'on' : ''}">${chAv(c)}<div><b>${c[1]}</b><small>${c[2]}</small></div><em>${c[3]}</em></div>`).join('')}<div class="ws">${wsMark()}Nano Entech${I('chevrons-up-down', 13)}</div></div>`;
+}
+// 6.1 · Trang chủ Chat — ảnh chat/01
+function cHome() {
+  return chatSide(-1) + `<div class="c-main"><div class="c-tabs"><span class="on">Hộp thư</span><span>Đã lưu</span><span>Hẹn giờ gửi</span><span>Thư mục</span><span>Ứng dụng</span><span>Cuộc gọi video</span><span class="rt">${I('search', 15)}<span class="cb">${I('pencil', 13)}Tạo kênh ${I('chevron-down', 12)}</span></span></div>
+    <div class="c-home"><div><h2 class="${d(0)}">Chào buổi sáng, Phương Thảo 👋</h2><div class="sub" style="width:auto;max-width:none;border:0;background:none;padding:0">Đây là những gì đang diễn ra trong các kênh của bạn.</div>
+      <div class="cap">${I('sparkles', 13)}SỐ LIỆU NHANH</div><div class="c-qs ${d(1)}"><div><small>KÊNH</small><b>${CH.length}</b></div><div><small>TIN CHƯA ĐỌC</small><b class="bl">${CH.reduce((a, c) => a + c[4], 0)}</b></div><div><small>HOẠT ĐỘNG GẦN ĐÂY</small><b>${CH.length}</b></div></div>
+      <div class="cap">${I('hash', 13)}KÊNH HOẠT ĐỘNG GẦN ĐÂY</div>${CH.map((c, i) => `<div class="c-rc ${i === 1 ? 'n-hl' : ''} ${d(i + 2, 100, 60)}">${chAv(c)}<div><b># ${c[1]}<small>${c[3]}</small></b><p>${c[2]}</p></div></div>`).join('')}</div></div></div>`;
+}
+// 6.2 · Kênh trao đổi — ảnh chat/02
+function cChannel() {
+  const c = CH[1];
+  const MS = [['hieu', '08:05', `Quạt hút ID-02 rung vượt ngưỡng khi chạy tải. Anh đã tạo đề nghị mua <b>${JOB.code}</b>, <span class="mn">@${nm('hanh')}</span> duyệt giúp anh trong sáng nay.`],
+    ['hanh', '09:20', 'Chị xem rồi. Ba báo giá đã so, Phú Hưng giao 7 ngày. Chị duyệt trước 14h.'],
+    ['phat', '10:12', 'Đầu dò bụi về trễ 5 ngày. Em đề xuất dời đo kiểm sang 08/11, đã ghi vào cập nhật tiến độ dự án.', 'Bien-ban-chay-thu-khong-tai.pdf'],
+    ['thao', '10:40', 'Chị báo anh Trung bên khách. Đợt 2 vẫn thu 25/10 theo biên bản lắp đặt, không ảnh hưởng.'],
+    ['my', '11:05', 'Hồ sơ đề nghị thanh toán đợt 2 em gửi khách rồi ạ.']];
+  const msg = (m, i) => m[0] === 'thao' ? `<div class="c-m me ${d(i + 1, 120, 110)}"><div class="bb">${m[2]}</div><span class="tm">${m[1]}</span></div>`
+    : `<div class="c-m ${d(i + 1, 120, 110)}">${av(m[0], 30)}<div><div class="nm">${nm(m[0])}<small>${m[1]}</small></div><div class="bb">${m[2]}${m[3] ? `<div class="at">${I('file-text', 18, 2, '#DC2626')}<div><b>${m[3]}</b><small>PDF · 860 KB</small></div></div>` : ''}</div></div></div>`;
+  const mem = ['thao', 'hieu', 'hanh', 'phat', 'tuan', 'my', 'khang'];
+  return chatSide(1) + `<div class="c-main"><div class="c-hd">${chAv(c, 30)}<b># ${c[1]}</b>${I('chevron-down', 13)}${I('star', 15)}${I('bell', 15)}<span class="rt">${I('play', 16)}${I('search', 16)}</span></div>
+    <div class="c-body"><div class="c-day">Thứ Tư, 14/10/2026</div>${MS.map(msg).join('')}</div>
+    <div class="c-cp"><div class="tb"><b>B</b><i>I</i><u>U</u>${I('square-terminal', 14)}${I('list', 14)}${I('list-checks', 14)}</div><div class="ip">Nhắn tin #${c[1]} (@ để nhắc tên, / để dùng lệnh)</div><div class="ft">${I('plus', 16)}${I('paperclip', 15)}${I('smile', 15)}${I('image', 15)}${I('thumbs-up', 15)}<span>Aa</span><span>@</span><span class="rt">☑ Nhấn Enter để gửi ${I('send', 16, 2, 'var(--mk-blue)')}</span></div></div></div>
+    <div class="c-pn"><div class="tb"><span class="on">${I('panel-left', 16)}</span>${I('bookmark', 16)}${I('image', 16)}${I('file-text', 16)}${I('workflow', 16)}${I('panel-right', 16)}</div><div class="bd">
+      <span class="pr">Kênh riêng tư</span><div class="top">${chAv(c, 40)}<div><b>${c[1]}</b><small>${mem.length} thành viên · 24 tin nhắn · 6 tập tin</small></div></div>
+      <div class="sh">${I('info', 14)}Thông tin kênh<span class="rt">${I('chevron-down', 13)}</span></div><div class="ds">Trao đổi thi công, vận hành thử hợp đồng ${HD.code}.</div>
+      <div class="sh">${I('folder', 14)}Thư mục cá nhân<span class="rt">Không ${I('chevron-down', 12)}</span></div>
+      <div class="sh">${I('users', 14)}Thành viên (${mem.length})<span class="rt">${I('chevron-down', 13)}</span></div>
+      ${mem.map(k => `<div class="c-mb">${av(k, 30)}<div><b>${nm(k)}${k === 'thao' ? ' (bạn)<em>QUẢN TRỊ</em>' : ''}</b><small>${P[k][1]}</small></div></div>`).join('')}<div class="c-mb"><span class="ibtn" style="border-radius:50%;width:30px;height:30px">${I('plus', 14)}</span><b style="color:var(--mk-blue-ink)">Thêm người khác</b></div></div></div>`;
+}
+// 6.3 · Cuộc gọi video — ảnh chat/04
+function cVideo() {
+  return chatSide(-1) + `<div class="c-main"><div class="c-tabs"><span>Hộp thư</span><span>Đã lưu</span><span>Hẹn giờ gửi</span><span>Thư mục</span><span>Ứng dụng</span><span class="on">Cuộc gọi video</span></div>
+    <div class="c-vc"><div class="hi ${d(0)}">Chào buổi trưa, Phương Thảo</div><div class="clk ${d(1)}">13:12</div><div class="dt">Thứ Tư, 14 tháng 10</div>
+      <div class="tiles ${d(2)}">${[['play', 'Bắt đầu cuộc gọi'], ['link', 'Tạo liên kết'], ['hash', 'Tham gia bằng ID'], ['calendar', 'Lên lịch']].map(t => `<div><i>${I(t[0], 20)}</i>${t[1]}</div>`).join('')}</div>
+      <div class="yc ${d(3)}"><div class="h">Cuộc gọi của bạn<span>Xem tất cả ›</span></div><div class="r" style="justify-content:center;color:rgba(255,255,255,.7)">Chưa có cuộc gọi</div></div>
+      <div class="nav"><span class="on">${I('house', 13)}Trang chủ</span><span>${I('phone', 13)}Cuộc gọi</span><span>${I('history', 13)}Nhật ký</span><span>${I('circle-dot', 13)}Bản ghi</span></div></div></div>`;
+}
+
 // ===================== ĐIỀU PHỐI =====================
 const SC = [
   { p: 0, app: 'prospect', nm: 'Prospect', path: '/prospect/inbox', t: 'Tin nhắn Zalo, Facebook, website về một hộp thư', need: 'Không mất khách khi tin nhắn nằm trong điện thoại từng sales.', how: 'Hội thoại có nguồn quảng cáo, người phụ trách, và chuyển thẳng thành cơ hội trong Sales.', main: sInbox },
@@ -2126,8 +2879,23 @@ const SC = [
   { p: 2, app: 'automation', nm: 'Automation', path: '/automations', t: 'Việc lặp lại chạy tự động', need: 'Không ai phải nhớ: nhắc tái ký, nhắc thu tiền, báo kỹ thuật.', how: 'Mỗi automation có điều kiện kích hoạt và các bước. Gom theo thư mục Kinh doanh, Thu tiền, Vận hành.', main: sAutomations },
   { p: 2, app: 'automation', nm: 'Automation', path: '/automations/bao-ky-thuat-khi-sang-bao-gia/builder', t: 'Một luồng tự động', need: 'Cơ hội sang Báo giá thì Kỹ thuật biết ngay để lập dự toán.', how: 'Kích hoạt khi đổi giai đoạn, kiểm tra quy trình và giai đoạn, rồi gửi thông báo.', main: sFlow },
   { p: 2, app: 'dataset', nm: 'Dataset', path: '/dataset/don-gia-theo-tinh', t: 'Đơn giá đã báo theo tỉnh, theo năm', need: 'Kiểm soát chiết khấu: cùng một hạng mục đã báo bao nhiêu ở từng tỉnh.', how: 'Bảng dòng báo giá lọc theo năm, sắp theo hạng mục và tỉnh để so sánh.', main: sDataset },
+  { p: 3, app: 'bpm', nm: 'BPM', me: 'hanh', path: '/bpm/services', t: 'Mọi quy trình nội bộ một chỗ', need: 'Mua thiết bị, hồ sơ, thanh toán: mỗi việc một quy trình có số liệu.', how: 'Gom theo nhóm. Mỗi quy trình thấy ngay bao nhiêu phiếu đang chạy, bao nhiêu đã xong.', main: bSvcList },
+  { p: 3, app: 'bpm', nm: 'BPM', me: 'hanh', path: '/bpm/my-work', t: 'Việc của tôi: cái gì cần xử lý ngay', need: 'Trưởng phòng không bỏ sót phiếu chờ duyệt.', how: 'Lượt của bạn và quá hạn lên đầu. Duyệt, từ chối ngay trên dòng.', main: bMyWork },
+  { p: 3, app: 'bpm', nm: 'BPM', me: 'hanh', path: '/bpm/services/de-nghi-mua-thiet-bi/workflow', t: 'Luồng có rẽ nhánh và AI', need: 'Duyệt theo giá trị, so giá không làm tay.', how: 'AI so sánh báo giá. Từ 100 triệu thêm cấp duyệt. Lưu lượng cho thấy phiếu đang kẹt ở bước nào.', main: bFlow },
+  { p: 3, app: 'bpm', nm: 'BPM', me: 'hieu', path: '/bpm/jobs/MTB-2026-0318', t: 'Một phiếu đề nghị mua', need: 'Biết phiếu đang ở đâu, chờ ai, trễ bao lâu.', how: 'Thanh bước, dữ liệu từng bước, người duyệt, dòng thời gian trên một trang.', main: bJob },
+  { p: 3, app: 'bpm', nm: 'BPM', me: 'hanh', bare: 1, path: '/bpm/services/de-nghi-mua-thiet-bi/editor', t: 'Tự sửa luồng, không cần lập trình', need: 'Quy trình đổi thì tự đổi được.', how: 'Kéo bước vào luồng: AI Agent, phê duyệt, tự động, app kết nối. Cấu hình người duyệt ngay bên phải.', main: bEditor },
+  { p: 3, app: 'bpm', nm: 'BPM', me: 'hanh', path: '/bpm/services/de-nghi-mua-thiet-bi/reports', t: 'Báo cáo của quy trình', need: 'Bao nhiêu phiếu, xong bao nhiêu, bị từ chối bao nhiêu.', how: '30 ngày gần nhất theo trạng thái, kết quả và xu hướng.', main: bReport },
+  { p: 4, app: 'project', nm: 'Dự án', me: 'hieu', path: '/project/projects', t: 'Danh sách dự án có lãi lỗ', need: 'Nhìn mọi công trình: tiến độ, thu, chi, ròng.', how: 'Mỗi dự án có vòng tiến độ, khoản thu, chi phí và ròng ngay trên dòng.', main: pList },
+  { p: 4, app: 'project', nm: 'Dự án', me: 'hieu', path: '/project/LHX-KT/overview', t: 'Tổng quan một công trình', need: 'Một trang biết tiến độ, tiền và rủi ro.', how: 'Mức hoàn thành, tài chính, kết quả mong đợi, cột mốc, trạng thái mới nhất.', main: pOverview },
+  { p: 4, app: 'project', nm: 'Dự án', me: 'hieu', path: '/project/LHX-KT/boards/cong-viec', t: 'Công việc theo bước', need: 'Biết việc nào đang chờ phối hợp, chờ duyệt.', how: 'Bảng theo 5 bước. Việc quá hạn hiện ngày đỏ.', main: pBoard },
+  { p: 4, app: 'project', nm: 'Dự án', me: 'hieu', path: '/project/LHX-KT/tasks/TASK-013', t: 'Chi tiết một công việc', need: 'Việc có đủ tệp, việc con, phụ thuộc, bình luận.', how: 'Mở ngăn bên phải, không rời bảng. Bấm giờ làm việc ngay trên việc.', main: pTask },
+  { p: 4, app: 'project', nm: 'Dự án', me: 'hieu', path: '/project/LHX-KT/status-updates', t: 'Cập nhật tiến độ định kỳ', need: 'Quản lý đọc tiến độ, không phải hỏi.', how: 'Mỗi báo cáo lưu trạng thái, % hoàn thành và số việc quá hạn tại thời điểm đó.', main: pStatus },
+  { p: 4, app: 'project', nm: 'Dự án', me: 'hieu', path: '/project/LHX-KT/pnl', t: 'Lãi lỗ từng công trình', need: 'Biết công trình lời bao nhiêu khi chưa xong.', how: 'Biên lợi nhuận gộp so với mục tiêu. Đã cam kết và đã ghi nhận theo từng khoản.', main: pPnL },
+  { p: 5, app: 'chat', nm: 'Chat', me: 'thao', path: '/chat/home', t: 'Trò chuyện theo kênh', need: 'Trao đổi công việc tách khỏi Zalo cá nhân.', how: 'Trang chủ gom tin chưa đọc và kênh hoạt động gần đây.', main: cHome },
+  { p: 5, app: 'chat', nm: 'Chat', me: 'thao', path: '/chat/channels/cong-trinh-long-ho-xanh', t: 'Kênh riêng cho một công trình', need: 'Người của công trình nói chuyện ở một chỗ.', how: 'Nhắc tên, đính kèm tệp. Thành viên và tệp của kênh ở bên phải.', main: cChannel },
+  { p: 5, app: 'chat', nm: 'Chat', me: 'thao', path: '/chat/video-calls', t: 'Gọi video ngay trong Chat', need: 'Họp nhanh với kỹ thuật ngoài công trình.', how: 'Bắt đầu cuộc gọi, tạo liên kết, tham gia bằng ID hoặc lên lịch.', main: cVideo },
 ];
-const PARTS = ['Bán hàng', 'Hợp đồng & thu tiền', 'Tự động hoá & báo cáo'];
+const PARTS = ['Bán hàng', 'Hợp đồng & thu tiền', 'Tự động hoá & báo cáo', 'Workflow 2.0', 'Project 2.0', 'Base Chat'];
 const SL = [{ k: 'cover' }];
 PARTS.forEach((_, p) => { SL.push({ k: 'part', p }); SC.forEach(s => { if (s.p === p) SL.push({ k: 'sc', s, p }); }); });
 const $ = (id) => document.getElementById(id);
@@ -2138,7 +2906,7 @@ const a = (i) => `a" style="animation-delay:${80 + i * 70}ms`;
 const wordmark = () => NANO_LOGO ? `<div class="n-wm"><img src="${NANO_LOGO}" alt="Nano Entech"></div>` : `<div class="n-wm"><i>N</i>Nano Entech</div>`;
 function cover() {
   return `<div class="nar cover anim"><div class="lk ${a(0)}">${wordmark()}<span></span><div class="bs">${BRAND}Base.vn</div></div>
-    <h1 class="${a(1)}">Nano Entech trên Base</h1><p class="${a(2)}">Từ tin nhắn khách hàng đến tiền về tài khoản: CRM cho công ty dịch vụ môi trường.</p>
+    <h1 class="${a(1)}">Nano Entech trên Base</h1><p class="${a(2)}">Bán hàng, thu tiền, quy trình nội bộ, công trình và trao đổi: một nền tảng cho công ty dịch vụ môi trường.</p>
     <div class="p3 ${a(3)}">${PARTS.map((p, i) => `<span>${i + 1}. ${p}</span>`).join('')}</div><small class="${a(4)}">Tên người, tên khách hàng và số liệu trong màn hình là giả định. Bấm để xem tiếp.</small></div>`;
 }
 function partIntro(p) {
@@ -2151,7 +2919,7 @@ function paint(i, animate) {
   if (s.k === 'cover') view.innerHTML = cover();
   else if (s.k === 'part') view.innerHTML = partIntro(s.p);
   else {
-    view.innerHTML = `<div class="mkv"><div class="mk-window cv ${animate ? 'anim' : ''}" id="cv">${win(s.s.app, s.s.nm, s.s.path, s.s.main())}</div></div><div class="capb"><img src="${APP_LOGO[s.s.app]}" alt=""><b>${s.s.t}</b><i></i><span>${s.s.how}</span></div>`;
+    CUR_ME = s.s.me || 'thao'; view.innerHTML = `<div class="mkv"><div class="mk-window cv ${animate ? 'anim' : ''}" id="cv">${(s.s.bare ? winBare : win)(s.s.app, s.s.nm, s.s.path, s.s.main())}</div></div><div class="capb"><img src="${APP_LOGO[s.s.app]}" alt=""><b>${s.s.t}</b><i></i><span>${s.s.how}</span></div>`;
     view.querySelectorAll('[data-d]').forEach(el => { el.style.animationDelay = (el.dataset.d * 1 + 320) + 'ms'; });
     const grow = () => view.querySelectorAll('[data-w]').forEach(g => { g.style.width = g.dataset.w; });
     if (animate) setTimeout(grow, 500); else grow();
