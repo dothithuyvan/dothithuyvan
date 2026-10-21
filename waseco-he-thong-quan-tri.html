@@ -2342,6 +2342,11 @@ function navTarget(oldW,W){if(!oldW)return null;let best=null;
   const sp=oldW.querySelector('.spot');if(sp){const code=(sp.textContent.match(/[A-Z]{2,}-\d{4}-[\dA-Z-]+/)||[])[0];const hd=W.querySelector('.head,.crumb,h1');if(code&&hd&&W.querySelector('.app').textContent.includes(code)&&!oldW.querySelector('.head,.crumb')?.textContent.includes(code))return sp}
   return null}
 
+function navOwn(oldW,W){const was=new Set(oldW?[...oldW.querySelectorAll('.on,.subon')].map(e=>e.textContent.trim()):[]);let best=null;
+  W.querySelectorAll('.on,.subon').forEach(e=>{if(e.closest('.chrome,.top,.pxmask,.aipanel,.pxstrip')||!e.offsetWidth)return;const t=e.textContent.trim();if(!t||t.length>40||was.has(t))return;
+    const r=e.getBoundingClientRect(),a=r.width*r.height;if(a<200)return;const side=e.closest('.side,.rail,.pxrail,.pxin,[class*="side"]')?0:1;
+    if(!best||side<best.s||side===best.s&&a<best.a)best={el:e,a,s:side}});
+  return best&&best.el}
 /* ---- dựng kịch bản cho một màn ---- */
 function scene(oldWs,animate){finish();
   const ws=cv.querySelector('.scn .ww>.wscale:not(.wold)');if(!ws){if(oldWs)oldWs.remove();return}
@@ -2378,6 +2383,8 @@ function scene(oldWs,animate){finish();
       if(nav){await m.click(nav,{after:90});W.querySelector('.chrome')?.classList.add('mo-load')}
       oldWs.classList.add('wgone');setTimeout(()=>oldWs.remove(),320)}
     else await m.wait(430);
+    /* không tìm được chỗ bấm trên màn cũ: bấm mục đang sáng của màn mới (menu, tab) như vừa mở trang */
+    if(!nav){const own=navOwn(oldW,W);if(own){if(oldWs)await m.wait(200);await m.click(own,{after:90});W.querySelector('.chrome')?.classList.add('mo-load')}}
     ws.classList.remove('mo-hold');
     /* 3 · nội dung hiện dần */
     let maxD=0;W.querySelectorAll('.rv,.rise').forEach(e=>{if(!own(e))return;const d=parseFloat(e.style.animationDelay)||0;if(d>maxD&&d<1800)maxD=d});
@@ -2392,12 +2399,12 @@ function scene(oldWs,animate){finish();
       if(opener)await m.click(opener,{after:150});m.show(mask);const md=mask.querySelector('.pxmodal');if(md){md.classList.remove('slidein');void md.offsetWidth;md.classList.add('slidein')}await m.wait(650);
       const op=mask.querySelector('.opts'),sel=mask.querySelector('.sel2');if(op&&sel){await m.click(sel,{after:200});m.show(op);await m.wait(450);const on=op.querySelector('.on');if(on)await m.click(on,{after:250})}}
     /* 6 · AI: bấm nút AI (hoặc gõ câu hỏi) → AI nghĩ → câu trả lời gõ ra */
-    let spotDone=false;
+    let spotDone=false,trig=!!askNew;
     const aiBtn=[...W.querySelectorAll('.btn.ai,.spot')].find(e=>/\bAI\b|Copilot|Trợ lý/.test(e.textContent)&&!e.closest('.aipanel,.advis,.aisum'));
     if(askNew){const box=W.querySelector('.rqask');await m.click(box,{fx:.3,after:150});await m.type(ask,{cps:28,max:1500});await m.click(box.querySelector('.ml')||box,{after:200})}
-    else if(aiBtn&&(fills.length||panels.length||advis.length)){await m.click(aiBtn,{after:250});if(aiBtn===spot)spotDone=true}
+    else if(aiBtn&&(fills.length||panels.length||advis.length)){await m.click(aiBtn,{after:250});if(aiBtn===spot)spotDone=true;trig=true}
     for(const [i,f] of fills.entries()){m.live();const v=f.querySelector('.vl');f.classList.add('mo-fl');fin(()=>f.classList.remove('mo-fl'));m.show(v);await m.type(v,{cps:90,max:520,min:180});await m.wait(60)}
-    for(const p of panels){m.live();m.show(p);p.classList.add('mo-pop');fin(()=>p.classList.remove('mo-pop'));await m.wait(420);
+    for(const p of panels){m.live();m.show(p);p.classList.add('mo-pop');fin(()=>p.classList.remove('mo-pop'));await m.wait(420);if(!trig){const h=p.querySelector('.ph');if(h)await m.move(h,{fx:.3})}
       const qb=p.querySelector('.qbub'),ar=[...p.querySelectorAll('.ans>*')],src=p.querySelector('.src'),fo=p.querySelector('.focus');
       [qb,src,fo].forEach(e=>e&&m.hide(e));m.hide(ar);
       if(fo){m.show(fo);await m.wait(250)}
@@ -2406,7 +2413,7 @@ function scene(oldWs,animate){finish();
       for(const a of ar){m.live();m.show(a);const t=a.children[a.children.length-1]||a;await m.type(t,{cps:130,max:950});await m.wait(80)}
       if(src){m.show(src);await m.wait(250)}}
     for(const a of advis){m.live();const items=[...a.querySelectorAll(':scope>ul>li,:scope>p')],src=a.querySelector('.src');items.forEach(e=>m.hide(e));if(src)m.hide(src);
-      m.show(a);a.classList.add('mo-glow');fin(()=>a.classList.remove('mo-glow'));await m.wait(300);await m.think(a,900);
+      m.show(a);a.classList.add('mo-glow');fin(()=>a.classList.remove('mo-glow'));if(!trig){const h=a.querySelector('.ah');if(h)await m.move(h,{fx:.2})}else await m.wait(300);await m.think(a,900);
       for(const e of items){m.live();m.show(e);await m.type(e,{cps:hasCls(a,'aisum')?150:120,max:hasCls(a,'aisum')?2200:1100});await m.wait(90)}
       if(src){m.show(src);await m.wait(200)}}
     /* 7 · dừng con trỏ ở điểm cần nhìn */
