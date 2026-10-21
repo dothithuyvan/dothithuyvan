@@ -1200,6 +1200,34 @@ table.t.ptt td{height:40px;font-size:12.5px}
 .tree .tree .tg{font-size:19px}.tree .tl .tx{font-size:17px}.tree .ova{font-size:13.5px}
 .ovlg span,.ovlg span b{font-size:15px}
 .intro .foot{font-size:14px}
+/* ===== ngăn xem phiếu: bấm bước trên lưu đồ / dòng trong bảng thì thấy phiếu bên trong ===== */
+.pkdr{position:absolute;right:14px;top:96px;bottom:14px;width:410px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 70px rgba(17,24,39,.22);display:flex;flex-direction:column;overflow:hidden;z-index:6}
+.pkdr .pkh{display:flex;align-items:center;gap:9px;height:50px;padding:0 14px;border-bottom:1px solid var(--ls);flex:none}
+.pkdr .pkh b{font-size:14px}.pkdr .pkh .x{margin-left:auto;color:var(--dim);display:flex}
+.pkdr .pkh .ic{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:#fff;flex:none}
+.pkdr .pkv1,.pkdr .pkv2{flex:1;min-height:0;display:flex;flex-direction:column}
+.pkdr .gone{display:none!important}
+.pkdr .pksub{font-size:12px;color:var(--mut);padding:10px 14px 4px}
+.pkdr .pl{padding:4px 10px;display:grid;gap:8px}
+.pkdr .pr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.pkdr .pr .c{font-family:var(--mono);font-size:11px;color:var(--mut)}
+.pkdr .pr b{display:block;font-size:13px;font-weight:600;line-height:1.35;margin-top:2px}
+.pkdr .pr .m{grid-column:1/-1;display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--mut)}
+.pkdr .pr .m .ml{margin-left:auto}
+.pkdr .pr .v{font-weight:600;color:var(--ink);font-size:12.5px;white-space:nowrap}
+.pkdr .pr.pick{border-color:#93C5FD;background:#F8FBFF}
+.pkdr .pkf{margin-top:auto;padding:10px 14px;border-top:1px solid var(--ls);font-size:12.5px;color:var(--bink);font-weight:600;display:flex;align-items:center;gap:6px}
+.pkdr .pkb{padding:12px 14px;display:grid;gap:12px;overflow:hidden}
+.pkdr .pkt .c{font-family:var(--mono);font-size:11px;color:var(--mut)}
+.pkdr .pkt h3{margin:3px 0 7px;font-size:15.5px;line-height:1.3;color:var(--ink)}
+.pkdr .pkt .tg{display:flex;gap:6px;flex-wrap:wrap}
+.pkdr .pks{display:flex;gap:3px}.pkdr .pks i{flex:1;height:5px;border-radius:3px;background:var(--ls)}.pkdr .pks i.d{background:#22A55B}.pkdr .pks i.c{background:var(--blue)}
+.pkdr .pksl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-top:5px}.pkdr .pksl b{color:var(--bink);font-weight:600}
+.pkdr .kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:7px 10px;font-size:12.5px}.pkdr .kv span{color:var(--mut)}.pkdr .kv b{font-weight:500;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pkdr .pk-ap{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:8px}
+.pkdr .pk-ap .hd{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mut)}
+.pkdr .pk-ap .appr{display:flex;align-items:center;gap:9px}.pkdr .pk-ap .appr .nm{display:grid;font-size:12.5px}.pkdr .pk-ap .appr .nm span{font-size:11.5px;color:var(--mut)}.pkdr .pk-ap .appr .st{margin-left:auto}
+.pkdr .pkbt{display:flex;gap:8px}.pkdr .pkbt .btn{flex:1;justify-content:center}
 /* ===== MOT · lớp chuyển động demo: con trỏ, bấm, gõ chữ, hiện dần, AI "đang nghĩ" ===== */
 .ww{position:relative}
 .ww>.wscale.wold{position:absolute;z-index:3;margin:0;transition:opacity .28s ease}
@@ -1503,7 +1531,7 @@ const svcGrp=n=>(SVCS.find(s=>s[1]===n)||['H'])[0];
 function sWorkTable(){const rows=WT.map((r,i)=>{const od=!!r[4],un=!r[5],tc=TAGC[r[7]];return `<tr class="rv ${i===0?'hl':''}" style="animation-delay:${80+i*55}ms"><td class="mono" style="height:56px;width:34px;color:var(--dim)">${i+1}</td><td style="height:56px"><div class="wtj"><b>${r[1]}</b><span><span class="mono">${r[0]}</span> · ${r[2]}</span></div></td><td style="height:56px">${un?'<span class="pill vi">Chưa phân công</span>':'<span class="pill olo">● Chờ xử lý</span>'}</td><td style="height:56px"><span style="display:inline-flex;gap:5px;align-items:center;${od?'color:var(--red)':''}">${I('cal',12)}${r[3]}</span>${od?` <span class="pill red">${r[4]}</span>`:''}</td><td style="height:56px">${un?'<span style="color:var(--dim)">—</span>':`<span style="display:inline-flex;gap:6px;align-items:center">${av(r[5],22)}${r[5]==='gd'?P.gd[0]:P[r[5]][0].split(' ').slice(-2).join(' ')}</span>`}</td><td style="height:56px"><span class="wts"><i style="background:${GCOL[svcGrp(r[6])]}"></i>${r[6]}</span></td><td style="height:56px"><span class="pill" style="background:${tc[0]};color:${tc[1]}">${r[7]}</span></td><td style="height:56px"><span class="avs">${r[8].map(x=>av(x,22)).join('')}</span></td></tr>`}).join('');
 const body=`${sideBPM('','','my')}<div class="main"><div class="head"><span class="crumb"><span class="lt">Việc ›</span>Việc của tôi <span class="lt">46 bước</span></span><span class="q ml">${I('search',13)}Tìm bước…</span><span class="tb">${I('filter',13)}Bộ lọc</span><span class="tb">Mới nhất ${I('cd',12)}</span><span class="seg"><span>Phân loại</span><span class="on">Bảng</span></span><span class="btn">${I('plus',14)}Tạo việc</span></div>
 <div class="tabs"><span>Đến lượt tôi</span><span>Đang theo dõi</span><span>Tôi tạo</span><span class="on">Tất cả</span></div>
-<div style="overflow:hidden;flex:1"><table class="t" style="table-layout:fixed;width:1290px"><colgroup><col style="width:38px"><col style="width:372px"><col style="width:122px"><col style="width:200px"><col style="width:136px"><col style="width:200px"><col style="width:92px"><col style="width:120px"><col style="width:100px"></colgroup><thead><tr><th>#</th><th>PHIẾU · BƯỚC</th><th>TRẠNG THÁI</th><th>HẠN</th><th>NGƯỜI XỬ LÝ</th><th>QUY TRÌNH</th><th>NHÃN</th><th>NGƯỜI THEO DÕI</th><th>NGƯỜI TẠO</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;return win('/bpm/my-work?tab=all&view=table',body)}
+<div style="overflow:hidden;flex:1"><table class="t" style="table-layout:fixed;width:1290px"><colgroup><col style="width:38px"><col style="width:372px"><col style="width:122px"><col style="width:200px"><col style="width:136px"><col style="width:200px"><col style="width:92px"><col style="width:120px"><col style="width:100px"></colgroup><thead><tr><th>#</th><th>PHIẾU · BƯỚC</th><th>TRẠNG THÁI</th><th>HẠN</th><th>NGƯỜI XỬ LÝ</th><th>QUY TRÌNH</th><th>NHÃN</th><th>NGƯỜI THEO DÕI</th><th>NGƯỜI TẠO</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;return win('/bpm/my-work?tab=all&view=table',pkIn(body,pkDrawer('tr.hl',null,'MS-2026-0091')))}
 
 /* Lưu đồ dọc (màn Workflow + lớp Lưu lượng) */
 function wn(x,y,c,ic,t,sub,cnt=0,delay=0,hl=0){return `<div class="wn rv ${hl?'hl spot':''}" style="left:${x}px;top:${y}px;--c:${c};animation-delay:${delay}ms"><b>${ic}${t}</b><span>${sub}</span><i class="cnt ${cnt?'r':''}" style="font-style:normal">${cnt}</i></div>`}
@@ -1524,7 +1552,7 @@ ${wn(502,456,'#0891B2',I('sign',13),'Ký số uỷ nhiệm chi','Chữ ký đi�
 ${wn(502,536,'#DC2626',I('money',13),'Thực hiện chi','Công việc · 1d',1,560)}
 ${wn(502,616,'#16A34A',I('flag',13),'Hoàn tất','Kết thúc',0,620)}
 ${chip(250,326,'→ Dưới 20 triệu')}${chip(622,326,'→ 20 – 100 triệu')}${chip(860,326,'→ Từ 100 triệu')}${chip(300,114,I('back',11)+' Bổ sung chứng từ','org')}${chip(736,194,I('down',11)+' Từ chối','red')}${chip(1048,374,I('down',11)+' Từ chối','red')}${chip(1048,402,'KTT → Ban Giám đốc','blue')}
-</div></div>`;return win('/bpm/services/de-nghi-thanh-toan/workflow',body)}
+</div></div>`;return win('/bpm/services/de-nghi-thanh-toan/workflow',pkIn(body,pkDrawer('.wn.hl',['Kế toán trưởng duyệt','#16A34A','up',[pkRow('TT-2026-0185','Dịch vụ vệ sinh công nghiệp T09 – Khu A, B, C','quá hạn 35 phút','64,2 tr','lan',1),pkRow('TT-2026-0187','Thay vật tư, thiết bị hệ thống XLNT tòa nhà','hạn 17:00','56,7 tr','du',0,1),pkRow('TT-2026-0189','Gia hạn bản quyền phần mềm dự toán','hạn 09/10','38,5 tr','khai')]],'TT-2026-0187')))}
 function sBuyFlow(){const W=`<svg class="wires"><g fill="none" stroke="#94A3B8" stroke-width="1.6"><path d="M614 62 V86"/><path d="M614 134 V158"/><path d="M614 206 V230"/><path d="M614 278 C614 304 302 298 302 318"/><path d="M614 278 V318"/><path d="M614 278 C614 304 926 298 926 318"/><path d="M926 366 V398"/><path d="M302 366 C302 440 614 450 614 478"/><path d="M614 366 V478"/><path d="M926 446 C926 466 614 456 614 478"/><path d="M614 526 V550"/><path d="M614 598 V622"/></g></svg>`;
 const body=`${sideBPM('V','Mua sắm vật tư')}${flowHead('Mua sắm vật tư','kanban','#D97706',24)}${W}
 ${wn(502,14,'#2563EB',I('zap',13),'Bắt đầu','Bộ phận đề xuất · công trường',0,80)}
@@ -1539,7 +1567,7 @@ ${wn(502,478,'#0891B2',I('sign',13),'Ký hợp đồng','Chữ ký điện tử 
 ${wn(502,550,'#DC2626',I('checks',13),'Nhập kho, nghiệm thu vật tư','Công việc · 1d',0,560)}
 ${wn(502,622,'#16A34A',I('flag',13),'Hoàn tất','Kết thúc · tạo thanh toán NCC',0,620)}
 ${chip(246,290,'→ Dưới 50 triệu')}${chip(622,290,'→ 50 – 500 triệu')}${chip(856,290,'→ Từ 500 triệu')}${chip(296,176,I('back',11)+' Bổ sung báo giá','org')}${chip(1048,336,I('down',11)+' Từ chối','red')}${chip(1048,416,I('down',11)+' Từ chối','red')}
-</div></div>`;return win('/bpm/services/mua-sam-vat-tu/workflow',body)}
+</div></div>`;return win('/bpm/services/mua-sam-vat-tu/workflow',pkIn(body,pkDrawer('.wn.hl',['Hội đồng mua sắm','#16A34A','users',[pkRow('MS-2026-0091','Thiết bị gạt bùn, máng thu nước – Bể lắng NMN Dương Đông','hạn 17:00 · 2/3 đã duyệt','1,46 tỷ','phu',0,1)]],null)))}
 
 /* Phiếu mua sắm MS-2026-0091 · bước Hội đồng mua sắm (phê duyệt song song) */
 const apprRow=(k,role,st)=>`<div class="appr">${av(k,30)}<div class="nm"><b ${st==='wait'?'style="color:var(--blue)"':''}>${P[k][0]}</b><span>${role}</span></div><span class="st">${st==='wait'?I('clock',14,2,'#D97706'):`<span class="pill green">${I('check',11)} ${st}</span>`}</span></div>`;
@@ -2263,6 +2291,28 @@ return `<svg class="web" viewBox="0 0 1600 1000">${ed.map((k,n)=>{const [a,b]=k.
 function sCover(){return `<div class="cov">${coverWeb()}<div class="glow"></div><div class="cc"><div class="clock rv"><img src="${WLOGO}" alt="WASECO"><i></i><span>${BMARK(30)}Base.vn</span></div><div class="eb rv" style="animation-delay:250ms"><i></i>WASECO × BASE.VN · THÁNG 10/2026<i></i></div><div class="ttl rise" style="animation-delay:380ms">KIẾN TẠO HỆ THỐNG<br>QUẢN TRỊ THÔNG MINH<br>TẠI WASECO</div><div class="csub rv" style="animation-delay:700ms">Văn phòng điện tử, quản trị dự án, vận hành tòa nhà và báo cáo quản trị trên một nền tảng.</div><div class="cpills">${PARTS.map((c,i)=>`<div class="cp rv" style="animation-delay:${900+i*110}ms">${lg(c[3],22,6)}<span class="cpn">${c[0]}</span>${c[1]}</div>`).join('')}</div></div></div>`}
 S[0].r=sCover;
 
+/* ======= NGĂN XEM PHIẾU =======
+   Bấm vào một bước trên lưu đồ: thấy các phiếu đang nằm ở bước đó. Bấm vào dòng trong Việc của tôi: xem nhanh phiếu. */
+const PK={
+  'TT-2026-0187':{t:'Thay vật tư, thiết bị hệ thống XLNT tòa nhà',svc:'Đề nghị thanh toán',tags:'<span class="pill blue">Kế toán trưởng duyệt</span><span class="pill org">● Chờ duyệt</span><span class="pill grey">Tòa nhà</span>',
+    st:[7,4],sl:['Phân cấp ✓','Kế toán trưởng'],kv:[['Bộ phận đề nghị','<span class="pill cyan">Ban QL Tòa nhà</span>'],['Nhóm chi phí','<span class="pill org">18 · Sửa chữa lớn, bảo dưỡng</span>'],['Số tiền','56.700.000 ₫ <span class="pill grey">20 – 100 triệu</span>'],['Người đề nghị',`${av('du',18)}Nguyễn Thế Du`],['Hạn bước','08/10 · 17:00']],
+    ap:['NGƯỜI DUYỆT · KẾ TOÁN TRƯỞNG',[['kt','Phòng TC-KT','wait']]]},
+  'MS-2026-0091':{t:'Thiết bị gạt bùn, máng thu nước – Bể lắng NMN Dương Đông',svc:'Mua sắm vật tư',tags:'<span class="pill blue">Hội đồng mua sắm</span><span class="pill org">● Chờ duyệt</span><span class="pill grey">Dự án</span>',
+    st:[8,4],sl:['Phân cấp ✓','Hội đồng mua sắm'],kv:[['Dự án','<span class="pill red">BL-DD</span> Bể lắng NMN Dương Đông'],['Giá trị','1.460.000.000 ₫ <span class="pill grey">Từ 500 triệu</span>'],['Báo giá','3 nhà cung cấp · chọn A'],['Hạn bước','08/10 · 17:00']],
+    ap:['NGƯỜI DUYỆT · SONG SONG · 2/3',[['vinh','Trưởng phòng Vật tư','09:12'],['khai','Trưởng phòng KH-KT','10:05'],['kt','Kế toán trưởng','wait']]]}};
+function pkRow(c,t,meta,v,who,late,pick){return `<div class="pr ${pick?'pick spot':''}"><div><span class="c">${c}</span><b>${t}</b></div><span class="v">${v}</span><div class="m">${av(who,18)}${P[who][0]}<span class="ml" ${late?'style="color:var(--red)"':''}>${I('clock',12)} ${meta}</span></div></div>`}
+function pkView(code){const k=PK[code];const [n,c]=k.st;
+  return `<div class="pkb"><div class="pkt"><span class="c">${code} · ${k.svc}</span><h3>${k.t}</h3><div class="tg">${k.tags}</div></div>
+  <div><div class="pks">${Array.from({length:n},(_,i)=>`<i class="${i<c?'d':i===c?'c':''}"></i>`).join('')}</div><div class="pksl"><span>${k.sl[0]}</span><b>Bước ${c+1}/${n} · ${k.sl[1]}</b></div></div>
+  <div class="kv">${k.kv.map(x=>`<span>${x[0]}</span><b>${x[1]}</b>`).join('')}</div>
+  <div class="pk-ap spot"><div class="hd">${k.ap[0]}</div>${k.ap[1].map(a=>apprRow(a[0],a[1],a[2])).join('')}</div>
+  <div class="pkbt"><span class="btn" style="background:#22A55B">${I('up',14)}Phê duyệt</span><span class="btn ghost">${I('eye',14)}Mở phiếu</span></div></div>`}
+/* by: phần tử bấm để mở; list: [tiêu đề, màu, icon, dòng phiếu…] hoặc null; code: phiếu xem nhanh (null = chỉ danh sách) */
+function pkDrawer(by,list,code){const k=code&&PK[code];
+  const v1=list?`<div class="pkv1 ${code?'gone':''}"><div class="pkh"><span class="ic" style="background:${list[1]}">${I(list[2],14)}</span><b>${list[0]}</b><span class="pill red">${list[3].length} phiếu</span><span class="x">${I('x',16)}</span></div><div class="pksub">Đang nằm ở bước này · sắp theo hạn</div><div class="pl">${list[3].join('')}</div><div class="pkf">${I('table',13)}Xem tất cả trong Bảng ${I('arr',13)}</div></div>`:'';
+  const v2=k?`<div class="pkv2"><div class="pkh">${list?`<span class="x" style="margin:0">${I('back',15)}</span>`:''}<b>Xem nhanh phiếu</b><span class="x">${I('x',16)}</span></div>${pkView(code)}</div>`:'';
+  return `<div class="pkdr" data-by="${by}">${v1}${v2}</div>`}
+const pkIn=(html,dr)=>{const i=html.lastIndexOf('</div>');return html.slice(0,i)+dr+html.slice(i)};
 /* ======= MOT · LỚP CHUYỂN ĐỘNG DEMO =======
    Mỗi bước demo tự diễn như đang thao tác thật: con trỏ bấm vào chỗ dẫn sang màn mới (menu, tab, thẻ đang sáng),
    trang mới hiện dần, số đếm lên, thanh chạy, AI "đang nghĩ" rồi gõ câu trả lời, cuối cùng con trỏ dừng ở điểm cần nhìn.
@@ -2323,9 +2373,9 @@ function sigOf(ws){const M=new Map();if(!ws)return M;const zm=ws.querySelector('
   if(zt){zm.style.transform=zt;void zm.offsetWidth;zm.style.transition='transform .5s cubic-bezier(.45,0,.2,1)';zm.style.transform=''}
   return M}
 const same=(OLD,e)=>{const t=e.textContent.trim();const k=t?'t:'+t:'w:'+(e.getAttribute('style')||'');const L=OLD.get(k);if(!L)return false;const r=rel(e);return L.some(o=>Math.abs(o.x-r.x)<10&&Math.abs(o.y-r.y)<26)};
-const spotOf=W=>W&&(W.querySelector('.pxmask .spot')||W.querySelector('.spot'));
+const spotOf=W=>W&&(W.querySelector('.pxmask .spot')||W.querySelector('.pkdr .pkv2 .spot')||W.querySelector('.pkdr .spot')||W.querySelector('.spot'));
 const CHROME='.chrome,.top,.side,.rail,.pxrail,.pxin,.pxstrip';
-const AIBOX='.aipanel,.advis,.aisum,.pxmask,.pxchat .bd,.fl:has(.fill),.rqask';
+const AIBOX='.pkdr,.aipanel,.advis,.aisum,.pxmask,.pxchat .bd,.fl:has(.fill),.rqask';
 const hasCls=(e,c)=>e.classList&&e.classList.contains(c);
 
 /* ---- chỗ bấm trên màn cũ để sang màn mới ---- */
@@ -2364,6 +2414,8 @@ function scene(oldWs,animate){finish();
     const oldChat=new Set(oldW?[...oldW.querySelectorAll('.pxchat .bd>*')].map(e=>e.textContent.trim()):[]);const chat=[...W.querySelectorAll('.pxchat .bd>*')].filter(e=>!oldChat.has(e.textContent.trim()));m.hide(chat);
     const mask=W.querySelector('.pxmask');const maskNew=mask&&isNew(mask.querySelector('.pxmodal')||mask);
     if(maskNew){m.hide(mask);const op=mask.querySelector('.opts');if(op)m.hide(op)}
+    const dr=W.querySelector('.pkdr');const drNew=dr&&isNew(dr);let dv1,dv2;
+    if(drNew){m.hide(dr);dv1=dr.querySelector('.pkv1');dv2=dr.querySelector('.pkv2');if(dv1&&dv2){dv1.classList.remove('gone');dv2.classList.add('gone');fin(()=>{dv1.classList.add('gone');dv2.classList.remove('gone')})}}
     const fills=[...W.querySelectorAll('.fl .f.fill')].filter(isNew);fills.forEach(f=>{f.classList.add('mo-own');fin(()=>f.classList.remove('mo-own'))});const fillV=fills.map(f=>f.querySelector('.vl')).filter(Boolean);m.hide(fillV);
     const ask=W.querySelector('.rqask b');const askNew=ask&&isNew(ask);if(askNew){ask.classList.add('mo-pend');fin(()=>ask.classList.remove('mo-pend'))}
     const panels=[...W.querySelectorAll('.aipanel')].filter(isNew);m.hide(panels);
@@ -2398,6 +2450,11 @@ function scene(oldWs,animate){finish();
     if(maskNew){const ttl=(mask.querySelector('.pxmodal b')||{}).textContent;const opener=ttl&&[...W.querySelectorAll('.app *')].filter(e=>!mask.contains(e)&&e.children.length<3&&e.textContent.trim().endsWith(ttl)&&e.offsetWidth).sort((a,b)=>a.offsetWidth-b.offsetWidth)[0];
       if(opener)await m.click(opener,{after:150});m.show(mask);const md=mask.querySelector('.pxmodal');if(md){md.classList.remove('slidein');void md.offsetWidth;md.classList.add('slidein')}await m.wait(650);
       const op=mask.querySelector('.opts'),sel=mask.querySelector('.sel2');if(op&&sel){await m.click(sel,{after:200});m.show(op);await m.wait(450);const on=op.querySelector('.on');if(on)await m.click(on,{after:250})}}
+    /* 5b · bấm vào bước / dòng → ngăn phiếu mở ra; có danh sách thì bấm tiếp vào phiếu để xem nhanh */
+    if(drNew){const by=W.querySelector(dr.dataset.by);if(by)await m.click(by,{after:140});m.show(dr);dr.classList.add('mo-pop');fin(()=>dr.classList.remove('mo-pop'));await m.wait(380);
+      const seq=async box=>{const it=[...box.querySelectorAll(':scope>.pksub,:scope>.pl>.pr,:scope>.pkf,:scope>.pkb>*')];m.hide(it);for(const e of it){m.live();m.show(e);await m.wait(110)}};
+      if(dv1){await seq(dv1);const pk=dv1.querySelector('.pr.pick');if(pk&&dv2){await m.click(pk,{after:160});dv1.classList.add('gone');dv2.classList.remove('gone');dv2.animate&&dv2.animate([{opacity:0,transform:'translateX(30px)'},{opacity:1,transform:'none'}],{duration:380,easing:'cubic-bezier(.2,.8,.2,1)'})}}
+      if(dv2&&!dv2.classList.contains('gone'))await seq(dv2)}
     /* 6 · AI: bấm nút AI (hoặc gõ câu hỏi) → AI nghĩ → câu trả lời gõ ra */
     let spotDone=false,trig=!!askNew;
     const aiBtn=[...W.querySelectorAll('.btn.ai,.spot')].find(e=>/\bAI\b|Copilot|Trợ lý/.test(e.textContent)&&!e.closest('.aipanel,.advis,.aisum'));
