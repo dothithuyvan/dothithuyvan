@@ -72,7 +72,7 @@ APPS = [
     ('Townhall', LG['Townhall'], 'Bản tin, thông báo, kỷ niệm', 'mock'),
 ]
 def apps_slide():
-    cards = ''.join(f'''<div class="apc {'has' if m else ''}" data-s="0" style="--d:{.2 + i * .04:.2f}s"><div class="t">{f'<img src="{l}" alt="">' if l else f'<i>{a[0]}</i>'}<b>{a}</b></div><p>{d}</p>{'<span class="tg">Có mockup trong tài liệu</span>' if m else '<span class="tg o">Trình bày tại buổi gặp</span>'}</div>''' for i, (a, l, d, m) in enumerate(APPS))
+    cards = ''.join(f'''<div class="apc {'has' if m else ''}" data-s="0" style="--d:{.2 + i * .04:.2f}s"><div class="t">{f'<img src="{l}" alt="">' if l else f'<i>{a[0]}</i>'}<b>{a}</b></div><p>{d}</p></div>''' for i, (a, l, d, m) in enumerate(APPS))
     return f'''<section class="slide" data-steps="0" data-label="Toàn cảnh bộ HRM">
  {vbar('Bộ HRM')}
  <div class="head"><div class="ey" data-s="0">HRM Operation Services</div><div class="h1" data-s="0" style="--d:.1s">{len(APPS)} ứng dụng, <em>một nền tảng</em> nhân sự</div>
@@ -118,7 +118,7 @@ S.append(f'''<section class="slide cover" data-steps="0" data-label="Bìa">
 </section>''')
 S.append(f'''<section class="slide" data-steps="0" data-label="Nội dung">
  {vbar('')}
- <div class="ag-h"><div class="ey" data-s="0">SOL × Base.vn · 10/2026</div><div class="h1" data-s="0" style="--d:.1s">Nội dung <em>trao đổi</em></div></div>
+ <div class="ag-h"><div class="ey" data-s="0">SOL × Base.vn · 10/2026</div><div class="h1" data-s="0" style="--d:.1s">Nội dung <em>tài liệu</em></div></div>
  <div class="ag-l"><div class="ag-r" data-s="0" style="--d:.3s"><b>A</b><span class="t">Hành trình nhân sự</span><span class="c">Lưu đồ trọn vẹn và toàn cảnh 13 ứng dụng HRM</span></div>
  <div class="ag-r" data-s="0" style="--d:.42s"><b>B</b><span class="t">Từng chặng trên Base</span><span class="c">Mockup trên dữ liệu minh hoạ của SOL: tuyển dụng, tổ chức, hồ sơ, hội nhập, công ca, lương, phát triển</span></div></div>
 </section>''')
