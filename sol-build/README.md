@@ -12,8 +12,7 @@ python3 sol/build.py         # ghép deck -> sol/SOL_Base_Hanh_trinh_nhan_su.htm
 - `sol/patch_*.py`: script đã dùng một lần để đổi dữ liệu Cocoon/Quess sang SOL (cần file gốc, không kèm ở đây); sửa tiếp thì sửa thẳng `sol/*.html`.
 - `logos/`, `img/logo-app/`: logo SOL, Base và logo app từ thư viện giao diện.
 
-## Việc còn lại (cần kho `~/Desktop/Kho-du-lieu-Skill`)
-1. Mockup **Academy** cho chặng 04 "Đào tạo & hội nhập" (thêm slide trong `build.py`, chip Academy đang dùng chữ cái).
-2. Dựng lại **Work rules** theo ảnh thật (bản `sol/rules.html` hiện là minh hoạ, có nhãn "Giao diện minh hoạ").
-3. Đối chiếu **Goal** với app goals.base.com.vn (bản hiện tại theo màn Goals trong app Home).
-4. Logo Academy, Goal, Work rules vào `img/logo-app/` rồi gắn vào `LG` trong `build.py`.
+## Trạng thái (22 trang)
+- Academy: `sol/patch_academy.py` đổi mock gốc `src/academy_goc.html` sang SOL (7 cảnh).
+- Goal: `sol/m_goal.py` dựng theo hồ sơ Goal (Trang chủ, Mục tiêu, Key result).
+- Work rules: đã bỏ khỏi deck theo yêu cầu.

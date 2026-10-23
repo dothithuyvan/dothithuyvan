@@ -29,7 +29,7 @@ def side(on):
 <div class="sec">KÊNH</div><div class="row"><span class="ws" style="padding:0;height:auto"><i style="width:18px;height:18px;font-size:10px">S</i></span><span>SOL · {len(CH)}</span>{I('chevron-down', 13)}</div>{ch}
 <div class="foot"><div class="row">{I('circle-check', 16)}<span>Phê duyệt</span></div><div class="row">{I('layout-grid', 16)}<span>Danh bạ</span></div><div class="row">{I('settings', 16)}<span>Cài đặt</span></div><div class="ws"><i>S</i>SOL</div></div></div>'''
 
-ANN = [('Hành chính Nhân sự', 'Điều chỉnh quy định ca đóng cửa từ 01/11/2026', 'Ca đóng cửa kết thúc 23:30 tại các nhà hàng Miwaku và Kohaku. Giờ làm sau 22:00 tính phụ cấp làm đêm; xem chi tiết tại Work rules.', '28/10'),
+ANN = [('Hành chính Nhân sự', 'Điều chỉnh quy định ca đóng cửa từ 01/11/2026', 'Ca đóng cửa kết thúc 23:30 tại các nhà hàng Miwaku và Kohaku. Giờ làm sau 22:00 tính phụ cấp làm đêm, chi tiết trong sổ tay nhân viên.', '28/10'),
        ('Bếp trung tâm', 'Lịch giao hàng nguyên liệu tươi tháng 11', 'Bếp trung tâm giao hai chuyến mỗi ngày, 06:30 và 14:00. Các nhà hàng chốt đơn nguyên liệu trước 21:00 hôm trước.', '26/10'),
        ('Toàn chuỗi', 'Chúc mừng Miwaku Thảo Điền đạt điểm hài lòng 4,8/5 quý III', 'Cảm ơn toàn đội nhà hàng. Kudos đã được gửi tới các thành viên trên Output.', '24/10'),
 ('Hành chính Nhân sự', 'Lịch làm việc dịp Tết Dương lịch 2027 tại các nhà hàng', 'Các nhà hàng mở cửa xuyên Tết Dương lịch. Nhân viên làm ngày 01/01/2027 được tính lương ngày lễ theo quy định; trưởng ca chốt lịch ca trên Timesheets trước 15/12.', '27/10'),

@@ -11,15 +11,14 @@ def mock_logo(f):
 
 LG = {k: uri(f'logos/c_{k}.png') for k in ['HRIS', 'Payroll', 'Timesheets', 'Workforce', 'Requests', 'Project']}
 LG['Careers'] = mock_logo('sol/car.html')
-LG['Work rules'] = None
 LG['Base'] = uri('logos/q_a41.png')
-for _k, _f in [('E-Hiring', 'hiring'), ('Interview', 'interview'), ('Output', 'output'), ('Reviews', 'review'), ('Townhall', 'townhall'), ('ESOPs', 'esop')]:
+for _k, _f in [('Academy', 'academy'), ('E-Hiring', 'hiring'), ('Interview', 'interview'), ('Output', 'output'), ('Reviews', 'review'), ('Townhall', 'townhall'), ('ESOPs', 'esop')]:
     LG[_k] = uri(f'img/logo-app/{_f}.png')
 SOL_RED, SOL_WHITE = uri('logos/sol_red.png'), uri('logos/sol_white.png')
 BASE_BLUE, BASE_WHITE = uri('logos/q_a20.png'), uri('logos/base_white.png')
 FONTS = open('fonts.css').read()
 
-MOCKS = {k: f'sol/{k}.html' for k in ['hire', 'interview', 'wf', 'hris', 'car', 'ts', 'pay', 'output', 'reviews', 'cplan', 'townhall', 'esop', 'goal', 'rules']}
+MOCKS = {k: f'sol/{k}.html' for k in ['hire', 'interview', 'wf', 'hris', 'car', 'ts', 'pay', 'output', 'reviews', 'cplan', 'townhall', 'esop', 'goal', 'academy']}
 
 def logos(white=False):
     a, b = (SOL_WHITE, BASE_WHITE) if white else (SOL_RED, BASE_BLUE)
@@ -37,12 +36,12 @@ J = [
     ('01', 'Thu hút &amp; tuyển dụng', 'Tin tuyển, ứng viên từ mọi kênh, phỏng vấn', [('E-Hiring', LG['E-Hiring']), ('Interview', LG['Interview'])], 0),
     ('02', 'Tổ chức &amp; định biên', 'Sơ đồ thương hiệu, nhà hàng, vị trí, khung lương', [('Workforce', LG['Workforce'])], 0),
     ('03', 'Hồ sơ &amp; hợp đồng', 'Một hồ sơ cho mỗi người, hợp đồng theo loại', [('HRIS', LG['HRIS'])], 0),
-    ('04', 'Đào tạo &amp; hội nhập', 'Khoá học, giấy tờ, checklist ngày đầu', [('Academy', None), ('Careers', LG['Careers'])], 1),
+    ('04', 'Đào tạo &amp; hội nhập', 'Khoá học, giấy tờ, checklist ngày đầu', [('Academy', LG['Academy']), ('Careers', LG['Careers'])], 1),
     ('05', 'Công, ca, phép, tăng ca', 'Xếp ca xoay, chấm công, đơn từ', [('Timesheets', LG['Timesheets'])], 1),
     ('06', 'Lương &amp; phiếu lương', 'Lấy công từ Timesheets, nhân viên xác nhận', [('Payroll', LG['Payroll'])], 1),
     ('07', 'Mục tiêu &amp; hiệu suất', 'Mục tiêu, đầu ra công việc, đánh giá', [('Goal', None), ('Output', LG['Output']), ('Reviews', LG['Reviews'])], 2),
     ('08', 'Phát triển &amp; thăng tiến', 'Kế hoạch thăng cấp, quyết định nhân sự', [('Careers', LG['Careers'])], 2),
-    ('09', 'Gắn kết &amp; giữ chân', 'Truyền thông nội bộ, quy định, cổ phiếu thưởng', [('Townhall', LG['Townhall']), ('ESOPs', LG['ESOPs']), ('Work rules', LG['Work rules'])], 2),
+    ('09', 'Gắn kết &amp; giữ chân', 'Truyền thông nội bộ, cổ phiếu thưởng', [('Townhall', LG['Townhall']), ('ESOPs', LG['ESOPs'])], 2),
 ]
 def journey():
     cols = ''.join(f'''<div class="jc" data-s="{g}" style="--d:{(i % 3) * .12:.2f}s"><div class="jn"><b>{n}</b><i></i></div>
@@ -59,7 +58,7 @@ def journey():
 # ---------------- toàn cảnh app ----------------
 APPS = [
     ('E-Hiring', LG['E-Hiring'], 'Tuyển dụng: tin tuyển, ứng viên, pipeline', 'mock'),
-    ('Academy', None, 'Đào tạo: khoá học, lộ trình học, kiểm tra', ''),
+    ('Academy', LG['Academy'], 'Chương trình đào tạo, khoá học, bài kiểm tra', 'mock'),
     ('Interview', LG['Interview'], 'Lịch phỏng vấn, hội đồng, điểm đánh giá', 'mock'),
     ('Workforce', LG['Workforce'], 'Cơ cấu tổ chức, vị trí, định biên', 'mock'),
     ('HRIS', LG['HRIS'], 'Hồ sơ nhân sự, hợp đồng, thuế, bảo hiểm', 'mock'),
@@ -71,7 +70,6 @@ APPS = [
     ('Reviews', LG['Reviews'], 'Kỳ đánh giá hiệu suất', 'mock'),
     ('ESOPs', LG['ESOPs'], 'Quyền chọn cổ phần cho quản lý chủ chốt', 'mock'),
     ('Townhall', LG['Townhall'], 'Bản tin, thông báo, kỷ niệm', 'mock'),
-    ('Work rules', None, 'Quy định và chính sách, xác nhận đã đọc', 'mock'),
 ]
 def apps_slide():
     cards = ''.join(f'''<div class="apc {'has' if m else ''}" data-s="0" style="--d:{.2 + i * .04:.2f}s"><div class="t">{f'<img src="{l}" alt="">' if l else f'<i>{a[0]}</i>'}<b>{a}</b></div><p>{d}</p>{'<span class="tg">Có mockup trong tài liệu</span>' if m else '<span class="tg o">Trình bày tại buổi gặp</span>'}</div>''' for i, (a, l, d, m) in enumerate(APPS))
@@ -121,7 +119,7 @@ S.append(f'''<section class="slide cover" data-steps="0" data-label="Bìa">
 S.append(f'''<section class="slide" data-steps="0" data-label="Nội dung">
  {vbar('')}
  <div class="ag-h"><div class="ey" data-s="0">SOL × Base.vn · 10/2026</div><div class="h1" data-s="0" style="--d:.1s">Nội dung <em>trao đổi</em></div></div>
- <div class="ag-l"><div class="ag-r" data-s="0" style="--d:.3s"><b>A</b><span class="t">Hành trình nhân sự</span><span class="c">Lưu đồ trọn vẹn và toàn cảnh 14 ứng dụng HRM</span></div>
+ <div class="ag-l"><div class="ag-r" data-s="0" style="--d:.3s"><b>A</b><span class="t">Hành trình nhân sự</span><span class="c">Lưu đồ trọn vẹn và toàn cảnh 13 ứng dụng HRM</span></div>
  <div class="ag-r" data-s="0" style="--d:.42s"><b>B</b><span class="t">Từng chặng trên Base</span><span class="c">Mockup trên dữ liệu minh hoạ của SOL: tuyển dụng, tổ chức, hồ sơ, hội nhập, công ca, lương, phát triển</span></div></div>
 </section>''')
 S.append(chap('A', 'Hành trình nhân sự', 'Một vòng đời nhân sự khép kín, từ ngày ứng tuyển đến ngày được đào tạo lên quản lý nhà hàng mới', 0))
@@ -147,6 +145,14 @@ S.append(mks('hris', 'HRIS', 'Chặng 03 · HRIS', 'HRIS', LG['HRIS'], 'Hồ sơ
      'Văn phòng: văn phòng Điện Biên Phủ, Bếp trung tâm và từng nhà hàng là một địa điểm làm việc.',
      'Thuế TNCN: lũy tiến cho chính thức, khấu trừ 10% cho thử việc, bán thời gian, thời vụ.',
      'Bảo hiểm: BHXH, BHYT, BHTN trên lương cơ bản; danh sách chờ đăng ký.'], '[0, 1, 2, 3, 4, 5]'))
+S.append(mks('academy', 'Academy', 'Chặng 04 · Academy', 'Academy', LG['Academy'], 'Đào tạo <em>gắn với lộ trình</em>',
+    ['Trưởng ca vào học: khoá đang học, lịch học, hạn nộp bài trong tuần.',
+     'Chương trình "Chuẩn bị lên Quản lý nhà hàng": 5 khoá theo lộ trình, tiến độ của 72 học viên.',
+     'Khoá Quản lý ca và lập lịch ca nằm trong kế hoạch thăng cấp PL-2026-0014 trên Careers.',
+     'Học bài: bảng định biên ca theo lượt khách, hoàn thành bài là cập nhật tiến độ.',
+     'Báo cáo đào tạo toàn chuỗi: ghi danh, hoàn thành, tỷ lệ đạt bài kiểm tra.',
+     'Câu hỏi tình huống chấm bằng AI theo hướng dẫn chấm của phòng Đào tạo.',
+     'Sổ điểm: lọc ngay học viên cần chấm ở các nhà hàng.'], '[0, 1, 2, 3, 4, 5, 6]'))
 S.append(mks('car', 'Careers · Hội nhập', 'Chặng 04 · Careers', 'Careers', LG['Careers'], 'Hội nhập <em>nhân viên mới</em>',
     ['Hồ sơ hội nhập theo chương trình: Nhà hàng, Bếp, Bếp trung tâm, Văn phòng.',
      'Nhân viên mới tự nộp giấy tờ theo checklist (kể cả giấy chứng nhận ATTP); đủ thì tạo hồ sơ HRIS.'], '[0, 1]'))
@@ -162,9 +168,10 @@ S.append(mks('pay', 'Payroll', 'Chặng 06 · Payroll', 'Payroll', LG['Payroll']
      'Bấm vào ô để xem công thức và nguồn: phụ cấp làm đêm theo số ca đóng cửa.',
      'Nhân viên xác nhận phiếu lương trên app; theo dõi người chưa xác nhận.',
      'Chính sách lương riêng cho khối nhà hàng và khối văn phòng, bếp trung tâm.'], '[0, 1, 2, 3]'))
-S.append(mks('goal', 'Goal', 'Chặng 07 · Goal', 'Goals', None, 'Mục tiêu <em>xuyên suốt</em>',
-    ['Mọi mục tiêu đang thực hiện của chuỗi: khai trương nhà hàng mới, doanh thu quý, ATTP, đào tạo; mục tiêu trễ hạn hiện đỏ.',
-     'Mỗi quản lý xem mục tiêu mình phụ trách: Quản lý nhà hàng thấy 4 mục tiêu của Miwaku Thảo Điền.'], '[0, 1]'))
+S.append(mks('goal', 'Goal', 'Chặng 07 · Goal', 'Goals', None, 'Mục tiêu <em>từ chuỗi tới từng ca</em>',
+    ['Quản lý nhà hàng mở app thấy ngay: điểm quý so với mức kỳ vọng hôm nay, key result nào đúng tiến độ, cái nào chậm.',
+     'Mọi mục tiêu, target và key result của mình trên một bảng; mỗi mục tiêu căn chỉnh lên target của thương hiệu.',
+     'Key result giao tới trưởng ca: ai phụ trách, điểm bao nhiêu, cập nhật lúc nào.'], '[0, 1, 2]'))
 S.append(mks('output', 'Output', 'Chặng 07 · Output', 'Output', LG['Output'], 'Mục tiêu, phản hồi, <em>ghi nhận</em>',
     ['Mục tiêu đổ về từ dự án: khai trương Miwaku Landmark 81, việc nào xong, việc nào trễ.',
      'Quản lý gửi phản hồi 1:1 và sau sự kiện cho từng nhân viên, có mức đánh giá.',
@@ -186,9 +193,6 @@ S.append(mks('townhall', 'Townhall', 'Chặng 09 · Townhall', 'Townhall', LG['T
 S.append(mks('esop', 'ESOPs', 'Chặng 09 · ESOPs', 'ESOPs', LG['ESOPs'], 'Giữ chân <em>quản lý chủ chốt</em>',
     ['Chương trình quyền chọn cho quản lý chủ chốt: đã cấp, còn lại, đề xuất và mốc điều kiện đang chờ.',
      'Từng đợt cấp: người nhận, số quyền chọn, tiến độ vesting.'], '[0, 1]'))
-S.append(mks('rules', 'Work rules', 'Chặng 09 · Work rules', 'Work rules', None, 'Quy định <em>một nơi, ai cũng đọc</em>',
-    ['Thư viện quy định của SOL theo nhóm: công ca, nghỉ phép, ATTP, tiêu chuẩn phục vụ, đồng phục, phúc lợi; biết bao nhiêu người đã xác nhận.',
-     'Mở một quy định: nội dung, phiên bản, phạm vi áp dụng và danh sách người chưa đọc để gửi nhắc.'], '[0, 1]'))
 S.append(f'''<section class="slide cover end" data-steps="0" data-label="Cảm ơn">
  <div class="cv-l"><div data-s="0">{logos(True)}</div><div class="ttl" data-s="0" style="--d:.2s">Cảm ơn</div><div class="sub" data-s="0" style="--d:.4s">Base.vn đồng hành cùng SOL trên hành trình nhân sự số</div></div>
  <div class="cv-r" data-s="0" style="--d:.2s"><div class="cv-sun"></div><img src="{SOL_WHITE}" alt=""></div>
