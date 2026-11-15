@@ -566,10 +566,24 @@ function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = fals
 
 /* Ghi dữ liệu: cập nhật ngay trên màn hình, rồi ghi lần lượt từng doc */
 const chain = new Map();
+/* Khi chạy ngoài Claude (vd GitHub Pages): lưu vào bộ nhớ trình duyệt này */
+const LS_KEY = 'ngay-cua-van-v1';
+function saveLocal(){
+  try { localStorage.setItem(LS_KEY, JSON.stringify({tasks:[...S.tasks], deals:[...S.deals], reflects:[...S.reflects], settings:S.settings})); }
+  catch(e){ toast('Trình duyệt không cho lưu dữ liệu.'); }
+}
+function loadLocal(){
+  try {
+    const o = JSON.parse(localStorage.getItem(LS_KEY) || 'null'); if (!o) return true;
+    for (const c of ['tasks','deals','reflects']) if (Array.isArray(o[c])) S[c] = new Map(o[c]);
+    if (o.settings) S.settings = {level: 2, track: 'BC', ...o.settings};
+    return true;
+  } catch(e){ return false; }
+}
 function write(col, id, data){
   if (data === null) S[col].delete(id); else S[col].set(id, data);
   paint();
-  if (!db) return;
+  if (!db){ saveLocal(); return; }
   const key = col + '/' + id;
   const run = () => (data === null ? db.doc(key).delete() : db.doc(key).set(data)).catch(e => {
     toast(e && e.code === 'quota_exceeded' ? 'Kho dữ liệu đã đầy, hãy xoá bớt việc cũ.' : 'Chưa lưu được thay đổi vừa rồi. Kiểm tra mạng rồi thử lại.');
@@ -577,7 +591,7 @@ function write(col, id, data){
   const p = (chain.get(key) || Promise.resolve()).then(run);
   chain.set(key, p);
 }
-function saveSettings(){ if (db) db.doc('app/settings').set(S.settings).catch(() => toast('Chưa lưu được cài đặt.')); }
+function saveSettings(){ if (!db) return saveLocal(); db.doc('app/settings').set(S.settings).catch(() => toast('Chưa lưu được cài đặt.')); }
 
 /* ---------- Loại việc và khung giờ ---------- */
 const CATS = {work:'Công việc', sport:'Thể thao', fun:'Đi chơi', read:'Đọc sách', study:'Học', me:'Cá nhân'};
@@ -899,7 +913,12 @@ function boot(){
   const use = n => window.claude && claude.use ? claude.use(n).catch(() => null) : Promise.resolve(null);
   use('db').then(d => {
     db = d;
-    if (!db){ clearTimeout(slow); st.textContent = 'Đang chạy thử, chưa lưu dữ liệu'; st.classList.add('bad'); return; }
+    if (!db){
+      clearTimeout(slow);
+      if (loadLocal()){ st.textContent = 'Đã lưu trên trình duyệt này'; st.classList.remove('bad'); paint(); }
+      else { st.textContent = 'Trình duyệt không cho lưu dữ liệu'; st.classList.add('bad'); }
+      return;
+    }
     const sub = col => db.collection(col).onSnapshot(snap => { S[col] = new Map(snap.docs.map(x => [x.id, x.data()])); ok(); paint(); }, fail);
     sub('tasks'); sub('deals'); sub('reflects');
     db.doc('app/settings').onSnapshot(s => { if (s.exists) S.settings = {level: 2, track: 'BC', ...s.data()}; ok(); paint(); }, fail);
