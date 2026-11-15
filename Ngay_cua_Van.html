@@ -273,6 +273,27 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
 .dlg-act .del{margin-right:auto;color:var(--bad-ink);background:var(--bad-bg);border-color:transparent}
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:14px;font-weight:700;max-width:calc(100vw - 32px);z-index:9;box-shadow:0 14px 30px -10px rgba(12,38,31,.5)}
 
+/* nhắc việc, cảnh báo, kết quả, trợ lý */
+.chips{align-items:center}
+.chip.deal{display:inline-block;padding:2px 10px;border-radius:999px;border:0;box-shadow:none;backdrop-filter:none;transform:none}
+.bell{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;padding:6px 13px}
+.bell svg{width:14px;height:14px}
+.bell[aria-pressed="true"]{background:var(--ok-bg);color:var(--ok-ink);border-color:transparent}
+.warncard{background:linear-gradient(180deg,color-mix(in srgb,var(--warn-bg) 90%,transparent) 0,var(--panel) 140px);border-color:color-mix(in srgb,var(--warn-ink) 35%,transparent)}
+.warncard h2 .dot{background:var(--warn-ink);box-shadow:0 0 0 4px color-mix(in srgb,var(--warn-ink) 25%,transparent)}
+.task .d{font-size:13px;font-weight:600;color:var(--ink3);margin-top:3px;white-space:pre-line;overflow-wrap:anywhere}
+.task .res{font-size:13px;font-weight:600;color:var(--ok-ink);background:var(--ok-bg);border-radius:12px;padding:6px 10px;margin-top:6px;white-space:pre-line;overflow-wrap:anywhere;border:0;text-align:left;display:block;width:100%}
+.chip.btnchip{border:1px dashed var(--line2);background:var(--solid);cursor:pointer}
+.fab{position:fixed;right:18px;bottom:18px;z-index:8;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;font-size:14.5px}
+.fab svg{width:20px;height:20px}
+#dlg-ai{width:min(620px,calc(100vw - 24px));padding:22px}
+.chat{display:flex;flex-direction:column;gap:10px;max-height:min(46vh,420px);overflow-y:auto;margin:12px 0;padding-right:4px}
+.msg{border-radius:18px;padding:10px 14px;font-size:14.5px;font-weight:600;white-space:pre-wrap;overflow-wrap:anywhere;max-width:92%}
+.msg.me{align-self:flex-end;background:linear-gradient(135deg,var(--accent2),var(--accent));color:var(--on-accent)}
+.msg.ai{align-self:flex-start;background:var(--panel2);color:var(--ink)}
+.askrow{display:flex;gap:8px;align-items:flex-end}
+.askrow textarea{flex:1;min-height:46px;max-height:140px;resize:vertical;border:1px solid var(--line2);background:var(--panel2);border-radius:16px;padding:10px 12px;font-weight:600}
+.foot{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;color:var(--ink3);padding:6px 0 70px}
 /* tài chính + thưởng */
 .tab .cnt:empty{display:none}
 #v-tai-chinh .head{flex-wrap:wrap}
@@ -330,6 +351,7 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
       <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="14" fill="var(--mint)"/><use href="#daisy" x="6" y="6" width="28" height="28"/></svg>
       <div><b>Ngày của Vân</b><span>việc hôm nay · deal · thu nhập · tài chính</span></div>
     </div>
+    <button class="tog bell" id="bell" data-act="bell" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11V7a4 4 0 018 0v4l1.3 1.5H2.7zM6.5 14h3"/></svg><span id="bell-t">Bật nhắc việc</span></button>
     <span class="status" id="status">Đang tải dữ liệu…</span>
   </header>
 
@@ -384,6 +406,10 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
       <select id="q-deal" aria-label="Gắn với deal"></select>
       <button class="btn" type="submit">Thêm</button>
     </form>
+    <section class="card warncard" id="alert-card" hidden>
+      <div class="head"><div><h2><span class="dot"></span><span id="alert-h">Cảnh báo</span></h2><p class="hint" id="alert-sub"></p></div></div>
+      <div class="list" id="alert-list"></div>
+    </section>
     <div class="plan">
       <section class="card" id="tl-card">
         <div class="head"><div><h2><span class="dot"></span>Timeline theo giờ</h2><p class="hint">Cả công việc lẫn thể thao, đi chơi, đọc sách. Bấm vào một khung giờ để xếp việc.</p></div><span class="count num" id="c-tl"></span></div>
@@ -408,7 +434,7 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
         <div class="mini" id="deal-mini"></div>
       </section>
       <section class="card" id="ai-card">
-        <div class="head"><div><h2><span class="dot p"></span>AI gợi ý</h2><p class="hint">Claude đọc deal và việc đang mở rồi đề xuất việc nên làm hôm nay.</p></div><button class="btn sm" id="ai-plan-btn" data-act="aiplan">Gợi ý việc hôm nay</button></div>
+        <div class="head"><div><h2><span class="dot p"></span><span id="ai-card-h">AI gợi ý</span></h2><p class="hint" id="ai-card-hint">Claude đọc deal và việc đang mở rồi đề xuất việc nên làm hôm nay.</p></div><button class="btn sm" id="ai-plan-btn" data-act="aiplan">Gợi ý việc hôm nay</button></div>
         <div class="ai" id="ai-plan"><p class="empty" style="padding:0">Bấm nút để lấy gợi ý. Lần đầu Claude sẽ hỏi bạn cho phép.</p></div>
       </section>
     </div>
@@ -526,6 +552,12 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
       </section>
     </div>
   </main>
+  <footer class="foot" id="foot" hidden>
+    <span>Dữ liệu lưu trên trình duyệt này.</span>
+    <button class="btn ghost sm" data-act="backup">Sao lưu ra file</button>
+    <button class="btn ghost sm" data-act="restore">Khôi phục từ file</button>
+    <input type="file" id="restore-file" accept="application/json,.json" hidden>
+  </footer>
 </div>
 
 <dialog id="dlg-task">
@@ -537,9 +569,31 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
       <div class="field"><label for="t-time">Khung giờ</label><input id="t-time" type="text" placeholder="9h-10h30"></div>
     </div>
     <div class="two"><div class="field"><label for="t-cat">Loại việc</label><select id="t-cat"></select></div><div class="field"><label for="t-deal">Gắn với deal</label><select id="t-deal"></select></div></div>
+    <div class="field"><label for="t-rep">Lặp lại</label><select id="t-rep"><option value="">Không lặp</option><option value="daily">Hằng ngày</option><option value="weekdays">Thứ hai đến thứ sáu</option><option value="weekly">Hằng tuần</option><option value="monthly">Hằng tháng</option></select></div>
+    <div class="field"><label for="t-desc">Mô tả (nếu cần)</label><textarea id="t-desc" style="min-height:60px" placeholder="Cần làm gì, chuẩn bị gì, tiêu chí xong"></textarea></div>
+    <div class="field" id="t-res-wrap"><label for="t-res">Kết quả</label><textarea id="t-res" style="min-height:60px" placeholder="Làm xong thì ra kết quả gì"></textarea></div>
     <div class="field"><label><input type="checkbox" id="t-imp" style="width:auto"> Việc quan trọng</label></div>
     <div class="dlg-act"><button type="button" class="btn ghost del" id="t-del" data-act="deltask">Xoá</button><button type="button" class="btn ghost" data-act="closedlg">Huỷ</button><button class="btn" value="ok">Lưu</button></div>
   </form>
+</dialog>
+
+<dialog id="dlg-result">
+  <form method="dialog" id="f-result">
+    <h3>Xong việc rồi!</h3>
+    <p class="hint" id="rs-title" style="margin:0 0 4px;color:var(--ink2);font-weight:700"></p>
+    <div class="field"><label for="rs-text">Kết quả ra sao?</label><textarea id="rs-text" placeholder="vd: khách đồng ý demo thứ năm, cần gửi báo giá trước 17h"></textarea></div>
+    <div class="field"><label for="rs-next">Việc tiếp theo cho ngày mai (nếu có)</label><input id="rs-next" type="text" placeholder="Để trống nếu không cần"></div>
+    <div class="dlg-act"><button type="button" class="btn ghost" data-act="closedlg">Bỏ qua</button><button class="btn" value="ok">Lưu kết quả</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-ai">
+  <h3>Trợ lý của Vân</h3>
+  <p class="hint" id="ai-mode" style="margin:0;color:var(--ink3);font-size:13px;font-weight:600"></p>
+  <div class="chat" id="ai-chat"></div>
+  <div class="presets" id="ai-quick"></div>
+  <form class="askrow" id="f-ask"><textarea id="ai-q" placeholder="Hỏi về deal, việc hôm nay, thu nhập…" aria-label="Câu hỏi"></textarea><button class="btn" id="ai-send">Gửi</button></form>
+  <div class="dlg-act" style="margin-top:12px"><button type="button" class="btn ghost sm" data-act="aiclear">Xoá hội thoại</button><button type="button" class="btn ghost sm" data-act="closedlg">Đóng</button></div>
 </dialog>
 
 <dialog id="dlg-reward">
@@ -575,6 +629,7 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
     <div class="dlg-act"><button type="button" class="btn ghost del" id="d-del" data-act="deldeal">Xoá</button><button type="button" class="btn ghost" data-act="closedlg">Huỷ</button><button class="btn" value="ok">Lưu</button></div>
   </form>
 </dialog>
+<button class="btn fab" id="fab" data-act="openai"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#daisy" width="40" height="40"/></svg>Hỏi trợ lý</button>
 <div class="toast" id="toast" hidden role="status"></div>
 
 <script>
@@ -663,7 +718,7 @@ let view = 'hom-nay', viewDate = today(), dfilter = 'month', incMonth = today().
 let db = null, sample = null, editTask = null, editDeal = null, refDirty = false, refFor = '';
 const curMonth = () => today().slice(0, 7);
 const dealsArr = () => [...S.deals].map(([id, d]) => ({id, ...d}));
-const tasksArr = () => [...S.tasks].map(([id, t]) => ({id, ...t}));
+const tasksArr = () => [...S.tasks].filter(([, t]) => !t.skip).map(([id, t]) => ({id, ...t}));
 
 function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 4200); }
 
@@ -739,12 +794,12 @@ function paintTimeline(){
 function tasksFor(date){
   const t0 = today();
   return tasksArr().filter(t => date === t0
-    ? (t.date === t0 || (t.date < t0 && !t.done) || (t.date < t0 && t.doneAt === t0))
+    ? (t.date === t0 || (t.date < t0 && !t.done && !t.seriesId) || (t.date < t0 && t.doneAt === t0))
     : t.date === date);
 }
 function taskRow(t){
   const t0 = today(), deal = t.dealId && S.deals.get(t.dealId);
-  const late = !t.done && t.date < t0 ? dayDiff(t0, t.date) : 0;
+  const late = !t.done && t.date < t0 ? dayDiff(t0, t.date) : 0, over = overtime(t);
   return `<div class="task ${t.done ? 'done' : ''}">
     <button class="chk" data-act="toggle" data-id="${t.id}" aria-label="${t.done ? 'Bỏ đánh dấu xong' : 'Đánh dấu xong'}: ${esc(t.title)}">${I.check}</button>
     <div><div class="t">${esc(t.title)}</div><div class="chips">
@@ -752,7 +807,13 @@ function taskRow(t){
       ${t.cat && t.cat !== 'work' && CATS[t.cat] ? `<span class="chip c-${t.cat}">${CATS[t.cat]}</span>` : ''}
       ${deal ? `<span class="chip deal">${esc(deal.name)}</span>` : ''}
       ${late ? `<span class="chip late">trôi ${late} ngày</span>` : ''}
-    </div></div>
+      ${over ? `<span class="chip bad">quá giờ ${hm(over)}</span>` : ''}
+      ${t.repeat && REPS[t.repeat] ? `<span class="chip">lặp ${REPS[t.repeat]}</span>` : ''}
+      ${t.done && !t.result ? `<button class="chip btnchip" data-act="result" data-id="${t.id}">+ kết quả</button>` : ''}
+    </div>
+    ${t.desc && !t.done ? `<div class="d">${esc(t.desc)}</div>` : ''}
+    ${t.result ? `<button class="res" data-act="result" data-id="${t.id}" title="Bấm để sửa kết quả"><b>Kết quả:</b> ${esc(t.result)}</button>` : ''}
+    </div>
     <div class="acts">
       <button class="ic ${t.important ? 'on' : ''}" data-act="star" data-id="${t.id}" title="${t.important ? 'Bỏ quan trọng' : 'Đánh dấu quan trọng'}" aria-label="${t.important ? 'Bỏ quan trọng' : 'Đánh dấu quan trọng'}">${I.star}</button>
       <button class="ic" data-act="tomorrow" data-id="${t.id}" title="Dời sang ngày mai" aria-label="Dời sang ngày mai">${I.next}</button>
@@ -786,7 +847,7 @@ function paintToday(){
   $('#l-day').innerHTML = day.map(taskRow).join('') || '<p class="empty">Chưa có việc thường ngày.</p>';
   $('#c-imp').textContent = imp.filter(t => t.done).length + '/' + imp.length;
   $('#c-day').textContent = day.filter(t => t.done).length + '/' + day.length;
-  paintTimeline();
+  paintTimeline(); paintAlerts(); if (!sample) localPlan();
   const m = curMonth(), open = new Set(tasksArr().filter(t => !t.done && t.dealId).map(t => t.dealId));
   const hot = dealsArr().filter(d => d.month === m && !(+d.collected > 0) && +d.stage !== 0)
     .sort((a, b) => dealAmount(b, 'fc') - dealAmount(a, 'fc')).slice(0, 7);
@@ -996,6 +1057,165 @@ function openReward(r){
 }
 function condUi(){ const c = CONDS[$('#w-cond').value] || CONDS.manual; $('#w-n-wrap').hidden = !c[1]; $('#w-n-lab').textContent = c[1] ? 'Mốc (' + c[1] + ')' : 'Mốc'; }
 
+/* ---------- Việc lặp lại ---------- */
+const REPS = {daily:'hằng ngày', weekdays:'T2–T6', weekly:'hằng tuần', monthly:'hằng tháng'};
+function nextDate(date, rep){
+  if (rep === 'weekly') return addDays(date, 7);
+  if (rep === 'monthly'){ const d = parse(date), day = d.getDate(), n = new Date(d.getFullYear(), d.getMonth() + 1, 1), last = new Date(n.getFullYear(), n.getMonth() + 1, 0).getDate(); n.setDate(Math.min(day, last)); return ymd(n); }
+  let nd = addDays(date, 1);
+  if (rep === 'weekdays') while ([0, 6].includes(parse(nd).getDay())) nd = addDays(nd, 1);
+  return nd;
+}
+/* Sinh sẵn các lần lặp tới 14 ngày tới, dựa trên lần mới nhất của mỗi chuỗi */
+let ensuring = false;
+function ensureRecurring(){
+  if (ensuring) return; ensuring = true;
+  try {
+    const last = new Map(); for (const [, t] of S.tasks) if (t.seriesId && t.date && (!last.has(t.seriesId) || t.date > last.get(t.seriesId).date)) last.set(t.seriesId, t);
+    const t0 = today(), horizon = addDays(t0, 14);
+    for (const [sid, t] of last){
+      if (!REPS[t.repeat]) continue;
+      let d = t.date;
+      for (let i = 0; i < 400; i++){
+        d = nextDate(d, t.repeat); if (d > horizon) break; if (d < t0) continue;
+        write('tasks', uid(), {title: t.title, time: t.time || '', cat: t.cat || 'work', dealId: t.dealId || '', important: !!t.important, desc: t.desc || '', repeat: t.repeat, seriesId: sid, date: d, done: false, doneAt: '', created: new Date().toISOString()});
+      }
+    }
+  } finally { ensuring = false; }
+}
+
+/* ---------- Kết quả việc ---------- */
+let resFor = null;
+function openResult(id){ const t = S.tasks.get(id); if (!t) return; resFor = id; $('#rs-title').textContent = t.title; $('#rs-text').value = t.result || ''; $('#rs-next').value = ''; $('#dlg-result').showModal(); }
+
+/* ---------- Cảnh báo và nhắc việc ---------- */
+const nowMin = () => { const n = new Date(); return n.getHours() * 60 + n.getMinutes(); };
+/* Trả về phút kết thúc nếu việc của hôm nay đã quá giờ mà chưa xong */
+function overtime(t){ if (t.done || t.date !== today()) return 0; const sp = span(t.time); return sp && sp[1] <= nowMin() ? sp[1] : 0; }
+function alertList(){ const t0 = today(); return tasksArr().filter(t => !t.done && (overtime(t) || (t.date < t0 && !t.seriesId))).sort((a, b) => (b.important - a.important) || String(a.date).localeCompare(String(b.date))); }
+function paintAlerts(){
+  const l = viewDate === today() ? alertList() : [], card = $('#alert-card'); card.hidden = !l.length; if (!l.length) return;
+  const ot = l.filter(t => overtime(t)).length, slip = l.length - ot, imp = l.filter(t => t.important).length;
+  $('#alert-h').textContent = `${l.length} việc chưa hoàn thành`;
+  $('#alert-sub').textContent = [ot ? `${ot} việc đã quá giờ hôm nay` : '', slip ? `${slip} việc trôi từ hôm trước` : '', imp ? `trong đó ${imp} việc quan trọng` : ''].filter(Boolean).join(', ') + '. Làm xong thì tick, hoặc dời sang ngày mai.';
+  $('#alert-list').innerHTML = l.slice(0, 12).map(taskRow).join('') + (l.length > 12 ? `<p class="empty">và ${l.length - 12} việc nữa.</p>` : '');
+}
+const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+const canNotify = () => typeof Notification !== 'undefined';
+const notifyOn = () => canNotify() && Notification.permission === 'granted' && lsGet('ncv-notify') === '1';
+function paintBell(){ const on = notifyOn(); $('#bell').setAttribute('aria-pressed', on); $('#bell-t').textContent = on ? 'Đang nhắc việc' : 'Bật nhắc việc'; }
+async function toggleBell(){
+  if (!canNotify()){ toast('Nơi này không bật được thông báo của máy. Cảnh báo vẫn hiện ngay trong trang.'); return; }
+  if (notifyOn()){ lsSet('ncv-notify', '0'); paintBell(); toast('Đã tắt nhắc việc.'); return; }
+  let p = Notification.permission;
+  if (p !== 'granted'){ try { p = await Notification.requestPermission(); } catch (e) { p = 'denied'; } }
+  if (p !== 'granted'){ toast('Trình duyệt đang chặn thông báo. Bấm biểu tượng ổ khoá cạnh địa chỉ trang để cho phép.'); return; }
+  lsSet('ncv-notify', '1'); paintBell(); push('Đã bật nhắc việc', 'Mình sẽ nhắc trước giờ 5 phút, báo khi quá giờ chưa xong, và tổng kết lúc 17h30, 21h.');
+}
+function push(title, body){
+  if (notifyOn()){ try { const n = new Notification(title, {body, tag: title}); n.onclick = () => { window.focus(); n.close(); }; return; } catch (e) {} }
+  toast(title + (body ? ' · ' + body : ''));
+}
+/* Mỗi sự kiện chỉ báo một lần trong ngày */
+function once(key){ const t0 = today(); let f; try { f = JSON.parse(lsGet('ncv-fired') || '{}'); } catch (e) { f = {}; } if (f.d !== t0) f = {d: t0, k: []}; if (f.k.includes(key)) return false; f.k.push(key); lsSet('ncv-fired', JSON.stringify(f)); return true; }
+function tick(){
+  if (!db && !lsGet(LS_KEY) && !S.tasks.size) return;
+  ensureRecurring();
+  const t0 = today(), v = nowMin(), mine = tasksArr().filter(t => t.date === t0 && !t.done);
+  for (const t of mine){ const sp = span(t.time); if (!sp) continue;
+    if (v >= sp[0] - 5 && v < sp[0] + 10 && once('s:' + t.id + ':' + sp[0])) push((v < sp[0] ? 'Sắp tới giờ: ' : 'Đến giờ: ') + t.title, hm(sp[0]) + ' – ' + hm(sp[1]) + (t.important ? ' · việc quan trọng' : ''));
+    if (v >= sp[1] && v < sp[1] + 30 && once('e:' + t.id + ':' + sp[1])) push('Quá giờ mà chưa xong: ' + t.title, 'Hết giờ lúc ' + hm(sp[1]) + '. Tick xong hoặc dời lại.');
+  }
+  const al = alertList(), names = l => l.slice(0, 3).map(t => t.title).join(', ') + (l.length > 3 ? '…' : '');
+  if (v >= 360 && v < 690 && (mine.length || al.length) && once('am')) push(`Hôm nay có ${mine.length} việc`, `${mine.filter(t => t.important).length} việc quan trọng` + (al.length ? `, ${al.length} việc còn tồn: ${names(al)}` : '') + '.');
+  if (v >= 1050 && v < 1110 && mine.length && once('pm')) push(`Còn ${mine.length} việc chưa xong hôm nay`, names(mine));
+  if (v >= 1260 && v < 1350 && (mine.length || !S.reflects.has(t0)) && once('eod')) push(mine.length ? `Cuối ngày còn ${mine.length} việc chưa xong` : 'Chưa viết reflect hôm nay', mine.length ? names(mine) + '. Dời sang mai hoặc ghi lý do vào reflect.' : 'Ba câu, một phút.');
+  if (view === 'hom-nay' && !document.querySelector('dialog[open]')) paintAlerts();
+  const nA = al.length; document.title = (nA ? '(' + nA + ') ' : '') + 'Ngày của Vân';
+}
+
+/* ---------- Đề xuất tự tính (khi không gọi được Claude) ---------- */
+function localSuggest(){
+  const m = curMonth(), open = new Set(tasksArr().filter(t => !t.done && t.dealId).map(t => t.dealId)), out = [];
+  const ds = dealsArr().filter(d => +d.stage > 0 && +d.stage < 7 && !(+d.collected > 0) && (d.month === m || !d.month)).sort((a, b) => dealAmount(b, 'fc') - dealAmount(a, 'fc'));
+  for (const d of ds){
+    if (open.has(d.id)) continue;
+    const first = (d.next || '').split('\n')[0].replace(/^-\s*/, '').trim(), fc = short(dealAmount(d, 'fc'));
+    if (+d.stage === 6) out.push({title: 'Nhắc thanh toán ' + d.name, important: true, dealId: d.id, why: `Đã ký, còn chờ ${short(+d.value || 0)} về.`});
+    else if (first) out.push({title: d.name + ': ' + first, important: +d.prob >= 60, dealId: d.id, why: `${STAGES[+d.stage]}, forecast ${fc}, chưa có việc nào đang mở.`});
+    else out.push({title: 'Chốt bước tiếp theo với ' + d.name, important: +d.prob >= 60, dealId: d.id, why: `${STAGES[+d.stage]}, forecast ${fc}, chưa ghi bước tiếp theo.`});
+  }
+  return out.slice(0, 6);
+}
+function localPlan(say){
+  aiSug = localSuggest(); const al = alertList(), {level, track} = S.settings, fc = income(dealsArr(), curMonth(), level, track, 'fc');
+  const gap = fc.perf < fc.kpi ? `Forecast còn thiếu ${short(fc.kpi - fc.perf)} để chạm KPI.` : fc.perf < fc.goal ? `Forecast đã qua KPI, còn ${short(fc.goal - fc.perf)} nữa tới Goal.` : 'Forecast đã qua Goal.';
+  $('#ai-plan').innerHTML = `<p style="color:var(--ink2);font-weight:700">${gap}${al.length ? ` Đang có ${al.length} việc chưa hoàn thành, xử lý trước.` : ''}</p>` +
+    (aiSug.length ? aiSug.map((s, i) => `<div class="sug"><div><b>${s.important ? '★ ' : ''}${esc(s.title)}</b><small>${esc(s.why)}</small></div><button class="btn ghost sm" data-act="addsug" data-i="${i}">Thêm</button></div>`).join('') : '<p>Mọi deal đang mở đều đã có việc. Không có đề xuất thêm.</p>');
+  if (say) toast('Đã làm mới đề xuất.');
+}
+
+/* ---------- Trợ lý ---------- */
+let chat = [], asking = false;
+const QUICK = ['Hôm nay nên ưu tiên việc gì trước?', 'Deal nào dễ chốt nhất tháng này, nên làm gì?', 'Còn thiếu bao nhiêu để đạt Goal, bù bằng deal nào?', 'Nhìn việc đang tồn, mình đang vướng ở đâu?'];
+function fullContext(){
+  const m = curMonth(), t0 = today(), {level, track} = S.settings, re = income(dealsArr(), m, level, track, 'real'), fc = income(dealsArr(), m, level, track, 'fc');
+  const deals = dealsArr().filter(d => +d.stage !== 0 && (d.month >= m || !d.month)).slice(0, 40).map(d => ({ten: d.name, thang_thu: d.month || '', giai_doan: STAGES[+d.stage], gia_tri_trieu: Math.round((+d.value || 0) / M * 10) / 10, xac_suat: +d.prob || 0, da_thu_trieu: Math.round((+d.collected || 0) / M * 10) / 10, buoc_tiep: (d.next || '').slice(0, 300), key_account: !!d.key}));
+  const tk = t => ({viec: t.title, ngay: t.date, gio: t.time || '', quan_trong: !!t.important, xong: !!t.done, deal: (t.dealId && S.deals.get(t.dealId) || {}).name || '', mo_ta: (t.desc || '').slice(0, 200), ket_qua: (t.result || '').slice(0, 200)});
+  const tasks = tasksArr().filter(t => t.date >= addDays(t0, -3) && t.date <= addDays(t0, 3)).slice(0, 60).map(tk), ton = alertList().slice(0, 20).map(tk);
+  return `Hôm nay: ${WD[parse(t0).getDay()]} ${t0}, lúc ${hm(nowMin())}. Level ${level}, nhánh ${track}.
+Tháng ${m}: doanh thu performance thực thu ${full(re.perf)} (${re.rank}), forecast ${full(fc.perf)} (${fc.rank}). Mốc KPI ${full(fc.kpi)}, Goal ${full(fc.goal)}, Outperformance ${full(fc.outp)}. Thu nhập thực ${full(re.total)}, forecast ${full(fc.total)}.
+DEAL (JSON): ${JSON.stringify(deals)}
+VIỆC 3 NGÀY QUANH HÔM NAY (JSON): ${JSON.stringify(tasks)}
+VIỆC CHƯA HOÀN THÀNH, QUÁ HẠN (JSON): ${JSON.stringify(ton)}`;
+}
+const AI_ROLE = 'Bạn là trợ lý riêng của Vân, một Business Consultant bán phần mềm B2B (Base.vn) ở Việt Nam. Trả lời bằng tiếng Việt, thẳng, ngắn, cụ thể, dựa trên dữ liệu bên dưới; thiếu dữ liệu thì nói thiếu, không bịa. Khi đề xuất việc, nêu rõ làm gì, với deal nào, vì sao.';
+function paintChat(){
+  $('#ai-chat').innerHTML = chat.map(c => `<div class="msg ${c.role === 'user' ? 'me' : 'ai'}">${esc(c.text)}</div>`).join('') || `<div class="msg ai">${sample ? 'Chào Vân. Hỏi mình bất cứ điều gì về deal, việc hôm nay hay thu nhập, mình đọc dữ liệu trong trang rồi trả lời.' : 'Chào Vân. Gõ câu hỏi rồi bấm Gửi, mình sẽ mở Claude ở tab mới kèm sẵn câu hỏi và dữ liệu deal, việc của bạn.'}</div>`;
+  const box = $('#ai-chat'); box.scrollTop = box.scrollHeight;
+}
+function openAssistant(){
+  $('#ai-mode').textContent = sample ? 'Nối thẳng với Claude. Claude đọc deal, việc và thu nhập trong trang này.' : 'Bản GitHub không gọi thẳng Claude được. Bấm Gửi sẽ mở claude.ai ở tab mới và gửi kèm dữ liệu deal, việc của bạn sang đó. Muốn chat ngay trong trang thì dùng bản Artifact.';
+  $('#ai-quick').innerHTML = QUICK.map(q => `<button class="tog" data-act="askquick" data-q="${esc(q)}">${esc(q)}</button>`).join('');
+  $('#ai-send').textContent = sample ? 'Gửi' : 'Mở Claude';
+  paintChat(); $('#dlg-ai').showModal(); $('#ai-q').focus();
+}
+async function ask(){
+  const q = $('#ai-q').value.trim(); if (!q || asking) return;
+  if (!sample){
+    const prompt = AI_ROLE + '\n\n' + fullContext() + '\n\nCâu hỏi của Vân: ' + q;
+    let copied = false; try { await navigator.clipboard.writeText(prompt); copied = true; } catch (e) {}
+    const enc = encodeURIComponent(prompt), short1 = enc.length <= 6000;
+    window.open(short1 ? 'https://claude.ai/new?q=' + enc : 'https://claude.ai/new', '_blank', 'noopener');
+    chat.push({role: 'user', text: q}, {role: 'assistant', text: short1 ? 'Đã mở Claude ở tab mới kèm câu hỏi và dữ liệu.' : copied ? 'Dữ liệu hơi dài nên mình đã chép sẵn. Sang tab Claude vừa mở, bấm Ctrl+V rồi Enter.' : 'Đã mở Claude ở tab mới, nhưng trình duyệt không cho chép dữ liệu. Bạn gõ lại câu hỏi bên đó nhé.'});
+    $('#ai-q').value = ''; paintChat(); return;
+  }
+  asking = true; $('#ai-send').disabled = true; $('#ai-q').value = '';
+  chat.push({role: 'user', text: q}); const reply = {role: 'assistant', text: 'Đang nghĩ…'}; chat.push(reply); paintChat();
+  const hist = chat.slice(0, -1).slice(-12), msgs = hist.map((c, i) => ({role: c.role, content: i === 0 ? AI_ROLE + '\n\n' + fullContext() + '\n\n' + (c.role === 'user' ? 'Câu hỏi của Vân: ' : '') + c.text : c.text}));
+  if (msgs[0].role !== 'user') msgs.shift();
+  try { const out = await sample(msgs, {cache: false, onText: ({text}) => { reply.text = text; paintChat(); }}); reply.text = (out && out.text) || reply.text; }
+  catch (e) { reply.text = (e && e.text ? e.text + '\n\n' : '') + aiErr(e); }
+  asking = false; $('#ai-send').disabled = false; paintChat();
+}
+
+/* ---------- Sao lưu, khôi phục (bản lưu trên trình duyệt) ---------- */
+function backup(){
+  const data = {app: 'ngay-cua-van', v: 1, at: new Date().toISOString(), ...Object.fromEntries(COLS.map(c => [c, [...S[c]]])), settings: S.settings};
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 1)], {type: 'application/json'})); a.download = 'ngay-cua-van-' + today() + '.json';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); toast('Đã tải file sao lưu về máy.');
+}
+async function restore(file){
+  let o; try { o = JSON.parse(await file.text()); } catch (e) { o = null; }
+  if (!o || o.app !== 'ngay-cua-van' || !Array.isArray(o.tasks)){ toast('File này không phải bản sao lưu của Ngày của Vân.'); return; }
+  if (db){ toast('Khôi phục chỉ dùng cho bản lưu trên trình duyệt.'); return; }
+  if (!confirm(`Thay toàn bộ dữ liệu hiện tại bằng bản sao lưu ngày ${String(o.at || '').slice(0, 10)}?\n(${o.tasks.length} việc, ${(o.deals || []).length} deal)`)) return;
+  lsSet(LS_KEY + '-truoc-khoi-phuc', lsGet(LS_KEY) || '');
+  for (const c of COLS) S[c] = new Map(Array.isArray(o[c]) ? o[c] : []);
+  S.settings = {level: 2, track: 'BC', ...(o.settings || {})}; saveLocal(); paint(); toast('Đã khôi phục dữ liệu.');
+}
+
 /* ---------- Reflect ---------- */
 function daySum(date){
   const l = tasksArr().filter(t => t.date === date || t.doneAt === date);
@@ -1027,6 +1247,7 @@ function paint(){
   document.querySelectorAll('.view').forEach(v => v.hidden = v.id !== 'v-' + view);
   if (view === 'hom-nay') paintToday(); else if (view === 'deal') paintDeals(); else if (view === 'thu-nhap') paintIncome(); else if (view === 'tai-chinh') paintFinance(); else if (view === 'thuong') paintRewards(); else paintReflect();
   $('#cnt-deal').textContent = S.deals.size || '';
+  const nA = alertList().length; document.title = (nA ? '(' + nA + ') ' : '') + 'Ngày của Vân';
   $('#cnt-rw').textContent = rewardsArr().filter(r => !r.claimed && rewardState(r).p >= 1).length || '';
 }
 
@@ -1038,6 +1259,7 @@ function openTask(t){
   $('#t-title').value = t.title || ''; $('#t-date').value = t.date || viewDate; $('#t-time').value = t.time || '';
   $('#t-cat').innerHTML = catOptions(); $('#t-cat').value = t.cat || 'work';
   $('#t-deal').value = t.dealId || ''; $('#t-imp').checked = !!t.important; $('#t-del').hidden = !editTask;
+  $('#t-rep').value = t.repeat || ''; $('#t-desc').value = t.desc || ''; $('#t-res').value = t.result || ''; $('#t-res-wrap').hidden = !t.done && !t.result;
   $('#dlg-task').showModal();
 }
 function openDeal(d){
@@ -1056,13 +1278,21 @@ const ACT = {
   go(d){ view = d.v; if (location.hash.slice(1) !== view) location.hash = view; paint(); },
   day(d){ viewDate = +d.d === 0 ? today() : addDays(viewDate, +d.d); refDirty = false; paint(); },
   qimp(_, b){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); },
-  toggle(d){ const t = S.tasks.get(d.id); if (!t) return; const done = !t.done; write('tasks', d.id, {...t, done, doneAt: done ? today() : ''}); },
+  toggle(d){ const t = S.tasks.get(d.id); if (!t) return; const done = !t.done; write('tasks', d.id, {...t, done, doneAt: done ? today() : ''}); if (done && (t.important || t.dealId) && !t.result && !document.querySelector('dialog[open]')) openResult(d.id); },
+  result(d){ openResult(d.id); },
   star(d){ const t = S.tasks.get(d.id); if (t) write('tasks', d.id, {...t, important: !t.important}); },
   tomorrow(d){ const t = S.tasks.get(d.id); if (!t) return; const from = t.date > today() ? t.date : today(); write('tasks', d.id, {...t, date: addDays(from, 1)}); toast('Đã dời sang ' + dm(addDays(from, 1)) + '.'); },
   edittask(d){ const t = S.tasks.get(d.id); if (t) openTask({id: d.id, ...t}); },
   newat(d){ openTask({date: viewDate, time: d.h + 'h-' + (+d.h + 1) + 'h'}); },
   preset(d){ openTask({date: viewDate, title: d.title, cat: d.cat}); },
-  deltask(){ if (editTask) write('tasks', editTask, null); $('#dlg-task').close(); },
+  deltask(){ const t = editTask && S.tasks.get(editTask);
+    if (t && t.seriesId && t.repeat){
+      if (confirm('Việc này lặp lại.\nOK: xoá lần này và dừng mọi lần sắp tới.\nHuỷ: chỉ bỏ qua riêng lần này.')){
+        for (const [id, x] of [...S.tasks]) if (x.seriesId === t.seriesId){ if (id === editTask || (!x.done && x.date > t.date)) write('tasks', id, null); else if (x.repeat) write('tasks', id, {...x, repeat: ''}); }
+        toast('Đã dừng việc lặp lại.');
+      } else { write('tasks', editTask, {...t, skip: true}); toast('Đã bỏ qua riêng lần này.'); }
+    } else if (editTask) write('tasks', editTask, null);
+    $('#dlg-task').close(); },
   taskfromdeal(d){ const x = S.deals.get(d.id); if (!x) return; const first = (x.next || '').split('\n')[0].replace(/^-\s*/, '').trim(); openTask({title: first ? x.name + ': ' + first : 'Follow ' + x.name, date: viewDate < today() ? today() : viewDate, important: true, dealId: d.id}); },
   dfilter(d){ dfilter = d.f; paintDeals(); },
   newdeal(){ openDeal({month: curMonth(), stage: 2}); },
@@ -1073,7 +1303,13 @@ const ACT = {
   saveref(){ saveReflect(true); },
   addsug(d, b){ const s = aiSug[+d.i]; if (!s) return; write('tasks', uid(), {title: s.title, date: viewDate, important: !!s.important, done: false, doneAt: '', dealId: s.dealId && S.deals.has(s.dealId) ? s.dealId : '', time: '', created: new Date().toISOString()}); b.disabled = true; b.textContent = 'Đã thêm'; },
   userefdraft(){ if (!aiRef) return; if (!$('#r-win').value.trim()) $('#r-win').value = aiRef.win || ''; if (!$('#r-block').value.trim()) $('#r-block').value = aiRef.block || ''; if (!$('#r-tom').value.trim()) $('#r-tom').value = aiRef.tomorrow || ''; refDirty = true; toast('Đã chép nháp vào các ô còn trống. Sửa lại rồi bấm Lưu.'); },
-  aiplan(){ aiPlan(); }, airef(){ aiReflect(); },
+  aiplan(){ if (sample) aiPlan(); else localPlan(true); }, airef(){ aiReflect(); },
+  bell(){ toggleBell(); },
+  openai(){ openAssistant(); },
+  aiclear(){ chat = []; paintChat(); },
+  askquick(d){ $('#ai-q').value = d.q; ask(); },
+  backup(){ backup(); },
+  restore(){ $('#restore-file').click(); },
   addjar(){ setJars([...jars(), {id: 'j' + uid(), name: 'Quỹ mới', pct: 0}]); },
   deljar(d){ const l = jars(); if (l.length <= 1){ toast('Cần giữ ít nhất một quỹ.'); return; } const j = l.find(x => x.id === d.id); setJars(l.filter(x => x.id !== d.id)); if (j) toast('Đã xoá quỹ ' + j.name + '. Nhớ chỉnh lại tỷ lệ cho đủ 100%.'); },
   resetjars(){ setJars(JARS0.map(j => ({...j}))); toast('Đã về tỷ lệ mặc định 50 · 15 · 10 · 10 · 10 · 5.'); },
@@ -1140,7 +1376,21 @@ function boot(){
     write('tasks', uid(), {title, date: viewDate, important: $('#q-imp').getAttribute('aria-pressed') === 'true', done: false, doneAt: '', dealId: $('#q-deal').value, cat: $('#q-cat').value || 'work', time: $('#q-time').value.trim(), created: new Date().toISOString()});
     $('#q-title').value = ''; $('#q-time').value = ''; $('#q-title').focus(); });
   $('#f-task').addEventListener('submit', () => { const old = editTask ? S.tasks.get(editTask) : null; const title = $('#t-title').value.trim(); if (!title) return;
-    write('tasks', editTask || uid(), {...(old || {done: false, doneAt: '', created: new Date().toISOString()}), title, date: $('#t-date').value || viewDate, time: $('#t-time').value.trim(), dealId: $('#t-deal').value, cat: $('#t-cat').value || 'work', important: $('#t-imp').checked}); });
+    const repeat = $('#t-rep').value, id = editTask || uid();
+    const t = {...(old || {done: false, doneAt: '', created: new Date().toISOString()}), title, date: $('#t-date').value || viewDate, time: $('#t-time').value.trim(), dealId: $('#t-deal').value, cat: $('#t-cat').value || 'work', important: $('#t-imp').checked, desc: $('#t-desc').value.trim(), result: $('#t-res').value.trim(), repeat};
+    if (repeat && !t.seriesId) t.seriesId = uid();
+    write('tasks', id, t);
+    if (t.seriesId) for (const [oid, x] of [...S.tasks]) if (oid !== id && x.seriesId === t.seriesId && !x.done && x.date > t.date){
+      if (!repeat) write('tasks', oid, null); else write('tasks', oid, {...x, title: t.title, time: t.time, dealId: t.dealId, cat: t.cat, important: t.important, desc: t.desc, repeat}); }
+    ensureRecurring(); });
+  $('#f-result').addEventListener('submit', () => { const t = resFor && S.tasks.get(resFor); if (!t) return;
+    const result = $('#rs-text').value.trim(), nx = $('#rs-next').value.trim();
+    if (result !== (t.result || '')) write('tasks', resFor, {...t, result});
+    if (nx){ write('tasks', uid(), {title: nx, date: addDays(today(), 1), important: !!t.important, done: false, doneAt: '', dealId: t.dealId || '', cat: t.cat || 'work', time: '', created: new Date().toISOString()}); toast('Đã thêm việc tiếp theo cho ngày mai.'); } });
+  $('#f-ask').addEventListener('submit', e => { e.preventDefault(); ask(); });
+  $('#ai-q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); ask(); } });
+  $('#restore-file').addEventListener('change', e => { const f = e.target.files[0]; e.target.value = ''; if (f) restore(f); });
+  paintBell(); setInterval(tick, 30000); setTimeout(tick, 1500);
   $('#f-deal').addEventListener('submit', () => { const old = editDeal ? S.deals.get(editDeal) : {}; const name = $('#d-name').value.trim(); if (!name) return;
     write('deals', editDeal || uid(), {...old, name, month: $('#d-month').value, stage: +$('#d-stage').value, prob: +$('#d-prob').value || 0, value: Math.round((+$('#d-value').value || 0) * M), collected: Math.round((+$('#d-coll').value || 0) * M), src: $('#d-src').value, rtype: $('#d-rtype').value, comPct: +$('#d-com').value || 0, next: $('#d-next').value.trim(), key: $('#d-key').checked}); });
   $('#d-stage').addEventListener('change', e => { $('#d-prob').value = PROB[+e.target.value]; });
@@ -1166,15 +1416,15 @@ function boot(){
     db = d;
     if (!db){
       clearTimeout(slow);
-      if (loadLocal()){ st.textContent = 'Đã lưu trên trình duyệt này'; st.classList.remove('bad'); paint(); }
+      if (loadLocal()){ st.textContent = 'Đã lưu trên trình duyệt này'; st.classList.remove('bad'); $('#foot').hidden = false; ensureRecurring(); paint(); }
       else { st.textContent = 'Trình duyệt không cho lưu dữ liệu'; st.classList.add('bad'); }
       return;
     }
-    const sub = col => db.collection(col).onSnapshot(snap => { S[col] = new Map(snap.docs.map(x => [x.id, x.data()])); ok(); paint(); }, fail);
+    const sub = col => db.collection(col).onSnapshot(snap => { S[col] = new Map(snap.docs.map(x => [x.id, x.data()])); ok(); paint(); if (col === 'tasks'){ clearTimeout(sub.h); sub.h = setTimeout(ensureRecurring, 800); } }, fail);
     COLS.forEach(sub);
     db.doc('app/settings').onSnapshot(s => { if (s.exists) S.settings = {level: 2, track: 'BC', ...s.data()}; ok(); paint(); }, fail);
   });
-  use('sample').then(s => { sample = s; if (!s){ $('#ai-card').hidden = true; $('#ai-ref-btn').hidden = true; } });
+  use('sample').then(s => { sample = s; if (!s){ $('#ai-ref-btn').hidden = true; $('#ai-card-h').textContent = 'Đề xuất hôm nay'; $('#ai-card-hint').textContent = 'Tự tính từ deal và việc đang mở: deal nào có tiền mà chưa có việc, việc nào đang trôi.'; $('#ai-plan-btn').textContent = 'Làm mới'; localPlan(); } });
 }
 if (typeof module !== 'undefined') module.exports = {income, span, finance};
 if (typeof document !== 'undefined') boot();
