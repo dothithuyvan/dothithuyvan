@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ngày của Vân</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a pool of mint water. The hero is the surface of the pool (light ripples, daisies, a paper boat);
+   everything below floats on it as frosted cards. Serif italics carry the mood, a round sans carries the work. */
+:root{
+  --bg:#E9F8F0; --blob1:#C7F1DC; --blob2:#CDEFEA; --blob3:#FFF3EA;
+  --panel:rgba(255,255,255,.80); --solid:#FCFFFD; --panel2:#E8F7EF;
+  --ink:#12382B; --ink2:#456B5C; --ink3:#7C9B8E;
+  --mint:#A5E7C8; --mint2:#CDF3E0; --aqua:#9DE3D8; --accent:#17875F; --accent2:#3DBB8C; --on-accent:#FFFFFF;
+  --line:rgba(18,56,43,.10); --line2:rgba(18,56,43,.20); --edge:rgba(255,255,255,.9);
+  --peach:#F5A88C; --peach-bg:#FDEAE1; --peach-ink:#98411F; --blush:#F9DAD6;
+  --warn-bg:#FBF0D0; --warn-ink:#8A5A07; --bad-bg:#FBE2E4; --bad-ink:#A8323D; --ok-bg:#D8F4E5; --ok-ink:#11604A;
+  --sea1:#B9EFD8; --sea2:#86DBC6; --sand:#F5E5C2; --petal:#FFFFFF; --pollen:#F7D774;
+  --shadow:0 1px 0 var(--edge) inset,0 18px 40px -18px rgba(23,110,80,.28),0 2px 6px rgba(23,110,80,.05);
+  --display:"Fraunces","Iowan Old Style",Georgia,serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B241D; --blob1:#11382D; --blob2:#0F3436; --blob3:#1A2D25;
+    --panel:rgba(22,62,50,.78); --solid:#143B2F; --panel2:#1B4839;
+    --ink:#E5F7EE; --ink2:#ABCFBF; --ink3:#7CA695;
+    --mint:#2E7E64; --mint2:#215A48; --aqua:#22716A; --accent:#74DEB4; --accent2:#4FC79A; --on-accent:#0B241D;
+    --line:rgba(190,235,215,.13); --line2:rgba(190,235,215,.27); --edge:rgba(255,255,255,.07);
+    --peach:#F2A385; --peach-bg:#4A2A1F; --peach-ink:#FFC9B3; --blush:#5A3A38;
+    --warn-bg:#44370F; --warn-ink:#F4D27A; --bad-bg:#4A1F25; --bad-ink:#FFB1B8; --ok-bg:#16463A; --ok-ink:#8DE9C4;
+    --sea1:#1B5B49; --sea2:#14483C; --sand:#8C7A4E; --petal:#E9F5EF; --pollen:#D9B955;
+    --shadow:0 1px 0 var(--edge) inset,0 18px 40px -18px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B241D; --blob1:#11382D; --blob2:#0F3436; --blob3:#1A2D25;
+  --panel:rgba(22,62,50,.78); --solid:#143B2F; --panel2:#1B4839;
+  --ink:#E5F7EE; --ink2:#ABCFBF; --ink3:#7CA695;
+  --mint:#2E7E64; --mint2:#215A48; --aqua:#22716A; --accent:#74DEB4; --accent2:#4FC79A; --on-accent:#0B241D;
+  --line:rgba(190,235,215,.13); --line2:rgba(190,235,215,.27); --edge:rgba(255,255,255,.07);
+  --peach:#F2A385; --peach-bg:#4A2A1F; --peach-ink:#FFC9B3; --blush:#5A3A38;
+  --warn-bg:#44370F; --warn-ink:#F4D27A; --bad-bg:#4A1F25; --bad-ink:#FFB1B8; --ok-bg:#16463A; --ok-ink:#8DE9C4;
+  --sea1:#1B5B49; --sea2:#14483C; --sand:#8C7A4E; --petal:#E9F5EF; --pollen:#D9B955;
+  --shadow:0 1px 0 var(--edge) inset,0 18px 40px -18px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.5;font-weight:500;
+  background-image:radial-gradient(700px 520px at 92% -6%,var(--blob2),transparent 68%),radial-gradient(760px 560px at -8% 18%,var(--blob1),transparent 66%),radial-gradient(620px 480px at 70% 78%,var(--blob3),transparent 70%);
+  background-attachment:fixed;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:10px}
+.wrap{max-width:1160px;margin:0 auto;padding:22px 22px 70px;display:flex;flex-direction:column;gap:20px}
+.num{font-variant-numeric:tabular-nums lining-nums}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.brand svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 6px 10px rgba(23,135,95,.22))}
+.brand b{font-family:var(--display);font-size:24px;font-weight:600;font-style:italic;letter-spacing:-.01em;display:block;line-height:1.05}
+.brand span{font-size:12.5px;color:var(--ink3);font-weight:600;letter-spacing:.02em}
+.status{font-size:12.5px;font-weight:700;color:var(--ok-ink);background:var(--ok-bg);padding:6px 12px 6px 26px;border-radius:999px;position:relative}
+.status::before{content:"";position:absolute;left:11px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--accent2)}
+.status.bad{background:var(--warn-bg);color:var(--warn-ink)}
+.status.bad::before{background:var(--warn-ink)}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:5px;background:var(--panel);border:1px solid var(--edge);border-radius:999px;box-shadow:var(--shadow);backdrop-filter:blur(10px);align-self:flex-start;max-width:100%}
+.tab{border:0;background:transparent;padding:9px 20px;border-radius:999px;font-weight:700;color:var(--ink2);white-space:nowrap;transition:background .2s,color .2s}
+.tab:hover{background:var(--panel2)}
+.tab[aria-selected="true"]{background:linear-gradient(135deg,var(--accent2),var(--accent));color:var(--on-accent);box-shadow:0 8px 18px -6px rgba(23,135,95,.55)}
+.tab .cnt{font-size:11.5px;margin-left:7px;background:color-mix(in srgb,currentColor 16%,transparent);padding:1px 7px;border-radius:999px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-radius:34px;border:1px solid var(--edge);box-shadow:var(--shadow);
+  background:radial-gradient(520px 300px at 88% 0%,color-mix(in srgb,var(--blob3) 80%,transparent),transparent 70%),linear-gradient(180deg,var(--solid) 0%,var(--mint2) 55%,var(--sea1) 100%)}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;padding:30px 34px 0;align-items:end}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
+.daynav{display:inline-flex;gap:4px;background:var(--panel);padding:3px;border-radius:999px;border:1px solid var(--line)}
+.daynav button{border:0;background:transparent;width:28px;height:28px;border-radius:999px;display:grid;place-items:center;font-weight:800;color:var(--ink2)}
+.daynav button:hover{background:var(--panel2)}
+.daynav .now{width:auto;padding:0 11px;font-size:12px;text-transform:none;letter-spacing:0}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(44px,7vw,84px);line-height:.92;letter-spacing:-.035em;margin:14px 0 12px;font-optical-sizing:auto}
+.hero h1 em{display:block;font-weight:400;font-style:italic;font-size:.5em;letter-spacing:-.01em;line-height:1.15;color:var(--accent)}
+.hero .sub{color:var(--ink2);margin:0;max-width:44ch;font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tile{background:color-mix(in srgb,var(--solid) 62%,transparent);border:1px solid var(--edge);border-radius:20px;padding:14px 10px 12px;text-align:center;backdrop-filter:blur(8px);box-shadow:0 10px 22px -16px rgba(23,110,80,.5)}
+.tile b{display:block;font-family:var(--display);font-weight:600;font-size:clamp(20px,2.2vw,28px);line-height:1.05;letter-spacing:-.03em;white-space:nowrap}
+.tile span{font-size:11.5px;color:var(--ink2);line-height:1.25;display:block;margin-top:5px;font-weight:700}
+.sea{position:relative;height:150px;margin-top:14px;overflow:hidden;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--sea2) 55%,transparent) 45%,var(--sea2) 100%)}
+.sea svg.cau{position:absolute;top:0;left:-6%;width:112%;height:100%;opacity:.85;mix-blend-mode:soft-light;animation:drift 16s ease-in-out infinite alternate}
+.sea svg.cau.b{opacity:.5;animation-duration:23s;animation-direction:alternate-reverse}
+@keyframes drift{from{transform:translate3d(-2.5%,0,0)}to{transform:translate3d(2.5%,3%,0)}}
+.daisy{position:absolute;width:26px;height:26px;animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px) rotate(8deg)}}
+.route{position:absolute;left:44px;right:132px;top:76px;height:0;border-top:3px dotted color-mix(in srgb,var(--ink) 30%,transparent)}
+.route i{position:absolute;top:-7px;width:11px;height:11px;border-radius:50%;background:var(--solid);border:2.5px solid var(--accent);transform:translateX(-50%)}
+.boat{position:absolute;top:-50px;width:54px;height:47px;transform:translateX(-50%);transition:left .9s cubic-bezier(.2,.9,.2,1);filter:drop-shadow(0 8px 8px rgba(18,56,43,.18));animation:bob 5s ease-in-out infinite}
+.isle{position:absolute;right:20px;bottom:10px;width:122px;height:94px}
+.sea .lab{position:absolute;top:94px;font-size:11.5px;font-weight:800;color:var(--ink2);letter-spacing:.03em}
+@media (prefers-reduced-motion:reduce){.boat{transition:none;animation:none}.sea svg.cau,.daisy,.chk svg{animation:none!important}}
+
+/* cards */
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:28px;padding:24px 26px;box-shadow:var(--shadow);backdrop-filter:blur(12px)}
+.card h2{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.02em;line-height:1.15;margin:0;display:flex;align-items:center;gap:10px}
+.card h2 .dot{width:12px;height:12px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px color-mix(in srgb,var(--mint) 35%,transparent);flex:none}
+.card h2 .dot.p{background:var(--peach);box-shadow:0 0 0 4px color-mix(in srgb,var(--peach) 30%,transparent)}
+.card .hint{margin:6px 0 0;color:var(--ink3);font-size:13.5px;font-weight:600}
+.head{display:flex;align-items:flex-start;gap:12px;justify-content:space-between;margin-bottom:14px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.imp{background:linear-gradient(180deg,color-mix(in srgb,var(--peach-bg) 85%,transparent) 0,var(--panel) 130px)}
+.day{background:linear-gradient(180deg,color-mix(in srgb,var(--mint2) 75%,transparent) 0,var(--panel) 130px)}
+.count{font-family:var(--display);font-weight:600;font-size:17px;background:var(--solid);border:1px solid var(--line);border-radius:999px;padding:3px 13px;white-space:nowrap}
+
+/* quick add */
+.add{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--panel);border:1px solid var(--edge);border-radius:999px;padding:8px 8px 8px 14px;box-shadow:var(--shadow);backdrop-filter:blur(12px)}
+.add:focus-within{border-color:var(--accent2)}
+.add input[type=text]{flex:1 1 240px;min-width:0;border:0;background:transparent;padding:8px 8px;font-size:16px;font-weight:600}
+.add input[type=text]::placeholder{color:var(--ink3);font-weight:500}
+.add input[type=text]:focus{outline:none}
+.add select,.add #q-time{border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:8px 14px;max-width:100%;font-size:14px;font-weight:600}
+.field select,.field input,.field textarea{border:1px solid var(--line2);background:var(--panel2);border-radius:14px;padding:9px 12px;max-width:100%}
+.tog{border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:8px 15px;font-weight:700;font-size:14px;color:var(--ink2);display:inline-flex;gap:6px;align-items:center;transition:background .2s}
+.tog[aria-pressed="true"]{background:var(--peach-bg);color:var(--peach-ink);border-color:var(--peach)}
+.btn{border:0;background:linear-gradient(135deg,var(--accent2),var(--accent));color:var(--on-accent);border-radius:999px;padding:9px 20px;font-weight:800;white-space:nowrap;flex:none;box-shadow:0 8px 16px -8px rgba(23,135,95,.6);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:var(--solid);color:var(--ink);border:1px solid var(--line2);font-weight:700;box-shadow:none}
+.btn.sm{padding:6px 13px;font-size:13px}
+.btn:disabled{opacity:.55;cursor:default;transform:none}
+
+/* task rows */
+.list{display:flex;flex-direction:column;gap:2px;margin:0 -10px}
+.task{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:start;padding:11px 10px;border-radius:16px;transition:background .15s}
+.task:hover{background:color-mix(in srgb,var(--solid) 80%,transparent)}
+.chk{width:26px;height:26px;border-radius:50%;border:2px solid var(--line2);background:var(--solid);display:grid;place-items:center;margin-top:0;padding:0;flex:none;transition:background .2s,border-color .2s,transform .15s}
+.chk:hover{transform:scale(1.1);border-color:var(--accent2)}
+.chk svg{width:14px;height:14px;opacity:0}
+.task.done .chk{background:linear-gradient(135deg,var(--accent2),var(--accent));border-color:transparent}
+.task.done .chk svg{opacity:1;animation:pop .28s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.2)}to{transform:scale(1)}}
+.imp .chk{border-color:var(--peach)}
+.task .t{font-weight:700;font-size:15.5px;overflow-wrap:anywhere;line-height:1.4}
+.task.done .t{text-decoration:line-through;text-decoration-color:var(--mint);text-decoration-thickness:2px;color:var(--ink3);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+.chip{font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 10px;background:var(--panel2);color:var(--ink2)}
+.chip.deal{background:var(--ok-bg);color:var(--ok-ink)}
+.chip.late{background:var(--warn-bg);color:var(--warn-ink)}
+.chip.key{background:var(--peach-bg);color:var(--peach-ink)}
+.chip.bad{background:var(--bad-bg);color:var(--bad-ink)}
+.acts{display:flex;gap:1px;opacity:.55;transition:opacity .15s}
+.task:hover .acts,.task:focus-within .acts{opacity:1}
+.ic{border:0;background:transparent;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:var(--ink3)}
+.ic:hover{background:var(--panel2);color:var(--ink)}
+.ic svg{width:16px;height:16px}
+.ic.on{color:var(--peach)}
+.empty{color:var(--ink3);font-size:14px;padding:14px 10px 4px;font-weight:600;font-style:italic;font-family:var(--display)}
+
+/* timeline */
+.plan{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;align-items:start}
+.stack{display:flex;flex-direction:column;gap:20px}
+.presets{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.unsched{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px;font-size:12.5px;font-weight:800;color:var(--ink3)}
+.unsched button{border:1px dashed var(--line2);background:var(--solid);border-radius:999px;padding:3px 11px;font-size:12.5px;font-weight:700;color:var(--ink2);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tl{position:relative;margin-left:44px}
+.tl .hr{display:block;width:100%;height:46px;border:0;border-top:1px dashed var(--line2);background:transparent;position:relative;padding:0;text-align:left}
+.tl .hr:hover{background:color-mix(in srgb,var(--mint2) 45%,transparent)}
+.tl .hr span{position:absolute;left:-44px;top:-9px;font-size:11.5px;font-weight:800;color:var(--ink3);width:36px;text-align:right}
+.tl .hr:hover::after{content:"+ xếp việc";position:absolute;left:10px;top:13px;font-size:12px;font-weight:700;color:var(--accent)}
+.blk{position:absolute;border-radius:14px;padding:5px 8px 5px 6px;display:flex;gap:7px;align-items:flex-start;overflow:hidden;border:1px solid var(--edge);box-shadow:0 6px 14px -10px rgba(18,56,43,.5);z-index:2;cursor:pointer;background:var(--mint2);border-left:4px solid var(--accent2)}
+.blk .chk{width:20px;height:20px;border-width:1.5px;margin-top:1px}
+.blk .chk svg{width:11px;height:11px}
+.blk b{font-size:13px;font-weight:800;line-height:1.25;display:block;overflow:hidden;text-overflow:ellipsis}
+.blk small{font-size:11px;font-weight:700;color:var(--ink2);display:block}
+.blk.short{align-items:center}.blk.short b{white-space:nowrap}.blk.short small{display:none}
+.blk.done .chk{background:linear-gradient(135deg,var(--accent2),var(--accent));border-color:transparent}.blk.done .chk svg{opacity:1}
+.blk.done{opacity:.6}.blk.done b{text-decoration:line-through}
+.blk.c-sport{background:var(--peach-bg);border-left-color:var(--peach)}
+.blk.c-fun{background:var(--blush);border-left-color:#E58E9A}
+.blk.c-read{background:color-mix(in srgb,var(--aqua) 45%,var(--solid));border-left-color:#3FB3A6}
+.blk.c-study{background:var(--warn-bg);border-left-color:#E0B13C}
+.blk.c-me{background:var(--panel2);border-left-color:var(--ink3)}
+.chip.c-sport{background:var(--peach-bg);color:var(--peach-ink)}
+.chip.c-fun{background:var(--blush);color:var(--ink)}
+.chip.c-read{background:color-mix(in srgb,var(--aqua) 45%,var(--solid));color:var(--ink)}
+.chip.c-study{background:var(--warn-bg);color:var(--warn-ink)}
+.nowline{position:absolute;left:-6px;right:0;height:0;border-top:2px solid var(--peach);z-index:3;pointer-events:none}
+.nowline::before{content:"";position:absolute;left:-4px;top:-6px;width:10px;height:10px;border-radius:50%;background:var(--peach)}
+
+/* deals */
+.mini{display:flex;flex-direction:column}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:12px 0;border-top:1px dashed var(--line2)}
+.mrow:first-child{border-top:0}
+.mrow .n{font-weight:800}
+.mrow .x{font-size:13px;color:var(--ink3);font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mrow .v{text-align:right;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.02em;line-height:1.1}
+.mrow .v small{display:block;font-family:var(--body);font-weight:700;color:var(--ink3);font-size:11.5px;letter-spacing:0;margin-top:2px}
+.funnel{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.fst{flex:1 0 112px;background:linear-gradient(180deg,var(--panel2),color-mix(in srgb,var(--mint2) 60%,var(--panel2)));border-radius:20px;padding:13px 14px}
+.fst b{font-family:var(--display);font-size:30px;font-weight:600;display:block;line-height:1;letter-spacing:-.03em}
+.fst span{font-size:12.5px;color:var(--ink2);font-weight:800;display:block;margin-top:5px}
+.fst small{display:block;font-size:11.5px;color:var(--ink3);font-weight:700}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filters .tog[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.deal{background:var(--panel);border:1px solid var(--edge);border-radius:24px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);backdrop-filter:blur(12px);transition:transform .2s}
+.deal:hover{transform:translateY(-3px)}
+.deal .n{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.015em;line-height:1.2;overflow-wrap:anywhere}
+.deal .money{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.deal .money b{font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.deal .money span{font-size:12.5px;color:var(--ink3);font-weight:700}
+.deal .next{font-size:13.5px;color:var(--ink2);font-weight:600;white-space:pre-line;background:var(--panel2);border-radius:16px;padding:10px 13px;overflow-wrap:anywhere}
+.deal .row{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.pill{font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 11px;background:var(--panel2);color:var(--ink2)}
+.pill.s4{background:var(--mint2);color:var(--ink)} .pill.s5,.pill.s6{background:var(--mint);color:var(--ink)} .pill.s7{background:var(--accent);color:var(--on-accent)} .pill.s0{background:var(--bad-bg);color:var(--bad-ink)}
+
+/* income */
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:9px 10px;text-align:right;border-top:1px dashed var(--line2);white-space:nowrap;font-weight:600}
+th:first-child,td:first-child{text-align:left;white-space:normal;font-weight:700}
+thead th{border-top:0;font-size:12px;color:var(--ink3);font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+tr.total td{font-family:var(--display);font-weight:700;font-size:19px;border-top:2px solid var(--ink)}
+tr.sep td{font-weight:800;background:var(--panel2)}
+tr.sep td:first-child{border-radius:12px 0 0 12px} tr.sep td:last-child{border-radius:0 12px 12px 0}
+.big3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.big3 .tile{text-align:left;padding:20px;background:var(--panel2);backdrop-filter:none;border-radius:24px;box-shadow:none}
+.big3 .tile b{font-size:clamp(24px,3.2vw,40px);margin:6px 0 2px}
+.big3 .tile span:first-child{text-transform:uppercase;letter-spacing:.05em;font-size:11.5px;font-weight:800}
+.big3 .tile.main{background:linear-gradient(135deg,var(--accent2),var(--accent));color:var(--on-accent);box-shadow:0 18px 30px -16px rgba(23,135,95,.7)}
+.big3 .tile.main span{color:inherit;opacity:.92}
+.mile{position:relative;height:18px;border-radius:999px;background:var(--panel2);margin:40px 0 34px}
+.mile .fill{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,var(--aqua),var(--accent2),var(--accent))}
+.mile .mk{position:absolute;top:-28px;transform:translateX(-50%);font-size:12px;font-weight:800;color:var(--ink2);white-space:nowrap;text-align:center}
+.mile .mk::after{content:"";position:absolute;left:50%;top:24px;width:2px;height:26px;background:var(--solid);opacity:.9}
+.mile .mk small{position:absolute;top:54px;left:50%;transform:translateX(-50%);font-weight:700;color:var(--ink3)}
+.note{font-size:13.5px;color:var(--ink2);font-weight:600;background:var(--panel2);border-radius:16px;padding:12px 14px;margin-top:12px}
+.setrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.setrow label{font-size:13px;color:var(--ink2);font-weight:700;display:flex;gap:6px;align-items:center}
+.setrow select{border:1px solid var(--line2);background:var(--solid);border-radius:999px;padding:6px 12px;font-weight:700}
+
+/* reflect */
+.strip{display:flex;gap:7px;flex-wrap:wrap}
+.dd{width:38px;text-align:center;font-size:10.5px;color:var(--ink3);font-weight:800}
+.dd i{display:block;width:34px;height:34px;border-radius:50%;margin:0 auto 4px;background:var(--panel2);border:2.5px solid transparent}
+.dd.r i{border-color:var(--peach)}
+.sumgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:8px}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.field label{font-family:var(--display);font-style:italic;font-weight:600;font-size:17px}
+dialog .field label{font-family:var(--body);font-style:normal;font-weight:800;font-size:13px}
+.field textarea{min-height:78px;resize:vertical;width:100%;font-weight:600}
+.field input,.field select{width:100%;font-weight:600}
+.hist{display:flex;flex-direction:column}
+.hist details{border-top:1px dashed var(--line2);padding:11px 0}
+.hist details:first-child{border-top:0}
+.hist summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:17px}
+.hist p{margin:6px 0 0;color:var(--ink2);white-space:pre-line;font-size:14px;font-weight:600}
+.ai{border:1.5px dashed var(--mint);background:color-mix(in srgb,var(--panel2) 70%,transparent);border-radius:20px;padding:16px}
+.ai .sug{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-top:1px dashed var(--line2)}
+.ai .sug:first-child{border-top:0;padding-top:0}
+.ai .sug small{display:block;color:var(--ink3);font-weight:600}
+.ai p{margin:0 0 4px}
+dialog{border:1px solid var(--edge);border-radius:28px;background:var(--solid);color:var(--ink);padding:26px;width:min(540px,calc(100vw - 32px));box-shadow:0 40px 90px -20px rgba(12,38,31,.45)}
+dialog::backdrop{background:rgba(12,38,31,.4);backdrop-filter:blur(4px)}
+dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size:26px;margin:0 0 4px;letter-spacing:-.02em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dlg-act{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;flex-wrap:wrap}
+.dlg-act .del{margin-right:auto;color:var(--bad-ink);background:var(--bad-bg);border-color:transparent}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:14px;font-weight:700;max-width:calc(100vw - 32px);z-index:9;box-shadow:0 14px 30px -10px rgba(12,38,31,.5)}
+[hidden]{display:none!important}
+@media (max-width:860px){
+  .hero-in{grid-template-columns:1fr;padding:22px 20px 0}
+  .cols,.plan{grid-template-columns:1fr}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .big3,.sumgrid{grid-template-columns:1fr}
+  .wrap{padding:14px 16px 56px}
+  .card{padding:18px;border-radius:24px}
+  .add{border-radius:26px}
+  .route{left:26px;right:118px}
+  .hero{border-radius:28px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="14" fill="var(--mint)"/><use href="#daisy" x="6" y="6" width="28" height="28"/></svg>
+      <div><b>Ngày của Vân</b><span>việc hôm nay · deal · thu nhập</span></div>
+    </div>
+    <span class="status" id="status">Đang tải dữ liệu…</span>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Màn hình">
+    <button class="tab" role="tab" data-act="go" data-v="hom-nay">Hôm nay</button>
+    <button class="tab" role="tab" data-act="go" data-v="deal">Deal<span class="cnt" id="cnt-deal"></span></button>
+    <button class="tab" role="tab" data-act="go" data-v="thu-nhap">Thu nhập</button>
+    <button class="tab" role="tab" data-act="go" data-v="reflect">Reflect</button>
+  </nav>
+
+  <section class="hero" aria-label="Tổng quan trong ngày">
+    <div class="hero-in">
+      <div>
+        <div class="eyebrow">
+          <span class="daynav">
+            <button data-act="day" data-d="-1" aria-label="Ngày trước">‹</button>
+            <button class="now" data-act="day" data-d="0">Hôm nay</button>
+            <button data-act="day" data-d="1" aria-label="Ngày sau">›</button>
+          </span>
+          <span id="h-eyebrow"></span>
+        </div>
+        <h1 id="h-title"></h1>
+        <p class="sub" id="h-sub"></p>
+      </div>
+      <div class="tiles" id="h-tiles"></div>
+    </div>
+    <div class="sea" aria-hidden="true">
+      <svg class="cau" preserveAspectRatio="none"><filter id="cau" x="0" y="0" width="100%" height="100%"><feTurbulence type="turbulence" baseFrequency=".011 .028" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -7 0 0 0 1.05"/></filter><rect width="100%" height="100%" filter="url(#cau)"/></svg>
+      <svg class="cau b" preserveAspectRatio="none"><filter id="cau2" x="0" y="0" width="100%" height="100%"><feTurbulence type="turbulence" baseFrequency=".006 .02" numOctaves="2" seed="23"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -6 0 0 0 1"/></filter><rect width="100%" height="100%" filter="url(#cau2)"/></svg>
+      <svg width="0" height="0" style="position:absolute"><symbol id="daisy" viewBox="-13 -13 26 26"><g fill="var(--petal)"><ellipse rx="3.3" ry="6.2" cy="-6.4"/><ellipse rx="3.3" ry="6.2" cy="-6.4" transform="rotate(45)"/><ellipse rx="3.3" ry="6.2" cy="-6.4" transform="rotate(90)"/><ellipse rx="3.3" ry="6.2" cy="-6.4" transform="rotate(135)"/><ellipse rx="3.3" ry="6.2" cy="-6.4" transform="rotate(180)"/><ellipse rx="3.3" ry="6.2" cy="-6.4" transform="rotate(225)"/><ellipse rx="3.3" ry="6.2" cy="-6.4" transform="rotate(270)"/><ellipse rx="3.3" ry="6.2" cy="-6.4" transform="rotate(315)"/></g><circle r="3.4" fill="var(--pollen)"/></symbol></svg>
+      <svg class="daisy" style="left:22%;top:108px"><use href="#daisy"/></svg>
+      <svg class="daisy" style="left:47%;top:22px;width:18px;height:18px;animation-delay:-2s"><use href="#daisy"/></svg>
+      <svg class="daisy" style="left:66%;top:112px;width:20px;height:20px;animation-delay:-4s"><use href="#daisy"/></svg>
+      <div class="route">
+        <i style="left:0"></i><i style="left:50%"></i><i style="left:100%"></i>
+        <div class="boat" id="boat" style="left:0%"><svg viewBox="0 0 46 40"><path d="M23 3v22" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><path d="M25 5l13 17H25z" fill="var(--peach)"/><path d="M21 9L10 22h11z" fill="var(--panel)"/><path d="M4 26h38l-6 10H10z" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+      </div>
+      <span class="lab" style="left:44px">Bắt đầu ngày</span>
+      <svg class="isle" viewBox="0 0 112 86"><ellipse cx="56" cy="74" rx="54" ry="11" fill="var(--sand)"/><path d="M18 72c8-20 60-22 76 0z" fill="var(--accent)" opacity=".85"/><path d="M70 56V22" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/><path d="M71 22h22l-6 7 6 7H71z" fill="var(--peach)"/><text x="50" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" font-family="Be Vietnam Pro, sans-serif">Xong ngày</text></svg>
+    </div>
+  </section>
+
+  <!-- HÔM NAY -->
+  <main id="v-hom-nay" class="view" style="display:flex;flex-direction:column;gap:18px">
+    <form class="add" id="quick" autocomplete="off">
+      <input type="text" id="q-title" placeholder="Thêm việc… rồi Enter" aria-label="Tên việc">
+      <button type="button" class="tog" id="q-imp" aria-pressed="false" data-act="qimp">★ Quan trọng</button>
+      <input type="text" id="q-time" placeholder="Giờ, vd 9h-10h" aria-label="Khung giờ" style="flex:0 1 150px">
+      <select id="q-cat" aria-label="Loại việc"></select>
+      <select id="q-deal" aria-label="Gắn với deal"></select>
+      <button class="btn" type="submit">Thêm</button>
+    </form>
+    <div class="plan">
+      <section class="card" id="tl-card">
+        <div class="head"><div><h2><span class="dot"></span>Timeline theo giờ</h2><p class="hint">Cả công việc lẫn thể thao, đi chơi, đọc sách. Bấm vào một khung giờ để xếp việc.</p></div><span class="count num" id="c-tl"></span></div>
+        <div class="presets" id="presets"></div>
+        <div class="unsched" id="unsched"></div>
+        <div class="tl" id="tl"></div>
+      </section>
+      <div class="stack">
+      <section class="card imp">
+        <div class="head"><div><h2><span class="dot p"></span>Quan trọng</h2><p class="hint">Việc đẩy deal và tiền về. Làm trước, giữ tối đa 3 việc.</p></div><span class="count num" id="c-imp"></span></div>
+        <div class="list" id="l-imp"></div>
+      </section>
+      <section class="card day">
+        <div class="head"><div><h2><span class="dot"></span>Cần làm trong ngày</h2><p class="hint">Việc phải xong hôm nay nhưng không quyết định doanh số.</p></div><span class="count num" id="c-day"></span></div>
+        <div class="list" id="l-day"></div>
+      </section>
+      </div>
+    </div>
+    <div class="cols">
+      <section class="card">
+        <div class="head"><div><h2><span class="dot"></span>Deal cần action</h2><p class="hint">Deal có tiền dự kiến thu tháng này, xếp theo forecast.</p></div><button class="btn ghost sm" data-act="go" data-v="deal">Xem tất cả</button></div>
+        <div class="mini" id="deal-mini"></div>
+      </section>
+      <section class="card" id="ai-card">
+        <div class="head"><div><h2><span class="dot p"></span>AI gợi ý</h2><p class="hint">Claude đọc deal và việc đang mở rồi đề xuất việc nên làm hôm nay.</p></div><button class="btn sm" id="ai-plan-btn" data-act="aiplan">Gợi ý việc hôm nay</button></div>
+        <div class="ai" id="ai-plan"><p class="empty" style="padding:0">Bấm nút để lấy gợi ý. Lần đầu Claude sẽ hỏi bạn cho phép.</p></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- DEAL -->
+  <main id="v-deal" class="view" hidden style="display:flex;flex-direction:column;gap:18px">
+    <section class="card">
+      <div class="head"><div><h2><span class="dot"></span>Phễu trên Base Sales</h2><p class="hint" id="funnel-hint"></p></div></div>
+      <div class="funnel" id="funnel"></div>
+    </section>
+    <div class="filters">
+      <button class="tog" data-act="dfilter" data-f="month">Thu tháng này</button>
+      <button class="tog" data-act="dfilter" data-f="value">Có giá trị</button>
+      <button class="tog" data-act="dfilter" data-f="all">Tất cả</button>
+      <span style="flex:1"></span>
+      <button class="btn" data-act="newdeal">+ Thêm deal</button>
+    </div>
+    <div class="grid" id="deal-grid"></div>
+  </main>
+
+  <!-- THU NHẬP -->
+  <main id="v-thu-nhap" class="view" hidden style="display:flex;flex-direction:column;gap:18px">
+    <section class="card">
+      <div class="head">
+        <div><h2><span class="dot"></span>Thu nhập dự kiến</h2><p class="hint">Tính theo chính sách Compensation BC/BD 2026 v5.1 trong sheet của bạn. Commission tính trên tiền thực thu.</p></div>
+        <div class="setrow">
+          <label>Tháng <select id="inc-month"></select></label>
+          <label>Level <select id="inc-level"></select></label>
+          <label>Nhánh <select id="inc-track"><option>BC</option><option>BD</option></select></label>
+        </div>
+      </div>
+      <div class="big3" id="inc-big"></div>
+      <div class="mile" id="inc-mile"></div>
+      <div class="note" id="inc-note"></div>
+    </section>
+    <section class="card">
+      <div class="head"><h2><span class="dot"></span>Chi tiết ba kịch bản</h2></div>
+      <div class="tbl-wrap"><table class="num" id="inc-table"></table></div>
+    </section>
+    <section class="card">
+      <div class="head"><div><h2><span class="dot p"></span>Lộ trình theo tháng và điều kiện lên cấp</h2><p class="hint" id="promo"></p></div></div>
+      <div class="tbl-wrap"><table class="num" id="road"></table></div>
+    </section>
+  </main>
+
+  <!-- REFLECT -->
+  <main id="v-reflect" class="view" hidden style="display:flex;flex-direction:column;gap:18px">
+    <section class="card">
+      <div class="head"><div><h2><span class="dot"></span>14 ngày gần nhất</h2><p class="hint">Ô càng đậm là ngày xong càng nhiều việc. Viền cam là ngày đã viết reflect.</p></div><span class="count num" id="streak"></span></div>
+      <div class="strip" id="strip"></div>
+    </section>
+    <div class="cols">
+      <section class="card">
+        <div class="head"><div><h2><span class="dot p"></span>Reflect <span id="r-date"></span></h2><p class="hint">Ba câu, một phút. Số liệu bên dưới tự lấy từ checkbox.</p></div></div>
+        <div class="sumgrid" id="r-sum"></div>
+        <div id="r-slip"></div>
+        <div class="field"><label for="r-win">Hôm nay được gì?</label><textarea id="r-win"></textarea></div>
+        <div class="field"><label for="r-block">Vướng ở đâu?</label><textarea id="r-block"></textarea></div>
+        <div class="field"><label for="r-tom">Mai ưu tiên gì trước?</label><textarea id="r-tom"></textarea></div>
+        <div class="dlg-act"><button class="btn ghost" id="ai-ref-btn" data-act="airef">AI viết nháp</button><button class="btn" data-act="saveref">Lưu reflect</button></div>
+        <div class="ai" id="ai-ref" hidden style="margin-top:12px"></div>
+      </section>
+      <section class="card">
+        <div class="head"><h2><span class="dot"></span>Các ngày đã viết</h2></div>
+        <div class="hist" id="hist"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<dialog id="dlg-task">
+  <form method="dialog" id="f-task">
+    <h3 id="dt-h">Việc</h3>
+    <div class="field"><label for="t-title">Tên việc</label><input id="t-title" type="text" required></div>
+    <div class="two">
+      <div class="field"><label for="t-date">Ngày</label><input id="t-date" type="date" required></div>
+      <div class="field"><label for="t-time">Khung giờ</label><input id="t-time" type="text" placeholder="9h-10h30"></div>
+    </div>
+    <div class="two"><div class="field"><label for="t-cat">Loại việc</label><select id="t-cat"></select></div><div class="field"><label for="t-deal">Gắn với deal</label><select id="t-deal"></select></div></div>
+    <div class="field"><label><input type="checkbox" id="t-imp" style="width:auto"> Việc quan trọng</label></div>
+    <div class="dlg-act"><button type="button" class="btn ghost del" id="t-del" data-act="deltask">Xoá</button><button type="button" class="btn ghost" data-act="closedlg">Huỷ</button><button class="btn" value="ok">Lưu</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-deal">
+  <form method="dialog" id="f-deal">
+    <h3 id="dd-h">Deal</h3>
+    <div class="field"><label for="d-name">Khách hàng / deal</label><input id="d-name" type="text" required></div>
+    <div class="two">
+      <div class="field"><label for="d-month">Tháng thu tiền</label><input id="d-month" type="month"></div>
+      <div class="field"><label for="d-stage">Giai đoạn</label><select id="d-stage"></select></div>
+      <div class="field"><label for="d-value">Dự kiến thu (triệu, chưa VAT)</label><input id="d-value" type="number" min="0" step="0.001"></div>
+      <div class="field"><label for="d-prob">Xác suất %</label><input id="d-prob" type="number" min="0" max="100"></div>
+      <div class="field"><label for="d-coll">Đã thực thu (triệu)</label><input id="d-coll" type="number" min="0" step="0.001"></div>
+      <div class="field"><label for="d-src">Nguồn</label><select id="d-src"><option value="in">Inbound</option><option value="out">Outbound (Hunt)</option></select></div>
+      <div class="field"><label for="d-rtype">Loại doanh thu</label><select id="d-rtype"><option value="sw">Phần mềm Base</option><option value="dv">Dịch vụ Base</option><option value="kam">KAM</option><option value="other">Khác (NCC ngoài)</option></select></div>
+      <div class="field"><label for="d-com">% com riêng (KAM / Khác)</label><input id="d-com" type="number" min="0" max="100" step="0.1"></div>
+    </div>
+    <div class="field"><label for="d-next">Bước tiếp theo</label><textarea id="d-next"></textarea></div>
+    <div class="field"><label><input type="checkbox" id="d-key" style="width:auto"> Key account</label></div>
+    <div class="dlg-act"><button type="button" class="btn ghost del" id="d-del" data-act="deldeal">Xoá</button><button type="button" class="btn ghost" data-act="closedlg">Huỷ</button><button class="btn" value="ok">Lưu</button></div>
+  </form>
+</dialog>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+/* ---------- Chính sách Compensation BC/BD 2026 v5.1 (từ tab "Chính sách" của sheet) ---------- */
+const M = 1e6;
+const LV = { // [lương BC, lương BD, PC điện thoại, PC đi lại, EES KPI, EES Goal, KPI, Goal, Outperf] đơn vị triệu
+  1:[9,9,.3,.2,0,0,50,80,110], 2:[10,10,.3,.2,0,0,60,90,120], 3:[12,12,.3,.2,0,0,80,110,160],
+  4:[13,13,.5,.5,1.5,3,100,145,190], 5:[15,16.5,.5,.5,2.3,4.5,125,175,250], 6:[17,19,.5,.5,3,6,155,210,320],
+  7:[20,23,.5,.5,4,8,190,300,420], 8:[26,29,.5,.5,5.5,11,250,400,600], 9:[35,38,.5,.5,6.5,13,350,500,800]
+};
+const T_IN = { // mốc DT performance (triệu) -> % com phần mềm Inbound
+  1:[[50,4],[60,6],[80,8]], 2:[[60,6],[70,7],[90,9]], 3:[[60,2],[70,4],[80,7],[110,10],[160,11]],
+  4:[[70,2],[80,4],[90,6],[100,8],[145,11],[190,12]], 5:[[90,4],[100,5],[125,8],[140,9],[160,10],[175,12],[250,13]],
+  6:[[110,4],[155,9],[175,11],[210,12],[320,13]], 7:[[140,3],[160,4],[190,9],[220,10],[250,11],[300,13],[420,14]],
+  8:[[170,3],[180,4],[200,5],[250,10],[350,12],[400,13],[500,14]], 9:[[210,3],[250,5],[350,12],[400,13],[500,14]]
+};
+const T_OUT = {
+  1:[[50,8],[80,12]], 2:[[60,10],[90,14]], 3:[[60,6],[80,14],[120,16]], 4:[[70,6],[100,15],[140,19]],
+  5:[[90,6],[110,16],[160,20]], 6:[[110,6],[130,18],[210,21]], 7:[[140,6],[180,18],[300,21]],
+  8:[[170,6],[250,18],[400,21]], 9:[[210,6],[350,18],[500,21]]
+};
+const COM_DV = 13;
+const STAGES = ['Lost','Tiếp cận','Discovery','Demo / giải pháp','Đã gửi báo giá','Đàm phán / hợp đồng','Đã ký, chờ thanh toán','Đã thu tiền'];
+const PROB = [0,10,20,40,60,80,90,100];
+
+function tierPct(steps, perf){ let p = 0; for (const [thr, pct] of steps) if (perf >= thr * M) p = pct; return p; }
+function nextStep(steps, perf){ for (const [thr, pct] of steps) if (perf < thr * M) return {thr: thr * M, pct}; return null; }
+function dealAmount(d, mode){
+  const coll = +d.collected || 0, val = +d.value || 0;
+  if (mode === 'real') return coll;
+  if (coll > 0) return coll;
+  if (+d.stage === 0) return 0;
+  return mode === 'fc' ? val * (+d.prob || 0) / 100 : val;
+}
+/* Thu nhập một tháng theo một kịch bản: real = thực thu, fc = forecast có trọng số, all = chốt hết pipeline */
+function income(deals, month, level, track, mode){
+  const L = LV[level] || LV[2];
+  const s = {in:0, out:0, dv:0, kam:0, other:0, own:0};
+  for (const d of deals){
+    if (d.month !== month) continue;
+    const a = dealAmount(d, mode); if (!a) continue;
+    if (d.rtype === 'dv') s.dv += a;
+    else if (d.rtype === 'kam'){ s.kam += a; s.own += a * (+d.comPct || 0) / 100; }
+    else if (d.rtype === 'other'){ s.other += a; s.own += a * (+d.comPct || 0) / 100; }
+    else if (d.src === 'out') s.out += a; else s.in += a;
+  }
+  const perf = s.in + s.out + s.dv + s.kam;
+  const kpi = L[6]*M, goal = L[7]*M, outp = L[8]*M;
+  const pIn = tierPct(T_IN[level], perf), pOut = tierPct(T_OUT[level], perf);
+  const comIn = s.in*pIn/100, comOut = s.out*pOut/100, comDv = s.dv*COM_DV/100;
+  const com = comIn + comOut + comDv + s.own;
+  const base = (track === 'BD' ? L[1] : L[0]) * M, allow = (L[2] + L[3]) * M;
+  const ees = (perf >= goal ? L[5] : perf >= kpi ? L[4] : 0) * M;
+  const rank = perf >= outp ? 'Outperformance' : perf >= goal ? 'Goal' : perf >= kpi ? 'KPI' : 'Dưới KPI';
+  return {...s, perf, kpi, goal, outp, pIn, pOut, comIn, comOut, comDv, com, base, allow, ees, rank, total: base + allow + ees + com};
+}
+
+
+/* ---------- Tiện ích ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = n => String(n).padStart(2, '0');
+const ymd = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const parse = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+const addDays = (s, n) => { const d = parse(s); d.setDate(d.getDate() + n); return ymd(d); };
+const today = () => ymd(new Date());
+const dayDiff = (a, b) => Math.round((parse(a) - parse(b)) / 864e5);
+const WD = ['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
+const dm = s => { const d = parse(s); return d.getDate() + '/' + (d.getMonth() + 1); };
+const mLabel = m => m ? 'T' + (+m.slice(5)) + '/' + m.slice(0, 4) : 'chưa xếp tháng';
+const full = n => Math.round(n).toLocaleString('vi-VN');
+const short = n => { const a = Math.abs(n); if (!a) return '0'; if (a >= 1e9) return (n/1e9).toLocaleString('vi-VN',{maximumFractionDigits:2}) + ' tỷ'; return (n/M).toLocaleString('vi-VN',{maximumFractionDigits:1}) + ' tr'; };
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const I = {
+  check:'<svg viewBox="0 0 16 16" fill="none" stroke="var(--on-accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>',
+  star:'<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.3l2 4.3 4.7.6-3.5 3.2.9 4.6L8 11.7 3.9 14l.9-4.6L1.3 6.2 6 5.6z"/></svg>',
+  next:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h10M8.5 4.5L12 8l-3.5 3.5M14 3v10"/></svg>',
+  edit:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 2.5l3 3L6 13l-3.5.5L3 10z"/></svg>'
+};
+
+/* ---------- Trạng thái ---------- */
+const S = {tasks:new Map(), deals:new Map(), reflects:new Map(), settings:{level:2, track:'BC'}};
+let view = 'hom-nay', viewDate = today(), dfilter = 'month', incMonth = today().slice(0, 7);
+let db = null, sample = null, editTask = null, editDeal = null, refDirty = false, refFor = '';
+const curMonth = () => today().slice(0, 7);
+const dealsArr = () => [...S.deals].map(([id, d]) => ({id, ...d}));
+const tasksArr = () => [...S.tasks].map(([id, t]) => ({id, ...t}));
+
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 4200); }
+
+/* Ghi dữ liệu: cập nhật ngay trên màn hình, rồi ghi lần lượt từng doc */
+const chain = new Map();
+function write(col, id, data){
+  if (data === null) S[col].delete(id); else S[col].set(id, data);
+  paint();
+  if (!db) return;
+  const key = col + '/' + id;
+  const run = () => (data === null ? db.doc(key).delete() : db.doc(key).set(data)).catch(e => {
+    toast(e && e.code === 'quota_exceeded' ? 'Kho dữ liệu đã đầy, hãy xoá bớt việc cũ.' : 'Chưa lưu được thay đổi vừa rồi. Kiểm tra mạng rồi thử lại.');
+  });
+  const p = (chain.get(key) || Promise.resolve()).then(run);
+  chain.set(key, p);
+}
+function saveSettings(){ if (db) db.doc('app/settings').set(S.settings).catch(() => toast('Chưa lưu được cài đặt.')); }
+
+/* ---------- Loại việc và khung giờ ---------- */
+const CATS = {work:'Công việc', sport:'Thể thao', fun:'Đi chơi', read:'Đọc sách', study:'Học', me:'Cá nhân'};
+const catOptions = () => Object.entries(CATS).map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
+/* Đọc khung giờ viết kiểu "9h-10h30", "19h30", "7:15-8:00" thành phút [bắt đầu, kết thúc]; không đọc được thì trả null */
+function span(t){
+  const m = [...String(t || '').matchAll(/(\d{1,2})\s*(?:h|g|:)\s*(\d{1,2})?/gi)].map(x => +x[1] * 60 + (+x[2] || 0)).filter(v => v <= 1440);
+  if (!m.length) return null;
+  let [a, b] = m; if (b == null || b <= a) b = a + 60;
+  return [a, Math.min(b, 1440)];
+}
+const hm = v => Math.floor(v / 60) + 'h' + (v % 60 ? pad(v % 60) : '');
+const HOUR = 46;
+function paintTimeline(){
+  const list = tasksFor(viewDate), placed = [], loose = [];
+  for (const t of list){ const sp = span(t.time); if (sp) placed.push({...t, a: sp[0], b: sp[1]}); else loose.push(t); }
+  placed.sort((x, y) => x.a - y.a || y.b - x.b);
+  const from = Math.min(6, ...placed.map(t => Math.floor(t.a / 60))), to = Math.max(23, ...placed.map(t => Math.ceil(t.b / 60)));
+  let cluster = [], cEnd = -1; const flush = () => { const n = Math.max(1, ...cluster.map(t => t.lane + 1)); cluster.forEach(t => t.lanes = n); cluster = []; };
+  for (const t of placed){
+    if (t.a >= cEnd) flush();
+    const used = new Set(cluster.filter(o => o.b > t.a).map(o => o.lane)); let l = 0; while (used.has(l)) l++;
+    t.lane = l; cluster.push(t); cEnd = Math.max(cEnd, t.b);
+  }
+  flush();
+  let html = '';
+  for (let h = from; h < to; h++) html += `<button class="hr" data-act="newat" data-h="${h}" aria-label="Xếp việc lúc ${h} giờ"><span>${h}h</span></button>`;
+  for (const t of placed){
+    const top = (t.a - from * 60) * HOUR / 60, hgt = Math.max(26, (t.b - t.a) * HOUR / 60 - 3), cat = t.cat || 'work';
+    html += `<div class="blk c-${cat} ${t.done ? 'done' : ''} ${hgt < 40 ? 'short' : ''}" data-act="edittask" data-id="${t.id}" style="top:${top + 1}px;height:${hgt}px;left:calc(${t.lane / t.lanes * 100}% + 2px);width:calc(${100 / t.lanes}% - 4px);display:flex">
+      <button class="chk" data-act="toggle" data-id="${t.id}" aria-label="${t.done ? 'Bỏ đánh dấu xong' : 'Đánh dấu xong'}: ${esc(t.title)}">${I.check}</button>
+      <div style="min-width:0"><b>${t.important ? '★ ' : ''}${esc(t.title)}</b><small class="num">${hm(t.a)} – ${hm(t.b)}${cat !== 'work' ? ' · ' + CATS[cat] : ''}</small></div></div>`;
+  }
+  if (viewDate === today()){ const n = new Date(), v = n.getHours() * 60 + n.getMinutes(); if (v >= from * 60 && v <= to * 60) html += `<div class="nowline" style="top:${(v - from * 60) * HOUR / 60}px"></div>`; }
+  $('#tl').innerHTML = html;
+  $('#c-tl').textContent = placed.length + ' việc có giờ';
+  $('#unsched').innerHTML = loose.length ? 'Chưa xếp giờ:' + loose.map(t => `<button data-act="edittask" data-id="${t.id}" title="Bấm để đặt khung giờ">${esc(t.title)}</button>`).join('') : '';
+  if (!$('#presets').children.length) $('#presets').innerHTML = [['sport','Thể thao'],['read','Đọc sách'],['fun','Đi chơi'],['study','Học'],['work','Công việc']].map(([k, v]) => `<button class="tog" data-act="preset" data-cat="${k}" data-title="${k === 'work' ? '' : v}">+ ${v}</button>`).join('');
+}
+
+/* ---------- Việc trong ngày ---------- */
+function tasksFor(date){
+  const t0 = today();
+  return tasksArr().filter(t => date === t0
+    ? (t.date === t0 || (t.date < t0 && !t.done) || (t.date < t0 && t.doneAt === t0))
+    : t.date === date);
+}
+function taskRow(t){
+  const t0 = today(), deal = t.dealId && S.deals.get(t.dealId);
+  const late = !t.done && t.date < t0 ? dayDiff(t0, t.date) : 0;
+  return `<div class="task ${t.done ? 'done' : ''}">
+    <button class="chk" data-act="toggle" data-id="${t.id}" aria-label="${t.done ? 'Bỏ đánh dấu xong' : 'Đánh dấu xong'}: ${esc(t.title)}">${I.check}</button>
+    <div><div class="t">${esc(t.title)}</div><div class="chips">
+      ${t.time ? `<span class="chip num">${esc(t.time)}</span>` : ''}
+      ${t.cat && t.cat !== 'work' && CATS[t.cat] ? `<span class="chip c-${t.cat}">${CATS[t.cat]}</span>` : ''}
+      ${deal ? `<span class="chip deal">${esc(deal.name)}</span>` : ''}
+      ${late ? `<span class="chip late">trôi ${late} ngày</span>` : ''}
+    </div></div>
+    <div class="acts">
+      <button class="ic ${t.important ? 'on' : ''}" data-act="star" data-id="${t.id}" title="${t.important ? 'Bỏ quan trọng' : 'Đánh dấu quan trọng'}" aria-label="${t.important ? 'Bỏ quan trọng' : 'Đánh dấu quan trọng'}">${I.star}</button>
+      <button class="ic" data-act="tomorrow" data-id="${t.id}" title="Dời sang ngày mai" aria-label="Dời sang ngày mai">${I.next}</button>
+      <button class="ic" data-act="edittask" data-id="${t.id}" title="Sửa" aria-label="Sửa việc">${I.edit}</button>
+    </div></div>`;
+}
+const order = (a, b) => (a.done - b.done) || String(a.time || '~').localeCompare(String(b.time || '~'), 'vi', {numeric:true}) || String(a.created || '').localeCompare(String(b.created || ''));
+
+function paintHero(){
+  const t0 = today(), d = parse(viewDate), list = tasksFor(viewDate);
+  const done = list.filter(t => t.done).length, impLeft = list.filter(t => t.important && !t.done).length;
+  const rel = viewDate === t0 ? 'Hôm nay' : viewDate === addDays(t0, 1) ? 'Ngày mai' : viewDate === addDays(t0, -1) ? 'Hôm qua' : '';
+  $('#h-eyebrow').textContent = (rel ? rel + ' · ' : '') + d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
+  $('#h-title').innerHTML = '<em>' + WD[d.getDay()] + ',</em>' + pad(d.getDate()) + '.' + pad(d.getMonth() + 1);
+  $('#h-sub').textContent = !list.length ? 'Chưa có việc nào cho ngày này. Thêm việc đầu tiên ở ô bên dưới.'
+    : done === list.length ? `Xong cả ${list.length} việc. Thuyền đã cập bến.`
+    : `Xong ${done}/${list.length} việc` + (impLeft ? `, còn ${impLeft} việc quan trọng.` : ', việc quan trọng đã xong hết.');
+  $('#boat').style.left = (list.length ? Math.round(done / list.length * 100) : 0) + '%';
+  const m = curMonth(), ds = dealsArr(), {level, track} = S.settings;
+  const fc = income(ds, m, level, track, 'fc'), re = income(ds, m, level, track, 'real');
+  const end = new Date(parse(t0).getFullYear(), parse(t0).getMonth() + 1, 0).getDate() - parse(t0).getDate();
+  $('#h-tiles').innerHTML = [
+    [impLeft, 'việc quan trọng còn lại'], [end, 'ngày nữa hết tháng'],
+    [short(fc.total), 'thu nhập forecast ' + mLabel(m).slice(0, -5)], [short(re.perf), 'đã thực thu ' + mLabel(m).slice(0, -5)]
+  ].map(([b, s]) => `<div class="tile"><b class="num">${b}</b><span>${s}</span></div>`).join('');
+}
+function paintToday(){
+  const list = tasksFor(viewDate).sort(order);
+  const imp = list.filter(t => t.important), day = list.filter(t => !t.important);
+  $('#l-imp').innerHTML = imp.map(taskRow).join('') || '<p class="empty">Chưa chọn việc quan trọng. Bấm ★ ở một việc, hoặc thêm từ danh sách deal bên dưới.</p>';
+  $('#l-day').innerHTML = day.map(taskRow).join('') || '<p class="empty">Chưa có việc thường ngày.</p>';
+  $('#c-imp').textContent = imp.filter(t => t.done).length + '/' + imp.length;
+  $('#c-day').textContent = day.filter(t => t.done).length + '/' + day.length;
+  paintTimeline();
+  const m = curMonth(), open = new Set(tasksArr().filter(t => !t.done && t.dealId).map(t => t.dealId));
+  const hot = dealsArr().filter(d => d.month === m && !(+d.collected > 0) && +d.stage !== 0)
+    .sort((a, b) => dealAmount(b, 'fc') - dealAmount(a, 'fc')).slice(0, 7);
+  $('#deal-mini').innerHTML = hot.map(d => `<div class="mrow">
+    <div><div class="n">${esc(d.name)} ${open.has(d.id) ? '' : '<span class="chip late">chưa có việc tiếp theo</span>'}</div><div class="x">${esc((d.next || '').split('\n')[0].replace(/^-\s*/, '')) || 'Chưa ghi bước tiếp theo'}</div></div>
+    <div class="v num">${short(dealAmount(d, 'fc'))}<small>${short(+d.value || 0)} × ${+d.prob || 0}%</small></div>
+    <button class="btn ghost sm" data-act="taskfromdeal" data-id="${d.id}">+ Việc</button></div>`).join('')
+    || '<p class="empty">Chưa có deal nào xếp thu trong tháng này.</p>';
+  const sel = $('#q-deal'), keep = sel.value;
+  sel.innerHTML = dealOptions(); sel.value = keep;
+}
+function dealOptions(){
+  return '<option value="">Không gắn deal</option>' + dealsArr().filter(d => !/^t\d+-/.test(d.id)).sort((a, b) => a.name.localeCompare(b.name, 'vi')).map(d => `<option value="${d.id}">${esc(d.name)}</option>`).join('');
+}
+
+/* ---------- Deal ---------- */
+function paintDeals(){
+  const f = S.settings.funnel;
+  $('#funnel').innerHTML = f && f.stages ? f.stages.map(s => `<div class="fst"><b class="num">${s.n}</b><span>${esc(s.name)}</span><small class="num">${s.value ? short(s.value) : (s.note ? esc(s.note) : '&nbsp;')}</small></div>`).join('') : '<p class="empty">Chưa có số liệu phễu.</p>';
+  $('#funnel-hint').textContent = f ? `Ảnh chụp lúc ${f.at}: ${f.total} thương vụ, tổng ${short(f.sum)}, Base dự kiến ${short(f.expected)}. Số này không tự cập nhật.` : '';
+  document.querySelectorAll('[data-act="dfilter"]').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === dfilter));
+  const m = curMonth(), open = new Set(tasksArr().filter(t => !t.done && t.dealId).map(t => t.dealId));
+  let ds = dealsArr();
+  if (dfilter === 'month') ds = ds.filter(d => d.month === m);
+  if (dfilter === 'value') ds = ds.filter(d => (+d.value || +d.baseValue) > 0);
+  ds.sort((a, b) => (dealAmount(b, 'fc') - dealAmount(a, 'fc')) || ((+b.baseValue || 0) - (+a.baseValue || 0)) || a.name.localeCompare(b.name, 'vi'));
+  $('#deal-grid').innerHTML = ds.map(d => {
+    const diff = d.baseValue != null && +d.baseValue !== +d.value;
+    return `<article class="deal">
+      <div class="chips" style="margin:0"><span class="pill s${+d.stage}">${esc(STAGES[+d.stage] || '')}</span><span class="chip">${esc(mLabel(d.month))}</span>${d.key ? '<span class="chip key">Key account</span>' : ''}${d.rtype === 'sw' || !d.rtype ? `<span class="chip">${d.src === 'out' ? 'Outbound' : 'Inbound'}</span>` : ''}</div>
+      <div class="n">${esc(d.name)}</div>
+      <div class="money"><b class="num">${short(+d.value || 0)}</b><span class="num">${+d.collected > 0 ? 'đã thu ' + short(+d.collected) : `× ${+d.prob || 0}% = ${short(dealAmount(d, 'fc'))} forecast`}</span></div>
+      ${d.baseStage ? `<div class="chips" style="margin:0"><span class="chip ${diff ? 'late' : ''}">Base: ${esc(d.baseStage)}${d.baseValue != null ? ' · ' + short(+d.baseValue) : ''}</span>${!open.has(d.id) && +d.stage !== 7 && +d.stage !== 0 ? '<span class="chip late">chưa có việc tiếp theo</span>' : ''}</div>` : (!open.has(d.id) && +d.stage !== 7 && +d.stage !== 0 ? '<div class="chips" style="margin:0"><span class="chip late">chưa có việc tiếp theo</span></div>' : '')}
+      ${d.next ? `<div class="next">${esc(d.next)}</div>` : ''}
+      <div class="row"><button class="btn sm" data-act="taskfromdeal" data-id="${d.id}">+ Việc cho deal này</button><button class="btn ghost sm" data-act="editdeal" data-id="${d.id}">Sửa</button>${+d.stage !== 7 ? `<button class="btn ghost sm" data-act="collect" data-id="${d.id}">Đã thu tiền</button>` : ''}</div>
+    </article>`; }).join('') || '<p class="empty">Không có deal nào khớp bộ lọc này.</p>';
+  $('#cnt-deal').textContent = S.deals.size || '';
+}
+
+/* ---------- Thu nhập ---------- */
+function months(){ const s = new Set(dealsArr().map(d => d.month).filter(Boolean)); s.add(curMonth()); return [...s].sort(); }
+function paintIncome(){
+  const ms = months(); if (!ms.includes(incMonth)) incMonth = curMonth();
+  $('#inc-month').innerHTML = ms.map(m => `<option value="${m}" ${m === incMonth ? 'selected' : ''}>${mLabel(m)}</option>`).join('');
+  $('#inc-level').innerHTML = Object.keys(LV).map(l => `<option ${+l === +S.settings.level ? 'selected' : ''}>${l}</option>`).join('');
+  $('#inc-track').value = S.settings.track || 'BC';
+  const ds = dealsArr(), {level, track} = S.settings;
+  const R = ['real','fc','all'].map(k => income(ds, incMonth, level, track, k)), [re, fc, al] = R;
+  $('#inc-big').innerHTML = [['Theo thực thu', re, ''], ['Forecast có trọng số', fc, 'main'], ['Nếu chốt hết pipeline', al, '']]
+    .map(([l, r, c]) => `<div class="tile ${c}"><span>${l}</span><b class="num">${full(r.total)}</b><span>DT performance ${short(r.perf)} · ${r.rank}</span></div>`).join('');
+  const max = fc.outp * 1.25, pos = v => Math.min(100, v / max * 100);
+  $('#inc-mile').innerHTML = `<div class="fill" style="width:${pos(fc.perf)}%"></div>` +
+    [['KPI', fc.kpi], ['Goal', fc.goal], ['Outperf', fc.outp]].map(([n, v]) => `<span class="mk" style="left:${pos(v)}%">${n}<small class="num">${short(v)}</small></span>`).join('');
+  const nIn = nextStep(T_IN[level], fc.perf), nOut = nextStep(T_OUT[level], fc.perf);
+  const gap = (n, lab) => n ? `Thêm ${short(n.thr - fc.perf)} doanh thu performance thì % ${lab} lên ${n.pct}%.` : `% ${lab} đã ở mốc cao nhất của level ${level} (${lab === 'Inbound' ? fc.pIn : fc.pOut}%).`;
+  $('#inc-note').textContent = `Forecast ${mLabel(incMonth)}: doanh thu performance ${full(fc.perf)}. ` + gap(nIn, 'Inbound') + ' ' + gap(nOut, 'Outbound') + ' Phần trăm áp lên toàn bộ doanh thu phần mềm khi chạm mốc.';
+  const row = (l, f, cls = '') => `<tr class="${cls}"><td>${l}</td>${R.map(r => `<td>${f(r)}</td>`).join('')}</tr>`;
+  const mny = k => r => r[k] ? full(r[k]) : '–';
+  $('#inc-table').innerHTML = `<thead><tr><th></th><th>Theo thực thu</th><th>Forecast</th><th>Nếu chốt hết</th></tr></thead><tbody>` +
+    row('DT phần mềm Inbound', mny('in')) + row('DT phần mềm Outbound (Hunt)', mny('out')) + row('DT dịch vụ Base', mny('dv')) + row('DT KAM', mny('kam')) + row('DT khác, không tính performance', mny('other')) +
+    row('Doanh thu performance', mny('perf'), 'sep') + row('Xếp hạng', r => r.rank) +
+    row('% com Inbound / Outbound', r => r.pIn + '% / ' + r.pOut + '%') +
+    row('Com phần mềm Inbound', mny('comIn')) + row('Com phần mềm Outbound', mny('comOut')) + row('Com dịch vụ Base', mny('comDv')) + row('Com KAM + khác', mny('own')) +
+    row('Tổng commission', mny('com'), 'sep') + row('Lương cơ bản', mny('base')) + row('Phụ cấp điện thoại + đi lại', mny('allow')) + row('EES (từ level 4)', mny('ees')) +
+    row('Tổng thu nhập dự kiến', mny('total'), 'total') + '</tbody>';
+  $('#road').innerHTML = `<thead><tr><th>Tháng</th><th>DT thực thu</th><th>Thu nhập thực</th><th>DT forecast</th><th>Xếp hạng forecast</th><th>Thu nhập forecast</th><th>Nếu chốt hết</th></tr></thead><tbody>` +
+    ms.map(m => { const a = income(ds, m, level, track, 'real'), b = income(ds, m, level, track, 'fc'), c = income(ds, m, level, track, 'all');
+      return `<tr><td>${mLabel(m)}</td><td>${a.perf ? full(a.perf) : '–'}</td><td>${full(a.total)}</td><td>${b.perf ? full(b.perf) : '–'}</td><td>${b.rank}</td><td>${full(b.total)}</td><td>${full(c.total)}</td></tr>`; }).join('') + '</tbody>';
+  const prev = k => { const d = new Date(+incMonth.slice(0, 4), +incMonth.slice(5) - 1 - k, 1); return d.getFullYear() + '-' + pad(d.getMonth() + 1); };
+  const three = [0, 1, 2].map(k => income(ds, prev(k), level, track, 'fc'));
+  const sum = three.reduce((s, r) => s + r.perf, 0), under = three.filter(r => r.perf < r.kpi).length;
+  if (LV[+level + 1]){ const need = 3 * LV[+level + 1][7] * M;
+    $('#promo').textContent = `Lên level ${+level + 1}: tổng DT performance 3 tháng gần nhất (theo forecast) ${short(sum)} trên mốc ${short(need)}` + (sum >= need ? ', đã đủ.' : `, còn thiếu ${short(need - sum)}.`) + ` Số tháng dưới KPI: ${under} (tối đa 1). Cách hiểu mốc này là giả định trong sheet, cần xác nhận với Enablement.`;
+  } else $('#promo').textContent = 'Bạn đang ở level cao nhất trong bảng.';
+}
+
+/* ---------- Reflect ---------- */
+function daySum(date){
+  const l = tasksArr().filter(t => t.date === date || t.doneAt === date);
+  const done = l.filter(t => t.done && (t.doneAt || t.date) === date);
+  const planned = tasksArr().filter(t => t.date === date);
+  return {planned, done, slip: planned.filter(t => !t.done), deals: [...new Set(done.filter(t => t.dealId && S.deals.get(t.dealId)).map(t => S.deals.get(t.dealId).name))]};
+}
+function paintReflect(force){
+  const t0 = today();
+  $('#strip').innerHTML = Array.from({length:14}, (_, i) => addDays(t0, i - 13)).map(d => { const s = daySum(d), tot = s.planned.length, r = tot ? s.planned.filter(t => t.done).length / tot : 0;
+    return `<div class="dd ${S.reflects.has(d) ? 'r' : ''}" title="${dm(d)}: ${tot ? Math.round(r * 100) + '% việc xong' : 'không có việc'}"><i style="${tot ? `background:color-mix(in srgb,var(--accent) ${Math.round(15 + r * 85)}%,var(--panel2))` : ''}"></i>${dm(d)}</div>`; }).join('');
+  let st = 0; for (let d = S.reflects.has(t0) ? t0 : addDays(t0, -1); S.reflects.has(d); d = addDays(d, -1)) st++;
+  $('#streak').textContent = st ? st + ' ngày liên tục' : 'Chưa có chuỗi';
+  const s = daySum(viewDate), impDone = s.done.filter(t => t.important).length, impAll = s.planned.filter(t => t.important).length;
+  $('#r-date').textContent = dm(viewDate);
+  $('#r-sum').innerHTML = [[s.planned.filter(t => t.done).length + '/' + s.planned.length, 'việc trong ngày đã xong'], [impDone + '/' + impAll, 'việc quan trọng đã xong'], [s.deals.length, 'deal đã đẩy']]
+    .map(([b, l]) => `<div class="tile" style="background:var(--panel2)"><b class="num">${b}</b><span>${l}</span></div>`).join('');
+  $('#r-slip').innerHTML = s.slip.length ? `<div class="chips">${s.slip.slice(0, 8).map(t => `<span class="chip late">chưa xong: ${esc(t.title)}</span>`).join('')}</div>` : '';
+  if (force || refFor !== viewDate || !refDirty){
+    const r = S.reflects.get(viewDate) || {};
+    if (refFor !== viewDate || !refDirty){ $('#r-win').value = r.win || ''; $('#r-block').value = r.block || ''; $('#r-tom').value = r.tomorrow || ''; refDirty = false; refFor = viewDate; }
+  }
+  $('#hist').innerHTML = [...S.reflects].sort((a, b) => b[0].localeCompare(a[0])).slice(0, 30).map(([d, r]) => `<details><summary>${WD[parse(d).getDay()]} ${dm(d)}</summary><p><b>Được:</b> ${esc(r.win || '–')}\n<b>Vướng:</b> ${esc(r.block || '–')}\n<b>Mai:</b> ${esc(r.tomorrow || '–')}</p></details>`).join('') || '<p class="empty">Chưa có reflect nào. Viết ngày đầu tiên ở bên trái.</p>';
+}
+
+function paint(){
+  paintHero();
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.v === view));
+  document.querySelectorAll('.view').forEach(v => v.hidden = v.id !== 'v-' + view);
+  if (view === 'hom-nay') paintToday(); else if (view === 'deal') paintDeals(); else if (view === 'thu-nhap') paintIncome(); else paintReflect();
+  $('#cnt-deal').textContent = S.deals.size || '';
+}
+
+/* ---------- Hộp thoại ---------- */
+function openTask(t){
+  editTask = t.id || null;
+  $('#dt-h').textContent = editTask ? 'Sửa việc' : 'Việc mới';
+  $('#t-deal').innerHTML = dealOptions();
+  $('#t-title').value = t.title || ''; $('#t-date').value = t.date || viewDate; $('#t-time').value = t.time || '';
+  $('#t-cat').innerHTML = catOptions(); $('#t-cat').value = t.cat || 'work';
+  $('#t-deal').value = t.dealId || ''; $('#t-imp').checked = !!t.important; $('#t-del').hidden = !editTask;
+  $('#dlg-task').showModal();
+}
+function openDeal(d){
+  editDeal = d.id || null;
+  $('#dd-h').textContent = editDeal ? 'Sửa deal' : 'Deal mới';
+  $('#d-stage').innerHTML = STAGES.map((s, i) => `<option value="${i}">${i ? i + '. ' : ''}${s}</option>`).join('');
+  $('#d-name').value = d.name || ''; $('#d-month').value = d.month || ''; $('#d-stage').value = d.stage ?? 2;
+  $('#d-value').value = d.value ? d.value / M : ''; $('#d-prob').value = d.prob ?? PROB[d.stage ?? 2]; $('#d-coll').value = d.collected ? d.collected / M : '';
+  $('#d-src').value = d.src || 'in'; $('#d-rtype').value = d.rtype || 'sw'; $('#d-com').value = d.comPct || ''; $('#d-next').value = d.next || ''; $('#d-key').checked = !!d.key;
+  $('#d-del').hidden = !editDeal;
+  $('#dlg-deal').showModal();
+}
+
+/* ---------- Hành động ---------- */
+const ACT = {
+  go(d){ view = d.v; if (location.hash.slice(1) !== view) location.hash = view; paint(); },
+  day(d){ viewDate = +d.d === 0 ? today() : addDays(viewDate, +d.d); refDirty = false; paint(); },
+  qimp(_, b){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); },
+  toggle(d){ const t = S.tasks.get(d.id); if (!t) return; const done = !t.done; write('tasks', d.id, {...t, done, doneAt: done ? today() : ''}); },
+  star(d){ const t = S.tasks.get(d.id); if (t) write('tasks', d.id, {...t, important: !t.important}); },
+  tomorrow(d){ const t = S.tasks.get(d.id); if (!t) return; const from = t.date > today() ? t.date : today(); write('tasks', d.id, {...t, date: addDays(from, 1)}); toast('Đã dời sang ' + dm(addDays(from, 1)) + '.'); },
+  edittask(d){ const t = S.tasks.get(d.id); if (t) openTask({id: d.id, ...t}); },
+  newat(d){ openTask({date: viewDate, time: d.h + 'h-' + (+d.h + 1) + 'h'}); },
+  preset(d){ openTask({date: viewDate, title: d.title, cat: d.cat}); },
+  deltask(){ if (editTask) write('tasks', editTask, null); $('#dlg-task').close(); },
+  taskfromdeal(d){ const x = S.deals.get(d.id); if (!x) return; const first = (x.next || '').split('\n')[0].replace(/^-\s*/, '').trim(); openTask({title: first ? x.name + ': ' + first : 'Follow ' + x.name, date: viewDate < today() ? today() : viewDate, important: true, dealId: d.id}); },
+  dfilter(d){ dfilter = d.f; paintDeals(); },
+  newdeal(){ openDeal({month: curMonth(), stage: 2}); },
+  editdeal(d){ const x = S.deals.get(d.id); if (x) openDeal({id: d.id, ...x}); },
+  deldeal(){ if (editDeal) write('deals', editDeal, null); $('#dlg-deal').close(); },
+  collect(d){ const x = S.deals.get(d.id); if (!x) return; if (!+x.value){ toast('Deal này chưa có giá trị. Bấm Sửa để nhập số tiền trước.'); return; } write('deals', d.id, {...x, stage: 7, prob: 100, collected: +x.value, month: x.month || curMonth()}); toast('Đã ghi thực thu ' + short(+x.value) + ' cho ' + x.name + '.'); },
+  closedlg(_, b){ b.closest('dialog').close(); },
+  saveref(){ saveReflect(true); },
+  addsug(d, b){ const s = aiSug[+d.i]; if (!s) return; write('tasks', uid(), {title: s.title, date: viewDate, important: !!s.important, done: false, doneAt: '', dealId: s.dealId && S.deals.has(s.dealId) ? s.dealId : '', time: '', created: new Date().toISOString()}); b.disabled = true; b.textContent = 'Đã thêm'; },
+  userefdraft(){ if (!aiRef) return; if (!$('#r-win').value.trim()) $('#r-win').value = aiRef.win || ''; if (!$('#r-block').value.trim()) $('#r-block').value = aiRef.block || ''; if (!$('#r-tom').value.trim()) $('#r-tom').value = aiRef.tomorrow || ''; refDirty = true; toast('Đã chép nháp vào các ô còn trống. Sửa lại rồi bấm Lưu.'); },
+  aiplan(){ aiPlan(); }, airef(){ aiReflect(); }
+};
+function saveReflect(say){
+  const r = {win: $('#r-win').value.trim(), block: $('#r-block').value.trim(), tomorrow: $('#r-tom').value.trim(), savedAt: new Date().toISOString()};
+  if (!r.win && !r.block && !r.tomorrow){ if (say) toast('Viết ít nhất một ô rồi lưu.'); return; }
+  refDirty = false; write('reflects', refFor || viewDate, r); if (say) toast('Đã lưu reflect ngày ' + dm(refFor || viewDate) + '.');
+}
+
+/* ---------- AI ---------- */
+let aiSug = [], aiRef = null;
+const aiErr = e => e && e.code === 'not_granted' ? 'Bạn chưa cho phép trang dùng Claude nên không có gợi ý.' : e && e.code === 'rate_limited' ? 'Đang gọi Claude quá nhiều, thử lại sau ít phút.' : 'Claude chưa trả lời được. Bấm lại để thử lần nữa.';
+function context(){
+  const m = curMonth(), t0 = today();
+  const deals = dealsArr().filter(d => d.month === m && +d.stage !== 7 && +d.stage !== 0).map(d => ({id: d.id, ten: d.name, giai_doan: STAGES[+d.stage], gia_tri_trieu: Math.round((+d.value || 0) / M), xac_suat: +d.prob || 0, buoc_tiep: d.next || '', key_account: !!d.key}));
+  const open = tasksArr().filter(t => !t.done && t.date <= addDays(t0, 2)).map(t => ({viec: t.title, ngay: t.date, quan_trong: !!t.important, deal: t.dealId || ''}));
+  return {m, t0, deals, open};
+}
+async function aiPlan(){
+  if (!sample) return; const box = $('#ai-plan'), btn = $('#ai-plan-btn'); btn.disabled = true; box.innerHTML = '<p>Claude đang đọc deal và việc của bạn…</p>';
+  const c = context(), d = parse(viewDate), {level, track} = S.settings, fc = income(dealsArr(), c.m, level, track, 'fc');
+  const f = S.settings.funnel;
+  const prompt = `Bạn là trợ lý lập kế hoạch ngày cho một Business Consultant bán phần mềm B2B ở Việt Nam. Hãy đề xuất tối đa 6 việc nên làm trong ngày ${WD[d.getDay()]} ${viewDate} (hôm nay là ${c.t0}).
+Nguyên tắc: tối đa 3 việc "quan trọng" (đẩy deal có forecast lớn hoặc sắp ký, sắp thu tiền); không lặp lại việc đang mở; mỗi việc là một hành động cụ thể làm được trong ngày; nếu là cuối tuần thì ưu tiên chuẩn bị và lên kế hoạch thay vì gọi khách. Viết tiếng Việt, ngắn gọn.
+Thu nhập forecast tháng: ${full(fc.total)} đồng, doanh thu performance forecast ${full(fc.perf)}, xếp hạng ${fc.rank}.
+${f ? 'Phễu Base: ' + f.stages.map(s => s.name + ' ' + s.n + (s.note ? ' (' + s.note + ')' : '')).join(', ') + '.' : ''}
+DEAL THU TRONG THÁNG (JSON): ${JSON.stringify(c.deals)}
+VIỆC ĐANG MỞ (JSON): ${JSON.stringify(c.open)}
+Chỉ trả về một mảng JSON, mỗi phần tử {"title": string, "important": boolean, "dealId": string hoặc "", "why": string một câu}. dealId phải lấy đúng từ trường id ở trên. Ví dụ: [{"title":"Gửi phụ lục cho Thermtrol","important":true,"dealId":"thermtrol","why":"Deal 80%, chỉ còn bước ký."}]`;
+  try {
+    const out = await sample.json(prompt, {cache: false});
+    aiSug = (Array.isArray(out) ? out : []).filter(s => s && typeof s.title === 'string').slice(0, 6);
+    box.innerHTML = aiSug.length ? aiSug.map((s, i) => `<div class="sug"><div><b>${s.important ? '★ ' : ''}${esc(s.title)}</b><small>${esc(s.why || '')}</small></div><button class="btn ghost sm" data-act="addsug" data-i="${i}">Thêm</button></div>`).join('') : '<p>Claude không đề xuất thêm việc nào.</p>';
+  } catch (e) { box.innerHTML = `<p>${aiErr(e)}</p>`; if (e && (e.code === 'not_granted' || e.code === 'sampling_disabled')) btn.hidden = true; }
+  btn.disabled = false;
+}
+async function aiReflect(){
+  if (!sample) return; const box = $('#ai-ref'), btn = $('#ai-ref-btn'); btn.disabled = true; box.hidden = false; box.innerHTML = '<p>Claude đang viết nháp…</p>';
+  const s = daySum(viewDate);
+  const prompt = `Viết nháp reflect cuối ngày ${viewDate} cho một Business Consultant, bằng tiếng Việt, xưng "mình", giọng thẳng và ngắn, không khen sáo rỗng. Chỉ dựa trên dữ liệu dưới đây, không bịa thêm sự kiện.
+Việc đã xong: ${JSON.stringify(s.done.map(t => ({viec: t.title, quan_trong: !!t.important})))}
+Việc chưa xong: ${JSON.stringify(s.slip.map(t => ({viec: t.title, quan_trong: !!t.important})))}
+Deal đã đẩy: ${JSON.stringify(s.deals)}
+Chỉ trả về một đối tượng JSON {"win": string, "block": string, "tomorrow": string}, mỗi trường 1 đến 2 câu. "tomorrow" nêu tối đa 3 việc ưu tiên cho ngày mai.`;
+  try {
+    const out = await sample.json(prompt, {cache: false}); aiRef = out && typeof out === 'object' ? out : null;
+    box.innerHTML = aiRef ? `<p><b>Được:</b> ${esc(aiRef.win || '')}</p><p><b>Vướng:</b> ${esc(aiRef.block || '')}</p><p><b>Mai:</b> ${esc(aiRef.tomorrow || '')}</p><div class="dlg-act" style="margin-top:8px"><button class="btn sm" data-act="userefdraft">Chép vào các ô còn trống</button></div>` : '<p>Claude chưa viết được nháp.</p>';
+  } catch (e) { box.innerHTML = `<p>${aiErr(e)}</p>`; }
+  btn.disabled = false;
+}
+
+/* ---------- Khởi động ---------- */
+function boot(){
+  document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if (b && ACT[b.dataset.act]) ACT[b.dataset.act](b.dataset, b); });
+  $('#quick').addEventListener('submit', e => { e.preventDefault(); const title = $('#q-title').value.trim(); if (!title) return;
+    write('tasks', uid(), {title, date: viewDate, important: $('#q-imp').getAttribute('aria-pressed') === 'true', done: false, doneAt: '', dealId: $('#q-deal').value, cat: $('#q-cat').value || 'work', time: $('#q-time').value.trim(), created: new Date().toISOString()});
+    $('#q-title').value = ''; $('#q-time').value = ''; $('#q-title').focus(); });
+  $('#f-task').addEventListener('submit', () => { const old = editTask ? S.tasks.get(editTask) : null; const title = $('#t-title').value.trim(); if (!title) return;
+    write('tasks', editTask || uid(), {...(old || {done: false, doneAt: '', created: new Date().toISOString()}), title, date: $('#t-date').value || viewDate, time: $('#t-time').value.trim(), dealId: $('#t-deal').value, cat: $('#t-cat').value || 'work', important: $('#t-imp').checked}); });
+  $('#f-deal').addEventListener('submit', () => { const old = editDeal ? S.deals.get(editDeal) : {}; const name = $('#d-name').value.trim(); if (!name) return;
+    write('deals', editDeal || uid(), {...old, name, month: $('#d-month').value, stage: +$('#d-stage').value, prob: +$('#d-prob').value || 0, value: Math.round((+$('#d-value').value || 0) * M), collected: Math.round((+$('#d-coll').value || 0) * M), src: $('#d-src').value, rtype: $('#d-rtype').value, comPct: +$('#d-com').value || 0, next: $('#d-next').value.trim(), key: $('#d-key').checked}); });
+  $('#d-stage').addEventListener('change', e => { $('#d-prob').value = PROB[+e.target.value]; });
+  ['#r-win','#r-block','#r-tom'].forEach(s => { $(s).addEventListener('input', () => { refDirty = true; }); $(s).addEventListener('change', () => saveReflect(false)); });
+  $('#inc-month').addEventListener('change', e => { incMonth = e.target.value; paintIncome(); });
+  $('#inc-level').addEventListener('change', e => { S.settings = {...S.settings, level: +e.target.value}; saveSettings(); paint(); });
+  $('#inc-track').addEventListener('change', e => { S.settings = {...S.settings, track: e.target.value}; saveSettings(); paint(); });
+  $('#q-cat').innerHTML = catOptions();
+  setInterval(() => { if (view === 'hom-nay' && !document.querySelector('dialog[open]')) paintTimeline(); }, 300000);
+  const route = () => { const v = location.hash.slice(1); if (['hom-nay','deal','thu-nhap','reflect'].includes(v)) view = v; paint(); };
+  window.addEventListener('hashchange', route); route();
+
+  const st = $('#status'); let got = 0;
+  const slow = setTimeout(() => { if (!got){ st.textContent = 'Chưa kết nối được dữ liệu'; st.classList.add('bad'); } }, 10000);
+  const ok = () => { got++; clearTimeout(slow); st.classList.remove('bad'); st.textContent = 'Đã lưu và đồng bộ'; };
+  const fail = () => { clearTimeout(slow); st.textContent = 'Mất kết nối dữ liệu, thay đổi mới chưa được lưu'; st.classList.add('bad'); };
+  const use = n => window.claude && claude.use ? claude.use(n).catch(() => null) : Promise.resolve(null);
+  use('db').then(d => {
+    db = d;
+    if (!db){ clearTimeout(slow); st.textContent = 'Đang chạy thử, chưa lưu dữ liệu'; st.classList.add('bad'); return; }
+    const sub = col => db.collection(col).onSnapshot(snap => { S[col] = new Map(snap.docs.map(x => [x.id, x.data()])); ok(); paint(); }, fail);
+    sub('tasks'); sub('deals'); sub('reflects');
+    db.doc('app/settings').onSnapshot(s => { if (s.exists) S.settings = {level: 2, track: 'BC', ...s.data()}; ok(); paint(); }, fail);
+  });
+  use('sample').then(s => { sample = s; if (!s){ $('#ai-card').hidden = true; $('#ai-ref-btn').hidden = true; } });
+}
+if (typeof module !== 'undefined') module.exports = {income, span};
+if (typeof document !== 'undefined') boot();
+</script>
+</body>
+</html>
