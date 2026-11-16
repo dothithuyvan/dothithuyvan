@@ -273,6 +273,33 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
 .dlg-act .del{margin-right:auto;color:var(--bad-ink);background:var(--bad-bg);border-color:transparent}
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:14px;font-weight:700;max-width:calc(100vw - 32px);z-index:9;box-shadow:0 14px 30px -10px rgba(12,38,31,.5)}
 
+/* ma trận ưu tiên */
+.mx{display:grid;grid-template-columns:26px minmax(0,1fr) minmax(0,1fr);gap:12px}
+.mx .ax{font-size:11.5px;font-weight:800;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;text-align:center;align-self:center}
+.mx .ax.v{writing-mode:vertical-rl;transform:rotate(180deg);justify-self:center}
+.q{border-radius:22px;padding:14px 16px;border:1.5px solid transparent;background:var(--panel2);min-height:132px;transition:transform .2s,opacity .2s,box-shadow .2s,border-color .2s;min-width:0}
+.q.q1{background:color-mix(in srgb,var(--bad-bg) 80%,var(--solid))} .q.q2{background:color-mix(in srgb,var(--peach-bg) 80%,var(--solid))} .q.q3{background:color-mix(in srgb,var(--warn-bg) 80%,var(--solid))}
+.q h3{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.015em;margin:0;display:flex;align-items:baseline;gap:8px;justify-content:space-between}
+.q h3 span{font-family:var(--body);font-size:12px;font-weight:800;color:var(--ink2);background:var(--solid);border-radius:999px;padding:1px 9px}
+.q .tip{font-size:12.5px;font-weight:600;color:var(--ink2);margin:4px 0 0;max-height:0;opacity:0;overflow:hidden;transition:max-height .25s,opacity .25s}
+.q .qi{display:flex;gap:8px;align-items:center;padding:5px 0;font-size:14px;font-weight:700;cursor:grab;min-width:0}
+.q .qi .chk{width:20px;height:20px;border-width:1.5px}
+.q .qi .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.q .qi small{margin-left:auto;font-size:11.5px;font-weight:800;color:var(--ink3);white-space:nowrap}
+.q .qi.x{display:none}
+.q .more{font-size:12px;font-weight:800;color:var(--ink3);padding-top:2px}
+.q .none{font-size:13px;font-weight:600;font-style:italic;font-family:var(--display);color:var(--ink3);padding-top:8px}
+.q.drop{border-color:var(--accent);border-style:dashed}
+@media (hover:hover){
+  .mx:hover .q{opacity:.55}
+  .mx .q:hover{opacity:1;transform:translateY(-3px) scale(1.012);box-shadow:var(--shadow);border-color:var(--edge)}
+  .q:hover .tip{max-height:60px;opacity:1}
+  .q:hover .qi.x{display:flex} .q:hover .more{display:none}
+}
+@media (hover:none){.q .tip{max-height:none;opacity:1}.q .qi.x{display:flex}.q .more{display:none}}
+@media (max-width:640px){.mx{grid-template-columns:1fr}.mx .ax{display:none}}
+.ic.urg.on{color:var(--bad-ink)}
+.tog.urg[aria-pressed="true"]{background:var(--bad-bg);color:var(--bad-ink);border-color:var(--bad-ink)}
 /* nhắc việc, cảnh báo, kết quả, trợ lý */
 .chips{align-items:center}
 .chip.deal{display:inline-block;padding:2px 10px;border-radius:999px;border:0;box-shadow:none;backdrop-filter:none;transform:none}
@@ -401,6 +428,7 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
     <form class="add" id="quick" autocomplete="off">
       <input type="text" id="q-title" placeholder="Thêm việc… rồi Enter" aria-label="Tên việc">
       <button type="button" class="tog" id="q-imp" aria-pressed="false" data-act="qimp">★ Quan trọng</button>
+      <button type="button" class="tog urg" id="q-urg" aria-pressed="false" data-act="qimp">Khẩn cấp</button>
       <input type="text" id="q-time" placeholder="Giờ, vd 9h-10h" aria-label="Khung giờ" style="flex:0 1 150px">
       <select id="q-cat" aria-label="Loại việc"></select>
       <select id="q-deal" aria-label="Gắn với deal"></select>
@@ -409,6 +437,10 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
     <section class="card warncard" id="alert-card" hidden>
       <div class="head"><div><h2><span class="dot"></span><span id="alert-h">Cảnh báo</span></h2><p class="hint" id="alert-sub"></p></div></div>
       <div class="list" id="alert-list"></div>
+    </section>
+    <section class="card">
+      <div class="head"><div><h2><span class="dot p"></span>Ma trận ưu tiên</h2><p class="hint">Chia việc theo quan trọng và khẩn cấp. Rê chuột vào từng ô để xem hết việc và cách xử lý; kéo việc sang ô khác để đổi nhóm.</p></div><span class="count num" id="c-mx"></span></div>
+      <div class="mx" id="mx"></div>
     </section>
     <div class="plan">
       <section class="card" id="tl-card">
@@ -572,7 +604,7 @@ dialog h3{font-family:var(--display);font-style:italic;font-weight:600;font-size
     <div class="field"><label for="t-rep">Lặp lại</label><select id="t-rep"><option value="">Không lặp</option><option value="daily">Hằng ngày</option><option value="weekdays">Thứ hai đến thứ sáu</option><option value="weekly">Hằng tuần</option><option value="monthly">Hằng tháng</option></select></div>
     <div class="field"><label for="t-desc">Mô tả (nếu cần)</label><textarea id="t-desc" style="min-height:60px" placeholder="Cần làm gì, chuẩn bị gì, tiêu chí xong"></textarea></div>
     <div class="field" id="t-res-wrap"><label for="t-res">Kết quả</label><textarea id="t-res" style="min-height:60px" placeholder="Làm xong thì ra kết quả gì"></textarea></div>
-    <div class="field"><label><input type="checkbox" id="t-imp" style="width:auto"> Việc quan trọng</label></div>
+    <div class="two"><div class="field"><label><input type="checkbox" id="t-imp" style="width:auto"> Việc quan trọng</label></div><div class="field"><label><input type="checkbox" id="t-urg" style="width:auto"> Khẩn cấp</label></div></div>
     <div class="dlg-act"><button type="button" class="btn ghost del" id="t-del" data-act="deltask">Xoá</button><button type="button" class="btn ghost" data-act="closedlg">Huỷ</button><button class="btn" value="ok">Lưu</button></div>
   </form>
 </dialog>
@@ -707,7 +739,8 @@ const I = {
   check:'<svg viewBox="0 0 16 16" fill="none" stroke="var(--on-accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>',
   star:'<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.3l2 4.3 4.7.6-3.5 3.2.9 4.6L8 11.7 3.9 14l.9-4.6L1.3 6.2 6 5.6z"/></svg>',
   next:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h10M8.5 4.5L12 8l-3.5 3.5M14 3v10"/></svg>',
-  edit:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 2.5l3 3L6 13l-3.5.5L3 10z"/></svg>'
+  edit:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 2.5l3 3L6 13l-3.5.5L3 10z"/></svg>',
+  bolt:'<svg viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 1L3 9h4l-1 6 6.5-8h-4z"/></svg>'
 };
 
 /* ---------- Trạng thái ---------- */
@@ -806,6 +839,7 @@ function taskRow(t){
       ${t.time ? `<span class="chip num">${esc(t.time)}</span>` : ''}
       ${t.cat && t.cat !== 'work' && CATS[t.cat] ? `<span class="chip c-${t.cat}">${CATS[t.cat]}</span>` : ''}
       ${deal ? `<span class="chip deal">${esc(deal.name)}</span>` : ''}
+      ${t.urgent && !t.done ? `<span class="chip bad">khẩn cấp</span>` : ''}
       ${late ? `<span class="chip late">trôi ${late} ngày</span>` : ''}
       ${over ? `<span class="chip bad">quá giờ ${hm(over)}</span>` : ''}
       ${t.repeat && REPS[t.repeat] ? `<span class="chip">lặp ${REPS[t.repeat]}</span>` : ''}
@@ -816,11 +850,12 @@ function taskRow(t){
     </div>
     <div class="acts">
       <button class="ic ${t.important ? 'on' : ''}" data-act="star" data-id="${t.id}" title="${t.important ? 'Bỏ quan trọng' : 'Đánh dấu quan trọng'}" aria-label="${t.important ? 'Bỏ quan trọng' : 'Đánh dấu quan trọng'}">${I.star}</button>
+      <button class="ic urg ${t.urgent ? 'on' : ''}" data-act="urgent" data-id="${t.id}" title="${t.urgent ? 'Bỏ khẩn cấp' : 'Đánh dấu khẩn cấp'}" aria-label="${t.urgent ? 'Bỏ khẩn cấp' : 'Đánh dấu khẩn cấp'}">${I.bolt}</button>
       <button class="ic" data-act="tomorrow" data-id="${t.id}" title="Dời sang ngày mai" aria-label="Dời sang ngày mai">${I.next}</button>
       <button class="ic" data-act="edittask" data-id="${t.id}" title="Sửa" aria-label="Sửa việc">${I.edit}</button>
     </div></div>`;
 }
-const order = (a, b) => (a.done - b.done) || String(a.time || '~').localeCompare(String(b.time || '~'), 'vi', {numeric:true}) || String(a.created || '').localeCompare(String(b.created || ''));
+const order = (a, b) => (a.done - b.done) || (!!b.urgent - !!a.urgent) || String(a.time || '~').localeCompare(String(b.time || '~'), 'vi', {numeric:true}) || String(a.created || '').localeCompare(String(b.created || ''));
 
 function paintHero(){
   const t0 = today(), d = parse(viewDate), list = tasksFor(viewDate);
@@ -847,7 +882,7 @@ function paintToday(){
   $('#l-day').innerHTML = day.map(taskRow).join('') || '<p class="empty">Chưa có việc thường ngày.</p>';
   $('#c-imp').textContent = imp.filter(t => t.done).length + '/' + imp.length;
   $('#c-day').textContent = day.filter(t => t.done).length + '/' + day.length;
-  paintTimeline(); paintAlerts(); if (!sample) localPlan();
+  paintTimeline(); paintAlerts(); paintMatrix(); if (!sample) localPlan();
   const m = curMonth(), open = new Set(tasksArr().filter(t => !t.done && t.dealId).map(t => t.dealId));
   const hot = dealsArr().filter(d => d.month === m && !(+d.collected > 0) && +d.stage !== 0)
     .sort((a, b) => dealAmount(b, 'fc') - dealAmount(a, 'fc')).slice(0, 7);
@@ -1078,10 +1113,29 @@ function ensureRecurring(){
       let d = t.date;
       for (let i = 0; i < 400; i++){
         d = nextDate(d, t.repeat); if (d > horizon) break; if (d < t0) continue;
-        write('tasks', uid(), {title: t.title, time: t.time || '', cat: t.cat || 'work', dealId: t.dealId || '', important: !!t.important, desc: t.desc || '', repeat: t.repeat, seriesId: sid, date: d, done: false, doneAt: '', created: new Date().toISOString()});
+        write('tasks', uid(), {title: t.title, time: t.time || '', cat: t.cat || 'work', dealId: t.dealId || '', important: !!t.important, urgent: !!t.urgent, desc: t.desc || '', repeat: t.repeat, seriesId: sid, date: d, done: false, doneAt: '', created: new Date().toISOString()});
       }
     }
   } finally { ensuring = false; }
+}
+
+/* ---------- Ma trận ưu tiên (quan trọng x khẩn cấp) ---------- */
+const QUAD = [
+  {k:'q1', imp:1, urg:1, name:'Làm ngay', tip:'Vừa quan trọng vừa gấp. Làm trước mọi việc khác.'},
+  {k:'q2', imp:1, urg:0, name:'Lên lịch', tip:'Quan trọng nhưng chưa gấp. Xếp giờ cụ thể để nó không biến thành việc gấp.'},
+  {k:'q3', imp:0, urg:1, name:'Làm gọn hoặc nhờ người', tip:'Gấp nhưng không quyết định doanh số. Xử lý nhanh, hoặc nhờ người khác.'},
+  {k:'q4', imp:0, urg:0, name:'Để sau hoặc bỏ', tip:'Không gấp, không quan trọng. Làm khi rảnh, hoặc xoá hẳn.'}
+];
+function paintMatrix(){
+  const list = tasksFor(viewDate).filter(t => !t.done).sort(order), SHOW = 4;
+  const cell = q => { const l = list.filter(t => !!t.important === !!q.imp && !!t.urgent === !!q.urg);
+    return `<div class="q ${q.k}" data-imp="${q.imp}" data-urg="${q.urg}"><h3>${q.name}<span class="num">${l.length}</span></h3><p class="tip">${q.tip}</p>` +
+      (l.map((t, i) => `<div class="qi ${i >= SHOW ? 'x' : ''}" draggable="true" data-act="edittask" data-id="${t.id}"><button class="chk" data-act="toggle" data-id="${t.id}" aria-label="Đánh dấu xong: ${esc(t.title)}">${I.check}</button><span class="nm" title="${esc(t.title)}">${esc(t.title)}</span>${t.time ? `<small class="num">${esc(t.time)}</small>` : ''}</div>`).join('') || '<p class="none">Trống</p>') +
+      (l.length > SHOW ? `<div class="more">và ${l.length - SHOW} việc nữa, rê chuột để xem</div>` : '') + '</div>'; };
+  $('#mx').innerHTML = `<span></span><span class="ax">Khẩn cấp</span><span class="ax">Chưa khẩn cấp</span>
+    <span class="ax v">Quan trọng</span>${cell(QUAD[0])}${cell(QUAD[1])}
+    <span class="ax v">Chưa quan trọng</span>${cell(QUAD[2])}${cell(QUAD[3])}`;
+  $('#c-mx').textContent = list.length + ' việc đang mở';
 }
 
 /* ---------- Kết quả việc ---------- */
@@ -1162,7 +1216,7 @@ const QUICK = ['Hôm nay nên ưu tiên việc gì trước?', 'Deal nào dễ c
 function fullContext(){
   const m = curMonth(), t0 = today(), {level, track} = S.settings, re = income(dealsArr(), m, level, track, 'real'), fc = income(dealsArr(), m, level, track, 'fc');
   const deals = dealsArr().filter(d => +d.stage !== 0 && (d.month >= m || !d.month)).slice(0, 40).map(d => ({ten: d.name, thang_thu: d.month || '', giai_doan: STAGES[+d.stage], gia_tri_trieu: Math.round((+d.value || 0) / M * 10) / 10, xac_suat: +d.prob || 0, da_thu_trieu: Math.round((+d.collected || 0) / M * 10) / 10, buoc_tiep: (d.next || '').slice(0, 300), key_account: !!d.key}));
-  const tk = t => ({viec: t.title, ngay: t.date, gio: t.time || '', quan_trong: !!t.important, xong: !!t.done, deal: (t.dealId && S.deals.get(t.dealId) || {}).name || '', mo_ta: (t.desc || '').slice(0, 200), ket_qua: (t.result || '').slice(0, 200)});
+  const tk = t => ({viec: t.title, ngay: t.date, gio: t.time || '', quan_trong: !!t.important, khan_cap: !!t.urgent, xong: !!t.done, deal: (t.dealId && S.deals.get(t.dealId) || {}).name || '', mo_ta: (t.desc || '').slice(0, 200), ket_qua: (t.result || '').slice(0, 200)});
   const tasks = tasksArr().filter(t => t.date >= addDays(t0, -3) && t.date <= addDays(t0, 3)).slice(0, 60).map(tk), ton = alertList().slice(0, 20).map(tk);
   return `Hôm nay: ${WD[parse(t0).getDay()]} ${t0}, lúc ${hm(nowMin())}. Level ${level}, nhánh ${track}.
 Tháng ${m}: doanh thu performance thực thu ${full(re.perf)} (${re.rank}), forecast ${full(fc.perf)} (${fc.rank}). Mốc KPI ${full(fc.kpi)}, Goal ${full(fc.goal)}, Outperformance ${full(fc.outp)}. Thu nhập thực ${full(re.total)}, forecast ${full(fc.total)}.
@@ -1259,7 +1313,7 @@ function openTask(t){
   $('#t-title').value = t.title || ''; $('#t-date').value = t.date || viewDate; $('#t-time').value = t.time || '';
   $('#t-cat').innerHTML = catOptions(); $('#t-cat').value = t.cat || 'work';
   $('#t-deal').value = t.dealId || ''; $('#t-imp').checked = !!t.important; $('#t-del').hidden = !editTask;
-  $('#t-rep').value = t.repeat || ''; $('#t-desc').value = t.desc || ''; $('#t-res').value = t.result || ''; $('#t-res-wrap').hidden = !t.done && !t.result;
+  $('#t-urg').checked = !!t.urgent; $('#t-rep').value = t.repeat || ''; $('#t-desc').value = t.desc || ''; $('#t-res').value = t.result || ''; $('#t-res-wrap').hidden = !t.done && !t.result;
   $('#dlg-task').showModal();
 }
 function openDeal(d){
@@ -1281,6 +1335,7 @@ const ACT = {
   toggle(d){ const t = S.tasks.get(d.id); if (!t) return; const done = !t.done; write('tasks', d.id, {...t, done, doneAt: done ? today() : ''}); if (done && (t.important || t.dealId) && !t.result && !document.querySelector('dialog[open]')) openResult(d.id); },
   result(d){ openResult(d.id); },
   star(d){ const t = S.tasks.get(d.id); if (t) write('tasks', d.id, {...t, important: !t.important}); },
+  urgent(d){ const t = S.tasks.get(d.id); if (t) write('tasks', d.id, {...t, urgent: !t.urgent}); },
   tomorrow(d){ const t = S.tasks.get(d.id); if (!t) return; const from = t.date > today() ? t.date : today(); write('tasks', d.id, {...t, date: addDays(from, 1)}); toast('Đã dời sang ' + dm(addDays(from, 1)) + '.'); },
   edittask(d){ const t = S.tasks.get(d.id); if (t) openTask({id: d.id, ...t}); },
   newat(d){ openTask({date: viewDate, time: d.h + 'h-' + (+d.h + 1) + 'h'}); },
@@ -1373,15 +1428,15 @@ Chỉ trả về một đối tượng JSON {"win": string, "block": string, "to
 function boot(){
   document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if (b && ACT[b.dataset.act]) ACT[b.dataset.act](b.dataset, b); });
   $('#quick').addEventListener('submit', e => { e.preventDefault(); const title = $('#q-title').value.trim(); if (!title) return;
-    write('tasks', uid(), {title, date: viewDate, important: $('#q-imp').getAttribute('aria-pressed') === 'true', done: false, doneAt: '', dealId: $('#q-deal').value, cat: $('#q-cat').value || 'work', time: $('#q-time').value.trim(), created: new Date().toISOString()});
+    write('tasks', uid(), {title, date: viewDate, important: $('#q-imp').getAttribute('aria-pressed') === 'true', urgent: $('#q-urg').getAttribute('aria-pressed') === 'true', done: false, doneAt: '', dealId: $('#q-deal').value, cat: $('#q-cat').value || 'work', time: $('#q-time').value.trim(), created: new Date().toISOString()});
     $('#q-title').value = ''; $('#q-time').value = ''; $('#q-title').focus(); });
   $('#f-task').addEventListener('submit', () => { const old = editTask ? S.tasks.get(editTask) : null; const title = $('#t-title').value.trim(); if (!title) return;
     const repeat = $('#t-rep').value, id = editTask || uid();
-    const t = {...(old || {done: false, doneAt: '', created: new Date().toISOString()}), title, date: $('#t-date').value || viewDate, time: $('#t-time').value.trim(), dealId: $('#t-deal').value, cat: $('#t-cat').value || 'work', important: $('#t-imp').checked, desc: $('#t-desc').value.trim(), result: $('#t-res').value.trim(), repeat};
+    const t = {...(old || {done: false, doneAt: '', created: new Date().toISOString()}), title, date: $('#t-date').value || viewDate, time: $('#t-time').value.trim(), dealId: $('#t-deal').value, cat: $('#t-cat').value || 'work', important: $('#t-imp').checked, urgent: $('#t-urg').checked, desc: $('#t-desc').value.trim(), result: $('#t-res').value.trim(), repeat};
     if (repeat && !t.seriesId) t.seriesId = uid();
     write('tasks', id, t);
     if (t.seriesId) for (const [oid, x] of [...S.tasks]) if (oid !== id && x.seriesId === t.seriesId && !x.done && x.date > t.date){
-      if (!repeat) write('tasks', oid, null); else write('tasks', oid, {...x, title: t.title, time: t.time, dealId: t.dealId, cat: t.cat, important: t.important, desc: t.desc, repeat}); }
+      if (!repeat) write('tasks', oid, null); else write('tasks', oid, {...x, title: t.title, time: t.time, dealId: t.dealId, cat: t.cat, important: t.important, urgent: t.urgent, desc: t.desc, repeat}); }
     ensureRecurring(); });
   $('#f-result').addEventListener('submit', () => { const t = resFor && S.tasks.get(resFor); if (!t) return;
     const result = $('#rs-text').value.trim(), nx = $('#rs-next').value.trim();
@@ -1390,6 +1445,12 @@ function boot(){
   $('#f-ask').addEventListener('submit', e => { e.preventDefault(); ask(); });
   $('#ai-q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); ask(); } });
   $('#restore-file').addEventListener('change', e => { const f = e.target.files[0]; e.target.value = ''; if (f) restore(f); });
+  const mx = $('#mx');
+  mx.addEventListener('dragstart', e => { const qi = e.target.closest && e.target.closest('.qi'); if (qi){ e.dataTransfer.setData('text/plain', qi.dataset.id); e.dataTransfer.effectAllowed = 'move'; } });
+  mx.addEventListener('dragover', e => { const q = e.target.closest('.q'); if (!q) return; e.preventDefault(); mx.querySelectorAll('.q.drop').forEach(x => x !== q && x.classList.remove('drop')); q.classList.add('drop'); });
+  mx.addEventListener('dragleave', e => { if (!mx.contains(e.relatedTarget)) mx.querySelectorAll('.q.drop').forEach(x => x.classList.remove('drop')); });
+  mx.addEventListener('drop', e => { const q = e.target.closest('.q'); if (!q) return; e.preventDefault(); const id = e.dataTransfer.getData('text/plain'), t = S.tasks.get(id); if (!t) return;
+    const important = q.dataset.imp === '1', urgent = q.dataset.urg === '1'; if (!!t.important !== important || !!t.urgent !== urgent) write('tasks', id, {...t, important, urgent}); else paintMatrix(); });
   paintBell(); setInterval(tick, 30000); setTimeout(tick, 1500);
   $('#f-deal').addEventListener('submit', () => { const old = editDeal ? S.deals.get(editDeal) : {}; const name = $('#d-name').value.trim(); if (!name) return;
     write('deals', editDeal || uid(), {...old, name, month: $('#d-month').value, stage: +$('#d-stage').value, prob: +$('#d-prob').value || 0, value: Math.round((+$('#d-value').value || 0) * M), collected: Math.round((+$('#d-coll').value || 0) * M), src: $('#d-src').value, rtype: $('#d-rtype').value, comPct: +$('#d-com').value || 0, next: $('#d-next').value.trim(), key: $('#d-key').checked}); });
